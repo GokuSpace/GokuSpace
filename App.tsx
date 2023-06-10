@@ -10,6 +10,8 @@ import HomeScreen from "./screens/HomeScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import TrendingScreen from "./screens/TrendingScreen";
 
+// Okay okay
+
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
