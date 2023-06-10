@@ -3,18 +3,17 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar } from "expo-status-bar";
 import React, { Text, View } from "react-native";
+import "react-native-gesture-handler";
 import EventsScreen from "./screens/EventsScreen";
 import FriendScreen from "./screens/FriendScreen";
 import HomeScreen from "./screens/HomeScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import TrendingScreen from "./screens/TrendingScreen";
 
-const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 export default function App() {
-  const hello = "Hello World!";
-
   return (
     <NavigationContainer>
       <Tab.Navigator>
