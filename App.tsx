@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar } from "expo-status-bar";
+import  { withExpoSnack, styled } from 'nativewind';
 import React, { Text, View } from "react-native";
 import "react-native-gesture-handler";
 import EventsScreen from "./screens/EventsScreen";
@@ -15,7 +16,7 @@ import TrendingScreen from "./screens/TrendingScreen";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-export default function App() {
+export default withExpoSnack(function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
@@ -27,4 +28,4 @@ export default function App() {
       </Tab.Navigator>
     </NavigationContainer>
   );
-}
+});

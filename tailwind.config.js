@@ -1,9 +1,9 @@
 // // tailwind.config.js
 
 module.exports = {
-  content: ["./App.{js,jsx,ts,tsx}"],
+  content: ['./App.tsx', './screens/**/*.tsx'],
   theme: {
     extend: {},
   },
   plugins: [],
-}
+};
