@@ -1,31 +1,37 @@
 import { useNavigation } from "@react-navigation/native";
 import { Avatar, ListItem } from "@rneui/themed";
-import React, { View } from "react-native";
+import React, { ScrollView, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import posts from "../dummy_data";
+import characters from "../characters";
 
 function HomeScreen() {
   return (
-    <View>
-      {posts.map((post) => {
+    <ScrollView>
+      {characters.map((character) => {
+        const contentKey = Math.floor(1000000 * Math.random());
+        const nameKey = Math.floor(1000000 * Math.random());
+        const characterKey = Math.floor(1000000 * Math.random());
         return (
           <>
-            <ListItem key={post.id} bottomDivider>
+            <ListItem key={character.mal_id} bottomDivider>
               <Avatar
+                key={character.image_url}
                 rounded
                 source={{
-                  uri: "../assets/me_crop.jpg",
+                  uri: character.image_url,
                 }}
               />
-              <ListItem.Content>
-                <ListItem.Title>{post.username}</ListItem.Title>
-                <ListItem.Subtitle>{post.text}</ListItem.Subtitle>
+              <ListItem.Content key={contentKey}>
+                <ListItem.Title key={nameKey}>{character.name}</ListItem.Title>
+                <ListItem.Subtitle key={characterKey}>
+                  {character.text}
+                </ListItem.Subtitle>
               </ListItem.Content>
             </ListItem>
           </>
         );
       })}
-    </View>
+    </ScrollView>
   );
 }
 
