@@ -74,8 +74,17 @@ model Post {
   authorId   User     @relation(fields: [author], references: [id])
 }
 
+model Anime {
+  id          String    @id @default(cuid())
+  title       String
+  description String
+  characters  String[]
+  voteCount   Integer
+}
+
 model Vote {
   id         String   @id @default(cuid())
+  image      String
   userId     String
   user       User     @relation(fields: [userId], references: [id])
   animeTitle String
