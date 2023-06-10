@@ -79,7 +79,7 @@ model Anime {
   title       String
   description String
   characters  String[]
-  voteCount   Integer
+  voteCount   Int
 }
 
 model Vote {
