@@ -1,5 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { Image, Text, View } from "react-native";
+import { Avatar, ListItem } from "@rneui/themed";
+import React, { View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import posts from "../dummy_data";
 
@@ -9,8 +10,18 @@ function HomeScreen() {
       {posts.map((post) => {
         return (
           <>
-            <Text>{post.username}</Text>
-            <Text>{post.text}</Text>
+            <ListItem key={post.id} bottomDivider>
+              <Avatar
+                rounded
+                source={{
+                  uri: "../assets/me_crop.jpg",
+                }}
+              />
+              <ListItem.Content>
+                <ListItem.Title>{post.username}</ListItem.Title>
+                <ListItem.Subtitle>{post.text}</ListItem.Subtitle>
+              </ListItem.Content>
+            </ListItem>
           </>
         );
       })}
