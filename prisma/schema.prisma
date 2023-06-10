@@ -1,0 +1,130 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  email     String
+  password  String
+  user      User[]
+}
+
+model User {
+  id                     String   @id @default(cuid())
+  accountId              String   @unique
+  account                Account? @relation(fields: [accountId], references: [id])
+  firstName              String
+  lastName               String
+  username               String   @unique
+  pictures               String[]
+  favoriteAnimeId        String?
+  favoriteCharacterId    String?
+  bio                    String?
+  latitude               Float
+  longitude              Float
+  posts                  Post[]
+  sendFriendRequests     Friend[] @relation("SentFriendRequests")
+  receivedFriendRequests Friend[] @relation("ReceivedFriendRequests")
+  votingHistory          Vote[]
+  lastVoteTime           DateTime
+  eventsCreated          Event[]  @relation("EventsCreated")
+  eventsAttending        Event[]  @relation("AttendingEvents")
+  watchingNowId          String
+  watchSelectionTime     DateTime
+
+  chatsStarted   ChatSession[] @relation("StartedChat")
+  chatsInvitedTo ChatSession[] @relation("ReceivedChatInvite")
+}
+
+model Friend {
+  id         String       @id @default(cuid())
+  senderId   String
+  sender     User         @relation("SentFriendRequests", fields: [senderId], references: [id])
+  recieverId String
+  reciever   User         @relation("ReceivedFriendRequests", fields: [recieverId], references: [id])
+  createAt   DateTime     @default(now())
+  updatedAt  DateTime     @default(now()) @updatedAt
+  status     FriendStatus
+}
+
+enum FriendStatus {
+  REJECTED
+  ACCEPTED
+  PENDING
+}
+
+model Post {
+  id         String   @id @default(cuid())
+  title      String
+  body       String
+  attachment String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+  isDeleted  Boolean
+  author     String
+  authorId   User     @relation(fields: [author], references: [id])
+}
+
+model Vote {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  animeTitle String
+  voteTime   DateTime @default(now())
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  creatorId   String   @unique
+  creator     User     @relation("EventsCreated", fields: [creatorId], references: [id])
+  attendees   User[]   @relation("AttendingEvents")
+  longitude   Float
+  latitude    Float
+  startDate   DateTime
+  endDate     DateTime
+  name        String
+  description String
+}
+
+model ChatSession {
+  id               String     @id @default(cuid())
+  messages         Message[]
+  createdAt        DateTime   @default(now())
+  status           RoomStatus
+  chatStarterId    String     @unique
+  chatStarter      User       @relation("StartedChat", fields: [chatStarterId], references: [id])
+  chatParticipants User[]     @relation("ReceivedChatInvite")
+}
+
+enum RoomStatus {
+  OPEN
+  PENDING
+  CLOSED
+}
+
+model Message {
+  id        String      @id @default(cuid())
+  message   String
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @default(now()) @updatedAt
+  user      String
+  sessionId String
+  session   ChatSession @relation(fields: [sessionId], references: [id])
+  reactions Reaction
+}
+
+enum Reaction {
+  LIKE
+  FUNNY
+  BOO
+}
+
