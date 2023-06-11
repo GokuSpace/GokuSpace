@@ -9,6 +9,8 @@ const userAction = {
         lastName: userInfo.lastName,
         username: userInfo.userName,
         zipcode: userInfo.zipcode,
+        favoriteAnimeId: userInfo.favoriteAnimeId,
+        favoriteCharacterId: userInfo.favoriteCharacterId,
       }
     })
   }

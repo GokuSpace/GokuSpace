@@ -12,7 +12,9 @@ export default function SignupScreen({ setLoggedIn }) {
     user: '',
     email: '',
     zipcode: '',
-    password: ''
+    password: '',
+    favoriteAnimeId: '',
+    FavoriteCaharacterId: ''
   });
 
   const validateEmail = () => {
@@ -49,8 +51,8 @@ export default function SignupScreen({ setLoggedIn }) {
       <Modal visible={modalVisible} transparent={true} animationType="none">
         <View  className="flex-1 justify-center items-center bg-gray-300/50">
           <View className="p-2 justify-center items-center bg-gray-500 rounded-md">
-            {error === 'email' 
-            ? <Text>Invalid Email</Text> 
+            {error === 'email'
+            ? <Text>Invalid Email</Text>
             : <Text>Passwords do not match</Text>}
             <Button title="Okay" onPress={() => setModalVisible(false)}></Button>
           </View>
@@ -70,6 +72,10 @@ export default function SignupScreen({ setLoggedIn }) {
         <TextInput onChangeText={text => changeForm(text, 'password')} value={form.password} secureTextEntry={true} passwordRules={null} />
         <Text>Confirm Password</Text>
         <TextInput onChangeText={setConfirm} value={confirm} secureTextEntry={true} passwordRules={null}/>
+        <Text>Favorite Anime?</Text>
+        <TextInput onChangeText={text => changeForm(text, 'favoriteAnimeId')} value={form.favoriteAnimeId} />
+        <Text>Favorite Character?</Text>
+        <TextInput onChangeText={text => changeForm(text, 'FavoriteCaharacterId')} value={form.FavoriteCaharacterId} />
         <Button title="Sign Up" onPress={() => setLoggedIn(true)}></Button>
       </KeyboardAvoidingView>
     </>
