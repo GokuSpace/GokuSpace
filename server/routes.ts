@@ -9,7 +9,7 @@ router.get("/events", controller.getEvents);
 router.get("/chatrooms", controller.getChatrooms);
 router.get("/messages", controller.getMessages);
 
-router.post("/accounts", controller.account.login);
-router.post("/account", controller.account.post);
+router.post("/login", controller.account.login);
+router.post("/signup", controller.account.post);
 
 export default router;

@@ -1,12 +1,22 @@
 import accountAction from '../../lib/models';
+import userAction from '../../lib/models';
 import bcrypt from 'bcryptjs-react';
+
 const account = {
   post: (req, res) => {
     accountAction.create(req.body)
-      .then(() => {
-        res.sendStatus(201)
+      .then((result) => {
+        userAction.create(result, req.body)
+          .then (result => {
+            res.status(201).send(JSON.stringify(result))
+          })
+          .catch(err => {
+            console.error(err)
+            res.sendStatus(500)
+          })
       })
       .catch(err => {
+        console.error(err)
         res.sendStatus(406)
       })
   },

@@ -31,6 +31,7 @@ model User {
   bio                    String?
   latitude               Float
   longitude              Float
+  zipcode                Int
   posts                  Post[]
   sendFriendRequests     Friend[] @relation("SentFriendRequests")
   receivedFriendRequests Friend[] @relation("ReceivedFriendRequests")
