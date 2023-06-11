@@ -12,6 +12,7 @@ import TrendingScreen from "./screens/TrendingScreen";
 import EditProfilePictureScreen from "./screens/screen-components/profile-screens/EditProfilePictureScreen";
 import UpdateProfileScreen from "./screens/screen-components/profile-screens/UpdateProfileScreen";
 import ViewUsersPostsScreen from "./screens/screen-components/profile-screens/UsersPosts";
+import VoteScreen from "./screens/screen-components/profile-screens/VoteScreen";
 
 // Okay okay
 
@@ -31,6 +32,7 @@ export default function App() {
               <Stack.Screen name="EditProfilePictureScreen" component={EditProfilePictureScreen} />
               <Stack.Screen name="UpdateProfileScreen" component={UpdateProfileScreen} />
               <Stack.Screen name="ViewUsersPostsScreen" component={ViewUsersPostsScreen} />
+              <Stack.Screen name="VoteScreen" component={VoteScreen} />
             </Stack.Navigator>
           )}
         </Tab.Screen>

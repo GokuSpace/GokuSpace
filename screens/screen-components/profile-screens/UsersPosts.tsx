@@ -8,10 +8,20 @@ function ViewUsersPostsScreen() { //userID would be passed in, which gives us ac
 
   const [posts, setPosts] = useState([]);
 
-    const handleDeletePress = (userPost: object) => { //would probably pass in the postID, refactor when backend is working
+  const handleDeletePress = (userPost: object) => { //would probably pass in the postID, refactor when backend is working
     const filteredPosts = posts.slice();
     const newlyFiltered = filteredPosts.filter((post) => post.timestamp !== userPost.timestamp);
     setPosts(newlyFiltered);
+  }
+
+  const handleSavePress = (text: string, post: object) => {
+    const updatedPosts = posts.map((p) => {
+      if (p.timestamp === post.timestamp) {
+        return { ...p, text: text };
+      }
+      return p;
+    });
+    setPosts(updatedPosts);
   }
 
 
@@ -26,7 +36,7 @@ function ViewUsersPostsScreen() { //userID would be passed in, which gives us ac
       </View>
       <ScrollView>
         {posts.map((post, i) => (
-          <UsersPostsEntry post={post} handleDeletePress={handleDeletePress}/>
+          <UsersPostsEntry post={post} handleDeletePress={handleDeletePress} handleSavePress={handleSavePress}/>
         ))}
       </ScrollView>
     </View>
