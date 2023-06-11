@@ -10,7 +10,7 @@ function HomeScreen() {
   const friends = characters.filter((char) => char.is_friend);
   const [filteredCharacters, setFilteredCharacters] = useState(friends);
   const [index, setIndex] = useState(1);
-  const [showSlideUp, setShowSLideUp] = useState(false);
+
 
   const forYou = characters.filter(
     (char) =>
@@ -76,8 +76,6 @@ function HomeScreen() {
           );
         })}
       </ScrollView>
-      {/* <Button title='Post' onPress={() => setShowSLideUp(true)}/> */}
-      {/* {showSlideUp && <SlideUp />} */}
       <SlideUp />
     </>
   );
