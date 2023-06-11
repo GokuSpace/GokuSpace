@@ -8,38 +8,6 @@ const characters = [
     is_friend: true,
     series: "Fullmetal Alchemist",
     character: "Edward Elric",
-    votes: [
-      {
-        series: "Fullmetal Alchemist",
-        created_at: "02/04/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/1223/96541.jpg?s=2ab13dc6a3e874f5dc8b7229632f8c1f",
-      },
-      {
-        series: "Attack on Titan",
-        created_at: "03/06/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/10/47347.jpg?s=1d0dbdd1836e26c0f9da72675a71e7e5",
-      },
-      {
-        series: "Naruto",
-        created_at: "05/10/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/3/83.jpg?s=85e5e3eb0709631191d66db3f6db4cfa",
-      },
-      {
-        series: "One Piece",
-        created_at: "06/15/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/6/73245.jpg?s=8d17d0926af85f54b6db87875a77be62",
-      },
-      {
-        series: "Death Note",
-        created_at: "07/20/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/5/64.jpg?s=7e5bc3f9e0c348a71de6d207cb3b3a3a",
-      },
-    ],
   },
   {
     user_id: 2,
@@ -51,38 +19,6 @@ const characters = [
     is_friend: true,
     series: "Fullmetal Alchemist",
     character: "Alphonse Elric",
-    votes: [
-      {
-        series: "Attack on Titan",
-        created_at: "03/06/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/10/47347.jpg?s=1d0dbdd1836e26c0f9da72675a71e7e5",
-      },
-      {
-        series: "Naruto",
-        created_at: "05/10/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/3/83.jpg?s=85e5e3eb0709631191d66db3f6db4cfa",
-      },
-      {
-        series: "One Piece",
-        created_at: "06/15/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/6/73245.jpg?s=8d17d0926af85f54b6db87875a77be62",
-      },
-      {
-        series: "Death Note",
-        created_at: "07/20/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/5/64.jpg?s=7e5bc3f9e0c348a71de6d207cb3b3a3a",
-      },
-      {
-        series: "Bakugou",
-        created_at: "09/01/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/1166/121040.jpg?s=4b69b9c4d1d2c936d9066b605a314f8b",
-      },
-    ],
   },
   {
     user_id: 3,
@@ -93,38 +29,6 @@ const characters = [
     is_friend: false,
     series: "Attack on Titan",
     character: "Mikasa Ackerman",
-    votes: [
-      {
-        series: "Fullmetal Alchemist",
-        created_at: "02/04/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/1223/96541.jpg?s=2ab13dc6a3e874f5dc8b7229632f8c1f",
-      },
-      {
-        series: "Attack on Titan",
-        created_at: "03/06/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/10/47347.jpg?s=1d0dbdd1836e26c0f9da72675a71e7e5",
-      },
-      {
-        series: "Naruto",
-        created_at: "05/10/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/3/83.jpg?s=85e5e3eb0709631191d66db3f6db4cfa",
-      },
-      {
-        series: "One Piece",
-        created_at: "06/15/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/6/73245.jpg?s=8d17d0926af85f54b6db87875a77be62",
-      },
-      {
-        series: "Death Note",
-        created_at: "07/20/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/5/64.jpg?s=7e5bc3f9e0c348a71de6d207cb3b3a3a",
-      },
-    ],
   },
   {
     user_id: 4,
@@ -135,38 +39,6 @@ const characters = [
     is_friend: false,
     series: "Naruto",
     character: "Sakura Haruno",
-    votes: [
-      {
-        series: "Fullmetal Alchemist",
-        created_at: "02/04/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/1223/96541.jpg?s=2ab13dc6a3e874f5dc8b7229632f8c1f",
-      },
-      {
-        series: "Attack on Titan",
-        created_at: "03/06/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/10/47347.jpg?s=1d0dbdd1836e26c0f9da72675a71e7e5",
-      },
-      {
-        series: "Naruto",
-        created_at: "05/10/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/3/83.jpg?s=85e5e3eb0709631191d66db3f6db4cfa",
-      },
-      {
-        series: "One Piece",
-        created_at: "06/15/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/6/73245.jpg?s=8d17d0926af85f54b6db87875a77be62",
-      },
-      {
-        series: "Death Note",
-        created_at: "07/20/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/5/64.jpg?s=7e5bc3f9e0c348a71de6d207cb3b3a3a",
-      },
-    ],
   },
   {
     user_id: 5,
@@ -177,38 +49,6 @@ const characters = [
     is_friend: true,
     series: "Fullmetal Alchemist",
     character: "Roy Mustang",
-    votes: [
-      {
-        series: "Fullmetal Alchemist",
-        created_at: "02/04/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/1223/96541.jpg?s=2ab13dc6a3e874f5dc8b7229632f8c1f",
-      },
-      {
-        series: "Attack on Titan",
-        created_at: "03/06/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/10/47347.jpg?s=1d0dbdd1836e26c0f9da72675a71e7e5",
-      },
-      {
-        series: "Naruto",
-        created_at: "05/10/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/3/83.jpg?s=85e5e3eb0709631191d66db3f6db4cfa",
-      },
-      {
-        series: "One Piece",
-        created_at: "06/15/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/6/73245.jpg?s=8d17d0926af85f54b6db87875a77be62",
-      },
-      {
-        series: "Death Note",
-        created_at: "07/20/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/5/64.jpg?s=7e5bc3f9e0c348a71de6d207cb3b3a3a",
-      },
-    ],
   },
   {
     user_id: 6,
@@ -219,38 +59,6 @@ const characters = [
     is_friend: false,
     series: "One Piece",
     character: "Monkey D. Luffy",
-    votes: [
-      {
-        series: "Fullmetal Alchemist",
-        created_at: "02/04/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/1223/96541.jpg?s=2ab13dc6a3e874f5dc8b7229632f8c1f",
-      },
-      {
-        series: "Attack on Titan",
-        created_at: "03/06/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/10/47347.jpg?s=1d0dbdd1836e26c0f9da72675a71e7e5",
-      },
-      {
-        series: "Naruto",
-        created_at: "05/10/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/3/83.jpg?s=85e5e3eb0709631191d66db3f6db4cfa",
-      },
-      {
-        series: "One Piece",
-        created_at: "06/15/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/6/73245.jpg?s=8d17d0926af85f54b6db87875a77be62",
-      },
-      {
-        series: "Death Note",
-        created_at: "07/20/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/5/64.jpg?s=7e5bc3f9e0c348a71de6d207cb3b3a3a",
-      },
-    ],
   },
   {
     user_id: 7,
@@ -261,38 +69,6 @@ const characters = [
     is_friend: false,
     series: "Death Note",
     character: "Light Yagami",
-    votes: [
-      {
-        series: "Fullmetal Alchemist",
-        created_at: "02/04/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/1223/96541.jpg?s=2ab13dc6a3e874f5dc8b7229632f8c1f",
-      },
-      {
-        series: "Attack on Titan",
-        created_at: "03/06/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/10/47347.jpg?s=1d0dbdd1836e26c0f9da72675a71e7e5",
-      },
-      {
-        series: "Naruto",
-        created_at: "05/10/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/3/83.jpg?s=85e5e3eb0709631191d66db3f6db4cfa",
-      },
-      {
-        series: "One Piece",
-        created_at: "06/15/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/6/73245.jpg?s=8d17d0926af85f54b6db87875a77be62",
-      },
-      {
-        series: "Death Note",
-        created_at: "07/20/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/5/64.jpg?s=7e5bc3f9e0c348a71de6d207cb3b3a3a",
-      },
-    ],
   },
   {
     user_id: 8,
@@ -303,38 +79,6 @@ const characters = [
     is_friend: true,
     series: "Bakugou",
     character: "My Hero Academia",
-    votes: [
-      {
-        series: "Fullmetal Alchemist",
-        created_at: "02/04/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/1223/96541.jpg?s=2ab13dc6a3e874f5dc8b7229632f8c1f",
-      },
-      {
-        series: "Attack on Titan",
-        created_at: "03/06/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/10/47347.jpg?s=1d0dbdd1836e26c0f9da72675a71e7e5",
-      },
-      {
-        series: "Naruto",
-        created_at: "05/10/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/3/83.jpg?s=85e5e3eb0709631191d66db3f6db4cfa",
-      },
-      {
-        series: "One Piece",
-        created_at: "06/15/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/6/73245.jpg?s=8d17d0926af85f54b6db87875a77be62",
-      },
-      {
-        series: "Death Note",
-        created_at: "07/20/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/5/64.jpg?s=7e5bc3f9e0c348a71de6d207cb3b3a3a",
-      },
-    ],
   },
   {
     user_id: 9,
@@ -345,38 +89,6 @@ const characters = [
     is_friend: true,
     series: "Fullmetal Alchemist",
     character: "Riza Hawkeye",
-    votes: [
-      {
-        series: "Fullmetal Alchemist",
-        created_at: "02/04/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/1223/96541.jpg?s=2ab13dc6a3e874f5dc8b7229632f8c1f",
-      },
-      {
-        series: "Attack on Titan",
-        created_at: "03/06/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/10/47347.jpg?s=1d0dbdd1836e26c0f9da72675a71e7e5",
-      },
-      {
-        series: "Naruto",
-        created_at: "05/10/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/3/83.jpg?s=85e5e3eb0709631191d66db3f6db4cfa",
-      },
-      {
-        series: "One Piece",
-        created_at: "06/15/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/6/73245.jpg?s=8d17d0926af85f54b6db87875a77be62",
-      },
-      {
-        series: "Death Note",
-        created_at: "07/20/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/5/64.jpg?s=7e5bc3f9e0c348a71de6d207cb3b3a3a",
-      },
-    ],
   },
   {
     user_id: 10,
@@ -387,39 +99,9 @@ const characters = [
     character: "My Hero Academia",
     image_url:
       "https://cdn.myanimelist.net/images/characters/3/473873.jpg?s=b1eb0b078de7156c08601714498d009b",
-    votes: [
-      {
-        series: "Fullmetal Alchemist",
-        created_at: "02/04/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/1223/96541.jpg?s=2ab13dc6a3e874f5dc8b7229632f8c1f",
-      },
-      {
-        series: "Attack on Titan",
-        created_at: "03/06/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/10/47347.jpg?s=1d0dbdd1836e26c0f9da72675a71e7e5",
-      },
-      {
-        series: "Naruto",
-        created_at: "05/10/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/3/83.jpg?s=85e5e3eb0709631191d66db3f6db4cfa",
-      },
-      {
-        series: "One Piece",
-        created_at: "06/15/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/6/73245.jpg?s=8d17d0926af85f54b6db87875a77be62",
-      },
-      {
-        series: "Death Note",
-        created_at: "07/20/2023",
-        url:
-          "https://cdn.myanimelist.net/images/anime/5/64.jpg?s=7e5bc3f9e0c348a71de6d207cb3b3a3a",
-      },
-    ],
   },
 ];
 
 export default characters;
+
+
