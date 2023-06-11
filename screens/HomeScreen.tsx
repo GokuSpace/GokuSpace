@@ -6,29 +6,30 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import characters from "../characters";
 
 function HomeScreen() {
-  const [filteredCharacters, setFilteredCharacters] = useState(characters);
-  const [index, setIndex] = useState(0);
+  const friends = characters.filter((char) => char.is_friend);
+  const [filteredCharacters, setFilteredCharacters] = useState(friends);
+  const [index, setIndex] = useState(1);
+
+  const forYou = characters.filter(
+    (char) =>
+      char.series === "Fullmetal Alchemist" || char.character === "Riza Hawkeye"
+  );
 
   useEffect(() => {
-    if (index === 0) {
-      setFilteredCharacters(characters);
-    }
-    if (index === 1) {
-      setFilteredCharacters(friends);
-    }
-    if (index === 2) {
-      setFilteredCharacters(forYou);
+    switch (index) {
+      case 0:
+        setFilteredCharacters(characters);
+        break;
+      case 1:
+        setFilteredCharacters(friends);
+        break;
+      case 2:
+        setFilteredCharacters(forYou);
+        break;
+      default:
+        setFilteredCharacters(friends);
     }
   }, [index]);
-
-  const friends = characters.filter((char) => {
-    return char.is_friend;
-  });
-  const forYou = characters.filter((char) => {
-    return (
-      char.series === "Fullmetal Alchemist" || char.character === "Riza Hawkeye"
-    );
-  });
 
   return (
     <>

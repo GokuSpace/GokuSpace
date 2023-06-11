@@ -2,7 +2,7 @@ const characters = [
   {
     mal_id: 1,
     name: "Elric, Alphonse",
-    text: "Hi ya'll. 'A lesson without pain is meaningless.' - Edward Elric",
+    text: "'A lesson without pain is meaningless.' - Edward Elric",
     image_url:
       "https://cdn.myanimelist.net/images/characters/5/54265.jpg?s=65c1a674adae3d7c5740d5711517285a",
     is_friend: true,
