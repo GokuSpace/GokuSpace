@@ -17,6 +17,13 @@ function ProfileScreen() {
     navigation.navigate("UpdateProfileScreen")
   }
 
+  const handleVotePress = () => {
+    navigation.navigate("VoteScreen")
+  }
+  const handlePhotosPress = () => {
+    navigation.navigate("EditProfilePictureScreen")
+  }
+
   return (
 
     <View >
@@ -49,7 +56,8 @@ function ProfileScreen() {
 
       <View style={tw`flex-row justify-center mt-6`}>
         <Button title="Posts" onPress={handlePostPress}/>
-        <Button title="Photos" />
+        <Button title="Photos" onPress={handlePhotosPress}/>
+        <Button title="Vote" onPress={handleVotePress} />
       </View>
 
     </View>
