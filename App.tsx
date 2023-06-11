@@ -11,7 +11,7 @@ import ProfileScreen from "./screens/ProfileScreen";
 import TrendingScreen from "./screens/TrendingScreen";
 import EditProfilePictureScreen from "./screens/screen-components/profile-screens/EditProfilePictureScreen";
 import UpdateProfileScreen from "./screens/screen-components/profile-screens/UpdateProfileScreen";
-import ViewUsersPostsScreen from "./screens/screen-components/profile-screens/ViewUsersPostsScreen";
+import ViewUsersPostsScreen from "./screens/screen-components/profile-screens/UsersPosts";
 
 // Okay okay
 
