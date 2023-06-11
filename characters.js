@@ -1,6 +1,6 @@
 const characters = [
   {
-    mal_id: 1,
+    user_id: 1,
     name: "Elric, Alphonse",
     text: "'A lesson without pain is meaningless.' - Edward Elric",
     image_url:
@@ -10,7 +10,7 @@ const characters = [
     character: "Edward Elric",
   },
   {
-    mal_id: 2,
+    user_id: 2,
     name: "Elric, Edward",
     text: "Don't forget, we're not gods. 'Humankind cannot gain anything without first giving something in return.' - Alphonse Elric",
     image_url:
@@ -20,7 +20,7 @@ const characters = [
     character: "Alphonse Elric",
   },
   {
-    mal_id: 3,
+    user_id: 3,
     name: "Armstrong, Olivier Mira",
     text: "Strength is beauty, and my muscles are a miracle of grace! - Olivier Mira Armstrong",
     image_url:
@@ -30,7 +30,7 @@ const characters = [
     character: "Mikasa Ackerman",
   },
   {
-    mal_id: 4,
+    user_id: 4,
     name: "Armstrong, Kathleen Elle",
     text: "I am a solider, but more than that, I am a woman! - Kathleen Elle Armstrong",
     image_url:
@@ -40,7 +40,7 @@ const characters = [
     character: "Sakura Haruno",
   },
   {
-    mal_id: 5,
+    user_id: 5,
     name: "Armstrong, Alex Louis",
     text: "Behold! These are my ultimate abs! - Alex Louis Armstrong",
     image_url:
@@ -50,7 +50,7 @@ const characters = [
     character: "Roy Mustang",
   },
   {
-    mal_id: 6,
+    user_id: 6,
     name: "Armstrong, Philip Gargantos",
     text: "I'm going to devour you! Prepare yourself, humans! - Philip Gargantos Armstrong",
     image_url:
@@ -60,7 +60,7 @@ const characters = [
     character: "Monkey D. Luffy",
   },
   {
-    mal_id: 7,
+    user_id: 7,
     name: "Barry the Chopper",
     text: "Killing people is fun! - Barry the Chopper",
     image_url:
@@ -70,7 +70,7 @@ const characters = [
     character: "Light Yagami",
   },
   {
-    mal_id: 8,
+    user_id: 8,
     name: "Bido",
     text: "I just want to live freely. - Bido",
     image_url:
@@ -80,7 +80,7 @@ const characters = [
     character: "My Hero Academia",
   },
   {
-    mal_id: 9,
+    user_id: 9,
     name: "Black Hayate",
     text: "Woof! - Black Hayate",
     image_url:
@@ -90,7 +90,7 @@ const characters = [
     character: "Riza Hawkeye",
   },
   {
-    mal_id: 10,
+    user_id: 10,
     name: "Bobby",
     text: "I'm Bobby, the most awesome side character ever!",
     is_friend: true,
