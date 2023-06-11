@@ -55,7 +55,7 @@ function HomeScreen() {
           const characterKey = Math.floor(1000000 * Math.random());
           return (
             <>
-              <ListItem key={character.mal_id} bottomDivider>
+              <ListItem key={character.user_id} bottomDivider>
                 <Avatar
                   key={character.image_url}
                   rounded
@@ -76,7 +76,7 @@ function HomeScreen() {
           );
         })}
       </ScrollView>
-      <SlideUp />
+      <SlideUp isPost={true} isUser={false} character={null}/>
     </>
   );
 }
