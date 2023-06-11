@@ -3,7 +3,7 @@ import React, { Text, View } from "react-native";
 function ProfileScreen() {
   return (
     <View>
-      <Text>Profile Screen</Text>
+      <Text key="ProfileScreen">Profile Screen</Text>
     </View>
   );
 }

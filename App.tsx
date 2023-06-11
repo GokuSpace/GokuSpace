@@ -17,14 +17,20 @@ const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Friends" component={FriendScreen} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
-        <Tab.Screen name="Trending" component={TrendingScreen} />
-        <Tab.Screen name="Events" component={EventsScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <>
+      <NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen key="Home" name="Home" component={HomeScreen} />
+          <Tab.Screen key="Friends" name="Friends" component={FriendScreen} />
+          <Tab.Screen key="Profile" name="Profile" component={ProfileScreen} />
+          <Tab.Screen
+            key="Trending"
+            name="Trending"
+            component={TrendingScreen}
+          />
+          <Tab.Screen key="Events" name="Events" component={EventsScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
