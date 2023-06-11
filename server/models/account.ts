@@ -10,12 +10,17 @@ const accountAction = {
     })
   },
   verify: (body) => {
-    return prisma.account.findUnique({
+    return prisma.user.findFirst({
       where: {
-        email: body.email,
+        account: {
+          email: body.email,
+        }
+      },
+      select: {
+        account: true,
       }
     })
-  }
+  },
 };
 
 export default accountAction;

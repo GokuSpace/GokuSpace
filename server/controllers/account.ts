@@ -1,12 +1,12 @@
-import accountAction from '../models';
-import userAction from '../models';
+import models from '../models';
+// import userAction from '../models';
 import bcrypt from 'bcryptjs-react';
 
 const account = {
   post: (req, res) => {
-    accountAction.create(req.body)
+    models.accountAction.create(req.body)
       .then((result) => {
-        userAction.create(result, req.body)
+        models.userAction.create(result, req.body)
           .then (result => {
             res.status(201).send(JSON.stringify(result))
           })
@@ -21,10 +21,10 @@ const account = {
       })
   },
   login: (req, res) => {
-    accountAction.verify(req.body)
+    models.accountAction.verify(req.body)
       .then((result) => {
-        if (bcrypt.compare(req.body.password, result.password)) {
-          res.status(200).send(JSON.stringify(result.user));
+        if (bcrypt.compare(req.body.password, result.account.password)) {
+          res.status(200).send(JSON.stringify({...result, account: undefined}));
         } else {
           res.sendStatus(401)
         }

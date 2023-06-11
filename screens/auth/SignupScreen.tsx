@@ -8,11 +8,14 @@ export default function SignupScreen({ setLoggedIn }) {
   const [confirm, setConfirm] = useState('');
   const [error, setError] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
+  const [signupPage, setSignupPage] = useState(true);
   const [form, setForm] = useState({
     user: '',
     email: '',
     zipcode: '',
     password: '',
+    firstName: '',
+    lastName: '',
     favoriteAnimeId: '',
     FavoriteCaharacterId: ''
   });
@@ -60,23 +63,32 @@ export default function SignupScreen({ setLoggedIn }) {
       </Modal>
 
       <KeyboardAvoidingView behavior="position" className="flex-1 justify-center items-center">
-        <Text>Sign up</Text>
-        <Text >UserName</Text>
-        <TextInput onChangeText={text => changeForm(text, 'user')} value={form.user}/>
-        <Text >Email</Text>
-        <TextInput onChangeText={text => changeForm(text, 'email')} value={form.email}/>
-        <Text>Zipcode</Text>
-        <TextInput onChangeText={text => changeForm(text, 'zipcode')} value={form.zipcode}/>
-
-        <Text>Password</Text>
-        <TextInput onChangeText={text => changeForm(text, 'password')} value={form.password} secureTextEntry={true} passwordRules={null} />
-        <Text>Confirm Password</Text>
-        <TextInput onChangeText={setConfirm} value={confirm} secureTextEntry={true} passwordRules={null}/>
-        <Text>Favorite Anime?</Text>
-        <TextInput onChangeText={text => changeForm(text, 'favoriteAnimeId')} value={form.favoriteAnimeId} />
-        <Text>Favorite Character?</Text>
-        <TextInput onChangeText={text => changeForm(text, 'FavoriteCaharacterId')} value={form.FavoriteCaharacterId} />
-        <Button title="Sign Up" onPress={() => setLoggedIn(true)}></Button>
+        {signupPage
+        ? <>
+          <Text>Sign up</Text>
+          <Text >UserName</Text>
+          <TextInput onChangeText={text => changeForm(text, 'user')} value={form.user}/>
+          <Text >Email</Text>
+          <TextInput onChangeText={text => changeForm(text, 'email')} value={form.email}/>
+          <Text>Zipcode</Text>
+          <TextInput onChangeText={text => changeForm(text, 'zipcode')} value={form.zipcode}/>
+          <Text>Password</Text>
+          <TextInput onChangeText={text => changeForm(text, 'password')} value={form.password} secureTextEntry={true} passwordRules={null} />
+          <Text>Confirm Password</Text>
+          <TextInput onChangeText={setConfirm} value={confirm} secureTextEntry={true} passwordRules={null}/>
+          <Button title="Next" onPress={() => setSignupPage(false)}></Button>
+        </>
+      : <>
+          <Text >First Name</Text>
+          <TextInput onChangeText={text => changeForm(text, 'firstName')} value={form.firstName}/>
+          <Text>Last Name</Text>
+          <TextInput onChangeText={text => changeForm(text, 'lastName')} value={form.lastName}/>
+          <Text>Favorite Anime?</Text>
+          <TextInput onChangeText={text => changeForm(text, 'favoriteAnimeId')} value={form.favoriteAnimeId} />
+          <Text>Favorite Character?</Text>
+          <TextInput onChangeText={text => changeForm(text, 'FavoriteCaharacterId')} value={form.FavoriteCaharacterId} />
+          <Button title="Sign Up" onPress={() => setLoggedIn(true)}></Button>
+      </>}
       </KeyboardAvoidingView>
     </>
   );
