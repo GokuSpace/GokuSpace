@@ -18,6 +18,7 @@ function ProfileScreen() {
   }
 
   return (
+
     <View >
 
       <View style={tw`flex justify-center items-center mt-6`}>
