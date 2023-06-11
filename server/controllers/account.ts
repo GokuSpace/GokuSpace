@@ -1,5 +1,5 @@
-import accountAction from '../../lib/models';
-import userAction from '../../lib/models';
+import accountAction from '../models';
+import userAction from '../models';
 import bcrypt from 'bcryptjs-react';
 
 const account = {
