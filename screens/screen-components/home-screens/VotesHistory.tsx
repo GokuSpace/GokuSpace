@@ -1,15 +1,16 @@
+/* eslint-disable react/prop-types */
 import { Avatar, ListItem } from "@rneui/themed";
 import React, { ScrollView } from "react-native-gesture-handler";
 
 
-const VotesHistory = (user) => {
+const VotesHistory = ({ user }) => {
   return (
     <ScrollView>
       {
         user.votes.map(vote => {
           return (
             <>
-              <ListItem >
+              <ListItem bottomDivider>
                 <Avatar rounded
                   source={{
                     uri: vote.url
