@@ -1,4 +1,4 @@
-import prisma from '../index';
+import prisma from '../../lib';
 
 const userAction = {
   create: (account, userInfo) => {

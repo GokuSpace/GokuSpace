@@ -27,7 +27,7 @@ model User {
   bio                    String?
   latitude               Float
   longitude              Float
-  zipcode                Int
+  zipcode                Int           @default(0)
   lastVoteTime           DateTime
   watchingNowId          String
   watchSelectionTime     DateTime
