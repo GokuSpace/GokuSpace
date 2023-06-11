@@ -1,14 +1,16 @@
 import { useNavigation } from "@react-navigation/native";
-import { Avatar, ListItem, Tab } from "@rneui/themed";
+import { Avatar, Button, ListItem, Tab } from "@rneui/themed";
 import { useEffect, useState } from "react";
 import React, { ScrollView, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import characters from "../characters";
+import SlideUp  from "./screen-components/home-screens/SlideUp";
 
 function HomeScreen() {
   const friends = characters.filter((char) => char.is_friend);
   const [filteredCharacters, setFilteredCharacters] = useState(friends);
   const [index, setIndex] = useState(1);
+  const [showSlideUp, setShowSLideUp] = useState(false);
 
   const forYou = characters.filter(
     (char) =>
@@ -74,6 +76,9 @@ function HomeScreen() {
           );
         })}
       </ScrollView>
+      {/* <Button title='Post' onPress={() => setShowSLideUp(true)}/> */}
+      {/* {showSlideUp && <SlideUp />} */}
+      <SlideUp />
     </>
   );
 }
