@@ -7,13 +7,12 @@ import { MaterialIcons } from "@expo/vector-icons";
 import userProfilePics from "../../../userProfilePics";
 
 const EditProfilePictureScreen: React.FC = () => { //pass in userID, preferably would get the user's pictures (array) passed in as prop via useRoute
+  const [images, setImages] = useState<string[]>(["", "", "", "", ""]);
 
   useEffect(() => {
     setImages(userProfilePics);
     //GET profile pictures from the backend
   }, [])
-
-  const [images, setImages] = useState<string[]>(["", "", "", "", ""]);
 
   const handleImageSelect = async (index: number) => {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -24,7 +23,6 @@ const EditProfilePictureScreen: React.FC = () => { //pass in userID, preferably 
     })
 
     if (!result.canceled) {
-      console.log(result.assets)
       const newImages = [...images];
       newImages[index] = result.assets[0].uri
       setImages(newImages);
