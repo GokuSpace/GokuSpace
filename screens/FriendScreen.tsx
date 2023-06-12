@@ -3,7 +3,9 @@ import React, { Text, View } from "react-native";
 function FriendScreen() {
   return (
     <View>
-      <Text>Friend Screen</Text>
+      <Text key="FriendScreen" className="bg-red-600">
+        Friend Screen
+      </Text>
     </View>
   );
 }
