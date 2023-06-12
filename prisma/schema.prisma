@@ -1,11 +1,17 @@
 generator client {
   provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+// To use, ensure that GIS is installed. One can do so by using
+// `sudo apt-get install postgis`
+// Then run in psql shell:
+// `CREATE EXTENSION postgis;`
 
 model Account {
   id        String   @id @default(cuid())
@@ -16,30 +22,54 @@ model Account {
 }
 
 model User {
-  id                     String        @id @default(cuid())
-  accountId              String        @unique
+  id                     String     @id @default(cuid())
+  accountId              String     @unique
+  account                Account?   @relation(fields: [accountId], references: [id])
   firstName              String
   lastName               String
-  username               String        @unique
+  username               String     @unique
   pictures               String[]
   favoriteAnimeId        String?
+  favoriteAnime          Anime?     @relation("HasFavoriteAnime", fields: [favoriteAnimeId], references: [mal_id])
   favoriteCharacterId    String?
+  favoriteCharater       Character? @relation("HasFavoriteCharacter", fields: [favoriteCharacterId], references: [id])
   bio                    String?
-  latitude               Float
-  longitude              Float
-  zipcode                Int           @default(0)
-  lastVoteTime           DateTime
-  watchingNowId          String
-  watchSelectionTime     DateTime
-  chatsStarted           ChatSession?  @relation("StartedChat")
-  eventsCreated          Event?        @relation("EventsCreated")
-  receivedFriendRequests Friend[]      @relation("ReceivedFriendRequests")
-  sendFriendRequests     Friend[]      @relation("SentFriendRequests")
+  latitude               Float?
+  longitude              Float?
+  zipcode                String
   posts                  Post[]
-  account                Account       @relation(fields: [accountId], references: [id])
+  sendFriendRequests     Friend[]   @relation("SentFriendRequests")
+  receivedFriendRequests Friend[]   @relation("ReceivedFriendRequests")
   votingHistory          Vote[]
-  eventsAttending        Event[]       @relation("AttendingEvents")
-  chatsInvitedTo         ChatSession[] @relation("ReceivedChatInvite")
+  lastVoteTime           DateTime?
+  eventsCreated          Event[]    @relation("EventsCreated")
+  eventsAttending        Event[]    @relation("AttendingEvents")
+  watchingNowId          String?
+  watchSelectionTime     DateTime?
+
+  chatsStarted   ChatSession[] @relation("StartedChat")
+  chatsInvitedTo ChatSession[] @relation("ReceivedChatInvite")
+}
+
+model Anime {
+  id          String      @id @default(cuid())
+  mal_id      String      @unique
+  title       String
+  year        String
+  description String
+  images      String
+  characters  Character[] @relation("AnimeCharacter")
+  voteCount   Int
+  users       User[]      @relation("HasFavoriteAnime")
+}
+
+model Character {
+  id        String @id @default(cuid())
+  mal_id    String
+  name      String
+  image_url String
+  Anime     Anime? @relation("AnimeCharacter", fields: [mal_id], references: [mal_id])
+  users     User[] @relation("HasFavoriteCharacter")
 }
 
 model Friend {
@@ -60,7 +90,7 @@ model Post {
   attachment String?
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now())
-  isDeleted  Boolean
+  isDeleted  Boolean  @default(false)
   author     String
   authorId   User     @relation(fields: [author], references: [id])
 }
@@ -74,22 +104,24 @@ model Vote {
 }
 
 model Event {
-  id          String   @id @default(cuid())
-  creatorId   String   @unique
-  longitude   Float
-  latitude    Float
-  startDate   DateTime
-  endDate     DateTime
-  name        String
-  description String
-  creator     User     @relation("EventsCreated", fields: [creatorId], references: [id])
-  attendees   User[]   @relation("AttendingEvents")
+  id             String   @id @default(cuid())
+  creatorId      String   @unique
+  creator        User     @relation("EventsCreated", fields: [creatorId], references: [id])
+  attendees      User[]   @relation("AttendingEvents")
+  longitude      Float?
+  latitude       Float?
+  locationString String   @default("")
+  startDate      DateTime
+  endDate        DateTime
+  picture        String
+  name           String
+  description    String
 }
 
 model ChatSession {
   id               String     @id @default(cuid())
   createdAt        DateTime   @default(now())
-  status           RoomStatus
+  status           RoomStatus @default(PENDING)
   chatStarterId    String     @unique
   chatStarter      User       @relation("StartedChat", fields: [chatStarterId], references: [id])
   messages         Message[]
@@ -103,7 +135,7 @@ model Message {
   updatedAt DateTime    @default(now()) @updatedAt
   user      String
   sessionId String
-  reactions Reaction
+  reactions Reaction[]
   session   ChatSession @relation(fields: [sessionId], references: [id])
 }
 
