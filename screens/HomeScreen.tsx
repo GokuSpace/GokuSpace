@@ -1,13 +1,15 @@
 import { useNavigation } from "@react-navigation/native";
 import { Avatar, Button, ListItem, Tab } from "@rneui/themed";
 import { useEffect, useState } from "react";
-import React, { ScrollView, View } from "react-native";
+import React, { Dimensions, ScrollView, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import characters from "../characters";
-import BottomSheetComponent from "./screen-components/BottomSheetComponent";
+import BottomSheetComponent from "./screen-components/home-screens/BottomSheetComponent";
 import SlideUp from "./screen-components/home-screens/SlideUp";
 
 function HomeScreen() {
+  const { height } = Dimensions.get('window');
+
   const [filteredCharacters, setFilteredCharacters] = useState([]);
   const [index, setIndex] = useState(1);
 
@@ -74,7 +76,6 @@ function HomeScreen() {
         })}
         <BottomSheetComponent />
       </ScrollView>
-      <SlideUp isPost={true} isUser={false} character={null}/>
     </>
   );
 }
