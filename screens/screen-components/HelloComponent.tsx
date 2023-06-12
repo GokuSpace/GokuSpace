@@ -3,7 +3,7 @@ import React, { Text, View } from "react-native";
 function HelloComponent() {
   return (
     <View>
-      <Text>Goodbye World!</Text>
+      <Text key="HelloComponent">Goodbye World!</Text>
     </View>
   );
 }
