@@ -28,11 +28,12 @@ CREATE TABLE "User" (
     "favoriteAnimeId" TEXT,
     "favoriteCharacterId" TEXT,
     "bio" TEXT,
-    "latitude" DOUBLE PRECISION NOT NULL,
-    "longitude" DOUBLE PRECISION NOT NULL,
-    "lastVoteTime" TIMESTAMP(3) NOT NULL,
-    "watchingNowId" TEXT NOT NULL,
-    "watchSelectionTime" TIMESTAMP(3) NOT NULL,
+    "latitude" DOUBLE PRECISION,
+    "longitude" DOUBLE PRECISION,
+    "zipcode" TEXT NOT NULL,
+    "lastVoteTime" TIMESTAMP(3),
+    "watchingNowId" TEXT,
+    "watchSelectionTime" TIMESTAMP(3),
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -57,27 +58,15 @@ CREATE TABLE "Post" (
     "attachment" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "isDeleted" BOOLEAN NOT NULL,
+    "isDeleted" BOOLEAN NOT NULL DEFAULT false,
     "author" TEXT NOT NULL,
 
     CONSTRAINT "Post_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Anime" (
-    "id" TEXT NOT NULL,
-    "title" TEXT NOT NULL,
-    "description" TEXT NOT NULL,
-    "characters" TEXT[],
-    "voteCount" INTEGER NOT NULL,
-
-    CONSTRAINT "Anime_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
 CREATE TABLE "Vote" (
     "id" TEXT NOT NULL,
-    "image" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
     "animeTitle" TEXT NOT NULL,
     "voteTime" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -89,10 +78,12 @@ CREATE TABLE "Vote" (
 CREATE TABLE "Event" (
     "id" TEXT NOT NULL,
     "creatorId" TEXT NOT NULL,
-    "longitude" DOUBLE PRECISION NOT NULL,
-    "latitude" DOUBLE PRECISION NOT NULL,
+    "longitude" DOUBLE PRECISION,
+    "latitude" DOUBLE PRECISION,
+    "locationString" DOUBLE PRECISION NOT NULL,
     "startDate" TIMESTAMP(3) NOT NULL,
     "endDate" TIMESTAMP(3) NOT NULL,
+    "picture" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
 
@@ -103,7 +94,7 @@ CREATE TABLE "Event" (
 CREATE TABLE "ChatSession" (
     "id" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "status" "RoomStatus" NOT NULL,
+    "status" "RoomStatus" NOT NULL DEFAULT 'PENDING',
     "chatStarterId" TEXT NOT NULL,
 
     CONSTRAINT "ChatSession_pkey" PRIMARY KEY ("id")
@@ -117,7 +108,7 @@ CREATE TABLE "Message" (
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "user" TEXT NOT NULL,
     "sessionId" TEXT NOT NULL,
-    "reactions" "Reaction" NOT NULL,
+    "reactions" "Reaction"[],
 
     CONSTRAINT "Message_pkey" PRIMARY KEY ("id")
 );
@@ -133,6 +124,9 @@ CREATE TABLE "_ReceivedChatInvite" (
     "A" TEXT NOT NULL,
     "B" TEXT NOT NULL
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Account_email_key" ON "Account"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_accountId_key" ON "User"("accountId");
@@ -162,10 +156,10 @@ CREATE INDEX "_ReceivedChatInvite_B_index" ON "_ReceivedChatInvite"("B");
 ALTER TABLE "User" ADD CONSTRAINT "User_accountId_fkey" FOREIGN KEY ("accountId") REFERENCES "Account"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Friend" ADD CONSTRAINT "Friend_senderId_fkey" FOREIGN KEY ("senderId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Friend" ADD CONSTRAINT "Friend_recieverId_fkey" FOREIGN KEY ("recieverId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Friend" ADD CONSTRAINT "Friend_recieverId_fkey" FOREIGN KEY ("recieverId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Friend" ADD CONSTRAINT "Friend_senderId_fkey" FOREIGN KEY ("senderId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Post" ADD CONSTRAINT "Post_author_fkey" FOREIGN KEY ("author") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

@@ -22,30 +22,54 @@ model Account {
 }
 
 model User {
-  id                     String   @id @default(cuid())
-  accountId              String   @unique
-  account                Account? @relation(fields: [accountId], references: [id])
+  id                     String     @id @default(cuid())
+  accountId              String     @unique
+  account                Account?   @relation(fields: [accountId], references: [id])
   firstName              String
   lastName               String
-  username               String   @unique
+  username               String     @unique
   pictures               String[]
-  favoriteAnimeId        String?
+  favoriteAnimeId        Int?
+  favoriteAnime          Anime?     @relation("HasFavoriteAnime", fields: [favoriteAnimeId], references: [mal_id])
   favoriteCharacterId    String?
+  favoriteCharater       Character? @relation("HasFavoriteCharacter", fields: [favoriteCharacterId], references: [id])
   bio                    String?
-  latitude               Float
-  longitude              Float
+  latitude               Float?
+  longitude              Float?
+  zipcode                String
   posts                  Post[]
-  sendFriendRequests     Friend[] @relation("SentFriendRequests")
-  receivedFriendRequests Friend[] @relation("ReceivedFriendRequests")
+  sendFriendRequests     Friend[]   @relation("SentFriendRequests")
+  receivedFriendRequests Friend[]   @relation("ReceivedFriendRequests")
   votingHistory          Vote[]
-  lastVoteTime           DateTime
-  eventsCreated          Event[]  @relation("EventsCreated")
-  eventsAttending        Event[]  @relation("AttendingEvents")
-  watchingNowId          String
-  watchSelectionTime     DateTime
+  lastVoteTime           DateTime?
+  eventsCreated          Event[]    @relation("EventsCreated")
+  eventsAttending        Event[]    @relation("AttendingEvents")
+  watchingNowId          String?
+  watchSelectionTime     DateTime?
 
   chatsStarted   ChatSession[] @relation("StartedChat")
   chatsInvitedTo ChatSession[] @relation("ReceivedChatInvite")
+}
+
+model Anime {
+  id          String      @id @default(cuid())
+  mal_id      Int         @unique
+  title       String
+  year        String
+  description String
+  images      String
+  characters  Character[] @relation("AnimeCharacter")
+  voteCount   Int
+  users       User[]      @relation("HasFavoriteAnime")
+}
+
+model Character {
+  id        String @id @default(cuid())
+  mal_id    Int
+  name      String
+  image_url String
+  Anime     Anime? @relation("AnimeCharacter", fields: [mal_id], references: [mal_id])
+  users     User[] @relation("HasFavoriteCharacter")
 }
 
 model Friend {
@@ -66,7 +90,7 @@ model Post {
   attachment String?
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now())
-  isDeleted  Boolean
+  isDeleted  Boolean  @default(false)
   author     String
   authorId   User     @relation(fields: [author], references: [id])
 }
@@ -80,22 +104,24 @@ model Vote {
 }
 
 model Event {
-  id          String   @id @default(cuid())
-  creatorId   String   @unique
-  creator     User     @relation("EventsCreated", fields: [creatorId], references: [id])
-  attendees   User[]   @relation("AttendingEvents")
-  longitude   Float
-  latitude    Float
-  startDate   DateTime
-  endDate     DateTime
-  name        String
-  description String
+  id             String   @id @default(cuid())
+  creatorId      String   @unique
+  creator        User     @relation("EventsCreated", fields: [creatorId], references: [id])
+  attendees      User[]   @relation("AttendingEvents")
+  longitude      Float?
+  latitude       Float?
+  locationString Float
+  startDate      DateTime
+  endDate        DateTime
+  picture        String
+  name           String
+  description    String
 }
 
 model ChatSession {
   id               String     @id @default(cuid())
   createdAt        DateTime   @default(now())
-  status           RoomStatus
+  status           RoomStatus @default(PENDING)
   chatStarterId    String     @unique
   chatStarter      User       @relation("StartedChat", fields: [chatStarterId], references: [id])
   messages         Message[]
@@ -109,7 +135,7 @@ model Message {
   updatedAt DateTime    @default(now()) @updatedAt
   user      String
   sessionId String
-  reactions Reaction
+  reactions Reaction[]
   session   ChatSession @relation(fields: [sessionId], references: [id])
 }
 
