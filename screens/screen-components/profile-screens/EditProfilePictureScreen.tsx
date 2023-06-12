@@ -1,11 +1,18 @@
 import React, { Text, View, Image } from "react-native";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as ImagePicker from 'expo-image-picker';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import tw from 'tailwind-react-native-classnames';
 import { MaterialIcons } from "@expo/vector-icons";
+import userProfilePics from "../../../userProfilePics";
 
-const EditProfilePictureScreen: React.FC = () => {
+const EditProfilePictureScreen: React.FC = () => { //pass in userID, preferably would get the user's pictures (array) passed in as prop via useRoute
+
+  useEffect(() => {
+    setImages(userProfilePics);
+    //GET profile pictures from the backend
+  }, [])
+
   const [images, setImages] = useState<string[]>(["", "", "", "", ""]);
 
   const handleImageSelect = async (index: number) => {
@@ -17,9 +24,11 @@ const EditProfilePictureScreen: React.FC = () => {
     })
 
     if (!result.canceled) {
+      console.log(result.assets)
       const newImages = [...images];
       newImages[index] = result.assets[0].uri
       setImages(newImages);
+      //add logic to post new profile picture to the backend
     }
   };
 
@@ -27,6 +36,7 @@ const EditProfilePictureScreen: React.FC = () => {
     const newImages = [...images];
     newImages[index] = "";
     setImages(newImages);
+    //add logic to remove profile picture from the backend
   };
 
   const renderBox = (index: number) => {
