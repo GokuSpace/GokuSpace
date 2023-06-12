@@ -3,9 +3,10 @@ import { useState } from "react";
 import * as ImagePicker from 'expo-image-picker';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import tw from 'tailwind-react-native-classnames';
+import { MaterialIcons } from "@expo/vector-icons";
 
 const EditProfilePictureScreen: React.FC = () => {
-  const [images, setImages] = useState<string[]>(["", "", "", ""]);
+  const [images, setImages] = useState<string[]>(["", "", "", "", ""]);
 
   const handleImageSelect = async (index: number) => {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -32,32 +33,30 @@ const EditProfilePictureScreen: React.FC = () => {
     const uri = images[index];
 
     return (
-      <TouchableOpacity
-        key={index}
-        style={tw`w-48 h-48 rounded-lg bg-gray-300 mb-4 items-center justify-center`}
-        onPress={() => handleImageSelect(index)}
-      >
+      <>
         {uri ? (
-          <TouchableOpacity
-            key={index}
-            onPress={() => handleImageRemove(index)}
-          >
+          <View style={tw`w-40 h-40 rounded-lg bg-gray-300 mb-4 items-center justify-center overflow-hidden`} key={index}>
             <Image source={{ uri }} style={{ width: 200, height: 200 }} />
-          </TouchableOpacity>
-
+            <MaterialIcons name="close" size={36} color="red" style={tw`absolute top-1 right-1`} onPress={() => handleImageRemove(index)} />
+          </View>
         ) : (
-          <Text style={tw`text-4xl font-bold`}>+</Text>
+          <TouchableOpacity onPress={() => handleImageSelect(index)}>
+            <View style={tw`w-40 h-40 rounded-lg bg-gray-300 mb-4 items-center justify-center overflow-hidden`}>
+              <Text style={tw`text-4xl font-bold`}>+</Text>
+            </View>
+          </TouchableOpacity>
         )}
-      </TouchableOpacity>
+      </>
     );
   };
 
   return (
     <View style={tw`flex-1 items-center justify-center`}>
-      <Text style={tw`text-2xl font-bold mb-8`}>THIS IS THE PROFILE PICTURE SCREEN</Text>
 
-      <View style={tw`flex-wrap flex-row justify-between`}>
-        {[0, 1, 2, 3].map((index) => renderBox(index))}
+      <Text style={tw`text-2xl font-bold mb-8`}>THIS IS THE PROFILE PICTURE SCREEN</Text>
+      {renderBox(0)}
+      <View style={tw`flex-row flex-wrap justify-between px-6`}>
+        {[1, 2, 3, 4].map((index) => renderBox(index))}
       </View>
     </View>
   );
