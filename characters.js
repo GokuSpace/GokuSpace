@@ -12,7 +12,8 @@ const characters = [
   {
     user_id: 2,
     name: "Elric, Edward",
-    text: "Don't forget, we're not gods. 'Humankind cannot gain anything without first giving something in return.' - Alphonse Elric",
+    text:
+      "Don't forget, we're not gods. 'Humankind cannot gain anything without first giving something in return.' - Alphonse Elric",
     image_url:
       "https://cdn.myanimelist.net/images/characters/9/72533.jpg?s=d38cf4e2e5cbb46ddaf2b23345a03eae",
     is_friend: true,
@@ -32,7 +33,7 @@ const characters = [
   {
     user_id: 4,
     name: "Armstrong, Kathleen Elle",
-    text: "I am a solider, but more than that, I am a woman! - Kathleen Elle Armstrong",
+    text: "I am a soldier, but more than that, I am a woman! - Kathleen Elle Armstrong",
     image_url:
       "https://cdn.myanimelist.net/images/characters/14/80951.jpg?s=3aa6cce3cb9f8c3080771bc4960eabbf",
     is_friend: false,
@@ -102,3 +103,5 @@ const characters = [
 ];
 
 export default characters;
+
+
