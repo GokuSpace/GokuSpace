@@ -4,18 +4,15 @@ import { useEffect, useState } from "react";
 import React, { ScrollView, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import characters from "../characters";
-import SlideUp  from "./screen-components/home-screens/SlideUp";
+import BottomSheetComponent from "./screen-components/BottomSheetComponent";
+import SlideUp from "./screen-components/home-screens/SlideUp";
 
 function HomeScreen() {
-  const friends = characters.filter((char) => char.is_friend);
-  const [filteredCharacters, setFilteredCharacters] = useState(friends);
+  const [filteredCharacters, setFilteredCharacters] = useState([]);
   const [index, setIndex] = useState(1);
 
-
-  const forYou = characters.filter(
-    (char) =>
-      char.series === "Fullmetal Alchemist" || char.character === "Riza Hawkeye"
-  );
+  const friends = characters.filter((char) => char.is_friend);
+  const forYou = characters.filter((char) => char.series === "Fullmetal Alchemist");
 
   useEffect(() => {
     switch (index) {
@@ -75,6 +72,7 @@ function HomeScreen() {
             </>
           );
         })}
+        <BottomSheetComponent />
       </ScrollView>
       <SlideUp isPost={true} isUser={false} character={null}/>
     </>
