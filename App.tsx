@@ -16,6 +16,7 @@ import EditProfilePictureScreen from "./screens/screen-components/profile-screen
 import UpdateProfileScreen from "./screens/screen-components/profile-screens/UpdateProfileScreen";
 import ViewUsersPostsScreen from "./screens/screen-components/profile-screens/UsersPosts";
 import VoteScreen from "./screens/screen-components/profile-screens/VoteScreen";
+import EventDetails from "./screens/screen-components/events-screens/EventDetails";
 
 // Okay okay
 
@@ -29,36 +30,43 @@ export default function AppTabs() {
 
     return (
       <NavigationContainer>
-      <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeScreen}/>
-      <Tab.Screen name="Friends" component={FriendScreen} />
-      <Tab.Screen name="Profile" options={{ headerShown: false }}>
-          {() => (
-            <Stack.Navigator>
-              <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
-              <Stack.Screen name="EditProfilePictureScreen" component={EditProfilePictureScreen} />
-              <Stack.Screen name="UpdateProfileScreen" component={UpdateProfileScreen} />
-              <Stack.Screen name="ViewUsersPostsScreen" component={ViewUsersPostsScreen} />
-              <Stack.Screen name="VoteScreen" component={VoteScreen} />
-            </Stack.Navigator>
-          )}
-        </Tab.Screen>
-      <Tab.Screen name="Trending" component={TrendingScreen} />
-      <Tab.Screen name="Events" component={EventsScreen} />
-      </Tab.Navigator>
-      </NavigationContainer>
-      )
-    } else {
+        <Tab.Navigator>
+          <Tab.Screen name="Home" component={HomeScreen} />
+          <Tab.Screen name="Friends" component={FriendScreen} />
+          <Tab.Screen name="Profile" options={{ headerShown: false }}>
+            {() => (
+              <Stack.Navigator>
+                <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+                <Stack.Screen name="EditProfilePictureScreen" component={EditProfilePictureScreen} />
+                <Stack.Screen name="UpdateProfileScreen" component={UpdateProfileScreen} />
+                <Stack.Screen name="ViewUsersPostsScreen" component={ViewUsersPostsScreen} />
+                <Stack.Screen name="VoteScreen" component={VoteScreen} />
+              </Stack.Navigator>
+            )}
+          </Tab.Screen>
+          <Tab.Screen name="Trending" component={TrendingScreen} />
+          <Tab.Screen name="Events" options={{ headerShown: false }}>
+            {() => (
+              <Stack.Navigator>
+                <Stack.Screen name="EventsScreen" component={EventsScreen} />
+                <Stack.Screen name="EventDetails" component={EventDetails} />
+              </Stack.Navigator>
+            )}
+          </Tab.Screen>
+        </Tab.Navigator>
+      </NavigationContainer >
+    )
+  } else {
     return (
       <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Login">
-        {(props) => <LoginScreen {...props} setLoggedIn={setLoggedIn} />}
-        </Stack.Screen>
-        <Stack.Screen name="SignUp">
-          {(props) => <SignupScreen {...props} setLoggedIn={setLoggedIn} />}
-        </Stack.Screen>
-      </Stack.Navigator>
+        <Stack.Navigator>
+          <Stack.Screen name="Login">
+            {(props) => <LoginScreen {...props} setLoggedIn={setLoggedIn} />}
+          </Stack.Screen>
+          <Stack.Screen name="SignUp">
+            {(props) => <SignupScreen {...props} setLoggedIn={setLoggedIn} />}
+          </Stack.Screen>
+        </Stack.Navigator>
       </NavigationContainer>
 
     );
