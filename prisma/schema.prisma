@@ -28,9 +28,9 @@ model User {
   latitude               Float
   longitude              Float
   zipcode                Int           @default(0)
-  lastVoteTime           DateTime
-  watchingNowId          String
-  watchSelectionTime     DateTime
+  lastVoteTime           DateTime?
+  watchingNowId          String?
+  watchSelectionTime     DateTime?
   chatsStarted           ChatSession?  @relation("StartedChat")
   eventsCreated          Event?        @relation("EventsCreated")
   receivedFriendRequests Friend[]      @relation("ReceivedFriendRequests")
@@ -40,6 +40,26 @@ model User {
   votingHistory          Vote[]
   eventsAttending        Event[]       @relation("AttendingEvents")
   chatsInvitedTo         ChatSession[] @relation("ReceivedChatInvite")
+}
+
+model Anime {
+  id          String      @id @default(cuid())
+  mal_id      Int
+  title       String
+  year        String
+  description String
+  images      String
+  characters  Character[]
+  voteCount   Int
+}
+
+model Character {
+  id        String  @id @default(cuid())
+  mal_id    Int
+  name      String
+  image_url String
+  Anime     Anime?  @relation(fields: [animeId], references: [id])
+  animeId   String?
 }
 
 model Friend {
@@ -78,6 +98,8 @@ model Event {
   creatorId   String   @unique
   longitude   Float
   latitude    Float
+  locationString  String
+  picture     String
   startDate   DateTime
   endDate     DateTime
   name        String
