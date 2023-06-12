@@ -2,7 +2,7 @@ import request from 'supertest';
 import app from '../';
 import prisma from '../../lib';
 
-xdescribe('Events API', () => {
+describe('Events API', () => {
   let server;
   const agent = request(app);
 

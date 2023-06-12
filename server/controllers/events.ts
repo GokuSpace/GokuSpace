@@ -70,8 +70,8 @@ export default {
           AND (
             ${
               distance === 'all'
-            } OR ("ST_DistanceSphere"("ST_GeomFromText"('POINT(' || e.longitude || ' ' || e.latitude || ')'),
-          "ST_GeomFromText"(${`POINT(${user.longitude} ${user.latitude})`})) <= ${
+            } OR (ST_DistanceSphere(ST_GeomFromText('POINT(' || e.longitude || ' ' || e.latitude || ')'),
+          ST_GeomFromText(${`POINT(${user.longitude} ${user.latitude})`})) <= ${
         Number(distance) * 1609
       }))
           LIMIT ${count} OFFSET ${page * count}
