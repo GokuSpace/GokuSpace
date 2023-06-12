@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,53 +10,47 @@ datasource db {
 model Account {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
-  email     String
+  email     String   @unique
   password  String
-  user      User[]
+  user      User?
 }
 
 model User {
-  id                     String   @id @default(cuid())
-  accountId              String   @unique
-  account                Account? @relation(fields: [accountId], references: [id])
+  id                     String        @id @default(cuid())
+  accountId              String        @unique
   firstName              String
   lastName               String
-  username               String   @unique
+  username               String        @unique
   pictures               String[]
   favoriteAnimeId        String?
   favoriteCharacterId    String?
   bio                    String?
   latitude               Float
   longitude              Float
-  posts                  Post[]
-  sendFriendRequests     Friend[] @relation("SentFriendRequests")
-  receivedFriendRequests Friend[] @relation("ReceivedFriendRequests")
-  votingHistory          Vote[]
+  zipcode                Int           @default(0)
   lastVoteTime           DateTime
-  eventsCreated          Event[]  @relation("EventsCreated")
-  eventsAttending        Event[]  @relation("AttendingEvents")
   watchingNowId          String
   watchSelectionTime     DateTime
-
-  chatsStarted   ChatSession[] @relation("StartedChat")
-  chatsInvitedTo ChatSession[] @relation("ReceivedChatInvite")
+  chatsStarted           ChatSession?  @relation("StartedChat")
+  eventsCreated          Event?        @relation("EventsCreated")
+  receivedFriendRequests Friend[]      @relation("ReceivedFriendRequests")
+  sendFriendRequests     Friend[]      @relation("SentFriendRequests")
+  posts                  Post[]
+  account                Account       @relation(fields: [accountId], references: [id])
+  votingHistory          Vote[]
+  eventsAttending        Event[]       @relation("AttendingEvents")
+  chatsInvitedTo         ChatSession[] @relation("ReceivedChatInvite")
 }
 
 model Friend {
   id         String       @id @default(cuid())
   senderId   String
-  sender     User         @relation("SentFriendRequests", fields: [senderId], references: [id])
   recieverId String
-  reciever   User         @relation("ReceivedFriendRequests", fields: [recieverId], references: [id])
   createAt   DateTime     @default(now())
   updatedAt  DateTime     @default(now()) @updatedAt
   status     FriendStatus
-}
-
-enum FriendStatus {
-  REJECTED
-  ACCEPTED
-  PENDING
+  reciever   User         @relation("ReceivedFriendRequests", fields: [recieverId], references: [id])
+  sender     User         @relation("SentFriendRequests", fields: [senderId], references: [id])
 }
 
 model Post {
@@ -77,38 +68,32 @@ model Post {
 model Vote {
   id         String   @id @default(cuid())
   userId     String
-  user       User     @relation(fields: [userId], references: [id])
   animeTitle String
   voteTime   DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id])
 }
 
 model Event {
   id          String   @id @default(cuid())
   creatorId   String   @unique
-  creator     User     @relation("EventsCreated", fields: [creatorId], references: [id])
-  attendees   User[]   @relation("AttendingEvents")
   longitude   Float
   latitude    Float
   startDate   DateTime
   endDate     DateTime
   name        String
   description String
+  creator     User     @relation("EventsCreated", fields: [creatorId], references: [id])
+  attendees   User[]   @relation("AttendingEvents")
 }
 
 model ChatSession {
   id               String     @id @default(cuid())
-  messages         Message[]
   createdAt        DateTime   @default(now())
   status           RoomStatus
   chatStarterId    String     @unique
   chatStarter      User       @relation("StartedChat", fields: [chatStarterId], references: [id])
+  messages         Message[]
   chatParticipants User[]     @relation("ReceivedChatInvite")
-}
-
-enum RoomStatus {
-  OPEN
-  PENDING
-  CLOSED
 }
 
 model Message {
@@ -118,8 +103,20 @@ model Message {
   updatedAt DateTime    @default(now()) @updatedAt
   user      String
   sessionId String
-  session   ChatSession @relation(fields: [sessionId], references: [id])
   reactions Reaction
+  session   ChatSession @relation(fields: [sessionId], references: [id])
+}
+
+enum FriendStatus {
+  REJECTED
+  ACCEPTED
+  PENDING
+}
+
+enum RoomStatus {
+  OPEN
+  PENDING
+  CLOSED
 }
 
 enum Reaction {
@@ -127,4 +124,3 @@ enum Reaction {
   FUNNY
   BOO
 }
-
