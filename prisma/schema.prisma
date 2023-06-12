@@ -3,12 +3,18 @@
 
 generator client {
   provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+// To use, ensure that GIS is installed. One can do so by using
+// `sudo apt-get install postgis`
+// Then run in psql shell:
+// `CREATE EXTENSION postgis;`
 
 model Account {
   id        String   @id @default(cuid())
@@ -19,12 +25,12 @@ model Account {
 }
 
 model User {
-  id                     String   @id @default(cuid())
-  accountId              String   @unique
-  account                Account? @relation(fields: [accountId], references: [id])
+  id                     String    @id @default(cuid())
+  accountId              String    @unique
+  account                Account?  @relation(fields: [accountId], references: [id])
   firstName              String
   lastName               String
-  username               String   @unique
+  username               String    @unique
   pictures               String[]
   favoriteAnimeId        String?
   favoriteCharacterId    String?
@@ -32,14 +38,14 @@ model User {
   latitude               Float
   longitude              Float
   posts                  Post[]
-  sendFriendRequests     Friend[] @relation("SentFriendRequests")
-  receivedFriendRequests Friend[] @relation("ReceivedFriendRequests")
+  sendFriendRequests     Friend[]  @relation("SentFriendRequests")
+  receivedFriendRequests Friend[]  @relation("ReceivedFriendRequests")
   votingHistory          Vote[]
-  lastVoteTime           DateTime
-  eventsCreated          Event[]  @relation("EventsCreated")
-  eventsAttending        Event[]  @relation("AttendingEvents")
-  watchingNowId          String
-  watchSelectionTime     DateTime
+  lastVoteTime           DateTime?
+  eventsCreated          Event[]   @relation("EventsCreated")
+  eventsAttending        Event[]   @relation("AttendingEvents")
+  watchingNowId          String?
+  watchSelectionTime     DateTime?
 
   chatsStarted   ChatSession[] @relation("StartedChat")
   chatsInvitedTo ChatSession[] @relation("ReceivedChatInvite")
@@ -83,16 +89,18 @@ model Vote {
 }
 
 model Event {
-  id          String   @id @default(cuid())
-  creatorId   String   @unique
-  creator     User     @relation("EventsCreated", fields: [creatorId], references: [id])
-  attendees   User[]   @relation("AttendingEvents")
-  longitude   Float
-  latitude    Float
-  startDate   DateTime
-  endDate     DateTime
-  name        String
-  description String
+  id             String   @id @default(cuid())
+  creatorId      String   @unique
+  creator        User     @relation("EventsCreated", fields: [creatorId], references: [id])
+  attendees      User[]   @relation("AttendingEvents")
+  longitude      Float
+  latitude       Float
+  startDate      DateTime
+  endDate        DateTime
+  name           String
+  picture        String   @default("")
+  locationString String   @default("")
+  description    String
 }
 
 model ChatSession {

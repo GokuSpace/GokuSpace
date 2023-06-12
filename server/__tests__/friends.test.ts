@@ -6,12 +6,12 @@ describe('Friends API Routes', () => {
   let server;
   const agent = request(app);
 
-  beforeAll(() => {
+  beforeEach(() => {
     prisma.$connect();
-    server = app.listen(3000);
+    server = app.listen(3001);
   });
 
-  afterAll((done) => {
+  afterEach((done) => {
     prisma.$disconnect();
     server.close(done);
   });

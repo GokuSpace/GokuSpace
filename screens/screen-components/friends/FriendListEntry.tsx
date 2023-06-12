@@ -12,35 +12,29 @@ type Friend = {
 
 export default function FriendListEntry({ item }: { item: Friend }) {
   return (
-    // <ListItem bottomDivider style={tw`flex-1 items-center flex-row`}>
-    <ListItem bottomDivider containerStyle={tw`flex-1 items-start flex-row`}>
-      <View style={tw`relative`}>
-        <View style={tw`bg-gray-200 w-16 h-16 rounded-full`} />
-        {item.nearby && (
-          <View style={tw`absolute -bottom-1 -right-1`}>
-            <Icon name="location-pin" color="red" size={35} />
-          </View>
-        )}
+    <View style={tw`flex flex-row p-4 border-b border-gray-400 items-center`}>
+      <View style={tw`relative mr-4`}>
+        <View style={tw`bg-gray-200 w-16 h-16 rounded-full`}>
+          {false && (
+            <View style={tw`absolute bottom-1 right-1`}>
+              <Icon name="location-pin" color="red" size={35} />
+            </View>
+          )}
+        </View>
       </View>
-      <View style={tw`flex-1 flex-col`}>
-        <Text style={tw`text-lg mb-1`}>{item.username}</Text>
-        <View style={tw`flex-1 flex-row`}>
+      <View style={tw`flex-1 justify-between flex-row`}>
+        <Text style={tw`text-lg mr-4`}>{item.username}</Text>
+        <View style={tw`flex flex-row items-center`}>
+          <Icon name="message" size={35} />
           <Button
             titleStyle={tw`text-sm`}
-            buttonStyle={tw`px-4 py-0 rounded-full mr-4`}
+            buttonStyle={tw`px-4 py-0 rounded-full ml-5`}
             color="secondary"
           >
-            Accept
-          </Button>
-          <Button
-            titleStyle={tw`text-sm`}
-            buttonStyle={tw`px-4 py-0 rounded-full`}
-            color="secondary"
-          >
-            Reject
+            Unfriend
           </Button>
         </View>
       </View>
-    </ListItem>
+    </View>
   );
 }

@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "User" ALTER COLUMN "lastVoteTime" DROP NOT NULL,
+ALTER COLUMN "watchingNowId" DROP NOT NULL,
+ALTER COLUMN "watchSelectionTime" DROP NOT NULL;
