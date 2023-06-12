@@ -29,7 +29,7 @@ model User {
   lastName               String
   username               String     @unique
   pictures               String[]
-  favoriteAnimeId        Int?
+  favoriteAnimeId        String?
   favoriteAnime          Anime?     @relation("HasFavoriteAnime", fields: [favoriteAnimeId], references: [mal_id])
   favoriteCharacterId    String?
   favoriteCharater       Character? @relation("HasFavoriteCharacter", fields: [favoriteCharacterId], references: [id])
@@ -53,7 +53,7 @@ model User {
 
 model Anime {
   id          String      @id @default(cuid())
-  mal_id      Int         @unique
+  mal_id      String      @unique
   title       String
   year        String
   description String
@@ -65,7 +65,7 @@ model Anime {
 
 model Character {
   id        String @id @default(cuid())
-  mal_id    Int
+  mal_id    String
   name      String
   image_url String
   Anime     Anime? @relation("AnimeCharacter", fields: [mal_id], references: [mal_id])
@@ -110,7 +110,7 @@ model Event {
   attendees      User[]   @relation("AttendingEvents")
   longitude      Float?
   latitude       Float?
-  locationString Float
+  locationString String   @default("")
   startDate      DateTime
   endDate        DateTime
   picture        String
