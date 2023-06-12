@@ -1,7 +1,10 @@
+import account from './account';
+
 const controller = {
   getAccounts(req, res) {
     return 'Accounts';
   },
+  account,
   getUsers(req, res) {
     return 'Users';
   },

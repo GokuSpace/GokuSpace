@@ -1,5 +1,8 @@
+// tailwind.config.js
+
 module.exports = {
-  content: ['./App.tsx', './screens/**/*.tsx'],
+  content: ['./App.{js,jsx,ts,tsx}', './screens/**/*.{js,jsx,ts,tsx}'],
+
   theme: {
     extend: {
       colors: {

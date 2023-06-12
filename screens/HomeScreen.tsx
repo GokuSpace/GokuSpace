@@ -1,19 +1,18 @@
 import { useNavigation } from "@react-navigation/native";
-import { Avatar, ListItem, Tab } from "@rneui/themed";
+import { Avatar, Button, ListItem, Tab } from "@rneui/themed";
 import { useEffect, useState } from "react";
 import React, { ScrollView, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import characters from "../characters";
+import BottomSheetComponent from "./screen-components/BottomSheetComponent";
+import SlideUp from "./screen-components/home-screens/SlideUp";
 
 function HomeScreen() {
-  const friends = characters.filter((char) => char.is_friend);
-  const [filteredCharacters, setFilteredCharacters] = useState(friends);
+  const [filteredCharacters, setFilteredCharacters] = useState([]);
   const [index, setIndex] = useState(1);
 
-  const forYou = characters.filter(
-    (char) =>
-      char.series === "Fullmetal Alchemist" || char.character === "Riza Hawkeye"
-  );
+  const friends = characters.filter((char) => char.is_friend);
+  const forYou = characters.filter((char) => char.series === "Fullmetal Alchemist");
 
   useEffect(() => {
     switch (index) {
@@ -53,7 +52,7 @@ function HomeScreen() {
           const characterKey = Math.floor(1000000 * Math.random());
           return (
             <>
-              <ListItem key={character.mal_id} bottomDivider>
+              <ListItem key={character.user_id} bottomDivider>
                 <Avatar
                   key={character.image_url}
                   rounded
@@ -73,7 +72,9 @@ function HomeScreen() {
             </>
           );
         })}
+        <BottomSheetComponent />
       </ScrollView>
+      <SlideUp isPost={true} isUser={false} character={null}/>
     </>
   );
 }
