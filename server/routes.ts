@@ -19,7 +19,8 @@ router.get('/users/:user_id/events', events.getEvents);
 router.get('/users/:user_id/my_events', events.getUserEvents);
 router.get('/events/:event_id', events.getEvent);
 router.put('/events/:event_id/rsvp', events.rsvpEvent);
-router.post('/friends/status/:sender_id/:receiver_id', events.createEvent);
+router.post('/events/:user_id', events.createEvent);
+router.delete('/events/:event_id', events.deleteEvent);
 
 router.get('/friends', controller.getFriends);
 router.get('/posts', controller.getPosts);

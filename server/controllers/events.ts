@@ -188,22 +188,23 @@ export default {
   },
 
   /**
-   * Has user `user_id` RSVP for event `event_id`
+   * RSVPs for an event with the specified ID.
+   *
+   * Request parameters:
+   * - event_id: string representing the ID of the event to RSVP for
    *
    * Request query parameters:
-   *  - user_id - string
+   * - user_id: string representing the ID of the user sending the RSVP
    */
-  rsvpEvent: async (req: Request, res: Response) => {
+  rsvpEvent: async (req, res) => {
     try {
-      const userId = req.query.user_id as string;
-      const eventId = req.params.event_id;
+      const { event_id } = req.params;
+      const { user_id } = req.query;
 
+      // Check if the user exists
       const user = await prisma.user.findUnique({
         where: {
-          id: userId,
-        },
-        include: {
-          eventsAttending: true,
+          accountId: user_id,
         },
       });
 
@@ -211,9 +212,10 @@ export default {
         return res.status(404).json({ message: 'User not found' });
       }
 
+      // Check if the event exists
       const event = await prisma.event.findUnique({
         where: {
-          id: eventId,
+          id: event_id,
         },
       });
 
@@ -221,23 +223,21 @@ export default {
         return res.status(404).json({ message: 'Event not found' });
       }
 
-      const updatedUser = await prisma.user.update({
+      // Connect the user to the event's attendees
+      await prisma.event.update({
         where: {
-          id: userId,
+          id: event_id,
         },
         data: {
-          eventsAttending: {
+          attendees: {
             connect: {
-              id: eventId,
+              id: user.id,
             },
           },
         },
-        include: {
-          eventsAttending: true,
-        },
       });
 
-      res.status(200).json(updatedUser.eventsAttending);
+      res.status(200).json({ message: 'RSVP successful' });
     } catch (error) {
       console.error("Error RSVP'ing for the event:", error);
       res.status(500).json({ message: 'Internal server error' });
@@ -258,7 +258,7 @@ export default {
    */
   createEvent: async (req: Request, res: Response) => {
     try {
-      const userId = req.query.user_id as string;
+      const userId = req.params.user_id as string;
       const {
         locationString,
         longitude,
@@ -305,6 +305,41 @@ export default {
       res.status(200).json(createdEvent);
     } catch (error) {
       console.error("Error creating event and RSVP'ing:", error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  },
+
+  /**
+   * Deletes an event with the specified ID.
+   *
+   * Request parameters:
+   * - event_id: string representing the ID of the event to be deleted
+   */
+  deleteEvent: async (req, res) => {
+    try {
+      const eventId = req.params.event_id;
+
+      // Check if the event exists
+      const event = await prisma.event.findUnique({
+        where: {
+          id: eventId,
+        },
+      });
+
+      if (!event) {
+        return res.status(404).json({ message: 'Event not found' });
+      }
+
+      // Delete the event
+      await prisma.event.delete({
+        where: {
+          id: eventId,
+        },
+      });
+
+      res.status(200).json({ message: 'Event deleted successfully' });
+    } catch (error) {
+      console.error('Error deleting event:', error);
       res.status(500).json({ message: 'Internal server error' });
     }
   },

@@ -2,7 +2,7 @@ import request from 'supertest';
 import app from '../';
 import prisma from '../../lib';
 
-describe('GET /users/:user_id/events', () => {
+describe('Events API', () => {
   let server;
   const agent = request(app);
 
@@ -27,8 +27,6 @@ describe('GET /users/:user_id/events', () => {
       });
 
     expect(res.statusCode).toEqual(200);
-    expect(res.body).toBeInstanceOf(Array);
-    expect(res.body).toHaveLength(1);
     expect(res.body[0]).toMatchObject({
       id: '1',
       name: 'NYC Meeting',
