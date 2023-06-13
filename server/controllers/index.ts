@@ -1,27 +1,30 @@
 import account from './account';
 
 const controller = {
+  getAccounts(req, res) {
+    return 'Accounts';
+  },
   account,
   getUsers(req, res) {
-    return "Users";
+    return 'Users';
   },
   getFriends(req, res) {
-    return "Friends";
+    return 'Friends';
   },
   getPosts(req, res) {
-    return "Posts";
+    return 'Posts';
   },
   getVotes(req, res) {
-    return "Votes";
+    return 'Votes';
   },
   getEvents(req, res) {
-    return "Events";
+    return 'Events';
   },
   getChatrooms(req, res) {
-    return "Chatrooms";
+    return 'Chatrooms';
   },
   getMessages(req, res) {
-    return "Messages";
+    return 'Messages';
   },
 };
 
