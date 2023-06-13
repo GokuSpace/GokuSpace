@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar } from "expo-status-bar";
 import React, { Text, View } from "react-native";
+import { ThemeProvider, createTheme } from '@rneui/themed';
 import { useState } from 'react';
 import "react-native-gesture-handler";
 import EventsScreen from "./screens/EventsScreen";
@@ -24,11 +25,19 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 
+const theme = createTheme({
+  lightColors: {
+    secondary: '#EB5E28',
+  },
+  mode: 'light',
+});
+
 export default function AppTabs() {
   const [loggedIn, setLoggedIn] = useState(false);
   if (loggedIn) {
 
     return (
+      <ThemeProvider theme={theme}>
       <NavigationContainer>
         <Tab.Navigator>
           <Tab.Screen name="Home" component={HomeScreen} />
@@ -55,9 +64,11 @@ export default function AppTabs() {
           </Tab.Screen>
         </Tab.Navigator>
       </NavigationContainer >
+      </ThemeProvider>
     )
   } else {
     return (
+      <ThemeProvider theme={theme}>
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Login">
@@ -68,6 +79,7 @@ export default function AppTabs() {
           </Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
+      </ThemeProvider>
 
     );
 
