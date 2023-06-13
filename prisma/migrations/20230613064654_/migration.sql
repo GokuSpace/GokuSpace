@@ -1,4 +1,3 @@
-CREATE EXTENSION postgis;
 -- CreateEnum
 CREATE TYPE "FriendStatus" AS ENUM ('REJECTED', 'ACCEPTED', 'PENDING');
 
@@ -42,12 +41,10 @@ CREATE TABLE "User" (
 -- CreateTable
 CREATE TABLE "Anime" (
     "id" TEXT NOT NULL,
-    "mal_id" TEXT NOT NULL,
+    "image" TEXT NOT NULL,
     "title" TEXT NOT NULL,
-    "year" TEXT NOT NULL,
+    "score" DOUBLE PRECISION NOT NULL,
     "description" TEXT NOT NULL,
-    "images" TEXT NOT NULL,
-    "voteCount" INTEGER NOT NULL,
 
     CONSTRAINT "Anime_pkey" PRIMARY KEY ("id")
 );
@@ -55,7 +52,7 @@ CREATE TABLE "Anime" (
 -- CreateTable
 CREATE TABLE "Character" (
     "id" TEXT NOT NULL,
-    "mal_id" TEXT NOT NULL,
+    "mal_id" TEXT,
     "name" TEXT NOT NULL,
     "image_url" TEXT NOT NULL,
 
@@ -159,9 +156,6 @@ CREATE UNIQUE INDEX "User_accountId_key" ON "User"("accountId");
 CREATE UNIQUE INDEX "User_username_key" ON "User"("username");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Anime_mal_id_key" ON "Anime"("mal_id");
-
--- CreateIndex
 CREATE UNIQUE INDEX "Event_creatorId_key" ON "Event"("creatorId");
 
 -- CreateIndex
@@ -183,13 +177,13 @@ CREATE INDEX "_ReceivedChatInvite_B_index" ON "_ReceivedChatInvite"("B");
 ALTER TABLE "User" ADD CONSTRAINT "User_accountId_fkey" FOREIGN KEY ("accountId") REFERENCES "Account"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "User" ADD CONSTRAINT "User_favoriteAnimeId_fkey" FOREIGN KEY ("favoriteAnimeId") REFERENCES "Anime"("mal_id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "User" ADD CONSTRAINT "User_favoriteAnimeId_fkey" FOREIGN KEY ("favoriteAnimeId") REFERENCES "Anime"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "User" ADD CONSTRAINT "User_favoriteCharacterId_fkey" FOREIGN KEY ("favoriteCharacterId") REFERENCES "Character"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Character" ADD CONSTRAINT "Character_mal_id_fkey" FOREIGN KEY ("mal_id") REFERENCES "Anime"("mal_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Character" ADD CONSTRAINT "Character_mal_id_fkey" FOREIGN KEY ("mal_id") REFERENCES "Anime"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Friend" ADD CONSTRAINT "Friend_recieverId_fkey" FOREIGN KEY ("recieverId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
