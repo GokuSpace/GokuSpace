@@ -1,58 +1,87 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/prop-types */
-import React, { useRef, useState } from 'react';
-import { View, Button, Dimensions, ViewStyle } from 'react-native';
-import SlidingUpPanel from 'rn-sliding-up-panel';
-import { Avatar } from '@rneui/themed';
-import { TextInput } from 'react-native-gesture-handler';
+// Importing required dependencies
+import React, { ReactNode } from 'react'
+import {
+  Animated,
+  Pressable,
+  StyleSheet,
+  useWindowDimensions,
+  View,
+  Dimensions,
+  Button
+} from 'react-native'
 
-const styles: { container: ViewStyle } = {
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-};
+import useAnimatedBottom from './slideup-component/useAnimatedBottom';
+import UserNavigationSlide from './slideup-component/UserNavigationSlide';
+import AuthNavigationSlide from './slideup-component/AuthNavigationSlide';
 
-const SlideUp = ({ isPost, isUser, character }) => {
-  const _panel = useRef(null);
-  const { height } = Dimensions.get('window');
-  const [draggableRange, setDraggableRange] = useState({
-    top: (0.55 * height),
-    bottom: 0
-  })
+
+interface user {
+  image_url: string;
+}
+interface Props {
+  show: boolean;
+  height?: number;
+  onOuterClick?: () => void;
+  isUser: boolean;
+  isAuth: boolean;
+  user: user;
+  children?: ReactNode;
+}
+const DEFAULT_HEIGHT = Dimensions.get('window').height / 2;
+
+
+const SlideUp = ({ show, height = DEFAULT_HEIGHT, onOuterClick, isUser, user, isAuth }: Props) => {
+
+  const { height: screenHeight } = useWindowDimensions();
+  const bottom = useAnimatedBottom(show, DEFAULT_HEIGHT)
+
 
 
   return (
-    <View style={styles.container}>
-      <Button title="show panel" onPress={() => _panel.current.show()} />
-      <SlidingUpPanel ref={_panel} draggableRange={draggableRange}>
-        <View style={styles.container}>
-          {isPost &&
+    <>
+      {show && (
+        <Pressable
+          onPress={onOuterClick}
+          style={[styles.outerOverlay, { height: screenHeight }]}>
+          <View />
+        </Pressable>
+      )}
+
+      <Animated.View style={[styles.bottomSheet, { height, bottom }]}>
+        <Button title="Close" onPress={onOuterClick} />
+        {isUser &&
+          <UserNavigationSlide user={user} />
+        }
+        {isAuth &&
           <>
-          <TextInput style={{borderColor:'black', borderWidth: 1}} placeholder="Type here..."/>
-          <Button title="upload image"/>
+            <AuthNavigationSlide />
           </>
-          }
-          <Button title="hide panle" onPress={() => _panel.current.hide()} />
-          {isUser && (
-            <>
-            <Avatar rounded
-              source={{
-                uri: character.image_url,
-              }} />
-              <Button title='Postes' />
-              <Button title='Profile' />
-              <Button title='Votes' />
-
-            </>
-          )}
-        </View>
-      </SlidingUpPanel>
-    </View>
-  );
-
+        }
+      </Animated.View>
+    </>
+  )
 }
 
+
 export default SlideUp;
+
+//styling
+const styles = StyleSheet.create({
+  outerOverlay: {
+    position: 'absolute',
+    width: '100%',
+    zIndex: 1,
+    backgroundColor: 'none',
+  },
+  bottomSheet: {
+    position: 'absolute',
+    width: '100%',
+    zIndex: 1,
+    backgroundColor: 'dodgerblue',
+    borderTopLeftRadius: 16,
+    borderTopRightRadius: 16,
+  },
+})
+
+
