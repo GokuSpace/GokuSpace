@@ -7,7 +7,7 @@ import bcrypt from 'bcryptjs-react';
 import AnimePicker from "./AnimePicker";
 import { userContext } from '../../App';
 import * as Crypto from 'expo-crypto';
-import {SERVER} from '@env';
+import { SERVER } from '@env';
 
 
 // Set the random fallback using expo-random
