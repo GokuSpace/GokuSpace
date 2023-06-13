@@ -1,9 +1,13 @@
-import express from "express";
-import router from "./routes";
+import express from 'express';
+import Router from './routes';
+import cors from 'cors';
+import morgan from 'morgan';
 
 const app = express();
-app.use("/", router);
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(cors());
 
-app.listen(process.env.PORT || 3000, () =>
-  console.log(`app listening on port ${process.env.PORT || 3000}`)
-);
+app.use('/', Router);
+
+export default app;

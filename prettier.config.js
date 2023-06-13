@@ -1,33 +1,33 @@
 module.exports = {
   semi: true,
-  trailingComma: "all",
+  trailingComma: 'all',
   singleQuote: true,
   printWidth: 80,
   tabWidth: 2,
   plugins: ['prettier-plugin-prisma'],
   overrides: [
     {
-      files: "*.js",
+      files: '*.js',
       options: {
-        parser: "babel",
+        parser: 'babel',
       },
     },
     {
-      files: "*.ts",
+      files: '*.ts',
       options: {
-        parser: "typescript",
+        parser: 'typescript',
       },
     },
     {
-      files: "*.tsx",
+      files: '*.tsx',
       options: {
-        parser: "typescript",
+        parser: 'typescript',
       },
     },
     {
-      files: "*.json",
+      files: '*.json',
       options: {
-        parser: "json",
+        parser: 'json',
       },
     },
   ],
