@@ -5,13 +5,14 @@ import React, { Dimensions, ScrollView, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import characters from "../characters";
 import BottomSheetComponent from "./screen-components/home-screens/BottomSheetComponent";
-import SlideUp from "./screen-components/home-screens/SlideUp";
+import { SlideUpModal } from './screen-components/home-screens/SlideUpModal';
 
 function HomeScreen() {
   const { height } = Dimensions.get('window');
 
   const [filteredCharacters, setFilteredCharacters] = useState([]);
   const [index, setIndex] = useState(1);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const friends = characters.filter((char) => char.is_friend);
   const forYou = characters.filter((char) => char.series === "Fullmetal Alchemist");
@@ -74,7 +75,8 @@ function HomeScreen() {
             </>
           );
         })}
-        <BottomSheetComponent />
+      <Button title="Add a Post" onPress={() => setModalVisible(true)} />
+      {modalVisible && <SlideUpModal isVisible={modalVisible} onClose={() => setModalVisible(false)} />}
       </ScrollView>
     </>
   );
