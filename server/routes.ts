@@ -39,4 +39,4 @@ router.get('/messages', controller.getMessages);
 router.post('/login', controller.account.login);
 router.post('/signup', controller.account.post);
 
-export default router;
+export default router
