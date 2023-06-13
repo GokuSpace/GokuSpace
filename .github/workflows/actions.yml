@@ -26,3 +26,5 @@ jobs:
 
       - name: Run unit tests
         run: npm test
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}

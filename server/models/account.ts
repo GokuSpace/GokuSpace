@@ -16,7 +16,7 @@ const accountAction = {
           email: body.email,
         }
       },
-      select: {
+      include: {
         account: true,
       }
     })
