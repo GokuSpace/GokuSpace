@@ -1,12 +1,16 @@
 import { Text, View, Modal, KeyboardAvoidingView } from "react-native";
 import { Input, Button } from '@rneui/themed';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import bcrypt from 'bcryptjs-react';
 import AnimePicker from "./AnimePicker";
+import { userContext } from '../../App';
 
 export default function SignupScreen({ setLoggedIn }) {
   const navigation = useNavigation();
+
+  const { setCurrentUser } = useContext(userContext);
   const [confirm, setConfirm] = useState('');
   const [error, setError] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
@@ -21,6 +25,18 @@ export default function SignupScreen({ setLoggedIn }) {
     zipcode: '',
     password: '',
   });
+
+  const submitForm = () => {
+    form.password = hash(form.password)
+    axios.post(`http://${process.env.SERVER}/signup`, form)
+      .then(res => {
+        setCurrentUser(res.data)
+        setLoggedIn(true);
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
 
   const validateEmail = () => {
     const re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -38,19 +54,15 @@ export default function SignupScreen({ setLoggedIn }) {
   }
 
   const hash = (potatoes) => {
-    const salt = bcrypt.genSaltSync(10);
-    const browns = bcrypt.hashSync(potatoes, salt);
+    //const salt = bcrypt.genSaltSync(10);
+    const browns = bcrypt.hashSync(potatoes, 10);
     return browns;
   }
 
 
 
   const formValidate1 = () => {
-    if (form.firstName === '' || form.firstName.length < 2) {
-      setModalVisible(true);
-      return;
-    }
-
+    // form validation if time
     setSignupPage(false);
   }
 
