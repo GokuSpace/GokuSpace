@@ -9,7 +9,6 @@ import { SlideUpModal } from './screen-components/home-screens/SlideUpModal';
 
 function HomeScreen() {
   const { height } = Dimensions.get('window');
-
   const [filteredCharacters, setFilteredCharacters] = useState([]);
   const [index, setIndex] = useState(1);
   const [modalVisible, setModalVisible] = useState(false);
