@@ -1,28 +1,49 @@
 import React, { Text, View, Image, Button } from "react-native";
 import tw from 'tailwind-react-native-classnames';
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { useState, useEffect } from "react";
+import axios from 'axios';
+import userData from '../jerryMockDataFolder/getUserById.json';
 
-  // const route = useRoute();
-  // const { post } = route.params;
 
-function ProfileScreen() {
+function ProfileScreen() { //take in a userId and then make axios call with that...
+  const [profile, setProfile] = useState({})
+
   const navigation = useNavigation();
 
   const handlePostPress = () => {
-    navigation.navigate("ViewUsersPostsScreen");
+    navigation.navigate("ViewUsersPostsScreen", { profile: profile });
   }
 
   const handleUpdatePress = () => {
-    navigation.navigate("UpdateProfileScreen")
+    navigation.navigate("UpdateProfileScreen", { profile: profile })
   }
 
   const handleVotePress = () => {
     navigation.navigate("VoteScreen")
   }
   const handlePhotosPress = () => {
-    navigation.navigate("EditProfilePictureScreen")
+    navigation.navigate("EditProfilePictureScreen", { pictures: profile.pictures })
   }
+
+
+
+  /*
+
+  const fetchUserProfile = async () => {
+    try {
+      const response = await axios.get('https://localhost:3000/users/cliuk0wnb0002uz6aw5dc3jrg');
+      const userData = response.data;
+      setProfile(userData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  */
+  useEffect(() => {
+    setProfile(userData);
+  }, []);
 
   return (
 
@@ -32,8 +53,8 @@ function ProfileScreen() {
         <Image
           source={require("../assets/favicon.png")}
         />
-        <Text style={tw`mt-6`}>ALIYAH JERRY USERNAME</Text>
-        <Button style={tw`mt-6`} title="Update Profile" onPress={handleUpdatePress}/>
+        <Text style={tw`mt-6`}>{profile.username}</Text>
+        <Button style={tw`mt-6`} title="Update Profile" onPress={handleUpdatePress} />
       </View>
 
       <View style={tw`flex-row mt-6`}>
@@ -43,20 +64,20 @@ function ProfileScreen() {
           <Text style={tw`mt-6`}>Location</Text>
         </View>
         <View style={tw`px-10`}>
-          <Text>dummy data</Text>
-          <Text style={tw`mt-6`}>dummy data</Text>
-          <Text style={tw`mt-6`}>dummy data</Text>
+          <Text>{profile.favoriteAnimeId}</Text>
+          <Text style={tw`mt-6`}>{profile.favoriteCharacterId}</Text>
+          <Text style={tw`mt-6`}>{profile.zipcode}</Text>
         </View>
       </View>
 
       <View style={tw`flex-row px-5 mt-6`}>
         <Text>Bio:</Text>
-        <Text style={tw`px-3`}>Dont tell me you want to conquer the world, instead be more realistic and bring me something original!</Text>
+        <Text style={tw`px-3`}>{profile.bio}</Text>
       </View>
 
       <View style={tw`flex-row justify-center mt-6`}>
-        <Button title="Posts" onPress={handlePostPress}/>
-        <Button title="Photos" onPress={handlePhotosPress}/>
+        <Button title="Posts" onPress={handlePostPress} />
+        <Button title="Photos" onPress={handlePhotosPress} />
         <Button title="Vote" onPress={handleVotePress} />
       </View>
 

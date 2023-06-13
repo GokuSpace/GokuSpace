@@ -11,8 +11,8 @@ router.get('/users', controller.getUsers);
 
 //** Profile **//
 router.get("/users/:id", profile.getUserById);
-router.put("/users/:id", profile.updateUserById);
-//router.put to display change isDeleted property in DB... could be handled by the same route above...
+// router.put("/users/:id", profile.updateUserById);
+router.put("/posts/:id", profile.updateIsDeletedByPostId)
 
 //** Friends **//
 router.get('/users/:user_id/friends', friends.getFriends);

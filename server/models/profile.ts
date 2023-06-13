@@ -1,5 +1,5 @@
 import prisma from '../../lib';
-import { User } from '@prisma/client';
+import { User, Post } from '@prisma/client';
 
 export async function queryUserById(userId: string): Promise<User | null> {
   return prisma.user.findUnique({
@@ -15,6 +15,17 @@ export async function queryUserById(userId: string): Promise<User | null> {
       pictures: true,
       favoriteAnimeId: true,
       favoriteCharacterId: true,
+      // favoriteAnime: {
+      //   select: {
+      //     title: true,
+      //   },
+      // },
+      // favoriteCharacter: {
+      //   select: {
+      //     name: true,
+      //   },
+      // },
+      //the above is throwing me errors saying the mal_id is not defined...
       bio: true,
       zipcode: true,
       latitude: true,
@@ -35,23 +46,18 @@ export async function queryUserById(userId: string): Promise<User | null> {
   });
 }
 
-export async function updateUser(userId: string, updates: Partial<User>): Promise<User | null> {
-  try {
-    const updatedUser = await prisma.user.update({
-      where: { id: userId },
-      data: updates,
-    });
-
-    return updatedUser;
-  } catch (error) {
-    console.error('Error updating user:', error);
-    return null;
-  }
+export async function updateUserPosts(postId: string): Promise<Post | null> {
+  return prisma.post.update({
+    where: { id: postId },
+    data: {
+      isDeleted: true,
+    },
+  });
 }
 
 
 
 module.exports = {
   queryUserById,
-  updateUser
+  updateUserPosts
 };
