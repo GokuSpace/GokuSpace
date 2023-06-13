@@ -60,7 +60,8 @@
     "react-test-renderer": "18.2.0",
     "rn-sliding-up-panel": "^2.4.6",
     "tailwind-react-native-classnames": "^1.5.1",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "zipcodes": "^8.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.22.5",
