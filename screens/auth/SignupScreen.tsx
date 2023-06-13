@@ -15,7 +15,7 @@ export default function SignupScreen({ setLoggedIn }) {
     firstName: '',
     lastName: '',
     favoriteAnimeId: '',
-    favoriteCharacterId: '',
+    favoriteCharacter: '',
     user: '',
     email: '',
     zipcode: '',
