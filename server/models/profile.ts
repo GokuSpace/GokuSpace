@@ -20,7 +20,7 @@ export async function queryUserById(userId: string): Promise<User | null> {
       //     title: true,
       //   },
       // },
-      // favoriteCharacter: {
+      // favoriteCharater: {
       //   select: {
       //     name: true,
       //   },

@@ -63,7 +63,7 @@ const EditProfilePictureScreen: React.FC = () => { //pass in userID, preferably 
   };
 
   return (
-    <View style={tw`flex-1 items-center justify-center`}>
+    <View style={tw`flex-1 items-center justify-center bg-white`}>
 
       <Text style={tw`text-2xl font-bold mb-8`}>THIS IS THE PROFILE PICTURE SCREEN</Text>
       {renderBox(0)}
