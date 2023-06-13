@@ -1,3 +1,4 @@
+import { Button } from '@rneui/themed';
 import React, { useEffect, useState } from 'react';
 import { Animated, Dimensions, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
@@ -29,9 +30,33 @@ export const SlideUpModal = ({ isVisible, onClose }) => {
           style={styles.textInput}
           autoFocus={true}
         />
-        <TouchableOpacity onPress={onClose}>
-          <Text>Close</Text>
-        </TouchableOpacity>
+        <View style={styles.buttonView}>
+        <Button
+          title="Cancel"
+          buttonStyle={{ backgroundColor: 'rgba(214, 61, 57, 1)' }}
+          containerStyle={{
+            height: 40,
+            width: 150,
+            marginHorizontal: 10,
+            marginVertical: 10,
+          }}
+          titleStyle={{ color: 'white', marginHorizontal: 20 }}
+          onPress={onClose}
+        />
+        <Button
+          title="Post"
+          buttonStyle={{
+            backgroundColor: 'rgba(78, 116, 289, 1)',
+            borderRadius: 3,
+          }}
+          containerStyle={{
+            width: 150,
+            marginHorizontal: 10,
+            marginVertical: 10,
+          }}
+          onPress={onClose}
+        />
+        </View>
       </View>
     </Animated.View>
   );
@@ -58,5 +83,10 @@ const styles = StyleSheet.create({
     padding: 10,
     borderColor: 'gray',
     borderWidth: 1,
-  }
+  },
+  buttonView: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
 });
