@@ -1,4 +1,5 @@
-import React, { Text, View, Button, TextInput } from "react-native";
+import React, { Text, View } from "react-native";
+import { Input, Button } from '@rneui/themed';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import SignupScreen from "./SignupScreen";
@@ -21,9 +22,9 @@ function LoginScreen({ setLoggedIn }) {
   return (
     <View>
       <Text> Email </Text>
-      <TextInput onChangeText={text => handleChange(text, 'email')} value={readyPayload.email} />
+      <Input onChangeText={text => handleChange(text, 'email')} value={readyPayload.email} />
       <Text> Password </Text>
-      <TextInput onChangeText={text => handleChange(text, 'password')} value={readyPayload.password} secureTextEntry={true} />
+      <Input onChangeText={text => handleChange(text, 'password')} value={readyPayload.password} secureTextEntry={true} />
       <Button title="Log In" onPress={() => setLoggedIn(true)} />
       <Button title="Sign Up" onPress={() => navigation.navigate('SignUp')} />
     </View>
