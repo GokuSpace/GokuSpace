@@ -1,0 +1,98 @@
+{
+  "id": "cliuk0wnb0002uz6aw5dc3jrg",
+  "accountId": "cliujxxt90000uz6adg73xl35",
+  "firstName": "Jerry",
+  "lastName": "Renn",
+  "username": "jearbearcutie",
+  "pictures": [
+      "https://upload.wikimedia.org/wikipedia/commons/4/47/American_Eskimo_Dog.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/d/dd/Golden_Retriever_Hund_Dog.JPG",
+      "https://www.vet.cornell.edu/sites/default/files/dog%20image%201-unsplash.JPG",
+      "https://pikwizard.com/pw/small/b66db617446ee4a168075aeaaaef013a.jpg",
+      "https://d.newsweek.com/en/full/1909920/shiba-inu.jpg"
+  ],
+  "favoriteAnimeId": "1535",
+  "favoriteCharacterId": "4098",
+  "bio": "This app is the best app ever made, no one can do it better than this.",
+  "zipcode": "95608",
+  "latitude": 34.0522,
+  "longitude": 118.2437,
+  "lastVoteTime": null,
+  "watchingNowId": null,
+  "watchSelectionTime": null,
+  "chatsStarted": [],
+  "eventsCreated": [],
+  "receivedFriendRequests": [],
+  "sendFriendRequests": [],
+  "posts": [
+      {
+          "id": "cliurnn4u0000uz2zo68vmlrt",
+          "title": "I love anime!",
+          "body": "My favorite shows are Pokemon and Yugioh",
+          "attachment": null,
+          "createdAt": "2023-06-13T20:59:26.046Z",
+          "updatedAt": "2023-06-13T20:59:26.046Z",
+          "isDeleted": false,
+          "author": "cliuk0wnb0002uz6aw5dc3jrg"
+      },
+      {
+          "id": "cliurpcy40004uz2zsczbgbob",
+          "title": "Sadness",
+          "body": "My most recently watched show is coming to an end...",
+          "attachment": null,
+          "createdAt": "2023-06-13T21:00:46.157Z",
+          "updatedAt": "2023-06-13T21:00:46.157Z",
+          "isDeleted": false,
+          "author": "cliuk0wnb0002uz6aw5dc3jrg"
+      },
+      {
+          "id": "cliurqylc0006uz2zzvn5m3cl",
+          "title": "Events",
+          "body": "Thinking about hosting an event... Can I get a headcount?",
+          "attachment": null,
+          "createdAt": "2023-06-13T21:02:00.865Z",
+          "updatedAt": "2023-06-13T21:02:00.865Z",
+          "isDeleted": false,
+          "author": "cliuk0wnb0002uz6aw5dc3jrg"
+      },
+      {
+          "id": "cliurow5l0002uz2z6lq36e9y",
+          "title": "Show Time",
+          "body": "Anyone free to come with me to anime-con this saturday?!?!",
+          "attachment": null,
+          "createdAt": "2023-06-13T21:00:24.393Z",
+          "updatedAt": "2023-06-13T21:00:24.393Z",
+          "isDeleted": false,
+          "author": "cliuk0wnb0002uz6aw5dc3jrg"
+      },
+      {
+          "id": "cliurrqyq0008uz2z6ybexj89",
+          "title": "Application",
+          "body": "My friend just joined GokuSpace, everyone go give him a warm welcome!",
+          "attachment": null,
+          "createdAt": "2023-06-13T21:02:37.634Z",
+          "updatedAt": "2023-06-13T21:02:37.634Z",
+          "isDeleted": false,
+          "author": "cliuk0wnb0002uz6aw5dc3jrg"
+      },
+      {
+          "id": "cliursg5i000auz2z8hv7g9cv",
+          "title": "Jobs",
+          "body": "Looking for job postings preferably related to animation!",
+          "attachment": null,
+          "createdAt": "2023-06-13T21:03:10.279Z",
+          "updatedAt": "2023-06-13T21:03:10.279Z",
+          "isDeleted": false,
+          "author": "cliuk0wnb0002uz6aw5dc3jrg"
+      }
+  ],
+  "account": {
+      "id": "cliujxxt90000uz6adg73xl35",
+      "createdAt": "2023-06-13T17:23:29.517Z",
+      "email": "jerry@gmail.com",
+      "password": "$2a$10$g.jsvP5xunoD/MgcwfPtg.K1k9is1Z4nCOQwiWZACpPrsqkWggFte"
+  },
+  "votingHistory": [],
+  "eventsAttending": [],
+  "chatsInvitedTo": []
+}

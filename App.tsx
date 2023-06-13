@@ -16,7 +16,8 @@ import SignupScreen from './screens/auth/SignupScreen';
 import EditProfilePictureScreen from "./screens/screen-components/profile-screens/EditProfilePictureScreen";
 import UpdateProfileScreen from "./screens/screen-components/profile-screens/UpdateProfileScreen";
 import ViewUsersPostsScreen from "./screens/screen-components/profile-screens/UsersPosts";
-import VoteScreen from "./screens/screen-components/profile-screens/VoteScreen";
+import VotesHistory from "./screens/screen-components/home-screens/VotesHistory";
+import EventDetails from "./screens/screen-components/events-screens/EventDetails";
 
 // Okay okay
 
@@ -40,33 +41,40 @@ export default function AppTabs() {
   if (loggedIn) {
 
     return (
-      <userContext.Provider value={ { currentUser, setCurrentUser } }>
+      <userContext.Provider value={{ currentUser, setCurrentUser }}>
         <ThemeProvider theme={theme}>
           <NavigationContainer>
-          <Tab.Navigator>
-            <Tab.Screen name="Home" component={HomeScreen}/>
-            <Tab.Screen name="Friends" component={FriendScreen} />
-            <Tab.Screen name="Profile" options={{ headerShown: false }}>
+            <Tab.Navigator>
+              <Tab.Screen name="Home" component={HomeScreen} />
+              <Tab.Screen name="Friends" component={FriendScreen} />
+              <Tab.Screen name="Profile" options={{ headerShown: false }}>
                 {() => (
                   <Stack.Navigator>
                     <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
                     <Stack.Screen name="EditProfilePictureScreen" component={EditProfilePictureScreen} />
                     <Stack.Screen name="UpdateProfileScreen" component={UpdateProfileScreen} />
                     <Stack.Screen name="ViewUsersPostsScreen" component={ViewUsersPostsScreen} />
-                    <Stack.Screen name="VoteScreen" component={VoteScreen} />
+                    <Stack.Screen name="VotesHistory" component={VotesHistory} />
                   </Stack.Navigator>
                 )}
-            </Tab.Screen>
-            <Tab.Screen name="Trending" component={TrendingScreen} />
-            <Tab.Screen name="Events" component={EventsScreen} />
-          </Tab.Navigator>
-          </NavigationContainer>
+              </Tab.Screen>
+              <Tab.Screen name="Trending" component={TrendingScreen} />
+              <Tab.Screen name="Events" options={{ headerShown: false }}>
+                {() => (
+                  <Stack.Navigator>
+                    <Stack.Screen name="EventsScreen" component={EventsScreen} />
+                    <Stack.Screen name="EventDetails" component={EventDetails} />
+                  </Stack.Navigator>
+                )}
+              </Tab.Screen>
+            </Tab.Navigator>
+          </NavigationContainer >
         </ThemeProvider>
       </userContext.Provider>
-      )
-    } else {
+    )
+  } else {
     return (
-      <userContext.Provider value={ { currentUser, setCurrentUser } }>
+      <userContext.Provider value={{ currentUser, setCurrentUser }}>
         <ThemeProvider theme={theme}>
           <NavigationContainer>
             <Stack.Navigator>
