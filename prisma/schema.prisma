@@ -30,7 +30,7 @@ model User {
   username               String     @unique
   pictures               String[]
   favoriteAnimeId        String?
-  favoriteAnime          Anime?     @relation("HasFavoriteAnime", fields: [favoriteAnimeId], references: [mal_id])
+  favoriteAnime          Anime?     @relation("HasFavoriteAnime", fields: [favoriteAnimeId], references: [id])
   favoriteCharacterId    String?
   favoriteCharater       Character? @relation("HasFavoriteCharacter", fields: [favoriteCharacterId], references: [id])
   bio                    String?
@@ -53,23 +53,21 @@ model User {
 
 model Anime {
   id          String      @id @default(cuid())
-  mal_id      String      @unique
+  image       String
   title       String
-  year        String
+  score       Float
   description String
-  images      String
   characters  Character[] @relation("AnimeCharacter")
-  voteCount   Int
   users       User[]      @relation("HasFavoriteAnime")
 }
 
 model Character {
-  id        String @id @default(cuid())
-  mal_id    String
+  id        String  @id @default(cuid())
+  mal_id    String?
   name      String
   image_url String
-  Anime     Anime? @relation("AnimeCharacter", fields: [mal_id], references: [mal_id])
-  users     User[] @relation("HasFavoriteCharacter")
+  Anime     Anime?  @relation("AnimeCharacter", fields: [mal_id], references: [id])
+  users     User[]  @relation("HasFavoriteCharacter")
 }
 
 model Friend {
