@@ -53,15 +53,10 @@ function ProfileScreen() { //take in a userId and then make axios call with that
         <Image style={tw`h-52 w-52`}
           source={require("../assets/profile-photo.png")}
         />
-<<<<<<< HEAD
-        <Text style={tw`mt-6`}>{profile.username}</Text>
-        <Button style={tw`mt-6`} title="Update Profile" onPress={handleUpdatePress} />
-=======
-        <Text style={tw`mt-6 font-bold text-base text-lg`}>USERNAME</Text>
+        <Text style={tw`mt-6 font-bold text-base text-lg`}>{profile.username}</Text>
         <View style={tw`mt-6 border rounded-2xl px-2 px-2 bg-black`} >
         <Button color="white" title="Update Profile" onPress={handleUpdatePress} />
         </View>
->>>>>>> a0ac32ea51391cf65f32e1ecfce63cbee7413e62
       </View>
 
       <View style={tw`flex-row mt-6`}>
@@ -71,32 +66,15 @@ function ProfileScreen() { //take in a userId and then make axios call with that
           <Text style={tw`mt-6 font-bold`}>Location:</Text>
         </View>
         <View style={tw`px-10`}>
-<<<<<<< HEAD
           <Text>{profile.favoriteAnimeId}</Text>
           <Text style={tw`mt-6`}>{profile.favoriteCharacterId}</Text>
           <Text style={tw`mt-6`}>{profile.zipcode}</Text>
         </View>
       </View>
 
-      <View style={tw`flex-row px-5 mt-6`}>
-        <Text>Bio:</Text>
-        <Text style={tw`px-3`}>{profile.bio}</Text>
-      </View>
-
-      <View style={tw`flex-row justify-center mt-6`}>
-        <Button title="Posts" onPress={handlePostPress} />
-        <Button title="Photos" onPress={handlePhotosPress} />
-        <Button title="Vote" onPress={handleVotePress} />
-=======
-          <Text>My Hero Academia</Text>
-          <Text style={tw`mt-6`}>Bakugou bnha</Text>
-          <Text style={tw`mt-6`}>123 Stark dr, NY 1201</Text>
-        </View>
-      </View>
-
       <View style={tw`flex-row px-5 mt-6 mr-1`}>
         <Text style={tw`font-bold`}>Bio:</Text>
-        <Text style={tw`px-3`}>Dont tell me you want to conquer the world, instead be more realistic and bring me something original!</Text>
+        <Text style={tw`px-3`}>{profile.bio}</Text>
       </View>
 
       <View style={tw`flex flex-row justify-center mt-6 `}>
@@ -109,7 +87,6 @@ function ProfileScreen() { //take in a userId and then make axios call with that
         <View style={tw`mt-6 border rounded-2xl px-2 px-2 bg-black`}>
         <Button color="white" title="Vote" onPress={handleVotePress} />
         </View>
->>>>>>> a0ac32ea51391cf65f32e1ecfce63cbee7413e62
       </View>
 
     </View>

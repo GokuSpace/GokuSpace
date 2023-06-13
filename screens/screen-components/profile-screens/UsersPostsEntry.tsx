@@ -22,13 +22,9 @@ function UsersPostsEntry({ post, handleDeletePress, handleSavePress, photo }) {
   return (
     <View style={tw`bg-white`}>
       <ListItem bottomDivider>
-<<<<<<< HEAD
-        <Avatar
-          key={photo[0]}
-=======
         <Avatar style={tw`h-16 w-16 flex justify-start`}
+          key={photo[0]}
           key={post.image_url}
->>>>>>> a0ac32ea51391cf65f32e1ecfce63cbee7413e62
           rounded
           source={{
             uri: photo[0],
@@ -37,26 +33,14 @@ function UsersPostsEntry({ post, handleDeletePress, handleSavePress, photo }) {
         <ListItem.Content style={tw`mt-6 `}>
           {isEditing ? (
             <TextInput
-<<<<<<< HEAD
-              style={tw`border`}
-              defaultValue={post.body}
-=======
               style={tw`border px-2 py-2  text-gray-400 rounded-lg w-48`}
-              defaultValue={post.text}
->>>>>>> a0ac32ea51391cf65f32e1ecfce63cbee7413e62
+              defaultValue={post.body}
               onChangeText={setEditedText}
             />
           ) : (
             <>
-<<<<<<< HEAD
-              <ListItem.Title>{post.createdAt}</ListItem.Title>
-              <ListItem.Subtitle>{post.body}</ListItem.Subtitle>
-              <View style={tw`flex-row`}>
-                <Button title="Update" onPress={() => handleUpdatePress()} />
-                <Button title="Trash" onPress={() => handleDeletePress(post)} />
-=======
-              <ListItem.Title style={tw`font-bold`}>{new Date(post.timestamp).toString().slice(0, 16)}</ListItem.Title>
-              <ListItem.Subtitle style={tw`mt-2`}>{post.text}</ListItem.Subtitle>
+              <ListItem.Title style={tw`font-bold`}>{post.createdAt}</ListItem.Title>
+              <ListItem.Subtitle style={tw`mt-2`}>{post.body}</ListItem.Subtitle>
               <View style={tw`flex-row mt-4`}>
                 <TouchableOpacity >
                   <Image
@@ -79,7 +63,6 @@ function UsersPostsEntry({ post, handleDeletePress, handleSavePress, photo }) {
 
                 {/* <Button title="Update" onPress={() => handleUpdatePress()}/>
                 <Button title="Trash" onPress={() => handleDeletePress(post)} /> */}
->>>>>>> a0ac32ea51391cf65f32e1ecfce63cbee7413e62
               </View>
             </>
           )}
