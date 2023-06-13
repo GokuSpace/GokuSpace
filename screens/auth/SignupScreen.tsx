@@ -7,6 +7,7 @@ import bcrypt from 'bcryptjs-react';
 import AnimePicker from "./AnimePicker";
 import { userContext } from '../../App';
 import * as Crypto from 'expo-crypto';
+import {SERVER} from '@env';
 
 
 // Set the random fallback using expo-random
@@ -23,7 +24,7 @@ export default function SignupScreen({ setLoggedIn }) {
     lastName: '',
     favoriteAnimeId: '',
     favoriteCharacter: '',
-    user: '',
+    username: '',
     email: '',
     zipcode: '',
     password: '',
@@ -35,7 +36,7 @@ export default function SignupScreen({ setLoggedIn }) {
       return randomBytes;
     });
     form.password = hash(form.password)
-    axios.post(`http://${process.env.SERVER}/signup`, form)
+    axios.post(`http://${SERVER}/signup`, form)
     .then(res => {
       setCurrentUser(res.data)
       setLoggedIn(true);

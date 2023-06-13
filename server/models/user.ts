@@ -11,7 +11,7 @@ const userAction = {
         firstName: userInfo.firstName,
         lastName: userInfo.lastName,
         username: userInfo.username,
-        zipcode: userInfo.zipcode,
+        zipcode: Number(userInfo.zipcode),
         favoriteAnimeId: userInfo.favoriteAnimeId,
         favoriteCharacterId: userInfo.favoriteCharacterId,
       }
