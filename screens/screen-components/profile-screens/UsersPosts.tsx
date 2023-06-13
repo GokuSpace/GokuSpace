@@ -1,42 +1,58 @@
 import React, { Text, View, Button, ScrollView, Pressable, TextInput } from "react-native";
-import profilePostData from '../../../profilePostData';
 import { useEffect, useState } from "react";
 import tw from 'tailwind-react-native-classnames';
 import UsersPostsEntry from "./UsersPostsEntry";
+import { useRoute } from "@react-navigation/native";
 
 function ViewUsersPostsScreen() { //userID would be passed in, which gives us access to make axios request for a user's posts
 
-  const [posts, setPosts] = useState([]);
+  const [userPosts, setUserPosts] = useState([]);
 
-  const handleDeletePress = (userPost: object) => { //would probably pass in the postID, refactor when backend is working
-    const filteredPosts = posts.slice();
-    const newlyFiltered = filteredPosts.filter((post) => post.timestamp !== userPost.timestamp);
-    setPosts(newlyFiltered);
+  const route = useRoute();
+  const { profile } = route.params;
+
+  useEffect(() => {
+    setUserPosts(profile.posts)
+  }, [])
+
+  const handleDeletePress = (userPost: object) => {
+    const filteredPosts = userPosts.slice();
+    const newlyFiltered = filteredPosts.filter((post) => post.id !== userPost.id);
+    setUserPosts(newlyFiltered);
+    /*
+
+    AXIOS PUT REQUEST HERE...
+
+    axios.put(/posts/:postID) <--- confirmed working on postman
+
+    */
   }
 
-  const handleSavePress = (text: string, post: object) => {
-    const updatedPosts = posts.map((p) => {
-      if (p.timestamp === post.timestamp) {
-        return { ...p, text: text };
+  const handleSavePress = (body: string, post: object) => {
+    const updatedPosts = userPosts.map((p) => {
+      if (p.id === post.id) {
+        return { ...p, body: body };
       }
       return p;
     });
-    setPosts(updatedPosts);
+    setUserPosts(updatedPosts);
   }
 
-
-  useEffect(() => {
-    setPosts(profilePostData);
-  }, [])
 
   return (
     <View style={tw`bg-white`}>
       <View style={tw`flex-row justify-center mt-6 bg-white`}>
-        <Text style={tw`text-xl`} >USERNAME HERE</Text>
+        <Text style={tw`text-xl`} >{profile.username}</Text>
       </View>
       <ScrollView>
-        {posts.map((post, i) => (
-          <UsersPostsEntry post={post} handleDeletePress={handleDeletePress} handleSavePress={handleSavePress}/>
+        {userPosts.map((post, i) => (
+          post.isDeleted === false && (
+          <UsersPostsEntry post={post}
+          handleDeletePress={handleDeletePress}
+          handleSavePress={handleSavePress}
+          key={i}
+          photo={profile.pictures}
+          />)
         ))}
       </ScrollView>
     </View>
