@@ -1,7 +1,8 @@
 import { Router } from 'express';
-import controller from './controllers/index';
-import friends from './controllers/friends';
 import events from './controllers/events';
+import friends from './controllers/friends';
+import controller from './controllers/index';
+import posts from './controllers/posts';
 
 const router = Router();
 
@@ -22,15 +23,17 @@ router.put('/events/:event_id/rsvp', events.rsvpEvent);
 router.post('/events/:user_id', events.createEvent);
 router.delete('/events/:event_id', events.deleteEvent);
 
+//** Posts **//
+router.get('/posts', posts.getPosts);
+
+
 router.get('/friends', controller.getFriends);
-router.get('/posts', controller.getPosts);
 router.get('/votes', controller.getVotes);
 router.get('/events', controller.getEvents);
 router.get('/chatrooms', controller.getChatrooms);
 router.get('/messages', controller.getMessages);
 router.get('/users', controller.getUsers);
 router.get('/friends', controller.getFriends);
-router.get('/posts', controller.getPosts);
 router.get('/votes', controller.getVotes);
 router.get('/events', controller.getEvents);
 router.get('/chatrooms', controller.getChatrooms);
