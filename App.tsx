@@ -16,7 +16,7 @@ import SignupScreen from './screens/auth/SignupScreen';
 import EditProfilePictureScreen from "./screens/screen-components/profile-screens/EditProfilePictureScreen";
 import UpdateProfileScreen from "./screens/screen-components/profile-screens/UpdateProfileScreen";
 import ViewUsersPostsScreen from "./screens/screen-components/profile-screens/UsersPosts";
-import VoteScreen from "./screens/screen-components/profile-screens/VoteScreen";
+import VotesHistory from "./screens/screen-components/home-screens/VotesHistory";
 
 // Okay okay
 
