@@ -6,7 +6,10 @@ import { useNavigation } from '@react-navigation/native';
 import bcrypt from 'bcryptjs-react';
 import AnimePicker from "./AnimePicker";
 import { userContext } from '../../App';
+import * as Crypto from 'expo-crypto';
 
+
+// Set the random fallback using expo-random
 export default function SignupScreen({ setLoggedIn }) {
   const navigation = useNavigation();
 
@@ -27,13 +30,17 @@ export default function SignupScreen({ setLoggedIn }) {
   });
 
   const submitForm = () => {
+    bcrypt.setRandomFallback(async (len) => {
+      const randomBytes = await Crypto.getRandomBytesAsync(len);
+      return randomBytes;
+    });
     form.password = hash(form.password)
     axios.post(`http://${process.env.SERVER}/signup`, form)
-      .then(res => {
-        setCurrentUser(res.data)
-        setLoggedIn(true);
-      })
-      .catch(err => {
+    .then(res => {
+      setCurrentUser(res.data)
+      setLoggedIn(true);
+    })
+    .catch(err => {
         console.log(err)
       })
   }
@@ -108,7 +115,7 @@ export default function SignupScreen({ setLoggedIn }) {
       <Input onChangeText={text => changeForm(text, 'password')} value={form.password} secureTextEntry={true} passwordRules={null}/>
       <Text>Confirm Password</Text>
       <Input onChangeText={setConfirm} value={confirm} secureTextEntry={true} passwordRules={null}/>
-      <Button title="Sign Up" onPress={() => setLoggedIn(true)}></Button>
+      <Button title="Sign Up" onPress={submitForm}></Button>
     </>}
       {/* </KeyboardAvoidingView> */}
     </>
