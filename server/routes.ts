@@ -2,11 +2,17 @@ import { Router } from 'express';
 import controller from './controllers/index';
 import friends from './controllers/friends';
 import events from './controllers/events';
+import profile from './controllers/profile';
 
 const router = Router();
 
 router.get('/accounts', controller.getAccounts);
 router.get('/users', controller.getUsers);
+
+//** Profile **//
+router.get("/users/:id", profile.getUserById);
+router.put("/users/:id", profile.updateUserById);
+//router.put to display change isDeleted property in DB... could be handled by the same route above...
 
 //** Friends **//
 router.get('/users/:user_id/friends', friends.getFriends);
