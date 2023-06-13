@@ -25,7 +25,7 @@ const controller = {
   },
   getMessages(req, res) {
     return 'Messages';
-  }
+  },
 };
 
 export default controller;

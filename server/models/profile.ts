@@ -16,7 +16,7 @@ export async function queryUserById(userId: string): Promise<User | null> {
       favoriteAnimeId: true,
       favoriteCharacterId: true,
       bio: true,
-      //zipcode doesn't work for some reason???????
+      zipcode: true,
       latitude: true,
       longitude: true,
       lastVoteTime: true,

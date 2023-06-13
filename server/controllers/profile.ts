@@ -23,7 +23,7 @@ export default {
 
   updateUserById: async (req: Request, res: Response) => {
     const { id } = req.params;
-    const { username, favoriteAnimeId, favoriteCharacterId, bio, posts, pictures }: Partial<User> = req.body; //how do I handle updating posts...
+    const { username, favoriteAnimeId, favoriteCharacterId, bio, pictures }: Partial<User> = req.body; //how do I handle updating posts...
 
     try {
       const user = await queryUserById(id);
@@ -37,7 +37,6 @@ export default {
         favoriteAnimeId,
         favoriteCharacterId,
         bio,
-        posts,
         pictures,
       });
 
