@@ -1,10 +1,10 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { StatusBar } from "expo-status-bar";
-import React, { Text, View } from "react-native";
 import { ThemeProvider, createTheme } from '@rneui/themed';
-import { useState } from 'react';
+import { StatusBar } from "expo-status-bar";
+import { useState, useState } from 'react';
+import React, { Text, View } from "react-native";
 import "react-native-gesture-handler";
 import EventsScreen from "./screens/EventsScreen";
 import FriendScreen from "./screens/FriendScreen";
