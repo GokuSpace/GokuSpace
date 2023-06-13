@@ -15,7 +15,7 @@ import SignupScreen from './screens/auth/SignupScreen';
 import EditProfilePictureScreen from "./screens/screen-components/profile-screens/EditProfilePictureScreen";
 import UpdateProfileScreen from "./screens/screen-components/profile-screens/UpdateProfileScreen";
 import ViewUsersPostsScreen from "./screens/screen-components/profile-screens/UsersPosts";
-import VoteScreen from "./screens/screen-components/profile-screens/VoteScreen";
+import VotesHistory from "./screens/screen-components/home-screens/VotesHistory";
 
 // Okay okay
 
@@ -39,7 +39,7 @@ export default function AppTabs() {
               <Stack.Screen name="EditProfilePictureScreen" component={EditProfilePictureScreen} />
               <Stack.Screen name="UpdateProfileScreen" component={UpdateProfileScreen} />
               <Stack.Screen name="ViewUsersPostsScreen" component={ViewUsersPostsScreen} />
-              <Stack.Screen name="VoteScreen" component={VoteScreen} />
+              <Stack.Screen name="VotesHistory" component={VotesHistory} />
             </Stack.Navigator>
           )}
         </Tab.Screen>

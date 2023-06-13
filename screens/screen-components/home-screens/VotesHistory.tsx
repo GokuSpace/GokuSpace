@@ -4,6 +4,8 @@ import React, { ScrollView } from "react-native-gesture-handler";
 
 
 const VotesHistory = ({ user }) => {
+
+
   return (
     <ScrollView>
       {

@@ -18,7 +18,7 @@ function ProfileScreen() {
   }
 
   const handleVotePress = () => {
-    navigation.navigate("VoteScreen")
+    navigation.navigate("VotesHistory")
   }
   const handlePhotosPress = () => {
     navigation.navigate("EditProfilePictureScreen")
@@ -26,38 +26,46 @@ function ProfileScreen() {
 
   return (
 
-    <View >
+    <View style={tw`bg-white h-full`}>
 
       <View style={tw`flex justify-center items-center mt-6`}>
-        <Image
-          source={require("../assets/favicon.png")}
+        <Image style={tw`h-52 w-52`}
+          source={require("../assets/profile-photo.png")}
         />
-        <Text style={tw`mt-6`}>ALIYAH JERRY USERNAME</Text>
-        <Button style={tw`mt-6`} title="Update Profile" onPress={handleUpdatePress}/>
+        <Text style={tw`mt-6 font-bold text-base text-lg`}>USERNAME</Text>
+        <View style={tw`mt-6 border rounded-2xl px-2 px-2 bg-black`} >
+        <Button color="white" title="Update Profile" onPress={handleUpdatePress} />
+        </View>
       </View>
 
       <View style={tw`flex-row mt-6`}>
         <View style={tw`px-5`}>
-          <Text>Favorite Anime: </Text>
-          <Text style={tw`mt-6`}>Favorite Character:</Text>
-          <Text style={tw`mt-6`}>Location</Text>
+          <Text style={tw`font-bold`}>favorite anime: </Text>
+          <Text style={tw`mt-6 font-bold`}>favorite character:</Text>
+          <Text style={tw`mt-6 font-bold`}>Location:</Text>
         </View>
         <View style={tw`px-10`}>
-          <Text>dummy data</Text>
-          <Text style={tw`mt-6`}>dummy data</Text>
-          <Text style={tw`mt-6`}>dummy data</Text>
+          <Text>My Hero Academia</Text>
+          <Text style={tw`mt-6`}>Bakugou bnha</Text>
+          <Text style={tw`mt-6`}>123 Stark dr, NY 1201</Text>
         </View>
       </View>
 
-      <View style={tw`flex-row px-5 mt-6`}>
-        <Text>Bio:</Text>
+      <View style={tw`flex-row px-5 mt-6 mr-1`}>
+        <Text style={tw`font-bold`}>Bio:</Text>
         <Text style={tw`px-3`}>Dont tell me you want to conquer the world, instead be more realistic and bring me something original!</Text>
       </View>
 
-      <View style={tw`flex-row justify-center mt-6`}>
-        <Button title="Posts" onPress={handlePostPress}/>
-        <Button title="Photos" onPress={handlePhotosPress}/>
-        <Button title="Vote" onPress={handleVotePress} />
+      <View style={tw`flex flex-row justify-center mt-6 `}>
+        <View style={tw`mt-6 border rounded-2xl px-2 px-2 bg-black`}>
+        <Button  color="white" title="Posts" onPress={handlePostPress}/>
+        </View>
+        <View style={tw`mt-6 border rounded-2xl px-2 mx-9 px-2 bg-black`}>
+        <Button color="white" title="Photos" onPress={handlePhotosPress}/>
+        </View>
+        <View style={tw`mt-6 border rounded-2xl px-2 px-2 bg-black`}>
+        <Button color="white" title="Vote" onPress={handleVotePress} />
+        </View>
       </View>
 
     </View>
