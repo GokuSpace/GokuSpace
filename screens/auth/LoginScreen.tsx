@@ -7,6 +7,7 @@ import bcrypt from 'bcryptjs-react';
 import {userContext} from '../../App';
 import * as Crypto from 'expo-crypto';
 import axios from 'axios';
+import { SERVER } from '@env';
 
 function LoginScreen({ setLoggedIn }) {
   const navigation = useNavigation();
