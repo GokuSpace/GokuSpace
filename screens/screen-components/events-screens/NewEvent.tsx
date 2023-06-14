@@ -7,6 +7,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const NewEvent = () => {
+  const [confirm, setConfirm] = useState(false)
   const [eventStart, setEventStart] = useState("");
   const [eventEnd, setEventEnd] = useState("");
   const [date, setDate] = useState(new Date());
@@ -57,6 +58,9 @@ const NewEvent = () => {
     })
   }
 
+  const handleSubmit = () => {
+    setConfirm(true)
+  }
   return (
 
     <View style={tw`bg-white h-full`}>
@@ -134,7 +138,7 @@ const NewEvent = () => {
       {!showPicker ? (
         <View style={tw`flex flex-row justify-center mt-14 `}>
           <View style={tw` mt-6 border rounded-3xl px-16 py-2 bg-black`}>
-            <Button color="white" title="Post Event" />
+            <Button color="white" title="Post Event" onPress={handleSubmit}/>
           </View>
         </View>
       ) : null}
