@@ -1,10 +1,12 @@
 import account from './account';
+import anime from './anime';
 
 const controller = {
-  getAccounts(req, res) {
-    return 'Accounts';
-  },
   account,
+  anime,
+  getAccounts(req, res) {
+    'return accounts'
+  },
   getUsers(req, res) {
     return 'Users';
   },
