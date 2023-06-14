@@ -27,24 +27,24 @@ function HomeScreen() {
       }
     }
 
-  async function addPost(req, res) {
-    const {title, body, attachment, author} = req.body
-      try {
-        const response = await axios.post('http://localhost:3000/posts', {
-          title: title,
-          body: body,
-          attachment: attachment ? attachment : null,
-          author: author
-        });
-        setAllPosts((currAllPosts) => [...currAllPosts, response.data]);
-        setFilteredPosts((currFilteredPosts) => [...currFilteredPosts, response.data]);
-      } catch (error) {
-        console.error(error);
-      }
-  }
-
     fetchPosts();
   }, [])
+
+  async function addPost(req, res) {
+  const {title, body, attachment, authorId} = req.body
+    try {
+      const response = await axios.post('http://localhost:3000/posts', {
+        title: title,
+        body: body,
+        attachment: attachment ? attachment : null,
+        authorId: authorId
+      });
+      setAllPosts((currAllPosts) => [...currAllPosts, response.data]);
+      setFilteredPosts((currFilteredPosts) => [...currFilteredPosts, response.data]);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   useEffect(() => {
     switch (index) {
@@ -92,7 +92,7 @@ function HomeScreen() {
                   key={post.authorId}
                   rounded
                   source={{
-                    uri: post.authorId.pictures[0],
+                    uri: post.author.pictures[0],
                   }}
                 />
                 <ListItem.Content key={post.id + "Content"}>
