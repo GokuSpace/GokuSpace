@@ -30,6 +30,8 @@ router.put('/events/:event_id/rsvp', events.rsvpEvent);
 router.post('/events/:user_id', events.createEvent);
 router.delete('/events/:event_id', events.deleteEvent);
 
+router.get('/anime', controller.anime.all)
+
 //** Posts **//
 router.get('/posts', posts.getPosts);
 

@@ -1,3 +1,4 @@
+import { DEV } from '@env';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -13,9 +14,9 @@ import ProfileScreen from "./screens/ProfileScreen";
 import TrendingScreen from "./screens/TrendingScreen";
 import LoginScreen from "./screens/auth/LoginScreen";
 import SignupScreen from './screens/auth/SignupScreen';
-import { default as EventDetails } from "./screens/screen-components/events-screens/EventDetails";
-import NewEvent from "./screens/screen-components/events-screens/NewEvent";
-import { default as VotesHistory } from "./screens/screen-components/home-screens/VotesHistory";
+import EventDetails, { default as EventDetails } from "./screens/screen-components/events-screens/EventDetails";
+import { default as NewEvent, default as NewEvent } from "./screens/screen-components/events-screens/NewEvent";
+import VotesHistory, { default as VotesHistory } from "./screens/screen-components/home-screens/VotesHistory";
 import EditProfilePictureScreen from "./screens/screen-components/profile-screens/EditProfilePictureScreen";
 import UpdateProfileScreen from "./screens/screen-components/profile-screens/UpdateProfileScreen";
 import ViewUsersPostsScreen from "./screens/screen-components/profile-screens/UsersPosts";
@@ -36,7 +37,8 @@ const theme = createTheme({
 export const userContext = createContext(null);
 
 export default function AppTabs() {
-  const [loggedIn, setLoggedIn] = useState(false);
+
+  const [loggedIn, setLoggedIn] = useState(DEV === true);
   const [currentUser, setCurrentUser] = useState({});
 
   if (loggedIn) {
