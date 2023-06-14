@@ -19,7 +19,8 @@ import ViewUsersPostsScreen from "./screens/screen-components/profile-screens/Us
 import VotesHistory from "./screens/screen-components/home-screens/VotesHistory";
 import EventDetails from "./screens/screen-components/events-screens/EventDetails";
 import NewEvent from "./screens/screen-components/events-screens/NewEvent";
-import { dev } from '@env';
+import { DEV } from '@env';
+
 // Okay okay
 
 const Tab = createBottomTabNavigator();
