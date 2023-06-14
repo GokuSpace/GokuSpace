@@ -23,7 +23,7 @@ function ViewUsersPostsScreen() { //userID would be passed in, which gives us ac
 
     AXIOS PUT REQUEST HERE...
 
-    axios.put(/posts/:postID) <--- confirmed working on postman
+    axios.put(/posts/:postid) /posts/:id
 
     */
   }
@@ -36,13 +36,15 @@ function ViewUsersPostsScreen() { //userID would be passed in, which gives us ac
       return p;
     });
     setUserPosts(updatedPosts);
+
+    //axios.put(`/userPosts/${post.id}`, { body: body })
   }
 
 
   return (
     <View style={tw`bg-white`}>
       <View style={tw`flex-row justify-center mt-6 bg-white`}>
-        <Text style={tw`text-xl`} >{profile.username}</Text>
+        <Text style={tw`text-xl`} >@{profile.username}</Text>
       </View>
       <ScrollView>
         {userPosts.map((post, i) => (

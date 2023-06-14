@@ -19,7 +19,7 @@ const EventListEntry = ({ event }) => {
   // }
 
   return (
-    <View style={tw`bg-white h-full`}>
+    <View style={tw`bg-white`}>
       <TouchableOpacity onPress={handleEventPress}>
         <ListItem bottomDivider>
           <ListItem.Content>
@@ -27,8 +27,8 @@ const EventListEntry = ({ event }) => {
           </ListItem.Content>
         </ListItem>
       </TouchableOpacity>
-{/*
-      <View style={tw`flex flex-row justify-end mr-6 mt-6 `}>
+
+      {/* <View style={tw`flex flex-row justify-end mr-6 mt-6 `}>
         <View style={tw` mt-6 border rounded-3xl px-2 py-2 bg-black`}>
           <Button color="white" title="+" onPress={handleAddEventPress}/>
         </View>

@@ -2,7 +2,6 @@ import prisma from '../../lib';
 
 const userAction = {
   create: (account, userInfo) => {
-    console.log(account);
     return prisma.user.create({
       data: {
         account: {
