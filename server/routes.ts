@@ -11,9 +11,10 @@ router.get('/accounts', controller.getAccounts);
 router.get('/users', controller.getUsers);
 
 //** Profile **//
-router.get("/users/:id", profile.getUserById);
-// router.put("/users/:id", profile.updateUserById);
-router.put("/posts/:id", profile.updateIsDeletedByPostId)
+router.get("/users/:id", profile.getUserById); // called in... screens/ProfileScreen.tsx <-- CONFIRM WORKS 
+router.put("/posts/:id", profile.updateIsDeletedByPostId) // called in... screens/screen-components/profile-screens/UsersPosts.tsx
+router.put("/userPosts/:id", profile.updateUserPostById) // called in... screens/screen-components/profile-screens/UsersPosts.tsx
+router.put("/userProfile/:id", profile.updateUserProfileById) // called in... screens/screen-components/profile-screens/UpdateProfileScreen.tsx <-- CONFIRM WORKS
 
 //** Friends **//
 router.get('/users/:user_id/friends', friends.getFriends);
