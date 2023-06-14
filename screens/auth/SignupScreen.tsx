@@ -8,6 +8,7 @@ import AnimePicker from "./AnimePicker";
 import { userContext } from '../../App';
 import * as Crypto from 'expo-crypto';
 import { SERVER } from '@env';
+import zipcodes from 'zipcodes';
 
 
 // Set the random fallback using expo-random
@@ -27,15 +28,24 @@ export default function SignupScreen({ setLoggedIn }) {
     username: '',
     email: '',
     zipcode: '',
+    latitude: null,
+    longitude: null,
     password: '',
   });
 
   const submitForm = () => {
+    const locationData = zipcodes.lookup(form.zipcode);
+    setForm({
+      ...form,
+      latitude: locationData.latitude,
+      longitude: locationData.longitude
+    })
     bcrypt.setRandomFallback(async (len) => {
       const randomBytes = await Crypto.getRandomBytesAsync(len);
       return randomBytes;
     });
     form.password = hash(form.password)
+    console.log('-------------', form)
     axios.post(`http://${SERVER}/signup`, form)
     .then(res => {
       setCurrentUser(res.data)
