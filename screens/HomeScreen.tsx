@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import React, { Dimensions, ScrollView, Text, View } from "react-native";
 import getPosts from "../server/controllers/posts";
 import { SlideUpModal } from './screen-components/home-screens/SlideUpModal';
+import { SERVER } from "@env";
 
 function HomeScreen() {
   const { height } = Dimensions.get('window');
@@ -15,11 +16,11 @@ function HomeScreen() {
 
   // const friends = posts.filter((post) => a=.is_friend);
   // const forYou = posts.filter((char) => char.series === "Fullmetal Alchemist");
-
+  console.log(allPosts)
   useEffect(() => {
       async function fetchPosts() {
       try {
-        const response = await axios.get('http://localhost:3000/posts');
+        const response = await axios.get(`http://${SERVER}/posts`);
         setAllPosts(response.data);
         setFilteredPosts(response.data);
       } catch (error) {
@@ -33,7 +34,7 @@ function HomeScreen() {
   async function addPost(req, res) {
   const {title, body, attachment, authorId} = req.body
     try {
-      const response = await axios.post('http://localhost:3000/posts', {
+      const response = await axios.post(`http://${SERVER}/posts`, {
         title: title,
         body: body,
         attachment: attachment ? attachment : null,
@@ -88,13 +89,13 @@ function HomeScreen() {
           return (
             <>
               <ListItem key={post.id} bottomDivider>
-                <Avatar
+                {/* <Avatar
                   key={post.authorId}
                   rounded
                   source={{
                     uri: post.author.pictures[0],
                   }}
-                />
+                /> */}
                 <ListItem.Content key={post.id + "Content"}>
                   <ListItem.Title key={post.id + "Title"}>
                     {post.title}

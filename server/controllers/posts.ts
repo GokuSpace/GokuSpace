@@ -5,8 +5,12 @@ export default {
 
   getPosts: async function(req: Request, res: Response) {
     const posts = await prisma.post.findMany({
-      include: {
-        author: true,
+      select: {
+        id: true,
+        title: true,
+        body: true,
+        isDeleted: true,
+
       }
     });
     res.json(posts);
@@ -19,7 +23,7 @@ export default {
         body: body,
         attachment: attachment ? attachment : null,
         authorId: authorId
-      } 
+      }
     })
     res.json(newPost);
   },
