@@ -13,6 +13,8 @@ router.get('/users', controller.getUsers);
 router.get("/users/:id", profile.getUserById);
 // router.put("/users/:id", profile.updateUserById);
 router.put("/posts/:id", profile.updateIsDeletedByPostId)
+router.put("/userPosts/:id", profile.updateUserPostById)
+router.put("/userProfile/:id", profile.updateUserProfileById)
 
 //** Friends **//
 router.get('/users/:user_id/friends', friends.getFriends);
