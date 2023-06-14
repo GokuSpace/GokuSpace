@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Image, View } from 'react-native';
 import GestureRecognizer, {
 } from 'react-native-swipe-gestures';
-import userProfilePics from '../../../../userProfilePics';
-
+const userProfilePics = ["https://cdn.myanimelist.net/images/anime/3/83.jpg?s=85e5e3eb0709631191d66db3f6db4cfa", "https://cdn.myanimelist.net/images/anime/3/83.jpg?s=85e5e3eb0709631191d66db3f6db4cfa"];
 
 
 
