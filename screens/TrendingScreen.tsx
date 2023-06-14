@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Text, View } from "react-native";
 import SearchSeries from './screen-components/trending-screen/SearchSeries';
-import SeriesList from './screen-components/trending-screen/seriesList';
+import SeriesList from './screen-components/trending-screen/SeriesList';
 import series from '../series';
 import { Button } from 'react-native-elements';
 
