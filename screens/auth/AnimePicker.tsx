@@ -1,37 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View } from 'react-native';
 import { Input, Button } from '@rneui/themed';
 import { SelectList } from 'react-native-dropdown-select-list'
 import { useNavigation } from '@react-navigation/native';
 import animeData from '../../animeData.json';
-import animeCharData from '../../charactersData.json'
+import animeCharData from '../../charactersData.json';
+import axios from 'axios';
+import { SERVER } from '@env';
 
 export default function AnimePicker({form, setForm}) {
+  const [animeData, setAnimeData] = useState([]);
   const [animeID, setAnimeID] = useState("");
-  const [formattedAnimeCharData, setFormattedAnimeCharData] = useState(['Select an anime first']);
+  const [characterData, setCharacterData] = useState([]);
+  const [trigger, setTrigger] = useState(false);
 
-  const formattedAnimeData = animeData.map((anime) => ({
-    key: anime.mal_id.toString(),
-    value: anime.title,
-  }));
+  useEffect(() => {
+    axios.get(`http://${SERVER}/anime`)
+    .then(res => {
+      const formattedAnimeData = res.data.anime.map((anime) => ({
+        key: anime.id.toString(),
+        value: anime.title,
+      }));
+      // const formattedCharacterData = res.data.characters.map((char) => ({
+      //   key: char.id.toString(),
+      //   value: char.name,
+      // }));
+      setAnimeData(formattedAnimeData);
+      setCharacterData(res.data.characters);
+    })
+    .catch(err => {
+      console.error(err)
+    })
+  },[])
 
-  const formatAnimeCharData = () => {
-    const formattedData = animeCharData.filter((char) => {
-      return char.mal_id.toString() === animeID;
+  useEffect(() => {
+    const data = characterData.filter((char) => {
+    return char.mal_id.toString() === animeID;
     }).map((char) => {
       return {
-        key: char.mal_id.toString(),
+        key: char.id.toString(),
         value: char.name
       };
-    });    
-    setFormattedAnimeCharData(formattedData);
-  }
+    })
+    console.log(data)
+    setCharacterData(data)
+  }, [trigger])
 
   const handleSelectAnime = (item) => {
     setAnimeID(item);
     changeForm(item, 'favoriteAnimeId');
-    setFormattedAnimeCharData(['Select an anime first'])
-    formatAnimeCharData();
+    setTrigger(!trigger);
   };
 
   const handleSelectAnimeChar = (item) => {
@@ -46,21 +64,23 @@ export default function AnimePicker({form, setForm}) {
   };
 
   return (
-    <>
+    animeData.length
+    ? <>
       <Text>Favorite Anime</Text>
-      <SelectList 
+      <SelectList
         setSelected={handleSelectAnime}
-        data={formattedAnimeData}
+        data={animeData}
         save="key"
         placeholder="Search..."
       />
       <Text>Favorite Character</Text>
-      <SelectList 
+      <SelectList
         setSelected={handleSelectAnimeChar}
-        data={formattedAnimeCharData}
-        save="value"
+        data={characterData}
+        save="key"
         placeholder="Search..."
       />
     </>
+    : <Text>loading...</Text>
   );
 }
