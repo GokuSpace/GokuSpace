@@ -3,7 +3,7 @@ import * as ImagePicker from 'expo-image-picker';
 import React, { useEffect, useState } from 'react';
 import { Animated, Dimensions, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-export const SlideUpModal = ({ isVisible, onClose, onPost }) => {
+export const SlideUpModal = ({ isVisible, onClose }) => {
   const [slideAnim] = useState(new Animated.Value(Dimensions.get('window').height));
 
   const pickImageAsync = async () => {
@@ -33,8 +33,8 @@ export const SlideUpModal = ({ isVisible, onClose, onPost }) => {
   return (
     <Animated.View
       style={[
-        // styles.container,
-        // { transform: [{ translateY: slideAnim }] }
+        styles.container,
+        { transform: [{ translateY: slideAnim }] }
       ]}
     >
       <View style={styles.modal}>
@@ -94,7 +94,7 @@ export const SlideUpModal = ({ isVisible, onClose, onPost }) => {
             marginHorizontal: 1,
             marginVertical: 5,
           }}
-          onPress={onPost}
+          onPress={onClose}
         />
         </View>
       </View>

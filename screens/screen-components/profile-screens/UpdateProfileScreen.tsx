@@ -4,12 +4,14 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import tw from 'tailwind-react-native-classnames';
 import { useState } from "react";
 import axios from "axios";
+import { SERVER } from '@env';
 
 function UpdateProfileScreen() {
 
   const[editedUsername, setEditedUsername] = useState("")
   const[editedZipcode, setEditedZipcode] = useState("")
   const[editedBio, setEditedBio] = useState("")
+
 
   const route = useRoute();
   const { profile } = route.params;
@@ -24,7 +26,7 @@ function UpdateProfileScreen() {
     };
     //axios PUT request
     //axios.put(`/userProfile/:userID`, updatedProfile).then
-    // axios.put("http://localhost:3000/userProfile/cliuk0wnb0002uz6aw5dc3jrg", updatedProfile)
+    // axios.put(`http://${SERVER}/userProfile/cliuk0wnb0002uz6aw5dc3jrg`, updatedProfile)
     // .then(() => {
     //   setEditedUsername("");
     //   setEditedZipcode("");
