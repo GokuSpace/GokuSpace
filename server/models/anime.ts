@@ -13,6 +13,7 @@ const anime = {
     return prisma.character.findMany({
       select: {
         id: true,
+        mal_id: true,
         name: true,
       }
     })
