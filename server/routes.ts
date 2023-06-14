@@ -11,7 +11,7 @@ router.get('/accounts', controller.getAccounts);
 router.get('/users', controller.getUsers);
 
 //** Profile **//
-router.get("/users/:id", profile.getUserById); // called in... screens/ProfileScreen.tsx <-- CONFIRM WORKS 
+router.get("/users/:id", profile.getUserById); // called in... screens/ProfileScreen.tsx <-- CONFIRM WORKS
 router.put("/posts/:id", profile.updateIsDeletedByPostId) // called in... screens/screen-components/profile-screens/UsersPosts.tsx
 router.put("/userPosts/:id", profile.updateUserPostById) // called in... screens/screen-components/profile-screens/UsersPosts.tsx
 router.put("/userProfile/:id", profile.updateUserProfileById) // called in... screens/screen-components/profile-screens/UpdateProfileScreen.tsx <-- CONFIRM WORKS
@@ -31,6 +31,7 @@ router.post('/events/:user_id', events.createEvent);
 router.delete('/events/:event_id', events.deleteEvent);
 
 router.get('/anime', controller.anime.all)
+router.get('/anime/titles', controller.anime.titles)
 
 //** Posts **//
 router.get('/posts', posts.getPosts);

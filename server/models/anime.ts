@@ -17,6 +17,9 @@ const anime = {
         name: true,
       }
     })
+  },
+  info: () => {
+    return prisma.anime.findMany();
   }
 };
 

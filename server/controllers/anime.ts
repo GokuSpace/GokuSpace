@@ -16,6 +16,16 @@ const anime = {
         console.error(err)
         res.sendStatus(402)
       })
+  },
+  titles: (req, res) => {
+    models.anime.info()
+      .then(result => {
+        res.status(200).send(JSON.stringify(result))
+      })
+      .catch(err => {
+        console.error(err)
+        res.sendStatus(402)
+      })
   }
 }
 
