@@ -12,8 +12,12 @@ const userAction = {
         lastName: userInfo.lastName,
         username: userInfo.username,
         zipcode: userInfo.zipcode,
-        favoriteAnimeId: userInfo.favoriteAnimeId,
-        favoriteCharacterId: userInfo.favoriteCharacterId,
+        favoriteAnime: userInfo.favoriteAnimeId ? {
+          connect: {id: userInfo.favoriteAnimeId}
+        } : undefined,
+        favoriteCharater: userInfo.favoriteCharacterId ? {
+          connect: {id: userInfo.favoriteCharacterId}
+        } : undefined,
       }
     })
   }
