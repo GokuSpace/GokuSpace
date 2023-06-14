@@ -4,25 +4,25 @@ import { Avatar, ListItem } from "@rneui/themed";
 import React from "react";
 
 
-const UserEntry = ({ user }) => (
+const PostEntry = ({ post }) => (
 
 <ListItem  bottomDivider>
 <Avatar
   rounded
   source={{
-    uri: user.image_url,
+    uri: post.image_url,
   }}
 />
 <ListItem.Content >
   <ListItem.Title >
-    {user.name}
+    {post.name}
   </ListItem.Title>
   <ListItem.Subtitle>
-    {user.text}
+    {post.text}
   </ListItem.Subtitle>
 </ListItem.Content>
 </ListItem>
 
 );
 
-export default UserEntry;
+export default PostEntry;

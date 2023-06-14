@@ -2,15 +2,15 @@
 
 import { Tab } from "@rneui/themed";
 import React, { useEffect, useState } from "react";
-import { ScrollView, View, Text } from "react-native";
-import UserEntry from "./UserEntry";
+import { ScrollView, Text, View } from "react-native";
+import PostEntry from "./PostEntry";
 
-const UsersList = ({ users }) => {
-  const [filteredUsers, setFilteredUsers] = useState([]);
+const PostsList = ({ posts }) => {
+  const [filteredPosts, setFilteredPosts] = useState([]);
   const [index, setIndex] = useState(1);
-  const all = users;
-  const friends = users.filter((user) => user.is_friend);
-  const forYou = users.filter((user) => user.series === "Fullmetal Alchemist");
+  const all = posts;
+  const friends = posts.filter((post) => post.is_friend);
+  const forYou = posts.filter((post) => post.series === "Fullmetal Alchemist");
 
 
 
@@ -18,20 +18,20 @@ const UsersList = ({ users }) => {
   useEffect(() => {
     switch (index) {
       case 0:
-        setFilteredUsers(all);
+        setFilteredPosts(all);
         break;
       case 1:
-        setFilteredUsers(friends);
+        setFilteredPosts(friends);
         break;
       case 2:
-        setFilteredUsers(forYou);
+        setFilteredPosts(forYou);
         break;
       default:
-        setFilteredUsers(friends);
+        setFilteredPosts(friends);
     }
   }, [index]);
 
-  if (!filteredUsers) {
+  if (!filteredPosts) {
     return <View>
       <Text>Loading...</Text>
     </View>
@@ -53,10 +53,10 @@ const UsersList = ({ users }) => {
         <Tab.Item title="For You" />
       </Tab>
       <ScrollView>
-        {filteredUsers.map((user) => {
+        {filteredPosts.map((post) => {
           return (
             <>
-              <UserEntry user={user} />
+              <PostEntry post={post} />
             </>
           );
         })}
@@ -66,4 +66,4 @@ const UsersList = ({ users }) => {
   );
 }
 
-export default UsersList;
+export default PostsList;
