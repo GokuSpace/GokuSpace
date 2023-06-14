@@ -10,7 +10,7 @@ import EventsScreen from "./screens/EventsScreen";
 import FriendScreen from "./screens/FriendScreen";
 import HomeScreen from "./screens/HomeScreen";
 import ProfileScreen from "./screens/ProfileScreen";
-import TrendingScreen from "./screens/screen-components/trending-screens/TrendingScreen";
+import TrendingScreen from "./screens/TrendingScreen";
 import LoginScreen from "./screens/auth/LoginScreen";
 import SignupScreen from './screens/auth/SignupScreen';
 import EditProfilePictureScreen from "./screens/screen-components/profile-screens/EditProfilePictureScreen";

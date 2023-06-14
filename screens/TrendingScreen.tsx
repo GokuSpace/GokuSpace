@@ -2,9 +2,9 @@ import React, { Text, View, ScrollView} from "react-native";
 import { ListItem } from "@rneui/base";
 import { useState, useEffect } from "react";
 import axios from 'axios'
-import AnimeItem from './AnimeItem';
+import AnimeItem from './screen-components/trending-screens/AnimeItem';
 import { SERVER } from '@env';
-import AnimePicker from "../../auth/AnimePicker";
+import AnimePicker from "./auth/AnimePicker";
 
 function TrendingScreen() {
 const [animeList, setAnimeList] = useState([{title: "loading anime titles"}]);
