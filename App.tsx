@@ -1,10 +1,11 @@
+import { DEV } from '@env';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { ThemeProvider, createTheme } from '@rneui/themed';
 import { StatusBar } from "expo-status-bar";
+import { createContext, useState } from 'react';
 import React, { Text, View } from "react-native";
-import { useState, createContext } from 'react';
 import "react-native-gesture-handler";
 import EventsScreen from "./screens/EventsScreen";
 import FriendScreen from "./screens/FriendScreen";
@@ -13,13 +14,12 @@ import ProfileScreen from "./screens/ProfileScreen";
 import TrendingScreen from "./screens/TrendingScreen";
 import LoginScreen from "./screens/auth/LoginScreen";
 import SignupScreen from './screens/auth/SignupScreen';
+import EventDetails from "./screens/screen-components/events-screens/EventDetails";
+import { default as NewEvent } from "./screens/screen-components/events-screens/NewEvent";
+import VotesHistory from "./screens/screen-components/home-screens/VotesHistory";
 import EditProfilePictureScreen from "./screens/screen-components/profile-screens/EditProfilePictureScreen";
 import UpdateProfileScreen from "./screens/screen-components/profile-screens/UpdateProfileScreen";
 import ViewUsersPostsScreen from "./screens/screen-components/profile-screens/UsersPosts";
-import VotesHistory from "./screens/screen-components/home-screens/VotesHistory";
-import EventDetails from "./screens/screen-components/events-screens/EventDetails";
-import NewEvent from "./screens/screen-components/events-screens/NewEvent";
-import { DEV } from '@env';
 
 // Okay okay
 
@@ -29,8 +29,8 @@ const Stack = createStackNavigator();
 
 const theme = createTheme({
   lightColors: {
-    secondary: '#EB5E28',
-  },
+  secondary: '#EB5E28',
+},
   mode: 'light',
 });
 
