@@ -2,7 +2,7 @@
 
 import { Tab } from "@rneui/themed";
 import React, { useEffect, useState } from "react";
-import { ScrollView } from "react-native";
+import { ScrollView, View, Text } from "react-native";
 import UserEntry from "./UserEntry";
 
 const UsersList = ({ users }) => {
@@ -30,6 +30,12 @@ const UsersList = ({ users }) => {
         setFilteredUsers(friends);
     }
   }, [index]);
+
+  if (!filteredUsers) {
+    return <View>
+      <Text>Loading...</Text>
+    </View>
+  }
 
   return (
     <>
