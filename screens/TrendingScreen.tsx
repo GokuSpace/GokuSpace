@@ -4,6 +4,7 @@ import SearchSeries from './screen-components/trending-screen/SearchSeries';
 import SeriesList from './screen-components/trending-screen/SeriesList';
 import series from '../series';
 import { Button } from 'react-native-elements';
+import TrendingList from './screen-components/trending-screen/Today.tsx';
 
 function TrendingScreen() {
   const [search, setSearch] = useState('');

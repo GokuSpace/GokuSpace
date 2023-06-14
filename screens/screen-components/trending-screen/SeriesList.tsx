@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 import React, { ScrollView} from 'react-native';
-import SeriesEntry from './seriesEntry';
+import SeriesEntry from './SeriesEntry';
 
 const SeriesList = ({series, search }) => {
 const notFound = {title: 'NO MACH'};

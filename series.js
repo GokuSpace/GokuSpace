@@ -29,6 +29,6 @@ const series= [
     url:
       "https://cdn.myanimelist.net/images/anime/5/64.jpg?s=7e5bc3f9e0c348a71de6d207cb3b3a3a",
   },
-],
+]
 
-export default series;
+module.exports = series;
