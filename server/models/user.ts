@@ -12,6 +12,8 @@ const userAction = {
         lastName: userInfo.lastName,
         username: userInfo.username,
         zipcode: userInfo.zipcode,
+        latitude: userInfo.latitude,
+        longitude: userInfo.longitude,
         favoriteAnime: userInfo.favoriteAnimeId
           ? {
               connect: { id: userInfo.favoriteAnimeId },
