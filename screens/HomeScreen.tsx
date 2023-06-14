@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 import { Button } from "@rneui/themed";
 import React, { useState } from "react";
@@ -13,7 +12,6 @@ function HomeScreen() {
   const [isUser, setIsUser] = useState(false);
   const [isAuth, setIsAuth] = useState(false);
   const [userImage, setUserImage] = useState("https://cdn.myanimelist.net/images/anime/1223/96541.jpg?s=2ab13dc6a3e874f5dc8b7229632f8c1f");
-=======
 import { useNavigation } from "@react-navigation/native";
 import { Avatar, Button, ListItem, Tab } from "@rneui/themed";
 import { useEffect, useState } from "react";
@@ -29,12 +27,10 @@ function HomeScreen() {
   const [filteredCharacters, setFilteredCharacters] = useState([]);
   const [index, setIndex] = useState(1);
   const [modalVisible, setModalVisible] = useState(false);
->>>>>>> a0ac32ea51391cf65f32e1ecfce63cbee7413e62
 
 
   return (
     <>
-<<<<<<< HEAD
       <>
         <UsersList users={users} />
         <BottomSheetComponent />
@@ -47,7 +43,6 @@ function HomeScreen() {
           onOuterClick={() => setShowSlideup(false)} isUser={isUser} user={{ image_url: userImage }} isAuth={isAuth}>
         </SlideUp>
       </>
-=======
       <Tab
         value={index}
         onChange={(e) => setIndex(e)}
@@ -91,7 +86,6 @@ function HomeScreen() {
       <Button title="Add a Post" onPress={() => setModalVisible(true)} />
       {modalVisible && <SlideUpModal isVisible={modalVisible} onClose={() => setModalVisible(false)} />}
       </ScrollView>
->>>>>>> a0ac32ea51391cf65f32e1ecfce63cbee7413e62
     </>
   );
 }
