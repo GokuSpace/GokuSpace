@@ -3,6 +3,8 @@ import { Avatar, Button, ListItem, Tab } from "@rneui/themed";
 import { useEffect, useState } from "react";
 import events from "../events-data.js";
 import EventListEntry from "./screen-components/events-screens/EventListEntry";
+import tw from 'tailwind-react-native-classnames';
+
 
 
 // interface Event {
@@ -42,14 +44,14 @@ function EventsScreen() {
       <Tab
         onChange={(e) => setIndex(e)}
         indicatorStyle={{
-          backgroundColor: "white",
+          backgroundColor: "orange",
           height: 3,
         }}
         variant="primary"
         value={index}
       >
-        <Tab.Item title="Date" />
-        <Tab.Item title="Distance" />
+        <Tab.Item style={tw`bg-gray-300`} color="black" title="Date" />
+        <Tab.Item style={tw`bg-gray-300`} color="black" title="Distance" />
       </Tab>
       <ScrollView>
         <>
