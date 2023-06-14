@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import SignupScreen from "./SignupScreen";
 import bcrypt from 'bcryptjs-react';
+import { SERVER } from '@env';
 
 function LoginScreen({ setLoggedIn }) {
   const navigation = useNavigation();
