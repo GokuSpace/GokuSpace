@@ -18,7 +18,7 @@ import UpdateProfileScreen from "./screens/screen-components/profile-screens/Upd
 import ViewUsersPostsScreen from "./screens/screen-components/profile-screens/UsersPosts";
 import VotesHistory from "./screens/screen-components/home-screens/VotesHistory";
 import EventDetails from "./screens/screen-components/events-screens/EventDetails";
-import { dev } from '@env';
+import { DEV } from '@env';
 // Okay okay
 
 const Tab = createBottomTabNavigator();
@@ -35,7 +35,8 @@ const theme = createTheme({
 export const userContext = createContext(null);
 
 export default function AppTabs() {
-  const [loggedIn, setLoggedIn] = useState(false);
+
+  const [loggedIn, setLoggedIn] = useState(DEV);
   const [currentUser, setCurrentUser] = useState({});
 
   if (loggedIn) {
