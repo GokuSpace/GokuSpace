@@ -1,13 +1,13 @@
-import React, { Text, View, Modal } from "react-native";
-import { Input, Button } from '@rneui/themed';
-import { useState, useContext } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import SignupScreen from "./SignupScreen";
-import bcrypt from 'bcryptjs-react';
-import {userContext} from '../../App';
-import * as Crypto from 'expo-crypto';
-import axios from 'axios';
 import { SERVER } from '@env';
+import { useNavigation } from '@react-navigation/native';
+import { Button, Input } from '@rneui/themed';
+import axios from 'axios';
+import bcrypt from 'bcryptjs-react';
+import * as Crypto from 'expo-crypto';
+import { useContext, useState } from 'react';
+import React, { Modal, Text, View } from "react-native";
+import { userContext } from '../../App';
+import SignupScreen from "./SignupScreen";
 
 function LoginScreen({ setLoggedIn }) {
   const navigation = useNavigation();
