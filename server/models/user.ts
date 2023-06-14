@@ -2,7 +2,6 @@ import prisma from '../../lib';
 
 const userAction = {
   create: (account, userInfo) => {
-    console.log(account);
     return prisma.user.create({
       data: {
         account: {
@@ -12,6 +11,8 @@ const userAction = {
         lastName: userInfo.lastName,
         username: userInfo.username,
         zipcode: userInfo.zipcode,
+        latitude: userInfo.latitude,
+        longitude: userInfo.longitude,
         favoriteAnime: userInfo.favoriteAnimeId
           ? {
               connect: { id: userInfo.favoriteAnimeId },

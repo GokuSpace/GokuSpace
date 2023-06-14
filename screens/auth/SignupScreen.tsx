@@ -7,7 +7,8 @@ import bcrypt from 'bcryptjs-react';
 import AnimePicker from "./AnimePicker";
 import { userContext } from '../../App';
 import * as Crypto from 'expo-crypto';
-import { SERVER } from '@env';
+import {SERVER} from '@env';
+import zipcodes from 'zipcodes';
 
 
 // Set the random fallback using expo-random
@@ -23,19 +24,28 @@ export default function SignupScreen({ setLoggedIn }) {
     firstName: '',
     lastName: '',
     favoriteAnimeId: '',
-    favoriteCharacter: '',
+    favoriteCharacterId: '',
     username: '',
     email: '',
     zipcode: '',
+    latitude: null,
+    longitude: null,
     password: '',
   });
 
   const submitForm = () => {
+    const locationData = zipcodes.lookup(form.zipcode);
+    setForm({
+      ...form,
+      latitude: locationData.latitude,
+      longitude: locationData.longitude
+    })
     bcrypt.setRandomFallback(async (len) => {
       const randomBytes = await Crypto.getRandomBytesAsync(len);
       return randomBytes;
     });
     form.password = hash(form.password)
+    console.log('-------------', form)
     axios.post(`http://${SERVER}/signup`, form)
     .then(res => {
       setCurrentUser(res.data)
@@ -66,8 +76,6 @@ export default function SignupScreen({ setLoggedIn }) {
     const browns = bcrypt.hashSync(potatoes, 10);
     return browns;
   }
-
-
 
   const formValidate1 = () => {
     // form validation if time
@@ -107,11 +115,11 @@ export default function SignupScreen({ setLoggedIn }) {
     </>
       : <>
       <Text>Username</Text>
-      <Input onChangeText={text => changeForm(text, 'user')} value={form.user}/>
+      <Input onChangeText={text => changeForm(text, 'username')} value={form.username}/>
       <Text>Email</Text>
       <Input onChangeText={text => changeForm(text, 'email')} value={form.email}/>
       <Text>Zipcode</Text>
-      <Input onChangeText={text => changeForm(text, 'zipcode')} value={form.zipcode}/>
+      <Input onChangeText={text => changeForm(text, 'zipcode')} value={form.zipcode}  />
       <Text>Password</Text>
       <Input onChangeText={text => changeForm(text, 'password')} value={form.password} secureTextEntry={true} passwordRules={null}/>
       <Text>Confirm Password</Text>
