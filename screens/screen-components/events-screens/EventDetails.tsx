@@ -5,8 +5,14 @@ import { useState } from "react";
 import tw from 'tailwind-react-native-classnames';
 
 const EventDetails = () => {
+  const [rsvp, setRsvp] = useState(false);
+
   const route = useRoute();
   const { event } = route.params;
+
+  const handleRSVP = () => {
+    setRsvp(true);
+  }
 
   return (
 
@@ -26,11 +32,20 @@ const EventDetails = () => {
         <Text style={tw`px-3 mt-16 font-bold`}>E 123 New York st, Stark tower, 1204 NY</Text>
       </View>
 
+      {!rsvp ? (
       <View style={tw`flex flex-row justify-center mt-6 `}>
         <View style={tw` mt-6 border rounded-3xl px-16 py-2 bg-black`}>
-          <Button color="white" title="RSVP" />
+          <Button color="white" title="RSVP" onPress={handleRSVP}/>
         </View>
       </View>
+      ) : (
+        <View style={tw`flex flex-row justify-center mt-6 `}>
+        <View style={tw` mt-6 rounded-3xl px-9 py-2 bg-green-600`}>
+          <Button color="white" title="CONFIRMED"/>
+        </View>
+      </View>
+      )}
+
 
     </View>
 
