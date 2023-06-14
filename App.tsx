@@ -18,9 +18,13 @@ import UpdateProfileScreen from "./screens/screen-components/profile-screens/Upd
 import ViewUsersPostsScreen from "./screens/screen-components/profile-screens/UsersPosts";
 import VotesHistory from "./screens/screen-components/home-screens/VotesHistory";
 import EventDetails from "./screens/screen-components/events-screens/EventDetails";
+<<<<<<< HEAD
 import NewEvent from "./screens/screen-components/events-screens/NewEvent";
 import { DEV } from '@env';
 
+=======
+import { dev } from '@env';
+>>>>>>> 8f8d9fe (working on dev variable)
 // Okay okay
 
 const Tab = createBottomTabNavigator();

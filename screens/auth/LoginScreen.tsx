@@ -1,11 +1,10 @@
-import React, { Text, View, Modal } from "react-native";
+import React, { Text, View } from "react-native";
 import { Input, Button } from '@rneui/themed';
 import { useState, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import SignupScreen from "./SignupScreen";
-import axios from 'axios';
-import {SERVER} from '@env';
 import bcrypt from 'bcryptjs-react';
+import {userContext} from '../../App';
 import * as Crypto from 'expo-crypto';
 import { userContext } from "../../App";
 

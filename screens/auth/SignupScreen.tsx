@@ -8,6 +8,7 @@ import AnimePicker from "./AnimePicker";
 import { userContext } from '../../App';
 import * as Crypto from 'expo-crypto';
 import { SERVER } from '@env';
+import zipcodes from 'zipcodes';
 
 
 // Set the random fallback using expo-random
@@ -27,6 +28,8 @@ export default function SignupScreen({ setLoggedIn }) {
     username: '',
     email: '',
     zipcode: '',
+    latitude: null,
+    longitude: null,
     password: '',
   });
 
