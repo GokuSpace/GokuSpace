@@ -53,21 +53,21 @@ function ProfileScreen() { //take in a userId and then make axios call with that
         <Image style={tw`h-52 w-52`}
           source={require("../assets/profile-photo.png")}
         />
-        <Text style={tw`mt-6 font-bold text-base text-lg`}>{profile.username}</Text>
+        <Text style={tw`mt-6 font-bold text-base text-lg`}>@{profile.username}</Text>
         <View style={tw`mt-6 border rounded-2xl px-2 px-2 bg-black`} >
-        <Button color="white" title="Update Profile" onPress={handleUpdatePress} />
+          <Button color="white" title="Update Profile" onPress={handleUpdatePress} />
         </View>
       </View>
 
       <View style={tw`flex-row mt-6`}>
         <View style={tw`px-5`}>
-          <Text style={tw`font-bold`}>favorite anime: </Text>
-          <Text style={tw`mt-6 font-bold`}>favorite character:</Text>
+          <Text style={tw`font-bold`}>Favorite anime: </Text>
+          <Text style={tw`mt-6 font-bold`}>Favorite character:</Text>
           <Text style={tw`mt-6 font-bold`}>Location:</Text>
         </View>
         <View style={tw`px-10`}>
-          <Text>{profile.favoriteAnimeId}</Text>
-          <Text style={tw`mt-6`}>{profile.favoriteCharacterId}</Text>
+          <Text>{profile.favoriteAnime ? profile.favoriteAnime.title : ""}</Text>
+          <Text style={tw`mt-6`}>{profile.favoriteCharater ? profile.favoriteCharater.name : ""}</Text>
           <Text style={tw`mt-6`}>{profile.zipcode}</Text>
         </View>
       </View>
@@ -79,13 +79,13 @@ function ProfileScreen() { //take in a userId and then make axios call with that
 
       <View style={tw`flex flex-row justify-center mt-6 `}>
         <View style={tw`mt-6 border rounded-2xl px-2 px-2 bg-black`}>
-        <Button  color="white" title="Posts" onPress={handlePostPress}/>
+          <Button color="white" title="Posts" onPress={handlePostPress} />
         </View>
         <View style={tw`mt-6 border rounded-2xl px-2 mx-9 px-2 bg-black`}>
-        <Button color="white" title="Photos" onPress={handlePhotosPress}/>
+          <Button color="white" title="Photos" onPress={handlePhotosPress} />
         </View>
         <View style={tw`mt-6 border rounded-2xl px-2 px-2 bg-black`}>
-        <Button color="white" title="Vote" onPress={handleVotePress} />
+          <Button color="white" title="Vote" onPress={handleVotePress} />
         </View>
       </View>
 

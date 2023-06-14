@@ -15,17 +15,16 @@ export async function queryUserById(userId: string): Promise<User | null> {
       pictures: true,
       favoriteAnimeId: true,
       favoriteCharacterId: true,
-      // favoriteAnime: {
-      //   select: {
-      //     title: true,
-      //   },
-      // },
-      // favoriteCharater: {
-      //   select: {
-      //     name: true,
-      //   },
-      // },
-      //the above is throwing me errors saying the mal_id is not defined...
+      favoriteAnime: {
+        select: {
+          title: true,
+        },
+      },
+      favoriteCharater: {
+        select: {
+          name: true,
+        },
+      },
       bio: true,
       zipcode: true,
       latitude: true,
@@ -46,7 +45,7 @@ export async function queryUserById(userId: string): Promise<User | null> {
   });
 }
 
-export async function updateUserPosts(postId: string): Promise<Post | null> {
+export async function handlePostDeletion(postId: string): Promise<Post | null> {
   return prisma.post.update({
     where: { id: postId },
     data: {
@@ -55,9 +54,43 @@ export async function updateUserPosts(postId: string): Promise<Post | null> {
   });
 }
 
+export async function updateUserPost(postId: string, body: string): Promise<Post | null> {
+  try {
+    const updatedPost = await prisma.post.update({
+      where: { id: postId },
+      data: { body },
+    });
+
+    return updatedPost;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
+export async function updateProfile(userId: string, username: string, zipcode: string, bio: string): Promise<User | null> {
+  try {
+    const updatedProfile = await prisma.user.update({
+      where: { id: userId },
+      data: {
+        username: username ? username : undefined,
+        zipcode: zipcode ? zipcode : undefined,
+        bio: bio ? bio : undefined,
+      },
+    });
+
+    return updatedProfile;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
 
 
 module.exports = {
   queryUserById,
-  updateUserPosts
+  handlePostDeletion,
+  updateUserPost,
+  updateProfile
 };

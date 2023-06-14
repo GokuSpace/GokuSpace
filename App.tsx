@@ -18,7 +18,9 @@ import UpdateProfileScreen from "./screens/screen-components/profile-screens/Upd
 import ViewUsersPostsScreen from "./screens/screen-components/profile-screens/UsersPosts";
 import VotesHistory from "./screens/screen-components/home-screens/VotesHistory";
 import EventDetails from "./screens/screen-components/events-screens/EventDetails";
+import NewEvent from "./screens/screen-components/events-screens/NewEvent";
 import { DEV } from '@env';
+
 // Okay okay
 
 const Tab = createBottomTabNavigator();
@@ -65,6 +67,7 @@ export default function AppTabs() {
                   <Stack.Navigator>
                     <Stack.Screen name="EventsScreen" component={EventsScreen} />
                     <Stack.Screen name="EventDetails" component={EventDetails} />
+                    <Stack.Screen name="NewEvent" component={NewEvent} />
                   </Stack.Navigator>
                 )}
               </Tab.Screen>
