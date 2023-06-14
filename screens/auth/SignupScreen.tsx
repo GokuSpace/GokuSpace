@@ -28,8 +28,8 @@ export default function SignupScreen({ setLoggedIn }) {
     username: '',
     email: '',
     zipcode: '',
-    latitude: '',
-    longitude: '',
+    latitude: null,
+    longitude: null,
     password: '',
   });
 
@@ -45,6 +45,7 @@ export default function SignupScreen({ setLoggedIn }) {
       return randomBytes;
     });
     form.password = hash(form.password)
+    console.log('-------------', form)
     axios.post(`http://${SERVER}/signup`, form)
     .then(res => {
       setCurrentUser(res.data)
@@ -114,7 +115,7 @@ export default function SignupScreen({ setLoggedIn }) {
     </>
       : <>
       <Text>Username</Text>
-      <Input onChangeText={text => changeForm(text, 'user')} value={form.user}/>
+      <Input onChangeText={text => changeForm(text, 'username')} value={form.username}/>
       <Text>Email</Text>
       <Input onChangeText={text => changeForm(text, 'email')} value={form.email}/>
       <Text>Zipcode</Text>
