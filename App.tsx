@@ -19,6 +19,7 @@ import ViewUsersPostsScreen from "./screens/screen-components/profile-screens/Us
 import VotesHistory from "./screens/screen-components/home-screens/VotesHistory";
 import EventDetails from "./screens/screen-components/events-screens/EventDetails";
 import NewEvent from "./screens/screen-components/events-screens/NewEvent";
+import { DEV } from '@env';
 
 // Okay okay
 
@@ -36,7 +37,8 @@ const theme = createTheme({
 export const userContext = createContext(null);
 
 export default function AppTabs() {
-  const [loggedIn, setLoggedIn] = useState(false);
+
+  const [loggedIn, setLoggedIn] = useState(DEV === true);
   const [currentUser, setCurrentUser] = useState({});
 
   if (loggedIn) {
