@@ -1,0 +1,22 @@
+import prisma from '../../lib';
+
+const anime = {
+  titles: () => {
+    return prisma.anime.findMany({
+      select: {
+        id: true,
+        title: true,
+      }
+    })
+  },
+  characters: () => {
+    return prisma.character.findMany({
+      select: {
+        id: true,
+        name: true,
+      }
+    })
+  }
+};
+
+export default anime;
