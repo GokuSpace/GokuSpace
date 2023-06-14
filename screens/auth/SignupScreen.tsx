@@ -7,14 +7,15 @@ import bcrypt from 'bcryptjs-react';
 import AnimePicker from "./AnimePicker";
 import { userContext } from '../../App';
 import * as Crypto from 'expo-crypto';
-import {SERVER} from '@env';
+import { SERVER } from '@env';
+import zipcodes from 'zipcodes';
 
 
 // Set the random fallback using expo-random
 export default function SignupScreen({ setLoggedIn }) {
   const navigation = useNavigation();
 
-  const { setCurrentUser } = useContext(userContext);
+  const { currentUser, setCurrentUser } = useContext(userContext);
   const [confirm, setConfirm] = useState('');
   const [error, setError] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
@@ -27,6 +28,8 @@ export default function SignupScreen({ setLoggedIn }) {
     username: '',
     email: '',
     zipcode: '',
+    latitude: null,
+    longitude: null,
     password: '',
   });
 

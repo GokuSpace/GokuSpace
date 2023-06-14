@@ -12,14 +12,29 @@ const EventListEntry = ({ event }) => {
   const handleEventPress = () => {
     navigation.navigate("EventDetails", { event: event });
   }
+
+
+  const handleAddEventPress = () => {
+    navigation.navigate("NewEvent")
+  }
+
   return (
-    <TouchableOpacity onPress={handleEventPress}>
-      <ListItem bottomDivider>
-        <ListItem.Content>
-          <ListItem.Title>{event.name}</ListItem.Title>
-        </ListItem.Content>
-      </ListItem>
-    </TouchableOpacity>
+    <View style={tw`bg-white`}>
+      <TouchableOpacity onPress={handleEventPress}>
+        <ListItem bottomDivider>
+          <ListItem.Content>
+            <ListItem.Title>{event.name}</ListItem.Title>
+          </ListItem.Content>
+        </ListItem>
+      </TouchableOpacity>
+
+      {/* <View style={tw`flex flex-row justify-end mr-6 mt-6 `}>
+        <View style={tw` mt-6 border rounded-3xl px-2 py-2 bg-black`}>
+          <Button color="white" title="Post" onPress={handleAddEventPress}/>
+        </View>
+      </View> */}
+    </View>
+
   );
 }
 

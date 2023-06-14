@@ -13,6 +13,7 @@ function HomeScreen() {
   const [userImage, setUserImage] = useState("https://cdn.myanimelist.net/images/anime/1223/96541.jpg?s=2ab13dc6a3e874f5dc8b7229632f8c1f");
   const [modalVisible, setModalVisible] = useState(false);
 
+
   return (
     <>
       <>

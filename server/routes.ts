@@ -1,7 +1,8 @@
 import { Router } from 'express';
-import controller from './controllers/index';
-import friends from './controllers/friends';
 import events from './controllers/events';
+import friends from './controllers/friends';
+import controller from './controllers/index';
+import posts from './controllers/posts';
 import profile from './controllers/profile';
 
 const router = Router();
@@ -10,9 +11,10 @@ router.get('/accounts', controller.getAccounts);
 router.get('/users', controller.getUsers);
 
 //** Profile **//
-router.get("/users/:id", profile.getUserById);
-// router.put("/users/:id", profile.updateUserById);
-router.put("/posts/:id", profile.updateIsDeletedByPostId)
+router.get("/users/:id", profile.getUserById); // called in... screens/ProfileScreen.tsx <-- CONFIRM WORKS 
+router.put("/posts/:id", profile.updateIsDeletedByPostId) // called in... screens/screen-components/profile-screens/UsersPosts.tsx
+router.put("/userPosts/:id", profile.updateUserPostById) // called in... screens/screen-components/profile-screens/UsersPosts.tsx
+router.put("/userProfile/:id", profile.updateUserProfileById) // called in... screens/screen-components/profile-screens/UpdateProfileScreen.tsx <-- CONFIRM WORKS
 
 //** Friends **//
 router.get('/users/:user_id/friends', friends.getFriends);
@@ -28,15 +30,19 @@ router.put('/events/:event_id/rsvp', events.rsvpEvent);
 router.post('/events/:user_id', events.createEvent);
 router.delete('/events/:event_id', events.deleteEvent);
 
+router.get('/anime', controller.anime.all)
+
+//** Posts **//
+router.get('/posts', posts.getPosts);
+
+
 router.get('/friends', controller.getFriends);
-router.get('/posts', controller.getPosts);
 router.get('/votes', controller.getVotes);
 router.get('/events', controller.getEvents);
 router.get('/chatrooms', controller.getChatrooms);
 router.get('/messages', controller.getMessages);
 router.get('/users', controller.getUsers);
 router.get('/friends', controller.getFriends);
-router.get('/posts', controller.getPosts);
 router.get('/votes', controller.getVotes);
 router.get('/events', controller.getEvents);
 router.get('/chatrooms', controller.getChatrooms);
