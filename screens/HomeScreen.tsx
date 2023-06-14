@@ -2,6 +2,7 @@ import { Avatar, Button, ListItem, Tab } from "@rneui/themed";
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import React, { Dimensions, ScrollView, Text, View } from "react-native";
+import characters from "../characters";
 import getPosts from "../server/controllers/posts";
 import { SlideUpModal } from './screen-components/home-screens/SlideUpModal';
 import { SERVER } from "@env";
@@ -14,52 +15,52 @@ function HomeScreen() {
   const [modalVisible, setModalVisible] = useState(false);
 
 
-  // const friends = posts.filter((post) => a=.is_friend);
-  // const forYou = posts.filter((char) => char.series === "Fullmetal Alchemist");
-  console.log(allPosts)
-  useEffect(() => {
-      async function fetchPosts() {
-      try {
-        const response = await axios.get(`http://${SERVER}/posts`);
-        setAllPosts(response.data);
-        setFilteredPosts(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
+  const friends = characters.filter((char) => char.is_friend);
+  const forYou = characters.filter((char) => char.series === "Fullmetal Alchemist");
 
-    fetchPosts();
-  }, [])
+  // useEffect(() => {
+  //     async function fetchPosts() {
+  //     try {
+  //       const response = await axios.get('http://localhost:3000/posts');
+  //       setAllPosts(response.data);
+  //       setFilteredPosts(response.data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
 
-  async function addPost(req, res) {
-  const {title, body, attachment, authorId} = req.body
-    try {
-      const response = await axios.post(`http://${SERVER}/posts`, {
-        title: title,
-        body: body,
-        attachment: attachment ? attachment : null,
-        authorId: authorId
-      });
-      setAllPosts((currAllPosts) => [...currAllPosts, response.data]);
-      setFilteredPosts((currFilteredPosts) => [...currFilteredPosts, response.data]);
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  //   fetchPosts();
+  // }, [])
+
+  // async function addPost(req, res) {
+  // const {title, body, attachment, authorId} = req.body
+  //   try {
+  //     const response = await axios.post('http://localhost:3000/posts', {
+  //       title: title,
+  //       body: body,
+  //       attachment: attachment ? attachment : null,
+  //       authorId: authorId
+  //     });
+  //     setAllPosts((currAllPosts) => [...currAllPosts, response.data]);
+  //     setFilteredPosts((currFilteredPosts) => [...currFilteredPosts, response.data]);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
 
   useEffect(() => {
     switch (index) {
       case 0:
-        // setFilteredPosts(posts);
+        setFilteredPosts(characters);
         break;
       case 1:
-        // setFilteredPosts(posts);
+        setFilteredPosts(friends);
         break;
       case 2:
-        // setFilteredPosts(posts);
+        setFilteredPosts(forYou);
         break;
       default:
-        // setFilteredPosts(posts);
+        setFilteredPosts(friends);
     }
   }, [index]);
 
@@ -88,20 +89,20 @@ function HomeScreen() {
         {filteredPosts.map((post) => {
           return (
             <>
-              <ListItem key={post.id} bottomDivider>
-                {/* <Avatar
-                  key={post.authorId}
+              <ListItem key={post.user_id} bottomDivider>
+                <Avatar
+                  key={post.image_url}
                   rounded
                   source={{
-                    uri: post.author.pictures[0],
+                    uri: post.image_url,
                   }}
-                /> */}
-                <ListItem.Content key={post.id + "Content"}>
-                  <ListItem.Title key={post.id + "Title"}>
-                    {post.title}
+                />
+                <ListItem.Content key={post.user_id + "Content"}>
+                  <ListItem.Title key={post.user_id + "Title"}>
+                    {post.name}
                   </ListItem.Title>
                   <ListItem.Subtitle key={post.id + "Body"}>
-                    {post.body}
+                    {post.text}
                   </ListItem.Subtitle>
                 </ListItem.Content>
               </ListItem>
@@ -109,7 +110,7 @@ function HomeScreen() {
           );
         })}
       <Button title="Add a Post" onPress={() => setModalVisible(true)} />
-      {modalVisible && <SlideUpModal isVisible={modalVisible} onClose={() => setModalVisible(false)} onPost={addPost}/>}
+      {modalVisible && <SlideUpModal isVisible={modalVisible} onClose={() => setModalVisible(false)} />}
       </ScrollView>
     </>
   );
