@@ -53,14 +53,24 @@ function LoginScreen({ setLoggedIn }) {
   }
 
   return (
+    <>
+    <Modal visible={modalVisible} transparent={true} animationType="none">
+    <View  className="flex-1 justify-center items-center bg-gray-300/50">
+      <View className="p-2 justify-center items-center bg-gray-500 rounded-md">
+        <Text>Username or password are incorrect.</Text>
+        <Button title="Okay" onPress={() => setModalVisible(false)}></Button>
+      </View>
+    </View>
+    </Modal>
     <View>
       <Text> Email </Text>
       <Input onChangeText={text => handleChange(text, 'email')} value={readyPayload.email} />
       <Text> Password </Text>
       <Input onChangeText={text => handleChange(text, 'password')} value={readyPayload.password} secureTextEntry={true} />
-      <Button title="Log In" onPress={() => setLoggedIn(true)} />
+      <Button title="Log In" onPress={verify} />
       <Button title="Sign Up" onPress={() => navigation.navigate('SignUp')} />
     </View>
+  </>
   );
 }
 
