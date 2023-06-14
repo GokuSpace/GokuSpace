@@ -15,7 +15,7 @@ export default function AnimePicker({form, setForm}) {
   const [trigger, setTrigger] = useState(false);
 
   useEffect(() => {
-    axios.get(`${SERVER}/anime`)
+    axios.get(`http://${SERVER}/anime`)
     .then(res => {
       const formattedAnimeData = res.data.anime.map((anime) => ({
         key: anime.id.toString(),
