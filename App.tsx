@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { ThemeProvider, createTheme } from '@rneui/themed';
 import { StatusBar } from "expo-status-bar";
-import { createContext, useState, useState } from 'react';
+import { createContext, useState } from 'react';
 import React, { Text, View } from "react-native";
 import "react-native-gesture-handler";
 import EventsScreen from "./screens/EventsScreen";
