@@ -3,11 +3,17 @@ import events from './controllers/events';
 import friends from './controllers/friends';
 import controller from './controllers/index';
 import posts from './controllers/posts';
+import profile from './controllers/profile';
 
 const router = Router();
 
 router.get('/accounts', controller.getAccounts);
 router.get('/users', controller.getUsers);
+
+//** Profile **//
+router.get("/users/:id", profile.getUserById);
+// router.put("/users/:id", profile.updateUserById);
+router.put("/posts/:id", profile.updateIsDeletedByPostId)
 
 //** Friends **//
 router.get('/users/:user_id/friends', friends.getFriends);
@@ -42,4 +48,4 @@ router.get('/messages', controller.getMessages);
 router.post('/login', controller.account.login);
 router.post('/signup', controller.account.post);
 
-export default router;
+export default router

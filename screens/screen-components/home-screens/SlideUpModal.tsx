@@ -33,12 +33,12 @@ export const SlideUpModal = ({ isVisible, onClose, onPost }) => {
   return (
     <Animated.View
       style={[
-        styles.container,
-        { transform: [{ translateY: slideAnim }] }
+        // styles.container,
+        // { transform: [{ translateY: slideAnim }] }
       ]}
     >
       <View style={styles.modal}>
-        <TextInput 
+        <TextInput
           placeholder="Write your post here..."
           multiline
           style={styles.textInput}

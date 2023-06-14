@@ -1,12 +1,20 @@
 import { Text, View, Modal, KeyboardAvoidingView } from "react-native";
 import { Input, Button } from '@rneui/themed';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import bcrypt from 'bcryptjs-react';
 import AnimePicker from "./AnimePicker";
+import { userContext } from '../../App';
+import * as Crypto from 'expo-crypto';
+import { SERVER } from '@env';
 
+
+// Set the random fallback using expo-random
 export default function SignupScreen({ setLoggedIn }) {
   const navigation = useNavigation();
+
+  const { setCurrentUser } = useContext(userContext);
   const [confirm, setConfirm] = useState('');
   const [error, setError] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
@@ -16,11 +24,27 @@ export default function SignupScreen({ setLoggedIn }) {
     lastName: '',
     favoriteAnimeId: '',
     favoriteCharacter: '',
-    user: '',
+    username: '',
     email: '',
     zipcode: '',
     password: '',
   });
+
+  const submitForm = () => {
+    bcrypt.setRandomFallback(async (len) => {
+      const randomBytes = await Crypto.getRandomBytesAsync(len);
+      return randomBytes;
+    });
+    form.password = hash(form.password)
+    axios.post(`http://${SERVER}/signup`, form)
+    .then(res => {
+      setCurrentUser(res.data)
+      setLoggedIn(true);
+    })
+    .catch(err => {
+        console.log(err)
+      })
+  }
 
   const validateEmail = () => {
     const re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -38,19 +62,15 @@ export default function SignupScreen({ setLoggedIn }) {
   }
 
   const hash = (potatoes) => {
-    const salt = bcrypt.genSaltSync(10);
-    const browns = bcrypt.hashSync(potatoes, salt);
+    //const salt = bcrypt.genSaltSync(10);
+    const browns = bcrypt.hashSync(potatoes, 10);
     return browns;
   }
 
 
 
   const formValidate1 = () => {
-    if (form.firstName === '' || form.firstName.length < 2) {
-      setModalVisible(true);
-      return;
-    }
-
+    // form validation if time
     setSignupPage(false);
   }
 
@@ -96,7 +116,7 @@ export default function SignupScreen({ setLoggedIn }) {
       <Input onChangeText={text => changeForm(text, 'password')} value={form.password} secureTextEntry={true} passwordRules={null}/>
       <Text>Confirm Password</Text>
       <Input onChangeText={setConfirm} value={confirm} secureTextEntry={true} passwordRules={null}/>
-      <Button title="Sign Up" onPress={() => setLoggedIn(true)}></Button>
+      <Button title="Sign Up" onPress={submitForm}></Button>
     </>}
       {/* </KeyboardAvoidingView> */}
     </>
