@@ -1,14 +1,17 @@
-import React, { Text, View } from "react-native";
+import React, { Text, View, Modal } from "react-native";
 import { Input, Button } from '@rneui/themed';
 import { useState, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import SignupScreen from "./SignupScreen";
+import axios from 'axios';
+import {SERVER} from '@env';
 import bcrypt from 'bcryptjs-react';
-import {userContext} from '../../App';
 import * as Crypto from 'expo-crypto';
+import { userContext } from "../../App";
 
 function LoginScreen({ setLoggedIn }) {
   const navigation = useNavigation();
+  const { setCurrentUser } = useContext(userContext)
   const [modalVisible, setModalVisible] = useState(false);
   const [readyPayload, setReadyPayload] = useState({
     email: '',
@@ -27,7 +30,7 @@ function LoginScreen({ setLoggedIn }) {
     }
     axios.post(`http://${SERVER}/login`, info)
       .then((res) => {
-        // set user data res.data
+        setCurrentUser(res.data)
         setLoggedIn(true);
       })
       .catch((err) => {
