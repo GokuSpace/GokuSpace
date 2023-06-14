@@ -2,13 +2,10 @@ import { Router } from 'express';
 import events from './controllers/events';
 import friends from './controllers/friends';
 import controller from './controllers/index';
-import posts from './controllers/posts';
+import posts from './controllers/post';
 import profile from './controllers/profile';
 
 const router = Router();
-
-router.get('/accounts', controller.getAccounts);
-router.get('/users', controller.getUsers);
 
 //** Profile **//
 router.get("/users/:id", profile.getUserById); // called in... screens/ProfileScreen.tsx <-- CONFIRM WORKS
@@ -34,21 +31,9 @@ router.get('/anime', controller.anime.all)
 router.get('/anime/titles', controller.anime.titles)
 
 //** Posts **//
-router.get('/posts', posts.getPosts);
+router.get('/posts', controller.post.getPosts);
 
-
-router.get('/friends', controller.getFriends);
-router.get('/votes', controller.getVotes);
-router.get('/events', controller.getEvents);
-router.get('/chatrooms', controller.getChatrooms);
-router.get('/messages', controller.getMessages);
-router.get('/users', controller.getUsers);
-router.get('/friends', controller.getFriends);
-router.get('/votes', controller.getVotes);
-router.get('/events', controller.getEvents);
-router.get('/chatrooms', controller.getChatrooms);
-router.get('/messages', controller.getMessages);
-
+//** Auth **//
 router.post('/login', controller.account.login);
 router.post('/signup', controller.account.post);
 

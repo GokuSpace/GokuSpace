@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import prisma from '../../lib';
 
-export default {
+const post = {
 
   getPosts: async function(req: Request, res: Response) {
     const posts = await prisma.post.findMany({
@@ -29,3 +29,5 @@ export default {
   },
 
 }
+
+export default post;

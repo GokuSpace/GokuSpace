@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from "react";
 import React, { Dimensions, ScrollView, Text, View } from "react-native";
 import characters from "../characters";
-import getPosts from "../server/controllers/posts";
+import getPosts from "../server/controllers/post";
 import { SlideUpModal } from './screen-components/home-screens/SlideUpModal';
 import { SERVER } from "@env";
 

@@ -8,10 +8,10 @@ import AnimePicker from "./auth/AnimePicker";
 
 function TrendingScreen() {
 const [animeList, setAnimeList] = useState([{title: "loading anime titles"}]);
+console.log(animeList)
 useEffect(() => {
    axios.get(`http://${SERVER}/anime/titles`)
   .then((res) => {
-    console.log(res.data)
      setAnimeList(res.data)
   })
   .catch(err => {
@@ -20,18 +20,14 @@ useEffect(() => {
 }, [])
 
   return (
-    <View>
-      {animeList.length > 1
-      ? <ScrollView>
-          {animeList.map((anime, i) => {
-            <AnimeItem
-              anime={anime}
-              key={i}
-            />
-          })}
-        </ScrollView>
-      : <Text>loading...</Text>}
-    </View>
+
+      animeList.length > 1
+      ?
+          animeList.map((anime, i) => {
+            <ListItem>{anime.title}</ListItem>
+          })
+      : <Text>loading...</Text>
+
   );
 }
 
