@@ -3,6 +3,7 @@ import React, { Text, View, Button, Image, TextInput } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import tw from 'tailwind-react-native-classnames';
 import { useState } from "react";
+import axios from "axios";
 
 function UpdateProfileScreen() {
 
@@ -23,12 +24,17 @@ function UpdateProfileScreen() {
     };
     //axios PUT request
     //axios.put(`/userProfile/:userID`, updatedProfile).then
-    
-     //setEditedUsername("")
-     //setEditedZipcode("")
-     //setEditedBio("")
-
-    navigation.goBack();
+    // axios.put("http://localhost:3000/userProfile/cliuk0wnb0002uz6aw5dc3jrg", updatedProfile)
+    // .then(() => {
+    //   setEditedUsername("");
+    //   setEditedZipcode("");
+    //   setEditedBio("");
+    //   navigation.goBack();
+    // })
+    // .catch((error) => {
+    //   console.log(error);
+    // });
+    //^^^^^^^^^^ CONFIRM WORKS
   }
 
   return (
