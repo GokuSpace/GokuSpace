@@ -38,7 +38,7 @@ export const userContext = createContext(null);
 
 export default function AppTabs() {
 
-  const [loggedIn, setLoggedIn] = useState(DEV === true);
+  const [loggedIn, setLoggedIn] = useState(DEV === 'true');
   const [currentUser, setCurrentUser] = useState({});
 
   if (loggedIn) {

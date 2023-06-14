@@ -4,6 +4,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import userData from '../jerryMockDataFolder/getUserById.json';
+import { SERVER } from '@env';
 
 
 function ProfileScreen() { //take in a userId and then make axios call with that...
@@ -32,7 +33,7 @@ function ProfileScreen() { //take in a userId and then make axios call with that
 
   const fetchUserProfile = async () => {
     try {
-      const response = await axios.get('https://localhost:3000/users/cliuk0wnb0002uz6aw5dc3jrg');
+      const response = await axios.get('https://SERVER/users/cliuk0wnb0002uz6aw5dc3jrg');
       const userData = response.data;
       setProfile(userData);
     } catch (error) {

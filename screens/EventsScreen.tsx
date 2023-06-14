@@ -1,30 +1,38 @@
 import React, { Text, View, ScrollView } from "react-native";
 import { Avatar, Button, ListItem, Tab } from "@rneui/themed";
 import { useEffect, useState } from "react";
-
+import Slider from "react-native-slider";
 import EventListEntry from "./screen-components/events-screens/EventListEntry";
 import tw from 'tailwind-react-native-classnames';
 import axios from 'axios';
+import { SERVER } from '@env';
+import getEventsByDistance20 from '../jerryMockDataFolder/getEventsByDistance20.json';
+import getEventsByDistance50 from '../jerryMockDataFolder/getEventsByDistance50.json';
+import getEventsByDistance100 from '../jerryMockDataFolder/getEventsByDistance100.json';
+import getEventsByDistanceAll from '../jerryMockDataFolder/getEventsByDistanceAll.json';
+import getMyRSVPevents from '../jerryMockDataFolder/getMyRSVPevents.json';
 
 
 function EventsScreen() {
 
-  const [userEvents, setUserEvents] = useState([]);
-  // const [index, setIndex] = useState(1);
+  const [displayedEvents, setDisplayedEvents] = useState([]);
+  const [myEvents, setMyEvents] = useState([]);
+  const [userEvents, setUserEvents] = useState([]); //represents all events
+  const [eventsWithin20, setEventsWithin20] = useState([]);
+  const [eventsWithin50, setEventsWithin50] = useState([]);
+  const [eventsWithin100, setEventsWithin100] = useState([]);
 
-  // let distanceFilter = events.filter((event) => event.name === "Cosplay Contest")
-  //let distance 20 = events...
-  //let distance 50 = events...
-  //let distance all = events...
-    //^^place this inside useEffect (perhaps diff one but similar to tabs)
-      //4 indexes for 4 distance filters
+  const [index, setIndex] = useState(1);
+  const [distance, setDistance] = useState(1);
 
-  //let myEvents = router.get('/users/:user_id/my_events', events.getUserEvents);
-    //use existing useEffect to render tab
+  const handleValueChange = (value) => {
+    setDistance(value);
+  };
 
-  const fetchUserEvents = () => {
+
+  const fetchAllUserEvents = () => {
     axios
-      .get("http://localhost:3000/users/cliuk0wnb0002uz6aw5dc3jrg/events", {
+      .get(`http://${SERVER}/users/cliuk0wnb0002uz6aw5dc3jrg/events`, {
         params: {
           distance: "all"
         }
@@ -37,26 +45,108 @@ function EventsScreen() {
       });
   };
 
+  const fetchEventsWithin20 = () => {
+    axios
+      .get(`http://${SERVER}/users/cliuk0wnb0002uz6aw5dc3jrg/events`, {
+        params: {
+          distance: "20"
+        }
+      })
+      .then(response => {
+        setEventsWithin20(response.data);
+      })
+      .catch(error => {
+        console.log('error with axios get for user events', error);
+      });
+  };
+
+  const fetchEventsWithin50 = () => {
+    axios
+      .get(`http://${SERVER}/users/cliuk0wnb0002uz6aw5dc3jrg/events`, {
+        params: {
+          distance: "50"
+        }
+      })
+      .then(response => {
+        setEventsWithin50(response.data);
+      })
+      .catch(error => {
+        console.log('error with axios get for user events', error);
+      });
+  };
+
+  const fetchEventsWithin100 = () => {
+    axios
+      .get(`http://${SERVER}/users/cliuk0wnb0002uz6aw5dc3jrg/events`, {
+        params: {
+          distance: "100"
+        }
+      })
+      .then(response => {
+        setEventsWithin100(response.data);
+      })
+      .catch(error => {
+        console.log('error with axios get for user events', error);
+      });
+  };
+
+  const fetchMyEvents = () => {
+    axios
+      .get(`http://${SERVER}/users/cliuk0wnb0002uz6aw5dc3jrg/my_events`)
+      .then(response => {
+        setMyEvents(response.data);
+      })
+      .catch(error => {
+        console.log('error with axios get for user events', error);
+      });
+  }
+
   useEffect(() => {
-    fetchUserEvents();
+    // fetchAllUserEvents();
+    // fetchMyEvents();
+    // fetchEventsWithin20();
+    // fetchEventsWithin50()
+    // fetchEventsWithin100()
+    setMyEvents(getMyRSVPevents);
+    setEventsWithin20(getEventsByDistance20);
+    setEventsWithin50(getEventsByDistance50);
+    setEventsWithin100(getEventsByDistance100);
+    setUserEvents(getEventsByDistanceAll);
   }, []);
 
-  // useEffect(() => {
-  //   switch (index) {
-  //     case 0:
-  //       setUserEvents(events);
-  //       break;
-  //     case 1:
-  //       setUserEvents(distanceFilter);
-  //       break;
-  //     default:
-  //       setUserEvents(events);
-  //   }
-  // }, [index]);
+  useEffect(() => {
+    let filteredEvents = [];
+    switch (index) {
+      case 0:
+        switch (distance) {
+          case 1:
+            filteredEvents = eventsWithin20;
+            break;
+          case 2:
+            filteredEvents = eventsWithin50;
+            break;
+          case 3:
+            filteredEvents = eventsWithin100;
+            break;
+          case 4:
+            filteredEvents = userEvents;
+            break;
+          default:
+            filteredEvents = userEvents;
+        }
+        break;
+      case 1:
+        filteredEvents = myEvents;
+        break;
+      default:
+        filteredEvents = userEvents;
+    }
+    setDisplayedEvents(filteredEvents);
+  }, [index, distance]);
 
   return (
     <>
-      {/* <Tab
+      <Tab
         onChange={(e) => setIndex(e)}
         indicatorStyle={{
           backgroundColor: "orange",
@@ -65,12 +155,34 @@ function EventsScreen() {
         variant="primary"
         value={index}
       >
-        <Tab.Item style={tw`bg-gray-300`} color="black" title="Date" />
-        <Tab.Item style={tw`bg-gray-300`} color="black" title="Distance" />
-      </Tab> */}
+        <Tab.Item style={tw`bg-gray-300`} color="black" title="Near Me" />
+        <Tab.Item style={tw`bg-gray-300`} color="black" title="My Events" />
+      </Tab>
+      {index === 0 && (
+        <View style={tw`flex items-center mb-8`}>
+          <Slider
+            style={tw`w-4/5 h-8`}
+            value={distance}
+            minimumValue={1}
+            maximumValue={4}
+            step={1}
+            onValueChange={handleValueChange}
+            minimumTrackTintColor="orange"
+            maximumTrackTintColor="gray"
+          />
+
+          <View style={tw`flex-row justify-between w-4/5 mt-2`}>
+            <Text style={[tw`text-xs`, distance === 1 && { color: 'orange' }]}>20 miles</Text>
+            <Text style={[tw`text-xs`, distance === 2 && { color: 'orange' }]}>50 miles</Text>
+            <Text style={[tw`text-xs`, distance === 3 && { color: 'orange' }]}>100 miles</Text>
+            <Text style={[tw`text-xs`, distance === 4 && { color: 'orange' }]}>All</Text>
+          </View>
+
+        </View>
+      )}
       <ScrollView>
         <>
-          {userEvents.map((event, i) => {
+          {displayedEvents.map((event, i) => {
             return (
               <EventListEntry event={event} key={i} />
             )
@@ -81,5 +193,6 @@ function EventsScreen() {
     </>
   );
 }
-//
+
+
 export default EventsScreen;
