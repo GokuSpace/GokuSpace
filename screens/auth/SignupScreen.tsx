@@ -14,7 +14,7 @@ import { SERVER } from '@env';
 export default function SignupScreen({ setLoggedIn }) {
   const navigation = useNavigation();
 
-  const { setCurrentUser } = useContext(userContext);
+  const { currentUser, setCurrentUser } = useContext(userContext);
   const [confirm, setConfirm] = useState('');
   const [error, setError] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
