@@ -1,18 +1,54 @@
 [
   {
-      "id": "cliv7ltdh0004uzjhdg5xnuaw",
-      "name": "Manga Discussion",
-      "startDate": "2023-06-02T00:00:00.000Z",
-      "picture": "",
-      "latitude": 34.0522,
-      "longitude": 118.2437
+    "id": "cliv9gckf0000uzjh9syxijkl",
+    "name": "Anime Karaoke Night",
+    "description": "Join us for a night of anime-themed karaoke where you can sing your favorite anime songs! Show off your vocal talents and enjoy the energetic atmosphere filled with fellow anime enthusiasts.",
+    "startDate": "2024-08-15T00:00:00.000Z",
+    "picture": "https://i.scdn.co/image/ab67616d0000b27366c9083cb382b3e4d9eb2e6b",
+    "latitude": 34.0522,
+    "longitude": 118.2437,
+    "address" : "1234 Pacific Beach Blvd, San Diego, CA 92109",
+    "friendsGoing": null,
+    "city" : "San Diego, CA",
+    "attendees": 105
   },
   {
-      "id": "cliv7jl5i0002uzjhpi0wg324",
-      "name": "Watch Party",
-      "startDate": "2023-06-22T10:00:00.000Z",
-      "picture": "",
-      "latitude": 34.0522,
-      "longitude": 118.2437
+    "id": "cliv9ltdh0004uzjhdg5mnopq",
+    "name": "Cosplay Contest",
+    "description": "Get ready to showcase your creativity and craftsmanship in our annual Cosplay Contest! Dress up as your favorite anime, manga, or gaming character and compete for fantastic prizes. Don't miss this opportunity to immerse yourself in the world of cosplay!",
+    "startDate": "2024-09-16T00:00:00.000Z",
+    "picture": "https://cdn11.bigcommerce.com/s-2gncvdgiio/images/stencil/1280x1280/products/78314/160150/Cute_Bear_Panda_Anime_Manga_Sexy_Girl_Japan_Cosplay_Wwn_020218_tik__39423.1587281428.jpg?c=1",
+    "latitude": 34.0522,
+    "longitude": 118.2437,
+    "address" : "321 Blissful Lane, Boston, MA 02116",
+    "friendsGoing": null,
+    "city" : "Boston, MA",
+    "attendees": 87
+  },
+  {
+    "id": "cliv9th6x0006uzjhu656rstu",
+    "name": "Japanese Tea Ceremony",
+    "description": "Experience the tranquility and grace of a traditional Japanese tea ceremony. Learn about the art of tea preparation, its significance in Japanese culture, and enjoy the serene atmosphere. Immerse yourself in this cultural experience and appreciate the beauty of simplicity.",
+    "startDate": "2024-10-17T00:00:00.000Z",
+    "picture": "https://png.pngtree.com/template/20220221/ourlarge/pngtree-original-simple-japanese-tea-ceremony-culture-poster-image_793968.jpg",
+    "latitude": 34.0522,
+    "longitude": 118.2437,
+    "address" : "45 Broadway, New York, NY 10013",
+    "friendsGoing": null,
+    "city" : "Brooklyn, NY",
+    "attendees": 42
+  },
+  {
+    "id": "cliv9ef9n0001uzjhljv7vwxyz",
+    "name": "Anime Gaming Tournament",
+    "description": "Battle it out in our epic anime gaming tournament! Test your skills against other gamers in popular anime-inspired games. From fighting games to RPGs, this tournament offers thrilling competition and a chance to claim the title of the ultimate anime gamer.",
+    "startDate": "2024-11-18T00:00:00.000Z",
+    "picture": "https://static.displate.com/857x1200/displate/2020-10-04/bcb8fc68900073388750476dff78a84f_ee9028fae8f3df2af6fa699f7b30f7a1.jpg",
+    "latitude": 34.0522,
+    "longitude": 118.2611,
+    "address" : "789 Shibuya Street, Shibuya-ku, Tokyo 150-0002",
+    "friendsGoing": null,
+    "city" : "Tokyo, Japan",
+    "attendees": 173
   }
 ]

@@ -22,8 +22,17 @@ const EventListEntry = ({ event }) => {
     <View style={tw`bg-white`}>
       <TouchableOpacity onPress={handleEventPress}>
         <ListItem bottomDivider>
+          <Avatar style={tw`h-16 w-16 flex justify-start`}
+            key={event.picture}
+            rounded
+            source={{
+              uri: event.picture,
+            }}
+          />
           <ListItem.Content>
             <ListItem.Title>{event.name}</ListItem.Title>
+            <ListItem.Subtitle>{new Date(event.startDate).toString().slice(0, 15)}</ListItem.Subtitle>
+            <ListItem.Subtitle>{event.city}</ListItem.Subtitle>
           </ListItem.Content>
         </ListItem>
       </TouchableOpacity>

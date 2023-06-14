@@ -22,7 +22,7 @@ function EventsScreen() {
   const [eventsWithin50, setEventsWithin50] = useState([]);
   const [eventsWithin100, setEventsWithin100] = useState([]);
 
-  const [index, setIndex] = useState(1);
+  const [index, setIndex] = useState(0);
   const [distance, setDistance] = useState(1);
 
   const handleValueChange = (value) => {
