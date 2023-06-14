@@ -43,3 +43,4 @@ const UserPage= ({ user }) => {
     </View>
   );
 }
+export default UserPage;
