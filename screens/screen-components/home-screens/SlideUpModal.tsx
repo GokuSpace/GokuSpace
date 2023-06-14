@@ -4,7 +4,7 @@ import { Animated, Dimensions, StyleSheet, Text, TextInput, TouchableOpacity, Vi
 
 export const SlideUpModal = ({ isVisible, onClose }) => {
   const [slideAnim] = useState(new Animated.Value(Dimensions.get('window').height));
-  
+
   useEffect(() => {
     Animated.timing(
       slideAnim,
@@ -19,12 +19,12 @@ export const SlideUpModal = ({ isVisible, onClose }) => {
   return (
     <Animated.View
       style={[
-        styles.container,
-        { transform: [{ translateY: slideAnim }] }
+        // styles.container,
+        // { transform: [{ translateY: slideAnim }] }
       ]}
     >
       <View style={styles.modal}>
-        <TextInput 
+        <TextInput
           placeholder="Write your post here..."
           multiline
           style={styles.textInput}

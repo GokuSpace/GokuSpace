@@ -89,8 +89,8 @@ model Post {
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now())
   isDeleted  Boolean  @default(false)
-  author     String
-  authorId   User     @relation(fields: [author], references: [id])
+  authorId   String
+  author     User     @relation(fields: [authorId], references: [id])
 }
 
 model Vote {

@@ -10,6 +10,7 @@ import * as Crypto from 'expo-crypto';
 import {SERVER} from '@env';
 import zipcodes from 'zipcodes';
 
+
 // Set the random fallback using expo-random
 export default function SignupScreen({ setLoggedIn }) {
   const navigation = useNavigation();

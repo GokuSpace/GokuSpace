@@ -4,14 +4,18 @@ import * as ImagePicker from 'expo-image-picker';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import tw from 'tailwind-react-native-classnames';
 import { MaterialIcons } from "@expo/vector-icons";
-import userProfilePics from "../../../userProfilePics";
+import { useRoute } from "@react-navigation/native";
+
+
 
 const EditProfilePictureScreen: React.FC = () => { //pass in userID, preferably would get the user's pictures (array) passed in as prop via useRoute
   const [images, setImages] = useState<string[]>(["", "", "", "", ""]);
 
+  const route = useRoute();
+  const { pictures } = route.params;
+
   useEffect(() => {
-    setImages(userProfilePics);
-    //GET profile pictures from the backend
+    setImages(pictures);
   }, [])
 
   const handleImageSelect = async (index: number) => {
@@ -59,7 +63,7 @@ const EditProfilePictureScreen: React.FC = () => { //pass in userID, preferably 
   };
 
   return (
-    <View style={tw`flex-1 items-center justify-center`}>
+    <View style={tw`flex-1 items-center justify-center bg-white`}>
 
       <Text style={tw`text-2xl font-bold mb-8`}>THIS IS THE PROFILE PICTURE SCREEN</Text>
       {renderBox(0)}
