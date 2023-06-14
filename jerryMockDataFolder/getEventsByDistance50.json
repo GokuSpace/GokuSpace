@@ -1,0 +1,52 @@
+[
+  {
+      "id": "cliv7gckf0000uzjh9syxabhe",
+      "name": "Anime Con",
+      "startDate": "2023-06-01T00:00:00.000Z",
+      "picture": "",
+      "latitude": 34.0522,
+      "longitude": 118.2437,
+      "friendsGoing": null,
+      "attendees": 8
+  },
+  {
+      "id": "cliv7ltdh0004uzjhdg5xnuaw",
+      "name": "Manga Discussion",
+      "startDate": "2023-06-02T00:00:00.000Z",
+      "picture": "",
+      "latitude": 34.0522,
+      "longitude": 118.2437,
+      "friendsGoing": null,
+      "attendees": 11
+  },
+  {
+      "id": "cliv7th6x0006uzjhu656dz49",
+      "name": "Japanese Class!",
+      "startDate": "2023-06-10T00:00:00.000Z",
+      "picture": "",
+      "latitude": 34.0522,
+      "longitude": 118.2437,
+      "friendsGoing": null,
+      "attendees": 1
+  },
+  {
+    "id": "cliv8ef9n0001uzjhljv7v7dp",
+    "name": "Cosplay Workshop 18 miles",
+    "startDate": "2023-06-10T00:00:00.000Z",
+    "picture": "",
+    "latitude": 34.0522,
+    "longitude": 118.2611,
+    "friendsGoing": null,
+    "attendees": 5
+  },
+  {
+    "id": "cliv8gqch0002uzjhwyfzuhhb",
+    "name": "Anime Movie Marathon 45 miles",
+    "startDate": "2023-06-10T00:00:00.000Z",
+    "picture": "",
+    "latitude": 34.2085,
+    "longitude": 118.4846,
+    "friendsGoing": null,
+    "attendees": 20
+  }
+]
