@@ -13,9 +13,13 @@ const userAction = {
         zipcode: userInfo.zipcode,
         latitude: userInfo.latitude,
         longitude: userInfo.longitude,
-        favoriteAnime: userInfo.favoriteAnimeId
+        favoriteAnime: userInfo.favoriteAnime ? {
+          connect: {id: userInfo.favoriteAnimeId}
+        } : undefined
           ? {
-              connect: { id: userInfo.favoriteAnimeId },
+        favoriteCharater: userInfo.      connect: { id ? {
+          connect: {id: userInfo.favoriteAnimeId }}
+        } : undefined,
             }
           : undefined,
         favoriteCharater: userInfo.favoriteCharacterId
