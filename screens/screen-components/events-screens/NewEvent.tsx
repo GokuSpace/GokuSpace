@@ -5,8 +5,8 @@ import { useState } from "react";
 import tw from 'tailwind-react-native-classnames';
 
 const NewEvent = () => {
-  const route = useRoute();
-  const { event } = route.params;
+
+
 
   return (
 
@@ -25,6 +25,7 @@ const NewEvent = () => {
         <Text style={tw`mt-6 font-bold`}>end date:</Text>
         <Text style={tw`mt-6 font-bold`}>time:</Text>
         <Text style={tw`mt-6 font-bold`}>Location:</Text>
+        <Text style={tw`mt-6 font-bold`}>Description:</Text>
       </View>
       <View style={tw`px-2`}>
         <TextInput style={tw`border px-2 py-1  text-gray-400 rounded-lg w-48`}  ></TextInput>
@@ -32,14 +33,14 @@ const NewEvent = () => {
         <TextInput style={tw`mt-4 border px-2 py-1 text-gray-400 rounded-lg`} ></TextInput>
         <TextInput style={tw`mt-4 border px-2 py-1 text-gray-400 rounded-lg`} ></TextInput>
         <TextInput style={tw`mt-4 border px-2 py-1 text-gray-400 rounded-lg`} ></TextInput>
-
+        <TextInput style={tw`mt-4 border px-2 py-1 text-gray-400 rounded-lg`} ></TextInput>
       </View>
     </View>
 
-    <View style={tw`flex-row px-5 mt-6 mr-4 `}>
+    {/* <View style={tw`flex-row px-5 mt-6 mr-4 `}>
       <Text style={tw`font-bold`}>Description: &nbsp;&nbsp;</Text>
       <TextInput style={tw` px-2 py-2 border text-gray-400 rounded-lg ml-2`} multiline={true} numberOfLines={4}></TextInput>
-    </View>
+    </View> */}
 
       <View style={tw`flex flex-row justify-center mt-6 `}>
         <View style={tw` mt-6 border rounded-3xl px-16 py-2 bg-black`}>
