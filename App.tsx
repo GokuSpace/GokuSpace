@@ -18,6 +18,9 @@ import VotesHistory from './screens/screen-components/home-screens/VotesHistory'
 import EditProfilePictureScreen from './screens/screen-components/profile-screens/EditProfilePictureScreen';
 import UpdateProfileScreen from './screens/screen-components/profile-screens/UpdateProfileScreen';
 import ViewUsersPostsScreen from './screens/screen-components/profile-screens/UsersPosts';
+import animeSeries from './animeSeries';
+import SeriesPicker from './screens/auth/seriesPicker/SeriesPicker';
+import CharPicker from './screens/auth/charPicker/CharPicker';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -176,6 +179,25 @@ export default function AppTabs() {
               <Stack.Screen name="SignUp">
                 {(props) => (
                   <SignupScreen {...props} setLoggedIn={setLoggedIn} />
+                )}
+              </Stack.Screen>
+              <Stack.Screen name="seriesPicker">
+                {(props) => (
+                  <SeriesPicker
+                    {...props}
+                    data={animeSeries}
+                    opining={"What's your favorite Series?"}
+                  />
+                )}
+              </Stack.Screen>
+              <Stack.Screen name="charPicker">
+                {(props) => (
+                  <CharPicker
+                    {...props}
+                    data={animeSeries}
+                    opining={"What's your favorite character?"}
+                    setLoggedIn={setLoggedIn}
+                  />
                 )}
               </Stack.Screen>
             </Stack.Navigator>

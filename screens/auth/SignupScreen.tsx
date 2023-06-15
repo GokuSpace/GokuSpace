@@ -13,7 +13,7 @@ import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import bcrypt from 'bcryptjs-react';
-import AnimePicker from './AnimePicker';
+import AnimePicker from './AnimePicker-unused';
 import { userContext } from '../../App';
 import * as Crypto from 'expo-crypto';
 import { SERVER } from '@env';
@@ -180,7 +180,7 @@ export default function SignupScreen({ setLoggedIn }) {
         />
 
         <TouchableOpacity
-          onPress={() => setLoggedIn(true)}
+          onPress={() => navigation.navigate('seriesPicker')}
           style={styles.signUpButton}
         >
           <Text style={styles.buttonText}>Sign Up</Text>
