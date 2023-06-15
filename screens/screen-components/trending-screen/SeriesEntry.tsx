@@ -2,8 +2,8 @@
 import React from 'react';
 import { Avatar, ListItem } from 'react-native-elements';
 
-const SeriesEntry = ({ serie }) => (
-  <ListItem>
+const SeriesEntry = ({ serie, setNext }) => (
+  <ListItem onPress={() => setNext(true)}>
     <Avatar rounded
     source={{
       uri: serie.url,

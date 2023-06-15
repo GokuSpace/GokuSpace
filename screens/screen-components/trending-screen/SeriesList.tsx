@@ -4,7 +4,7 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 import SeriesEntry from './SeriesEntry';
 
-const SeriesList = ({series, search }) => {
+const SeriesList = ({series, search, setNext }) => {
   const notFound = {title: 'NO MATCH'};
   const filtered = series.filter((serie) => {
     if (search === '') {
@@ -17,8 +17,8 @@ const SeriesList = ({series, search }) => {
   return (
     <ScrollView>
       { filtered.length ?
-      (filtered.map((serie) => <SeriesEntry key={serie.id} serie={serie} />))
-      : (<SeriesEntry key='notFound' serie={notFound} />)}
+      (filtered.map((serie) => <SeriesEntry key={serie.id} serie={serie} setNext={setNext}/>))
+      : (<SeriesEntry key='notFound' serie={notFound} setNext={setNext}/>)}
     </ScrollView>
   );
 }

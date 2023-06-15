@@ -12,7 +12,7 @@ function TrendingScreen() {
     <>
       {!skip &&
 
-          <Picker data={animeSeries} opining={'What are you watching?'} next={setSkip}/>
+          <Picker data={animeSeries} opining={'What are you watching?'} setNext={setSkip}/>
       }
       {skip &&
         <TrendingView />
