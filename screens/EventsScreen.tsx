@@ -171,8 +171,8 @@ function EventsScreen() {
         variant="primary"
         value={index}
       >
-        <Tab.Item style={tw`bg-gray-300`} color="black" title="Near Me" />
-        <Tab.Item style={tw`bg-gray-300`} color="black" title="My Events" />
+        <Tab.Item style={[tw`bg-gray-300`, { backgroundColor: 'orange' }]} color="black" title="Near Me" />
+        <Tab.Item style={[tw`bg-gray-300`, { backgroundColor: 'orange' }]} color="black" title="My Events" />
       </Tab>
       {index === 0 && (
         <View style={[tw`flex items-center mb-8`, { backgroundColor: 'white' }]}>
