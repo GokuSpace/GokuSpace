@@ -7,7 +7,7 @@
     "latitude": 34.0522,
     "longitude": 118.2437,
     "address" : "1164 Main Street, Los Angeles, CA 90001",
-    "friendsGoing": null,
+    "friendsGoing": true,
     "attendees": 83,
     "city" : "Los Angeles, CA",
     "description": "Get ready for the ultimate anime extravaganza! Anime Con is a celebration of Japanese animation and pop culture. Immerse yourself in a world of cosplay, attend exciting panels, meet your favorite voice actors, and explore a bustling marketplace filled with anime merchandise."
@@ -46,7 +46,7 @@
     "latitude": 34.0522,
     "longitude": 118.2611,
     "address" : "163 Wilshire Boulevard, Los Angeles, CA 90017",
-    "friendsGoing": null,
+    "friendsGoing": true,
     "attendees": 58,
     "city" : "Los Angeles, CA",
     "description": "Unleash your creativity and learn the art of cosplay at our Cosplay Workshop. Discover the techniques behind crafting costumes, props, and makeup to bring your favorite characters to life. Join a supportive community of cosplayers, share tips and tricks, and take your cosplay skills to the next level."
@@ -59,7 +59,7 @@
     "latitude": 34.2085,
     "longitude": 118.4846,
     "address" : "1645 Magnolia Way, Irvine, CA 92612",
-    "friendsGoing": null,
+    "friendsGoing": true,
     "attendees": 20,
     "city" : "Irvine, CA",
     "description": "Immerse yourself in a cinematic journey through the world of anime at our Anime Movie Marathon. Experience a handpicked selection of captivating films spanning various genres and art styles. From thrilling action to heartwarming stories, this marathon is a must-attend event for anime fans seeking an unforgettable movie-watching experience."
@@ -86,7 +86,7 @@
     "longitude": -122.4194,
     "address" : "5678 Mira Avenue, Riverside, CA 92506",
     "city" : "Riverside, CA",
-    "friendsGoing": null,
+    "friendsGoing": true,
     "attendees": 500,
     "description": "Join thousands of anime enthusiasts at the Anime Convention, a grand gathering celebrating the vibrant world of Japanese animation. Experience a weekend filled with cosplayers showcasing their intricate costumes, engaging panels featuring industry experts, exclusive merchandise, and unforgettable moments shared with fellow fans. Get ready for an unforgettable experience that captures the essence of anime culture."
   }

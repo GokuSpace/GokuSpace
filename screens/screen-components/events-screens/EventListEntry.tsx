@@ -10,7 +10,7 @@ const EventListEntry = ({ event, handleRSVPpress }) => {
   const navigation = useNavigation();
 
   const handleEventPress = () => {
-    navigation.navigate("EventDetails", { event: event, handleRSVPpress: handleRSVPpress });
+    navigation.navigate("Event Details", { event: event, handleRSVPpress: handleRSVPpress });
   }
 
   return (

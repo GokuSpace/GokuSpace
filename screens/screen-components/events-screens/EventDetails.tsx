@@ -1,4 +1,4 @@
-import React, { Text, View, Button, ScrollView, Pressable, TextInput, Image } from "react-native";
+import React, { Text, View, Button, ScrollView, Pressable, TextInput, Image,  } from "react-native";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import { Avatar, ListItem, Tab } from "@rneui/themed";
 import { useState } from "react";
@@ -43,7 +43,7 @@ const EventDetails = () => {
       </View>
 
       <View style={tw`flex flex-row justify-center mt-6 `}>
-        <View style={tw` mt-6 border rounded-3xl px-16 py-2 bg-black`}>
+        <View style={[tw` mt-6 rounded-3xl px-16 py-2 bg-black`, { backgroundColor: 'orange' }]}>   
           <Button color="white" title="RSVP" onPress={handleRSVP} />
         </View>
       </View>

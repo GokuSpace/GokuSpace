@@ -7,7 +7,7 @@ import GestureRecognizer, {
 } from 'react-native-swipe-gestures';
 import axios from "axios";
 import { SERVER } from '@env';
-import Carousel from 'react-native-snap-carousel';
+// import Carousel from 'react-native-snap-carousel';
 
 function UpdateProfileScreen() {
 
@@ -56,7 +56,7 @@ function UpdateProfileScreen() {
 
   return (
     <View style={tw`bg-white flex-1`}>
-      <View style={tw`justify-center items-center mt-6 `}>
+      {/* <View style={tw`justify-center items-center mt-6 `}>
         <Carousel
           data={images}
           renderItem={({ item }) => (
@@ -77,7 +77,7 @@ function UpdateProfileScreen() {
           initialScrollIndex={0}
           firstItem={0}
         />
-      </View>
+      </View> */}
 
       {/* <GestureRecognizer
         onSwipeLeft={onSwipeLeft}
@@ -117,11 +117,10 @@ function UpdateProfileScreen() {
       </View>
 
       <View style={tw`flex flex-row justify-center mt-6 `}>
-        <View style={tw`mt-6 border rounded-2xl px-2 bg-black`} >
+        <View style={[tw`mt-6 rounded-2xl px-2 bg-black`, { backgroundColor: 'orange' }]} >
           <Button color="white" title="Save" onPress={handleProfileSavePress} />
         </View>
       </View>
-
 
     </View>
   );

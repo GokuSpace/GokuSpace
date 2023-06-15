@@ -34,7 +34,7 @@
     "latitude": 34.0522,
     "longitude": 118.2437,
     "address" : "45 Broadway, New York, NY 10013",
-    "friendsGoing": null,
+    "friendsGoing": true,
     "city" : "Brooklyn, NY",
     "attendees": 42
   },
