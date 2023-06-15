@@ -1,8 +1,12 @@
  import prisma from "../../lib";
 
 const post = {
-  deleteAll: () => {
-    return prisma.post.deleteMany();
+  delete: (id) => {
+    return prisma.post.delete({
+      where: {
+        id: id,
+      }
+    });
   },
 
   create: (reqbody) => {
@@ -12,7 +16,7 @@ const post = {
         title: title,
         body: body,
         attachment: attachment ? attachment : null,
-        authorId: authorId
+        author: authorId
       }
     })
   },
@@ -24,8 +28,9 @@ const post = {
         title: true,
         body: true,
         isDeleted: true,
-
-      }
+        attachment: true,
+        author: true,
+      },
     })
   },
 };

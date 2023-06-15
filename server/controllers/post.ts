@@ -24,7 +24,7 @@ const post = {
       })
   },
   delete: (req, res) => {
-    models.post.deleteAll()
+    models.post.delete(req.body.id)
     .then(result => {
       res.sendStatus(200)
     })
