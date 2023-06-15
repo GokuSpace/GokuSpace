@@ -44,54 +44,67 @@ export default function AppTabs() {
         <ThemeProvider theme={theme}>
           <NavigationContainer>
             <Tab.Navigator>
-              <Tab.Screen 
-                name="Home" 
-                component={HomeScreen} 
+              <Tab.Screen
+                name="Home"
+                component={HomeScreen}
                 options={{
                   tabBarIcon: ({ color, size }) => (
                     <Icon name="home" type='font-awesome-5' color={color} size={size} />
                   ),
                 }}
               />
-              <Tab.Screen 
-                name="Friends" 
-                component={FriendScreen} 
+              <Tab.Screen
+                name="Friends"
+                component={FriendScreen}
                 options={{
                   tabBarIcon: ({ color, size }) => (
                     <Icon name="user-friends" type='font-awesome-5' color={color} size={size} />
                   ),
                 }}
               />
-              <Tab.Screen 
-                name="Trending" 
-                component={TrendingScreen} 
+              <Tab.Screen
+                name="Trending"
+                component={TrendingScreen}
                 options={{
                   tabBarIcon: ({ color, size }) => (
                     <Icon name="star" type='font-awesome-5' color={color} size={size} />
                   ),
                 }}
               />
-              <Tab.Screen 
-                name="Events" 
-                component={EventsScreen} 
-                options={{
-                  tabBarIcon: ({ color, size }) => (
+
+              <Tab.Screen name="Events" options={{
+                headerShown: false, tabBarIcon: ({ color, size }) => (
                     <Icon name="calendar" type='font-awesome-5' color={color} size={size} />
-                  ),
-                }}
-              />
-              <Tab.Screen 
-                name="Profile" 
-                component={ProfileScreen} 
-                options={{
-                  tabBarIcon: ({ color, size }) => (
-                    <Avatar 
-                    source={{uri: "https://cdn.myanimelist.net/images/anime/1223/96541.jpg?s=2ab13dc6a3e874f5dc8b7229632f8c1f"}}
+                  )}}>
+                {() => (
+                  <Stack.Navigator>
+                    <Stack.Screen name="EventsScreen" component={EventsScreen} />
+                    <Stack.Screen name="EventDetails" component={EventDetails} />
+                    <Stack.Screen name="NewEvent" component={NewEvent} />
+                  </Stack.Navigator>
+                )}
+              </Tab.Screen>
+
+
+              <Tab.Screen name="Profile" options={{
+                headerShown: false, tabBarIcon: ({ color, size }) => (
+                  <Avatar
+                    source={{ uri: "https://cdn.myanimelist.net/images/anime/1223/96541.jpg?s=2ab13dc6a3e874f5dc8b7229632f8c1f" }}
                     size={size}
                     rounded />
-                  ),
-                }}
-              />
+                )
+              }}>
+                {() => (
+                  <Stack.Navigator>
+                    <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+                    <Stack.Screen name="EditProfilePictureScreen" component={EditProfilePictureScreen} />
+                    <Stack.Screen name="UpdateProfileScreen" component={UpdateProfileScreen} />
+                    <Stack.Screen name="ViewUsersPostsScreen" component={ViewUsersPostsScreen} />
+                    <Stack.Screen name="VotesHistory" component={VotesHistory} />
+                  </Stack.Navigator>
+                )}
+              </Tab.Screen>
+              
             </Tab.Navigator>
           </NavigationContainer >
         </ThemeProvider>
