@@ -26,4 +26,5 @@ const Posts = ({ user }) => {
     </ScrollView>
   );
 }
+export default Posts;
 

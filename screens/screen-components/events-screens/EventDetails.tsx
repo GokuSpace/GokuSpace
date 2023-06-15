@@ -7,23 +7,23 @@ import axios from 'axios';
 
 const EventDetails = () => {
   const route = useRoute();
-  const { event } = route.params;
+  const { event, handleRSVPpress} = route.params;
   const navigation = useNavigation();
 
   const handleRSVP = () => {
-    console.log(event.id); //cliv7gckf0000uzjh9syxabhe exists
-    axios
-      .put(`http://localhost:3000/events/${event.id}/rsvp`, {
-        params: {
-          user_id: "cliuk0wnb0002uz6aw5dc3jrg" // HARDCODED
-        }
-      })
-      .then(() => {
-        navigation.goBack();
-      })
-      .catch(error => {
-        console.log('error with axios rsvp', error);
-      });
+    // console.log(event.id); //cliv7gckf0000uzjh9syxabhe exists
+    // axios
+    // .put(`http://localhost:3000/events/${event.id}/rsvp`, {
+    //   user_id: "cliuk0wnb0002uz6aw5dc3jrg" // HARDCODED
+    // })
+    //   .then(() => {
+    //
+    //   })
+    //   .catch(error => {
+    //     console.log('error with axios rsvp', error);
+    //   });
+    handleRSVPpress(event);
+    navigation.goBack();
   };
 
   return (
@@ -31,9 +31,7 @@ const EventDetails = () => {
     <View style={tw`bg-white h-full`}>
 
       <View style={tw`flex justify-center items-center mt-6`}>
-        <Image style={tw`h-52 w-52`}
-          source={require("../../../assets/profile-photo.png")}
-        />
+      <Image style={[tw`h-52 w-52 rounded-full`]} source={{ uri: event.picture }} />
         <Text style={tw`mt-6 font-bold text-base text-lg`}>{event.name}</Text>
         <Text style={tw`mt-6 font-bold text-base text-sm`}>{new Date(event.startDate).toString().slice(0, 15)}</Text>
         <Text style={tw`mt-2 text-base text-xs text-gray-400`}>{event.attendees} people responded</Text>
@@ -41,7 +39,7 @@ const EventDetails = () => {
 
       <View style={tw`flex justify-center items-center  mt-10 `}>
         <Text style={tw`px-3`}>{event.description}</Text>
-        <Text style={tw`px-3 mt-16 font-bold`}>longitude: {event.longitude}, latitude: {event.latitude}</Text>
+        <Text style={tw`px-3 mt-16 font-bold`}>{event.address}</Text>
       </View>
 
       <View style={tw`flex flex-row justify-center mt-6 `}>

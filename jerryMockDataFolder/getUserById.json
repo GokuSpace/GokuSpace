@@ -20,9 +20,10 @@
         "name": "Ryuk"
     },
     "bio": "This app is the best app ever made, no one can do it better than this.",
-    "zipcode": "95608",
+    "zipcode": "90010",
     "latitude": 34.0522,
     "longitude": 118.2437,
+    "location": "Los Angeles",
     "lastVoteTime": null,
     "watchingNowId": null,
     "watchSelectionTime": null,
