@@ -17,6 +17,12 @@ export const SlideUpModal = ({ isVisible, onClose }) => {
       title: currentUser.username,
       body: postBody
     })
+    .then(res => {
+      onClose()
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
   const pickImageAsync = async () => {
