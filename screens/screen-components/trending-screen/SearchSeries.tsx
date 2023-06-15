@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import { SearchBar } from 'react-native-elements';
 
 const SearchSeries = ({search, setSearch}) => {
-
-  const updateSearch = (search: string) => {
+  const updateSearch = (search) => {
     setSearch(search);
   };
 
@@ -18,9 +17,3 @@ const SearchSeries = ({search, setSearch}) => {
 }
 
 export default SearchSeries;
-
-
-
-
-
-

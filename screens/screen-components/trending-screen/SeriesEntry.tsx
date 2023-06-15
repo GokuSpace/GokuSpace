@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react-native';
+import React from 'react';
 import { Avatar, ListItem } from 'react-native-elements';
 
 const SeriesEntry = ({ serie }) => (
@@ -11,7 +11,6 @@ const SeriesEntry = ({ serie }) => (
     <ListItem.Title >
       {serie.title}
     </ListItem.Title>
-
   </ListItem>
 );
 
