@@ -90,7 +90,7 @@ export default function AppTabs() {
               <Tab.Screen name="Profile" options={{
                 headerShown: false, tabBarIcon: ({ color, size }) => (
                   <Avatar
-                    source={{ uri: "https://cdn.myanimelist.net/images/anime/1223/96541.jpg?s=2ab13dc6a3e874f5dc8b7229632f8c1f" }}
+                    source={{ uri: "https://avatarfiles.alphacoders.com/347/347546.png" }}
                     size={size}
                     rounded />
                 )

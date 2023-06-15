@@ -51,9 +51,7 @@ function ProfileScreen() { //take in a userId and then make axios call with that
     <View style={tw`bg-white h-full`}>
 
       <View style={tw`flex justify-center items-center mt-6`}>
-        <Image style={tw`h-52 w-52`}
-          source={require("../assets/profile-photo.png")}
-        />
+        {profile.pictures && <Image style={[tw`h-52 w-52 rounded-full`]} source={{ uri: profile.pictures[0] }} />}
         <Text style={tw`mt-6 font-bold text-base text-lg`}>@{profile.username}</Text>
         <View style={tw`mt-6 border rounded-2xl px-2 px-2 bg-black`} >
           <Button color="white" title="Update Profile" onPress={handleUpdatePress} />
@@ -69,7 +67,7 @@ function ProfileScreen() { //take in a userId and then make axios call with that
         <View style={tw`px-10`}>
           <Text>{profile.favoriteAnime ? profile.favoriteAnime.title : ""}</Text>
           <Text style={tw`mt-6`}>{profile.favoriteCharater ? profile.favoriteCharater.name : ""}</Text>
-          <Text style={tw`mt-6`}>{profile.zipcode}</Text>
+          <Text style={tw`mt-6`}>{profile.location}</Text>
         </View>
       </View>
 
