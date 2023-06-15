@@ -7,6 +7,7 @@ import {
   TextInput,
   Image,
   Pressable,
+  SafeAreaView,
 } from 'react-native';
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
@@ -96,94 +97,103 @@ export default function SignupScreen({ setLoggedIn }) {
   };
 
   return (
-    <View style={styles.outer}>
-      <View style={styles.photoContainer}>
-        {userPhoto ? (
-          <Image />
-        ) : (
-          <MaterialIcons name="person" size={100} color="black" />
-        )}
+    <KeyboardAvoidingView style={styles.outer} behavior="height">
+      <SafeAreaView style={styles.inner}>
+        <View style={styles.photoContainer}>
+          {userPhoto ? (
+            <Image />
+          ) : (
+            <MaterialIcons name="person" size={100} color="black" />
+          )}
+          <Pressable
+            // onPress={() => setLoggedIn(true)}
+            style={styles.addPhotoButton}
+          >
+            <Text style={styles.addPhotoButtonText}>Add Photo</Text>
+          </Pressable>
+        </View>
+
+        <View style={styles.nameContainer}>
+          <TextInput
+            onChangeText={(text) => changeForm(text, 'firstName')}
+            value={form.firstName}
+            placeholder="First Name"
+            style={styles.nameInput}
+          />
+          <TextInput
+            onChangeText={(text) => changeForm(text, 'lastName')}
+            value={form.lastName}
+            placeholder="Last Name"
+            style={styles.nameInput}
+          />
+        </View>
+
+        <View style={styles.favsContainer}>
+          <Text
+            style={!favoriteAnime ? styles.preFavInput : styles.postFavInput}
+          >
+            {favoriteAnime ? favoriteAnime : 'Favorite Anime'}
+          </Text>
+
+          <Text
+            style={
+              !favoriteAnimeChar ? styles.preFavInput : styles.postFavInput
+            }
+          >
+            {favoriteAnimeChar ? favoriteAnimeChar : 'Favorite Character'}
+          </Text>
+        </View>
+
+        <TextInput
+          onChangeText={(text) => changeForm(text, 'username')}
+          value={form.username}
+          placeholder="Username"
+          style={styles.input}
+        />
+        <TextInput
+          onChangeText={(text) => changeForm(text, 'email')}
+          value={form.email}
+          placeholder="Email"
+          style={styles.input}
+        />
+        <TextInput
+          onChangeText={(text) => changeForm(text, 'zipcode')}
+          value={form.zipcode}
+          placeholder="Zip Code"
+          style={styles.input}
+        />
+        <TextInput
+          onChangeText={(text) => changeForm(text, 'password')}
+          value={form.password}
+          secureTextEntry={true}
+          passwordRules={null}
+          placeholder="Password"
+          style={styles.input}
+        />
+        <TextInput
+          onChangeText={setConfirm}
+          value={confirm}
+          secureTextEntry={true}
+          passwordRules={null}
+          placeholder="Confirm Password"
+          style={styles.input}
+        />
+
         <Pressable
           onPress={() => setLoggedIn(true)}
-          style={styles.addPhotoButton}
+          style={styles.signUpButton}
         >
-          <Text style={styles.addPhotoButtonText}>Add Photo</Text>
+          <Text style={styles.buttonText}>Sign Up</Text>
         </Pressable>
-      </View>
 
-      <View style={styles.nameContainer}>
-        <TextInput
-          onChangeText={(text) => changeForm(text, 'firstName')}
-          value={form.firstName}
-          placeholder="First Name"
-          style={styles.nameInput}
-        />
-        <TextInput
-          onChangeText={(text) => changeForm(text, 'lastName')}
-          value={form.lastName}
-          placeholder="Last Name"
-          style={styles.nameInput}
-        />
-      </View>
-
-      <View style={styles.favsContainer}>
-        <Text style={!favoriteAnime ? styles.preFavInput : styles.postFavInput}>
-          {favoriteAnime ? favoriteAnime : 'Favorite Anime'}
-        </Text>
-
-        <Text
-          style={!favoriteAnimeChar ? styles.preFavInput : styles.postFavInput}
+        <Pressable
+          onPress={() => navigation.navigate('Login')}
+          style={styles.backButton}
         >
-          {favoriteAnimeChar ? favoriteAnimeChar : 'Favorite Character'}
-        </Text>
-      </View>
-
-      <TextInput
-        onChangeText={(text) => changeForm(text, 'username')}
-        value={form.username}
-        placeholder="Username"
-        style={styles.input}
-      />
-      <TextInput
-        onChangeText={(text) => changeForm(text, 'email')}
-        value={form.email}
-        placeholder="Email"
-        style={styles.input}
-      />
-      <TextInput
-        onChangeText={(text) => changeForm(text, 'zipcode')}
-        value={form.zipcode}
-        placeholder="Zip Code"
-        style={styles.input}
-      />
-      <TextInput
-        onChangeText={(text) => changeForm(text, 'password')}
-        value={form.password}
-        secureTextEntry={true}
-        passwordRules={null}
-        placeholder="Password"
-        style={styles.input}
-      />
-      <TextInput
-        onChangeText={setConfirm}
-        value={confirm}
-        secureTextEntry={true}
-        passwordRules={null}
-        placeholder="Confirm Password"
-        style={styles.input}
-      />
-
-      <Pressable onPress={() => setLoggedIn(true)} style={styles.signUpButton}>
-        <Text style={styles.buttonText}>Sign Up</Text>
-      </Pressable>
-
-      <Pressable
-        onPress={() => navigation.navigate('Login')}
-        style={styles.backButton}
-      >
-        <Text style={styles.backButtonText}>Go Back to Login</Text>
-      </Pressable>
-    </View>
+          <Text style={styles.backButtonText}>Go Back to Login</Text>
+        </Pressable>
+      </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -192,13 +202,17 @@ const main = '#EB5E28';
 const styles = StyleSheet.create({
   outer: {
     flex: 1,
-    margin: 35,
+    padding: 35,
     justifyContent: 'center',
+    backgroundColor: 'white',
+  },
+  inner: {
+    flex: 1,
   },
   nameContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    height: '6%',
+    height: 38,
     marginVertical: 10,
   },
   photoContainer: {
@@ -218,7 +232,7 @@ const styles = StyleSheet.create({
   favsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    height: '6%',
+    height: 38,
     marginVertical: 10,
   },
   preFavInput: {
@@ -241,7 +255,7 @@ const styles = StyleSheet.create({
   input: {
     textAlign: 'center',
     marginVertical: 10,
-    height: '6%',
+    height: 38,
     borderColor: main,
     borderWidth: 3,
     borderRadius: 16,

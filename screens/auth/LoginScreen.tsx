@@ -6,11 +6,13 @@ import bcrypt from 'bcryptjs-react';
 import * as Crypto from 'expo-crypto';
 import React, { useContext, useState } from 'react';
 import {
-  Modal,
+  TextInput,
   Text,
   View,
   StyleSheet,
   KeyboardAvoidingView,
+  Image,
+  Pressable,
 } from 'react-native';
 import { userContext } from '../../App';
 import SignupScreen from './SignupScreen';
@@ -69,49 +71,89 @@ export default function LoginScreen({ setLoggedIn }) {
       </View>
     </View>
     </Modal> */}
-      <KeyboardAvoidingView style={styles.outer} behavior="position">
-        <View style={styles.container}>
-          <Input
-            onChangeText={(text) => handleChange(text, 'email')}
-            value={readyPayload.email}
-            placeholder="Email"
-            textAlign="center"
-          />
-          <Input
-            onChangeText={(text) => handleChange(text, 'password')}
-            value={readyPayload.password}
-            secureTextEntry={true}
-            placeholder="Password"
-            textAlign="center"
-          />
-          <Button title="Log In" onPress={() => setLoggedIn(true)} />
-          <Button
-            title="Create Account"
-            onPress={() => navigation.navigate('SignUp')}
-          />
-        </View>
-      </KeyboardAvoidingView>
+      <View style={styles.outer}>
+        <Text style={styles.title}>GokuSpace</Text>
+        <Image
+          source={require('../../assets/gokuHair.png')}
+          style={{ width: 200, height: 200, alignSelf: 'center' }}
+          resizeMode="contain"
+        />
+
+        <TextInput
+          onChangeText={(text) => handleChange(text, 'email')}
+          value={readyPayload.email}
+          placeholder="Email"
+          textAlign="center"
+          style={styles.input}
+        />
+        <TextInput
+          onChangeText={(text) => handleChange(text, 'password')}
+          value={readyPayload.password}
+          secureTextEntry={true}
+          placeholder="Password"
+          textAlign="center"
+          style={styles.input}
+        />
+
+        <Pressable onPress={() => setLoggedIn(true)} style={styles.logInButton}>
+          <Text style={styles.buttonText}>Log In</Text>
+        </Pressable>
+
+        <Pressable
+          onPress={() => navigation.navigate('SignUp')}
+          style={styles.signUpButton}
+        >
+          <Text style={styles.signUpButtonText}>Create Account</Text>
+        </Pressable>
+      </View>
     </>
   );
 }
 
+const main = '#EB5E28';
+
 const styles = StyleSheet.create({
   outer: {
     flex: 1,
-    flexGrow: 1,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingTop: 100,
+    margin: 35,
+    justifyContent: 'center',
   },
-  container: {
-    flex: 1,
-    flexGrow: 1,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingBottom: 75,
+  title: {
+    fontSize: 42,
+    fontWeight: '600',
+    alignSelf: 'center',
   },
-  input: {},
+  logInButton: {
+    borderRadius: 16,
+    marginVertical: 10,
+    backgroundColor: main,
+    height: '6%',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    textAlign: 'center',
+    color: 'white',
+  },
+  signUpButton: {
+    borderRadius: 16,
+    marginVertical: 10,
+    backgroundColor: 'black',
+    height: '5%',
+    width: '80%',
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+  signUpButtonText: {
+    textAlign: 'center',
+    color: 'white',
+  },
+  input: {
+    textAlign: 'center',
+    marginVertical: 10,
+    height: '6%',
+    borderColor: main,
+    borderWidth: 3,
+    borderRadius: 16,
+  },
   loginButton: {},
 });
