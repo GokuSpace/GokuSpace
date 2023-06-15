@@ -1,17 +1,16 @@
 import { Tab } from "@rneui/themed";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { View } from "react-native";
 import Today from "./Today";
 import Week from "./Week";
-import exp from "constants";
 import animeSeries from '../../../animeSeries';
 import DaysOfWeek from "./DayOfWeek";
-console.log(animeSeries)
+import { Button } from "react-native-elements";
 
 const TrendingView = () => {
   const [index, setIndex] = useState(1);
   const [singleDay, setSingleDay] = useState('');
-  const [dayMostTrending, setDayMostTrending] = useState([{},{},{}])
+  const [dayMostTrending, setDayMostTrending] = useState([{}, {}, {}])
   //
   //
 
@@ -34,12 +33,14 @@ const TrendingView = () => {
           {index ?
             <Today animeSeries={animeSeries} />
             :
-            <Week animeSeries={animeSeries} setSingleDay={setSingleDay} setDayMostTrending={setDayMostTrending}/>
+            <Week animeSeries={animeSeries} setSingleDay={setSingleDay} setDayMostTrending={setDayMostTrending} />
           }
         </View>
       </> :
       <>
-        <Tab
+        <Button title="back" onPress={() => setSingleDay('')}/>
+        <Tab value={0}
+          onChange={(e) => console.log(e)}
           indicatorStyle={{
             backgroundColor: "white",
             height: 3,
@@ -48,7 +49,7 @@ const TrendingView = () => {
         >
           <Tab.Item title={singleDay} />
         </Tab>
-          <DaysOfWeek dayMostTrending={dayMostTrending}/>
+        <DaysOfWeek dayMostTrending={dayMostTrending} />
       </>
     }</>
   );
