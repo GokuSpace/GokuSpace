@@ -1,5 +1,5 @@
 import { Button, Icon } from "@rneui/themed";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
 import { userContext } from "../App";
 import posts from "../data/home-screen-data/posts";
@@ -17,19 +17,30 @@ function HomeScreen() {
   const [allPosts, setAllPosts] = useState(posts);
   const [friendsPosts, setFriendsPosts] = useState(posts.filter(post => post.is_friend));
   const [forYouPosts, setForYouPosts] = useState(posts.filter(post => post.series === "Fullmetal Alchemist"));
-  const { setCurrentUser } = useContext(userContext)
+  const { currentUser, setCurrentUser } = useContext(userContext)
+  const [filteredPosts, setFilteredPosts] = useState(friendsPosts);
+  const [index, setIndex] = useState(1);
+
+  useEffect(() => {
+    switch (index) {
+      case 0:
+        setFilteredPosts(() => allPosts);
+        break;
+      case 1:
+        setFilteredPosts(() => friendsPosts);
+        break;
+      case 2:
+        setFilteredPosts(() => forYouPosts);
+        break;
+      default:
+        setFilteredPosts(() => friendsPosts);
+    }
+  }, [index, allPosts, friendsPosts, forYouPosts]);
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
-        <PostsList
-        allPosts={allPosts}
-        setAllPosts={setAllPosts}
-        friendsPosts={friendsPosts}
-        setFriendsPosts={setFriendsPosts}
-        forYouPosts={forYouPosts}
-        setForYouPosts={setForYouPosts}
-        />
+        <PostsList filteredPosts={filteredPosts} index={index} setIndex={setIndex} />
       </ScrollView>
       <View style={styles.addButton}>
         <Icon 
@@ -43,8 +54,11 @@ function HomeScreen() {
       <SlideUpModal
       isVisible={modalVisible}
       onClose={() => setModalVisible(false)}
-      allPosts={allPosts}
-      setAllPosts={setAllPosts}/>}
+      setAllPosts={setAllPosts}
+      currentUser={currentUser}
+      setFriendsPosts={setFriendsPosts}
+      setForYouPosts={setForYouPosts}
+      />}
     </SafeAreaView>
   );
 }

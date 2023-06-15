@@ -3,7 +3,7 @@ import * as ImagePicker from 'expo-image-picker';
 import React, { useEffect, useState } from 'react';
 import { Animated, Dimensions, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-export const SlideUpModal = ({ isVisible, onClose, allPosts, setAllPosts }) => {
+export const SlideUpModal = ({ isVisible, onClose, setAllPosts, currentUser, setFriendsPosts, setForYouPosts }) => {
   const [slideAnim] = useState(new Animated.Value(Dimensions.get('window').height));
   const [newPostBody, setNewPostBody] = useState('');
 
@@ -23,16 +23,21 @@ export const SlideUpModal = ({ isVisible, onClose, allPosts, setAllPosts }) => {
 const onPost = () => {
   const newPost = {
     user_id: 22,
-    name: "Elric, Edward",
+    name: "jearbearcutie",
     text: newPostBody,
     image_url:
-      "https://cdn.myanimelist.net/images/characters/9/72533.jpg?s=d38cf4e2e5cbb46ddaf2b23345a03eae",
+      "https://avatarfiles.alphacoders.com/347/347546.png",
     is_friend: true,
-    series: "Fullmetal Alchemist",
-    character: "Alphonse Elric",
+    series: "Dragon Ball Z",
+    character: "Goku",
   };
-
   setAllPosts((currPosts) => {
+    return [...currPosts, newPost]
+  });
+  setFriendsPosts((currPosts) => {
+    return [...currPosts, newPost]
+  });
+  setForYouPosts((currPosts) => {
     return [...currPosts, newPost]
   });
   onClose();
