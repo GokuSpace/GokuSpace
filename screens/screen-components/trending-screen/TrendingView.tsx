@@ -31,7 +31,7 @@ const [index, setIndex] = useState(1);
         {index ?
         <Today animeSeries={animeSeries}/>
         :
-        <Week />
+        <Week animeSeries={animeSeries}/>
         }
       </View>
     </>

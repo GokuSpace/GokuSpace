@@ -6,7 +6,7 @@ const SeriesEntry = ({ serie }) => (
   <ListItem>
     <Avatar rounded
     source={{
-      uri: serie.image_url,
+      uri: serie.url,
     }} size="large" />
     <ListItem.Title >
       {serie.title}
