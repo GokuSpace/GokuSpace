@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const EventDetails = () => {
   const route = useRoute();
-  const { event } = route.params;
+  const { event, handleRSVPpress} = route.params;
   const navigation = useNavigation();
 
   const handleRSVP = () => {
@@ -22,6 +22,7 @@ const EventDetails = () => {
     //   .catch(error => {
     //     console.log('error with axios rsvp', error);
     //   });
+    handleRSVPpress(event);
     navigation.goBack();
   };
 

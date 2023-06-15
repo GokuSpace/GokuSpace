@@ -1,4 +1,4 @@
-import React, { Text, View, ScrollView } from "react-native";
+import React, { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import { Avatar, Button, ListItem, Tab } from "@rneui/themed";
 import { useEffect, useState } from "react";
 import Slider from "react-native-slider";
@@ -11,9 +11,13 @@ import getEventsByDistance50 from '../jerryMockDataFolder/getEventsByDistance50.
 import getEventsByDistance100 from '../jerryMockDataFolder/getEventsByDistance100.json';
 import getEventsByDistanceAll from '../jerryMockDataFolder/getEventsByDistanceAll.json';
 import getMyRSVPevents from '../jerryMockDataFolder/getMyRSVPevents.json';
+import { useNavigation } from "@react-navigation/native";
+
+
 
 
 function EventsScreen() {
+  const navigation = useNavigation();
 
   const [displayedEvents, setDisplayedEvents] = useState([]);
   const [myEvents, setMyEvents] = useState([]);
@@ -144,6 +148,18 @@ function EventsScreen() {
     setDisplayedEvents(filteredEvents);
   }, [index, distance]);
 
+
+
+  const handleAddEventPress = () => {
+    navigation.navigate("NewEvent")
+  }
+
+  const handleRSVPpress = (event) => {
+    const updatedEvents = [...myEvents];
+    updatedEvents.push(event);
+    setMyEvents(updatedEvents);
+  };
+
   return (
     <>
       <Tab
@@ -159,7 +175,7 @@ function EventsScreen() {
         <Tab.Item style={tw`bg-gray-300`} color="black" title="My Events" />
       </Tab>
       {index === 0 && (
-        <View style={tw`flex items-center mb-8`}>
+        <View style={[tw`flex items-center mb-8`, { backgroundColor: 'white' }]}>
           <Slider
             style={tw`w-4/5 h-8`}
             value={distance}
@@ -169,6 +185,8 @@ function EventsScreen() {
             onValueChange={handleValueChange}
             minimumTrackTintColor="orange"
             maximumTrackTintColor="gray"
+            backgroundColor='white'
+          // thumbImage={require('../assets/like-fire.png')} // Custom image for the thumb
           />
 
           <View style={tw`flex-row justify-between w-4/5 mt-2`}>
@@ -184,12 +202,14 @@ function EventsScreen() {
         <>
           {displayedEvents.map((event, i) => {
             return (
-              <EventListEntry event={event} key={i} />
+              <EventListEntry event={event} key={i} handleRSVPpress={handleRSVPpress} />
             )
           })}
         </>
       </ScrollView>
-
+      <TouchableOpacity style={tw`absolute bottom-6 right-6 w-16 h-16 bg-red-500 rounded-full items-center justify-center`} onPress={handleAddEventPress}>
+        <Text style={tw`text-white text-2xl font-bold`}>+</Text>
+      </TouchableOpacity>
     </>
   );
 }
