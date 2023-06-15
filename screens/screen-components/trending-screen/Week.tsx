@@ -1,6 +1,7 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import { ListItem, Avatar } from "react-native-elements";
 import most_3_trending_by_date from "./most_3_trending_by_date";
 import animeSeries from "../../../animeSeries";
@@ -20,12 +21,12 @@ const Week = ({ animeSeries }) => {
 
         return (
 
-          <>
+          <Pressable onPress={e => console.log('>>>>>>>>>>>>>>>>>',e)}>
             <Text>{day}</Text>
             <Avatar rounded source={{ uri: first.url }} size={100} />
             <Avatar rounded source={{ uri: second.url }} size={100} />
             <Avatar rounded source={{ uri: third.url }} size={100} />
-          </>
+          </Pressable>
 
         );
       })}
@@ -34,3 +35,5 @@ const Week = ({ animeSeries }) => {
 }
 
 export default Week;
+
+

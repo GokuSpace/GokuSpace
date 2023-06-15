@@ -16,7 +16,6 @@ const Picker = ({ data, opining, next }) => {
         <Text key="Picker"> {opining} </Text>
         <SearchSeries search={search} setSearch={setSearch} />
         <SeriesList search={search} series={data} />
-
       </View>
     </>
 
