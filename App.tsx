@@ -32,7 +32,7 @@ const theme = createTheme({
 export const userContext = createContext(null);
 
 export default function AppTabs() {
-  const [loggedIn, setLoggedIn] = useState(DEV === 'true');
+  const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
 
   if (loggedIn) {
@@ -163,7 +163,11 @@ export default function AppTabs() {
       <userContext.Provider value={{ currentUser, setCurrentUser }}>
         <ThemeProvider theme={theme}>
           <NavigationContainer>
-            <Stack.Navigator>
+            <Stack.Navigator
+              screenOptions={{
+                headerShown: false,
+              }}
+            >
               <Stack.Screen name="Login">
                 {(props) => (
                   <LoginScreen {...props} setLoggedIn={setLoggedIn} />
