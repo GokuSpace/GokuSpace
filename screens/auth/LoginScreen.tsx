@@ -133,6 +133,7 @@ const styles = StyleSheet.create({
   buttonText: {
     textAlign: 'center',
     color: 'white',
+    fontSize: 22,
   },
   signUpButton: {
     borderRadius: 16,
@@ -146,6 +147,7 @@ const styles = StyleSheet.create({
   signUpButtonText: {
     textAlign: 'center',
     color: 'white',
+    fontSize: 22,
   },
   input: {
     textAlign: 'center',
@@ -154,6 +156,7 @@ const styles = StyleSheet.create({
     borderColor: main,
     borderWidth: 3,
     borderRadius: 16,
+    fontSize: 22,
   },
   loginButton: {},
 });

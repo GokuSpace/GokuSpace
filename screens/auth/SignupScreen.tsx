@@ -228,6 +228,7 @@ const styles = StyleSheet.create({
     borderColor: main,
     borderWidth: 3,
     borderRadius: 16,
+    fontSize: 22,
   },
   favsContainer: {
     flexDirection: 'row',
@@ -243,6 +244,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderRadius: 16,
     color: 'gray',
+    fontSize: 16,
   },
   postFavInput: {
     textAlign: 'center',
@@ -251,6 +253,7 @@ const styles = StyleSheet.create({
     borderColor: main,
     borderWidth: 3,
     borderRadius: 16,
+    fontSize: 16,
   },
   input: {
     textAlign: 'center',
@@ -259,6 +262,7 @@ const styles = StyleSheet.create({
     borderColor: main,
     borderWidth: 3,
     borderRadius: 16,
+    fontSize: 22,
   },
   signUpButton: {
     borderRadius: 16,
@@ -266,10 +270,12 @@ const styles = StyleSheet.create({
     backgroundColor: main,
     height: '6%',
     justifyContent: 'center',
+    fontSize: 22,
   },
   buttonText: {
     textAlign: 'center',
     color: 'white',
+    fontSize: 22,
   },
   backButton: {
     borderRadius: 16,
@@ -283,6 +289,7 @@ const styles = StyleSheet.create({
   backButtonText: {
     textAlign: 'center',
     color: 'white',
+    fontSize: 22,
   },
   addPhotoButton: {
     borderRadius: 16,
