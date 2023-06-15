@@ -10,21 +10,24 @@ import * as ImagePicker from 'expo-image-picker';
 const NewEvent = () => {
 
   const [image, setImage] = useState<string>("");
-  const [confirm, setConfirm] = useState(false)
   const [eventStart, setEventStart] = useState("");
-  const [eventEnd, setEventEnd] = useState("");
   const [date, setDate] = useState(new Date());
   const [showPicker, setShowPicker] = useState(false)
   const [form, setForm] = useState({
-    userID: '',
     name: '',
-    start: '',
-    end: '',
+    startDate: '',
+    address: '',
     city: '',
-    latitude: '',
-    longitude: '',
     description: '',
   });
+
+  const changeForm = (text: string, field: string) => {
+    setForm({
+      ...form,
+      [field]: text
+    })
+  }
+
 
   const handleNewEventPress = () => {
     console.log('hello')
@@ -55,7 +58,6 @@ const NewEvent = () => {
         toggleDatePicker();
         setEventStart(currentDate.toDateString().slice(0, 14));
       }
-
     } else {
       toggleDatePicker();
     }
@@ -64,18 +66,6 @@ const NewEvent = () => {
   const confirmIOSDateStart = () => {
     setEventStart(date.toString().slice(0, 15))
     toggleDatePicker();
-  }
-
-  // const confirmIOSDateEnd = () => {
-  //   setEventStart(date.toString().slice(0, 15))
-  //   toggleDatePicker();
-  // }
-
-  const changeForm = (text: string, field: string) => {
-    setForm({
-      ...form,
-      [field]: text
-    })
   }
 
   const handleSubmit = () => {
@@ -100,22 +90,37 @@ const NewEvent = () => {
         </TouchableOpacity>
       )}
 
-      <View style={tw`flex-row mt-12`}>
-        <View style={tw`px-5`}>
-          <Text style={tw`mt-1 font-bold`}>Event Name: </Text>
-          <Text style={tw`mt-7 font-bold`}>City:</Text>
-          <Text style={tw`mt-7 font-bold`}>Description:</Text>
-          <Text style={tw`mt-7 font-bold`}>start date: </Text>
-          <Text style={tw`mt-6 font-bold`}>end date:</Text>
-        </View>
-        <View style={tw`px-2`}>
-          <TextInput style={tw`border px-2 py-1  text-gray-400 rounded-lg w-48`} onChangeText={text => changeForm(text, 'name')} value={form.name}></TextInput>
-          <TextInput style={tw`mt-4 border px-2 py-1 text-gray-400 rounded-lg`} onChangeText={text => changeForm(text, 'city')} value={form.city}></TextInput>
-          <TextInput style={tw`mt-4 border px-2 py-1 text-gray-400 rounded-lg`} onChangeText={text => changeForm(text, 'description')} value={form.description}></TextInput>
+      <View style={tw`flex-row mt-8`}>
+        <View style={tw`w-72`}>
+          <TextInput
+            style={[tw`border-2 justify-center pl-2 py-2  text-gray-400 rounded-full`, { borderColor: '#EB5E28', textAlign: "center" }]}
+            placeholder="Event Name"
+            onChangeText={text => changeForm(text, 'name')}
+            value={form.name}>
+          </TextInput>
+          <TextInput
+            style={[tw`mt-6  border-2 px-2 py-2  text-gray-400 rounded-full`, { borderColor: '#EB5E28', textAlign: "center" }]}
+            placeholder="Address"
+            onChangeText={text => changeForm(text, 'address')}
+            value={form.address}>
+          </TextInput>
+          <TextInput
+            style={[tw`mt-6  border-2 px-2 py-2  text-gray-400 rounded-full`, { borderColor: '#EB5E28', textAlign: "center" }]}
+            placeholder="City"
+            onChangeText={text => changeForm(text, 'city')}
+            value={form.city}>
+          </TextInput>
+          <TextInput
+            style={[tw`mt-6  border-2 px-2 py-2  text-gray-400 rounded-full`, { borderColor: '#EB5E28', textAlign: "center" }]}
+            placeholder="Description"
+            onChangeText={text => changeForm(text, 'description')}
+            value={form.description}>
+          </TextInput>
+
           {!showPicker && (
             <Pressable onPress={toggleDatePicker}>
               <TextInput
-                style={tw`mt-4  border px-2 py-1  text-gray-400 rounded-lg`}
+                style={[tw`mt-6  border-2 px-2 py-2  text-gray-400 rounded-full`, { borderColor: '#EB5E28', textAlign: "center" }]}
                 placeholder="SELECT START DATE"
                 value={eventStart}
                 onChangeText={setEventStart}
@@ -124,22 +129,10 @@ const NewEvent = () => {
               ></TextInput>
             </Pressable>
           )}
-          {!showPicker && (
-            <Pressable onPress={toggleDatePicker}>
-              <TextInput
-                style={tw`mt-4  border px-2 py-1  text-gray-400 rounded-lg`}
-                placeholder="SELECT END DATE"
-                value={eventEnd}
-                onChangeText={setEventEnd}
-                editable={false}
-                onPressIn={toggleDatePicker}
-              ></TextInput>
-            </Pressable>
-          )}
+
 
         </View>
       </View>
-
       {showPicker && (
         <>
           <DateTimePicker
@@ -154,7 +147,7 @@ const NewEvent = () => {
       )}
       {showPicker ? (
         <View style={tw`flex flex-row justify-center`}>
-          <View style={tw` mt-6 border rounded-3xl px-16 py-2 bg-black`}>
+          <View style={[tw` mt-6 rounded-3xl px-16 py-2`, { backgroundColor: '#EB5E28' }]}>
             <Button
               color="white"
               title="Save"
@@ -165,8 +158,8 @@ const NewEvent = () => {
       ) : null}
 
       {!showPicker ? (
-        <View style={tw`flex flex-row justify-center mt-14 `}>
-          <View style={tw` mt-6 border rounded-3xl px-16 py-2 bg-black`}>
+        <View style={tw`flex flex-row justify-center mt-12 `}>
+          <View style={[tw`mt-6 rounded-3xl px-16 py-2`, { backgroundColor: '#EB5E28' }]}>
             <Button color="white" title="Post Event" onPress={handleSubmit} />
           </View>
         </View>
