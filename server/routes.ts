@@ -32,6 +32,7 @@ router.get('/anime/titles', controller.anime.titles)
 
 //** Posts **//
 router.get('/posts', controller.post.getPosts);
+router.delete('/posts', controller.post.delete)
 
 //** Auth **//
 router.post('/login', controller.account.login);
