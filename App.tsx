@@ -1,48 +1,45 @@
 import { DEV } from '@env';
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { ThemeProvider, createTheme } from '@rneui/themed';
-import { StatusBar } from "expo-status-bar";
+import { StatusBar } from 'expo-status-bar';
 import { createContext, useState } from 'react';
-import React, { Text, View } from "react-native";
-import "react-native-gesture-handler";
-import EventsScreen from "./screens/EventsScreen";
-import FriendScreen from "./screens/FriendScreen";
-import HomeScreen from "./screens/HomeScreen";
-import ProfileScreen from "./screens/ProfileScreen";
-import TrendingScreen from "./screens/TrendingScreen";
-import LoginScreen from "./screens/auth/LoginScreen";
+import React, { Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import EventsScreen from './screens/EventsScreen';
+import FriendScreen from './screens/FriendScreen';
+import HomeScreen from './screens/HomeScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import TrendingScreen from './screens/TrendingScreen';
+import LoginScreen from './screens/auth/LoginScreen';
 import SignupScreen from './screens/auth/SignupScreen';
-import EventDetails from "./screens/screen-components/events-screens/EventDetails";
-import { default as NewEvent } from "./screens/screen-components/events-screens/NewEvent";
-import VotesHistory from "./screens/screen-components/home-screens/VotesHistory";
-import EditProfilePictureScreen from "./screens/screen-components/profile-screens/EditProfilePictureScreen";
-import UpdateProfileScreen from "./screens/screen-components/profile-screens/UpdateProfileScreen";
-import ViewUsersPostsScreen from "./screens/screen-components/profile-screens/UsersPosts";
+import EventDetails from './screens/screen-components/events-screens/EventDetails';
+import { default as NewEvent } from './screens/screen-components/events-screens/NewEvent';
+import VotesHistory from './screens/screen-components/home-screens/VotesHistory';
+import EditProfilePictureScreen from './screens/screen-components/profile-screens/EditProfilePictureScreen';
+import UpdateProfileScreen from './screens/screen-components/profile-screens/UpdateProfileScreen';
+import ViewUsersPostsScreen from './screens/screen-components/profile-screens/UsersPosts';
 
 // Okay okay
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-
 const theme = createTheme({
   lightColors: {
-  secondary: '#EB5E28',
-},
+    secondary: '#EB5E28',
+  },
   mode: 'light',
 });
 
 export const userContext = createContext(null);
 
 export default function AppTabs() {
-
-  const [loggedIn, setLoggedIn] = useState(DEV === 'true');
+  const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
 
   if (loggedIn) {
-
     return (
       <userContext.Provider value={{ currentUser, setCurrentUser }}>
         <ThemeProvider theme={theme}>
@@ -53,11 +50,26 @@ export default function AppTabs() {
               <Tab.Screen name="Profile" options={{ headerShown: false }}>
                 {() => (
                   <Stack.Navigator>
-                    <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
-                    <Stack.Screen name="EditProfilePictureScreen" component={EditProfilePictureScreen} />
-                    <Stack.Screen name="UpdateProfileScreen" component={UpdateProfileScreen} />
-                    <Stack.Screen name="ViewUsersPostsScreen" component={ViewUsersPostsScreen} />
-                    <Stack.Screen name="VotesHistory" component={VotesHistory} />
+                    <Stack.Screen
+                      name="ProfileScreen"
+                      component={ProfileScreen}
+                    />
+                    <Stack.Screen
+                      name="EditProfilePictureScreen"
+                      component={EditProfilePictureScreen}
+                    />
+                    <Stack.Screen
+                      name="UpdateProfileScreen"
+                      component={UpdateProfileScreen}
+                    />
+                    <Stack.Screen
+                      name="ViewUsersPostsScreen"
+                      component={ViewUsersPostsScreen}
+                    />
+                    <Stack.Screen
+                      name="VotesHistory"
+                      component={VotesHistory}
+                    />
                   </Stack.Navigator>
                 )}
               </Tab.Screen>
@@ -65,34 +77,43 @@ export default function AppTabs() {
               <Tab.Screen name="Events" options={{ headerShown: false }}>
                 {() => (
                   <Stack.Navigator>
-                    <Stack.Screen name="EventsScreen" component={EventsScreen} />
-                    <Stack.Screen name="EventDetails" component={EventDetails} />
+                    <Stack.Screen
+                      name="EventsScreen"
+                      component={EventsScreen}
+                    />
+                    <Stack.Screen
+                      name="EventDetails"
+                      component={EventDetails}
+                    />
                     <Stack.Screen name="NewEvent" component={NewEvent} />
                   </Stack.Navigator>
                 )}
               </Tab.Screen>
             </Tab.Navigator>
-          </NavigationContainer >
+          </NavigationContainer>
         </ThemeProvider>
       </userContext.Provider>
-    )
+    );
   } else {
     return (
       <userContext.Provider value={{ currentUser, setCurrentUser }}>
         <ThemeProvider theme={theme}>
           <NavigationContainer>
-            <Stack.Navigator>
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
               <Stack.Screen name="Login">
-                {(props) => <LoginScreen {...props} setLoggedIn={setLoggedIn} />}
+                {(props) => (
+                  <LoginScreen {...props} setLoggedIn={setLoggedIn} />
+                )}
               </Stack.Screen>
               <Stack.Screen name="SignUp">
-                {(props) => <SignupScreen {...props} setLoggedIn={setLoggedIn} />}
+                {(props) => (
+                  <SignupScreen {...props} setLoggedIn={setLoggedIn} />
+                )}
               </Stack.Screen>
             </Stack.Navigator>
           </NavigationContainer>
         </ThemeProvider>
       </userContext.Provider>
     );
-
   }
 }
