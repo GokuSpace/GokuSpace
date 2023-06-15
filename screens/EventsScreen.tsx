@@ -177,7 +177,7 @@ function EventsScreen() {
       {index === 0 && (
         <View style={[tw`flex items-center mb-8`, { backgroundColor: 'white', marginBottom: 0 }]}>
 
-          <Slider
+          {/* <Slider
             style={tw`w-4/5 h-8`}
             value={distance}
             minimumValue={1}
@@ -188,7 +188,7 @@ function EventsScreen() {
             maximumTrackTintColor="gray"
             thumbImage={require('../assets/like-fire2.png')} // Custom image for the thumb
             thumbStyle={[tw`w-6 h-8 rounded-full`, { backgroundColor: 'transparent' }]}
-          />
+          /> */}
 
           <View style={[tw`flex-row justify-between w-4/5 mt-2`, { backgroundColor: 'white' }]}>
             <Text style={[tw`text-xs`, distance === 1 && { color: 'orange' }]}>20 miles</Text>

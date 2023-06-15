@@ -4,16 +4,29 @@ import React, { useState } from "react";
 import { Button, Image, TextInput, TouchableOpacity, View } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
 
-const PostEntry = ({ allPosts, setAllPosts, post }) => {
+type Post = {
+    id: number,
+    user_id: number,
+    name: string,
+    text: string,
+    image_url: string,
+    is_friend: boolean,
+    series: string,
+    character: string,
+  }
+
+const PostEntry = ({ allPosts, setAllPosts, setFriendsPosts, setForYouPosts, post }) => {
 
 const [isEditing, setIsEditing] = useState(false);
 const [editedText, setEditedText] = useState('');
 
-const handleDeletePress = (post: object) => {
+const handleDeletePress = (post: Post) => {
   setAllPosts((currPosts) => currPosts.filter(currPost => currPost.id !== post.id));
+  setFriendsPosts((currPosts) => currPosts.filter(currPost => currPost.id !== post.id));
+  setForYouPosts((currPosts) => currPosts.filter(currPost => currPost.id !== post.id));
 }
 
-const handleSavePress = (text: string, post: object) => {
+const handleSavePress = (text: string, post: Post) => {
   const updatedPosts = allPosts.map((p) => {
     if (p.id === post.id) {
       return { ...p, text: text };
@@ -21,7 +34,9 @@ const handleSavePress = (text: string, post: object) => {
     return p;
   });
   setAllPosts(updatedPosts);
-
+  setFriendsPosts(updatedPosts.filter(post => post.is_friend));
+  setForYouPosts(updatedPosts.filter(post => post.series === "Fullmetal Alchemist" || post.name === "jearbearcutie"));
+  
 }
 
 const handleUpdatePress = () => {

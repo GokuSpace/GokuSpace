@@ -1,13 +1,12 @@
-import { useNavigation, useRoute } from "@react-navigation/native";
-import React, { Text, View, Button, Image, TextInput } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import tw from 'tailwind-react-native-classnames';
-import { useState, useEffect } from "react";
-import GestureRecognizer, {
-} from 'react-native-swipe-gestures';
-import axios from "axios";
 import { SERVER } from '@env';
+import { useNavigation, useRoute } from "@react-navigation/native";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import React, { Button, Image, Text, TextInput, View } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import Carousel from 'react-native-snap-carousel';
+import GestureRecognizer from 'react-native-swipe-gestures';
+import tw from 'tailwind-react-native-classnames';
 
 function UpdateProfileScreen() {
 
@@ -57,7 +56,7 @@ function UpdateProfileScreen() {
   return (
     <View style={tw`bg-white flex-1`}>
       <View style={tw`justify-center items-center mt-6 `}>
-        <Carousel
+        {/* <Carousel
           data={images}
           renderItem={({ item }) => (
             <View style={tw`justify-center items-center `}>
@@ -76,7 +75,7 @@ function UpdateProfileScreen() {
           onSnapToItem={onSnapToItem}
           initialScrollIndex={0}
           firstItem={0}
-        />
+        /> */}
       </View>
 
       {/* <GestureRecognizer
