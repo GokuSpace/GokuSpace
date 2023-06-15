@@ -12,7 +12,7 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   Image,
-  Pressable,
+  TouchableOpacity,
 } from 'react-native';
 import { userContext } from '../../App';
 import SignupScreen from './SignupScreen';
@@ -95,16 +95,19 @@ export default function LoginScreen({ setLoggedIn }) {
           style={styles.input}
         />
 
-        <Pressable onPress={() => setLoggedIn(true)} style={styles.logInButton}>
+        <TouchableOpacity
+          onPress={() => setLoggedIn(true)}
+          style={styles.logInButton}
+        >
           <Text style={styles.buttonText}>Log In</Text>
-        </Pressable>
+        </TouchableOpacity>
 
-        <Pressable
+        <TouchableOpacity
           onPress={() => navigation.navigate('SignUp')}
           style={styles.signUpButton}
         >
           <Text style={styles.signUpButtonText}>Create Account</Text>
-        </Pressable>
+        </TouchableOpacity>
       </View>
     </>
   );
@@ -115,8 +118,9 @@ const main = '#EB5E28';
 const styles = StyleSheet.create({
   outer: {
     flex: 1,
-    margin: 35,
+    padding: 35,
     justifyContent: 'center',
+    backgroundColor: 'white',
   },
   title: {
     fontSize: 42,

@@ -6,7 +6,7 @@ import {
   StyleSheet,
   TextInput,
   Image,
-  Pressable,
+  TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
 import React, { useContext, useState } from 'react';
@@ -105,12 +105,12 @@ export default function SignupScreen({ setLoggedIn }) {
           ) : (
             <MaterialIcons name="person" size={100} color="black" />
           )}
-          <Pressable
+          <TouchableOpacity
             // onPress={() => setLoggedIn(true)}
             style={styles.addPhotoButton}
           >
             <Text style={styles.addPhotoButtonText}>Add Photo</Text>
-          </Pressable>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.nameContainer}>
@@ -179,19 +179,19 @@ export default function SignupScreen({ setLoggedIn }) {
           style={styles.input}
         />
 
-        <Pressable
+        <TouchableOpacity
           onPress={() => setLoggedIn(true)}
           style={styles.signUpButton}
         >
           <Text style={styles.buttonText}>Sign Up</Text>
-        </Pressable>
+        </TouchableOpacity>
 
-        <Pressable
+        <TouchableOpacity
           onPress={() => navigation.navigate('Login')}
           style={styles.backButton}
         >
           <Text style={styles.backButtonText}>Go Back to Login</Text>
-        </Pressable>
+        </TouchableOpacity>
       </SafeAreaView>
     </KeyboardAvoidingView>
   );
