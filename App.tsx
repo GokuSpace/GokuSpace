@@ -43,13 +43,28 @@ export default function AppTabs() {
       <userContext.Provider value={{ currentUser, setCurrentUser }}>
         <ThemeProvider theme={theme}>
           <NavigationContainer>
-            <Tab.Navigator>
+            <Tab.Navigator
+            screenOptions={{
+              headerShown: false,
+              tabBarActiveTintColor: '#EB5E28',
+              tabBarInactiveTintColor: '#252422',
+              tabBarStyle: {
+                backgroundColor: 'white',
+                paddingBottom: 5,
+                borderTopColor: 'transparent',
+                shadowOpacity: 0
+              }}}
+            >
               <Tab.Screen
                 name="Home"
                 component={HomeScreen}
                 options={{
                   tabBarIcon: ({ color, size }) => (
-                    <Icon name="home" type='font-awesome-5' color={color} size={size} />
+                    <Icon
+                    name="home"
+                    type='font-awesome-5' 
+                    color={color}
+                    size={size} />
                   ),
                 }}
               />

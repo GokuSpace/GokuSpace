@@ -9,7 +9,7 @@ import { SlideUpModal } from './screen-components/home-screens/SlideUpModal';
 
 
 function HomeScreen() {
-  const [showSlideup, setShowSlideup] = useState(false)
+  const [showSlideup, setShowSlideup] = useState(false);
   const [isUser, setIsUser] = useState(true);
   const [isAuth, setIsAuth] = useState(false);
   const [userImage, setUserImage] = useState("https://cdn.myanimelist.net/images/anime/1223/96541.jpg?s=2ab13dc6a3e874f5dc8b7229632f8c1f");
