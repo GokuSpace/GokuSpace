@@ -74,8 +74,9 @@ export default function AppTabs() {
 
               <Tab.Screen name="Events" options={{
                 headerShown: false, tabBarIcon: ({ color, size }) => (
-                    <Icon name="calendar" type='font-awesome-5' color={color} size={size} />
-                  )}}>
+                  <Icon name="calendar" type='font-awesome-5' color={color} size={size} />
+                )
+              }}>
                 {() => (
                   <Stack.Navigator>
                     <Stack.Screen name="EventsScreen" component={EventsScreen} />
@@ -104,7 +105,7 @@ export default function AppTabs() {
                   </Stack.Navigator>
                 )}
               </Tab.Screen>
-              
+
             </Tab.Navigator>
           </NavigationContainer >
         </ThemeProvider>
