@@ -13,9 +13,9 @@ export const SlideUpModal = ({ isVisible, onClose }) => {
 
   const submitPost = () => {
     axios.post(`http://${SERVER}/posts`, {
-      author: currentUser.id,
+      authorId: currentUser.id,
       title: currentUser.username,
-      text: postBody
+      body: postBody
     })
   }
 

@@ -16,7 +16,12 @@ const post = {
         title: title,
         body: body,
         attachment: attachment ? attachment : null,
-        author: authorId
+        author: {
+          connect: {id: authorId}
+        }
+      },
+      include: {
+        author: true,
       }
     })
   },
