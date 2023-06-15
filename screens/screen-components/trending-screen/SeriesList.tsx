@@ -1,11 +1,9 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable react/prop-types */
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 import SeriesEntry from './SeriesEntry';
 
-const SeriesList = ({series, search }) => {
-  const notFound = {title: 'NO MATCH'};
+const SeriesList = ({ series, search, setNext }) => {
+  const notFound = { title: 'NO MATCH' };
   const filtered = series.filter((serie) => {
     if (search === '') {
       return serie;
@@ -15,12 +13,20 @@ const SeriesList = ({series, search }) => {
   });
 
   return (
-    <ScrollView>
-      { filtered.length ?
-      (filtered.map((serie) => <SeriesEntry key={serie.id} serie={serie} />))
-      : (<SeriesEntry key='notFound' serie={notFound} />)}
-    </ScrollView>
+    <FlatList
+      data={filtered.length ? filtered : [notFound]}
+      renderItem={({ item }) => <SeriesEntry serie={item} setNext={setNext} />}
+      // keyExtractor={(item) => item.id || 'notFound'}
+      numColumns={3}
+      contentContainerStyle={styles.list}
+    />
   );
-}
-
+};
 export default SeriesList;
+
+const styles = StyleSheet.create({
+  list: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});

@@ -1,17 +1,44 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
-import { Avatar, ListItem } from 'react-native-elements';
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 
-const SeriesEntry = ({ serie }) => (
-  <ListItem>
-    <Avatar rounded
-    source={{
-      uri: serie.url,
-    }} size="large" />
-    <ListItem.Title >
-      {serie.title}
-    </ListItem.Title>
-  </ListItem>
+const SeriesEntry = ({ serie, setNext }) => (
+  <TouchableOpacity onPress={() => setNext()} style={styles.listItem}>
+    <View style={styles.listItemContent}>
+      <Image
+        style={styles.avatar}
+        source={{
+          uri: serie.url,
+        }}
+      />
+      <Text style={styles.listItemTitle}>
+        {serie.title.length > 15
+          ? serie.title.slice(0, 12) + '...'
+          : serie.title}
+      </Text>
+    </View>
+  </TouchableOpacity>
 );
+
+const styles = StyleSheet.create({
+  listItem: {
+    width: '33.3%', // Adjust this as necessary
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 10,
+  },
+  listItemContent: {
+    // flexDirection: 'column',
+    alignItems: 'center',
+  },
+  listItemTitle: {
+    flexWrap: 'wrap',
+    textAlign: 'center',
+  },
+  avatar: {
+    width: 75,
+    height: 75,
+    borderRadius: 50,
+  },
+});
 
 export default SeriesEntry;
