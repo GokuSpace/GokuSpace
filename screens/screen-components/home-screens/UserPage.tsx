@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import { Button } from "@rneui/themed";
-import React, { View, Text, Image } from "react-native";
+import React, { Image, Text, View } from "react-native";
 
 const UserPage= ({ user }) => {
 
   const addFriend = () => {
-    console.log('welcom');
+    console.log('welcome');
   };
   const Unfriend =() => {
     console.log('bye bye');
@@ -22,8 +22,8 @@ const UserPage= ({ user }) => {
       <View>
         <Image source={user.image_url}/>
         <Text>{user.name}</Text>
-        <Button title={user.isFreind ? 'Unfriend': 'Add Friend'} onPress={() => {
-          user.isFreind ? Unfriend() : addFriend();
+        <Button title={user.isFriend ? 'Unfriend': 'Add Friend'} onPress={() => {
+          user.isFriend ? Unfriend() : addFriend();
         }}/>
       </View>
 
@@ -43,3 +43,4 @@ const UserPage= ({ user }) => {
     </View>
   );
 }
+export default UserPage;
