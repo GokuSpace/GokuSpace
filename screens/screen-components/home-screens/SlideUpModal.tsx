@@ -3,8 +3,9 @@ import * as ImagePicker from 'expo-image-picker';
 import React, { useEffect, useState } from 'react';
 import { Animated, Dimensions, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-export const SlideUpModal = ({ isVisible, onClose }) => {
+export const SlideUpModal = ({ isVisible, onClose, allPosts, setAllPosts }) => {
   const [slideAnim] = useState(new Animated.Value(Dimensions.get('window').height));
+  const [newPostBody, setNewPostBody] = useState('');
 
   const pickImageAsync = async () => {
   const result = await ImagePicker.launchImageLibraryAsync({
@@ -18,6 +19,24 @@ export const SlideUpModal = ({ isVisible, onClose }) => {
     alert('You did not select any image.');
   }
 }
+
+const onPost = () => {
+  const newPost = {
+    user_id: 22,
+    name: "Elric, Edward",
+    text: newPostBody,
+    image_url:
+      "https://cdn.myanimelist.net/images/characters/9/72533.jpg?s=d38cf4e2e5cbb46ddaf2b23345a03eae",
+    is_friend: true,
+    series: "Fullmetal Alchemist",
+    character: "Alphonse Elric",
+  };
+
+  setAllPosts((currPosts) => {
+    return [...currPosts, newPost]
+  })
+}
+
   
   useEffect(() => {
     Animated.timing(
@@ -43,6 +62,8 @@ export const SlideUpModal = ({ isVisible, onClose }) => {
           multiline
           style={styles.textInput}
           autoFocus={true}
+          value={newPostBody}
+          onChangeText={(text) => setNewPostBody(text)}
         />
         <View style={styles.addImage}>
         <Button
@@ -94,7 +115,7 @@ export const SlideUpModal = ({ isVisible, onClose }) => {
             marginHorizontal: 1,
             marginVertical: 5,
           }}
-          onPress={onClose}
+          onPress={onPost}
         />
         </View>
       </View>

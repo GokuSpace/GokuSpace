@@ -5,12 +5,18 @@ import React, { useEffect, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
 import PostEntry from "./PostEntry";
 
-const PostsList = ({ posts }) => {
+const PostsList = ({ allPosts, setAllPosts }) => {
   const [filteredPosts, setFilteredPosts] = useState([]);
+  const [friendsPosts, setFriendsPosts] = useState([]);
+  const [forYouPosts, setForYouPosts] = useState([]);
   const [index, setIndex] = useState(1);
-  const all = posts;
-  const friends = posts.filter((post) => post.is_friend);
-  const forYou = posts.filter((post) => post.series === "Fullmetal Alchemist");
+  
+useEffect(() => {
+  if (allPosts) {
+    setFriendsPosts(allPosts.filter((post) => post.is_friend));
+    setForYouPosts(allPosts.filter((post) => post.series === "Fullmetal Alchemist"));
+  }
+}, [allPosts])
 
 
 
@@ -18,16 +24,16 @@ const PostsList = ({ posts }) => {
   useEffect(() => {
     switch (index) {
       case 0:
-        setFilteredPosts(all);
+        setFilteredPosts(allPosts);
         break;
       case 1:
-        setFilteredPosts(friends);
+        setFilteredPosts(friendsPosts);
         break;
       case 2:
-        setFilteredPosts(forYou);
+        setFilteredPosts(forYouPosts);
         break;
       default:
-        setFilteredPosts(friends);
+        setFilteredPosts(friendsPosts);
     }
   }, [index]);
 

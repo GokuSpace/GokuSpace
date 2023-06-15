@@ -1,5 +1,5 @@
 import { Button, Icon } from "@rneui/themed";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
 import posts from "../data/home-screen-data/posts";
 import PostsList from "./screen-components/home-screens/PostsList";
@@ -13,12 +13,17 @@ function HomeScreen() {
   const [isAuth, setIsAuth] = useState(false);
   const [userImage, setUserImage] = useState("https://cdn.myanimelist.net/images/anime/1223/96541.jpg?s=2ab13dc6a3e874f5dc8b7229632f8c1f");
   const [modalVisible, setModalVisible] = useState(false);
+  const [allPosts, setAllPosts] = useState([]);
+
+  useEffect(() => {
+    setAllPosts(posts);
+  }, [])
 
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
-        <PostsList posts={posts} />
+        <PostsList allPosts={allPosts} setAllPosts={setAllPosts} />
       </ScrollView>
       <View style={styles.addButton}>
         <Icon 
@@ -28,7 +33,12 @@ function HomeScreen() {
         color='#f50'
         onPress={() => setModalVisible(!modalVisible)} />
       </View>
-      {modalVisible && <SlideUpModal isVisible={modalVisible} onClose={() => setModalVisible(false)} />}
+      {modalVisible && 
+      <SlideUpModal
+      isVisible={modalVisible}
+      onClose={() => setModalVisible(false)}
+      allPosts={allPosts}
+      setAllPosts={setAllPosts}/>}
     </SafeAreaView>
   );
 }
