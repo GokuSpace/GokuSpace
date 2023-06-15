@@ -40,7 +40,7 @@ function HomeScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
-        <PostsList filteredPosts={filteredPosts} index={index} setIndex={setIndex} />
+        <PostsList allPosts={allPosts} setAllPosts={setAllPosts} filteredPosts={filteredPosts} index={index} setIndex={setIndex} />
       </ScrollView>
       <View style={styles.addButton}>
         <Icon 

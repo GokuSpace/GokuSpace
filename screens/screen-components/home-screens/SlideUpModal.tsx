@@ -6,6 +6,7 @@ import { Animated, Dimensions, KeyboardAvoidingView, Platform, ScrollView, Style
 export const SlideUpModal = ({ isVisible, onClose, setAllPosts, currentUser, setFriendsPosts, setForYouPosts }) => {
   const [slideAnim] = useState(new Animated.Value(Dimensions.get('window').height));
   const [newPostBody, setNewPostBody] = useState('');
+  const [postId, setPostId] = useState(0);
 
   const pickImageAsync = async () => {
   const result = await ImagePicker.launchImageLibraryAsync({
@@ -22,6 +23,7 @@ export const SlideUpModal = ({ isVisible, onClose, setAllPosts, currentUser, set
 
 const onPost = () => {
   const newPost = {
+    id: postId,
     user_id: 22,
     name: "jearbearcutie",
     text: newPostBody,
@@ -40,6 +42,7 @@ const onPost = () => {
   setForYouPosts((currPosts) => {
     return [...currPosts, newPost]
   });
+  setPostId((currPostId) => currPostId + 1);
   onClose();
 }
 

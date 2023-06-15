@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
 import PostEntry from "./PostEntry";
 
-const PostsList = ({ filteredPosts, index, setIndex }) => {
+const PostsList = ({ allPosts, setAllPosts, filteredPosts, index, setIndex }) => {
 
   if (!filteredPosts) {
     return <View>
@@ -32,7 +32,7 @@ const PostsList = ({ filteredPosts, index, setIndex }) => {
         {filteredPosts.map((post) => {
           return (
             <>
-              <PostEntry post={post} />
+              <PostEntry allPosts={allPosts} setAllPosts={setAllPosts} post={post} />
             </>
           );
         })}
