@@ -10,12 +10,14 @@ export const SlideUpModal = ({ isVisible, onClose }) => {
   const [slideAnim] = useState(new Animated.Value(Dimensions.get('window').height));
   const {currentUser} = useContext(userContext)
   const [postBody, setPostBody] = useState('');
+  const [attachment, setAttachment] = useState('');
 
   const submitPost = () => {
     axios.post(`http://${SERVER}/posts`, {
       authorId: currentUser.id,
       title: currentUser.username,
-      body: postBody
+      body: postBody,
+      attachment: attachment ? attachment : null
     })
     .then(res => {
       onClose()
@@ -32,7 +34,8 @@ export const SlideUpModal = ({ isVisible, onClose }) => {
   });
 
   if (!result.canceled) {
-    console.log(result);
+    console.log(result.assets[0].uri)
+    setAttachment(result.assets[0].uri)
   } else {
     alert('You did not select any image.');
   }

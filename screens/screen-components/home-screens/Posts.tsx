@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { Avatar, ListItem } from "@rneui/themed";
 import { ScrollView } from "react-native-gesture-handler";
+import { Button } from 'react-native';
 
 
 const Posts = ({ user }) => {
