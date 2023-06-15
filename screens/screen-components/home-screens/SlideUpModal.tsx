@@ -1,10 +1,23 @@
 import { Button } from '@rneui/themed';
 import * as ImagePicker from 'expo-image-picker';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Animated, Dimensions, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import axios from 'axios';
+import { userContext } from '../../../App';
+import {SERVER} from '@env';
 
 export const SlideUpModal = ({ isVisible, onClose }) => {
   const [slideAnim] = useState(new Animated.Value(Dimensions.get('window').height));
+  const {currentUser} = useContext(userContext)
+  const [postBody, setPostBody] = useState('');
+
+  const submitPost = () => {
+    axios.post(`http://${SERVER}/posts`, {
+      author: currentUser.id,
+      title: currentUser.username,
+      text: postBody
+    })
+  }
 
   const pickImageAsync = async () => {
   const result = await ImagePicker.launchImageLibraryAsync({
@@ -18,7 +31,7 @@ export const SlideUpModal = ({ isVisible, onClose }) => {
     alert('You did not select any image.');
   }
 }
-  
+
   useEffect(() => {
     Animated.timing(
       slideAnim,
@@ -42,6 +55,8 @@ export const SlideUpModal = ({ isVisible, onClose }) => {
           placeholder="Write your post here..."
           multiline
           style={styles.textInput}
+          value={postBody}
+          onChange={(e) => setPostBody(e.target.value)}
           autoFocus={true}
         />
         <View style={styles.addImage}>
@@ -94,7 +109,7 @@ export const SlideUpModal = ({ isVisible, onClose }) => {
             marginHorizontal: 1,
             marginVertical: 5,
           }}
-          onPress={onClose}
+          onPress={submitPost}
         />
         </View>
       </View>
