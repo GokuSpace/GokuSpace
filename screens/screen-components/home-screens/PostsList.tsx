@@ -5,10 +5,15 @@ import React, { useEffect, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
 import PostEntry from "./PostEntry";
 
-const PostsList = ({ allPosts, setAllPosts }) => {
-  const [filteredPosts, setFilteredPosts] = useState([]);
-  const [friendsPosts, setFriendsPosts] = useState([]);
-  const [forYouPosts, setForYouPosts] = useState([]);
+const PostsList = ({
+  allPosts,
+  setAllPosts,
+  friendsPosts,
+  setFriendsPosts,
+  forYouPosts,
+  setForYouPosts
+}) => {
+  const [filteredPosts, setFilteredPosts] = useState(friendsPosts);
   const [index, setIndex] = useState(1);
   
 useEffect(() => {

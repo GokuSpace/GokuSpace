@@ -1,5 +1,5 @@
 import { Button, Icon } from "@rneui/themed";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
 import posts from "../data/home-screen-data/posts";
 import PostsList from "./screen-components/home-screens/PostsList";
@@ -13,17 +13,21 @@ function HomeScreen() {
   const [isAuth, setIsAuth] = useState(false);
   const [userImage, setUserImage] = useState("https://cdn.myanimelist.net/images/anime/1223/96541.jpg?s=2ab13dc6a3e874f5dc8b7229632f8c1f");
   const [modalVisible, setModalVisible] = useState(false);
-  const [allPosts, setAllPosts] = useState([]);
-
-  useEffect(() => {
-    setAllPosts(posts);
-  }, [])
-
+  const [allPosts, setAllPosts] = useState(posts);
+  const [friendsPosts, setFriendsPosts] = useState(posts.filter(post => post.is_friend));
+  const [forYouPosts, setForYouPosts] = useState(posts.filter(post => post.series === "Fullmetal Alchemist"));
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
-        <PostsList allPosts={allPosts} setAllPosts={setAllPosts} />
+        <PostsList
+        allPosts={allPosts}
+        setAllPosts={setAllPosts}
+        friendsPosts={friendsPosts}
+        setFriendsPosts={setFriendsPosts}
+        forYouPosts={forYouPosts}
+        setForYouPosts={setForYouPosts}
+        />
       </ScrollView>
       <View style={styles.addButton}>
         <Icon 

@@ -34,7 +34,8 @@ const onPost = () => {
 
   setAllPosts((currPosts) => {
     return [...currPosts, newPost]
-  })
+  });
+  onClose();
 }
 
   
