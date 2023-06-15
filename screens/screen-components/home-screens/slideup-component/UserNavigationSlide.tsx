@@ -11,7 +11,7 @@ const UserNavigationSlide = ({ user }) => (
       uri: user.image_url,
 
     }} size="large" />
-  <Button title='Postes' />
+  <Button title='Posts' />
   <Button title='Profile' />
   <Button title='Votes' />
 </>
