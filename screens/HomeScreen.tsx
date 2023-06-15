@@ -1,118 +1,64 @@
-import { Avatar, Button, ListItem, Tab } from "@rneui/themed";
-import axios from 'axios';
-import { useEffect, useState } from "react";
-import React, { Dimensions, ScrollView, Text, View } from "react-native";
-import characters from "../characters";
-import getPosts from "../server/controllers/posts";
+import { Button, Icon } from "@rneui/themed";
+import React, { useState } from "react";
+import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
+import posts from "../data/home-screen-data/posts";
+import PostsList from "./screen-components/home-screens/PostsList";
+import SlideUp from "./screen-components/home-screens/SlideUp";
 import { SlideUpModal } from './screen-components/home-screens/SlideUpModal';
 
+
 function HomeScreen() {
-  const { height } = Dimensions.get('window');
-  const [filteredPosts, setFilteredPosts] = useState([]);
-  const [allPosts, setAllPosts] = useState([]);
-  const [index, setIndex] = useState(1);
+  const [showSlideup, setShowSlideup] = useState(false)
+  const [isUser, setIsUser] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
+  const [userImage, setUserImage] = useState("https://cdn.myanimelist.net/images/anime/1223/96541.jpg?s=2ab13dc6a3e874f5dc8b7229632f8c1f");
   const [modalVisible, setModalVisible] = useState(false);
-
-
-  const friends = characters.filter((char) => char.is_friend);
-  const forYou = characters.filter((char) => char.series === "Fullmetal Alchemist");
-
-  // useEffect(() => {
-  //     async function fetchPosts() {
-  //     try {
-  //       const response = await axios.get('http://localhost:3000/posts');
-  //       setAllPosts(response.data);
-  //       setFilteredPosts(response.data);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   }
-
-  //   fetchPosts();
-  // }, [])
-
-  // async function addPost(req, res) {
-  // const {title, body, attachment, authorId} = req.body
-  //   try {
-  //     const response = await axios.post('http://localhost:3000/posts', {
-  //       title: title,
-  //       body: body,
-  //       attachment: attachment ? attachment : null,
-  //       authorId: authorId
-  //     });
-  //     setAllPosts((currAllPosts) => [...currAllPosts, response.data]);
-  //     setFilteredPosts((currFilteredPosts) => [...currFilteredPosts, response.data]);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-
-  useEffect(() => {
-    switch (index) {
-      case 0:
-        setFilteredPosts(characters);
-        break;
-      case 1:
-        setFilteredPosts(friends);
-        break;
-      case 2:
-        setFilteredPosts(forYou);
-        break;
-      default:
-        setFilteredPosts(friends);
-    }
-  }, [index]);
-
-  if (!filteredPosts) {
-    return <View>
-      <Text>Loading...</Text>
-    </View>
-  }
+  const [allPosts, setAllPosts] = useState(posts);
+  const [friendsPosts, setFriendsPosts] = useState(posts.filter(post => post.is_friend));
+  const [forYouPosts, setForYouPosts] = useState(posts.filter(post => post.series === "Fullmetal Alchemist"));
 
   return (
-    <>
-      <Tab
-        value={index}
-        onChange={(e) => setIndex(e)}
-        indicatorStyle={{
-          backgroundColor: "white",
-          height: 3,
-        }}
-        variant="primary"
-      >
-        <Tab.Item title="All" />
-        <Tab.Item title="Friends" />
-        <Tab.Item title="For You" />
-      </Tab>
-      <ScrollView>
-        {filteredPosts.map((post) => {
-          return (
-            <>
-              <ListItem key={post.user_id} bottomDivider>
-                <Avatar
-                  key={post.image_url}
-                  rounded
-                  source={{
-                    uri: post.image_url,
-                  }}
-                />
-                <ListItem.Content key={post.user_id + "Content"}>
-                  <ListItem.Title key={post.user_id + "Title"}>
-                    {post.name}
-                  </ListItem.Title>
-                  <ListItem.Subtitle key={post.id + "Body"}>
-                    {post.text}
-                  </ListItem.Subtitle>
-                </ListItem.Content>
-              </ListItem>
-            </>
-          );
-        })}
-      <Button title="Add a Post" onPress={() => setModalVisible(true)} />
-      {modalVisible && <SlideUpModal isVisible={modalVisible} onClose={() => setModalVisible(false)} />}
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.scrollView}>
+        <PostsList
+        allPosts={allPosts}
+        setAllPosts={setAllPosts}
+        friendsPosts={friendsPosts}
+        setFriendsPosts={setFriendsPosts}
+        forYouPosts={forYouPosts}
+        setForYouPosts={setForYouPosts}
+        />
       </ScrollView>
-    </>
+      <View style={styles.addButton}>
+        <Icon 
+        raised
+        name='pen'
+        type='font-awesome-5'
+        color='#f50'
+        onPress={() => setModalVisible(!modalVisible)} />
+      </View>
+      {modalVisible && 
+      <SlideUpModal
+      isVisible={modalVisible}
+      onClose={() => setModalVisible(false)}
+      allPosts={allPosts}
+      setAllPosts={setAllPosts}/>}
+    </SafeAreaView>
   );
 }
 
 export default HomeScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  scrollView: {
+    flex: 1,
+  },
+  addButton: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+  }
+})

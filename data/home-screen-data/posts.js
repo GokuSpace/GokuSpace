@@ -1,4 +1,4 @@
-const characters = [
+const posts = [
   {
     user_id: 1,
     name: "Elric, Alphonse",
@@ -102,6 +102,6 @@ const characters = [
   },
 ];
 
-export default characters;
+export default posts;
 
 
