@@ -1,7 +1,7 @@
 import { Button } from '@rneui/themed';
 import * as ImagePicker from 'expo-image-picker';
 import React, { useEffect, useState } from 'react';
-import { Animated, Dimensions, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Animated, Dimensions, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export const SlideUpModal = ({ isVisible, onClose, allPosts, setAllPosts }) => {
   const [slideAnim] = useState(new Animated.Value(Dimensions.get('window').height));
@@ -51,12 +51,20 @@ const onPost = () => {
   }, [isVisible]);
 
   return (
-    <Animated.View
-      style={[
-        styles.container,
-        { transform: [{ translateY: slideAnim }] }
-      ]}
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={styles.container}
     >
+      <ScrollView
+        keyboardShouldPersistTaps="handled"
+        contentContainerStyle={{ flexGrow: 1 }}
+      >
+        <Animated.View
+          style={[
+            styles.container,
+            { transform: [{ translateY: slideAnim }] }
+          ]}
+        >
       <View style={styles.modal}>
         <TextInput
           placeholder="Write your post here..."
@@ -120,7 +128,9 @@ const onPost = () => {
         />
         </View>
       </View>
-    </Animated.View>
+        </Animated.View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -130,6 +140,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    flex:1
   },
   modal: {
     marginTop: 'auto',

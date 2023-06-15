@@ -1,6 +1,7 @@
 import { Button, Icon } from "@rneui/themed";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
+import { userContext } from "../App";
 import posts from "../data/home-screen-data/posts";
 import PostsList from "./screen-components/home-screens/PostsList";
 import SlideUp from "./screen-components/home-screens/SlideUp";
@@ -16,6 +17,7 @@ function HomeScreen() {
   const [allPosts, setAllPosts] = useState(posts);
   const [friendsPosts, setFriendsPosts] = useState(posts.filter(post => post.is_friend));
   const [forYouPosts, setForYouPosts] = useState(posts.filter(post => post.series === "Fullmetal Alchemist"));
+  const { setCurrentUser } = useContext(userContext)
 
   return (
     <SafeAreaView style={styles.container}>

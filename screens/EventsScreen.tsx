@@ -1,17 +1,17 @@
-import React, { Text, View, ScrollView, TouchableOpacity } from "react-native";
-import { Avatar, Button, ListItem, Tab } from "@rneui/themed";
-import { useEffect, useState } from "react";
-import Slider from "react-native-slider";
-import EventListEntry from "./screen-components/events-screens/EventListEntry";
-import tw from 'tailwind-react-native-classnames';
-import axios from 'axios';
 import { SERVER } from '@env';
+import { useNavigation } from "@react-navigation/native";
+import { Avatar, Button, ListItem, Tab } from "@rneui/themed";
+import axios from 'axios';
+import { useEffect, useState } from "react";
+import React, { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import Slider from "react-native-slider";
+import tw from 'tailwind-react-native-classnames';
+import getEventsByDistance100 from '../jerryMockDataFolder/getEventsByDistance100.json';
 import getEventsByDistance20 from '../jerryMockDataFolder/getEventsByDistance20.json';
 import getEventsByDistance50 from '../jerryMockDataFolder/getEventsByDistance50.json';
-import getEventsByDistance100 from '../jerryMockDataFolder/getEventsByDistance100.json';
 import getEventsByDistanceAll from '../jerryMockDataFolder/getEventsByDistanceAll.json';
 import getMyRSVPevents from '../jerryMockDataFolder/getMyRSVPevents.json';
-import { useNavigation } from "@react-navigation/native";
+import EventListEntry from "./screen-components/events-screens/EventListEntry";
 
 
 

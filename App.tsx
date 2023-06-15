@@ -25,7 +25,7 @@ const Stack = createStackNavigator();
 
 const theme = createTheme({
   lightColors: {
-    secondary: '#EB5E28',
+    primary: '#EB5E28',
   },
   mode: 'light',
 });

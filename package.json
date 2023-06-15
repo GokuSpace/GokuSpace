@@ -16,7 +16,7 @@
     "@expo/webpack-config": "^18.0.1",
     "@freakycoder/react-native-text-area": "^0.1.5",
     "@prisma/client": "^4.15.0",
-    "@react-native-community/datetimepicker": "^7.1.0",
+    "@react-native-community/datetimepicker": "6.7.3",
     "@react-native-masked-view/masked-view": "0.2.8",
     "@react-navigation/bottom-tabs": "^6.5.7",
     "@react-navigation/material-top-tabs": "^6.6.2",
