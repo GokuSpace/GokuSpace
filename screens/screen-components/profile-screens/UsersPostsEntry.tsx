@@ -39,7 +39,7 @@ function UsersPostsEntry({ post, handleDeletePress, handleSavePress, photo }) {
             />
           ) : (
             <>
-              <ListItem.Title style={tw`font-bold`}>{post.createdAt}</ListItem.Title>
+              <ListItem.Title style={tw`font-bold`}>{new Date(post.createdAt).toString().slice(0, 15)}</ListItem.Title>
               <ListItem.Subtitle style={tw`mt-2`}>{post.body}</ListItem.Subtitle>
               <View style={tw`flex-row mt-4`}>
                 <TouchableOpacity >
@@ -50,13 +50,13 @@ function UsersPostsEntry({ post, handleDeletePress, handleSavePress, photo }) {
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => handleUpdatePress()}>
                   <Image
-                    style={tw`h-6 w-6 ml-3`}
+                    style={tw`h-6 w-6 ml-4`}
                     source={require("../../../assets/edit-post.png")}
                   />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => handleDeletePress(post)}>
                   <Image
-                    style={tw`h-7 w-7 ml-3`}
+                    style={tw`h-7 w-7 ml-4`}
                     source={require("../../../assets/remove-post.png")}
                   />
                 </TouchableOpacity>

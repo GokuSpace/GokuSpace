@@ -57,7 +57,13 @@ function UpdateProfileScreen() {
   return (
     <View style={tw`bg-white flex-1`}>
       <View style={tw`justify-center items-center mt-6 `}>
-        <Carousel
+        <View style={tw`justify-center items-center rounded-full `}>
+          <Image
+            style={tw`h-52 w-52`}
+            source={require("../../../assets/add-user-photo.jpg")}
+          />
+        </View>
+        {/* <Carousel
           data={images}
           renderItem={({ item }) => (
             <View style={tw`justify-center items-center `}>
@@ -76,7 +82,7 @@ function UpdateProfileScreen() {
           onSnapToItem={onSnapToItem}
           initialScrollIndex={0}
           firstItem={0}
-        />
+        /> */}
       </View>
 
       {/* <GestureRecognizer
@@ -112,12 +118,12 @@ function UpdateProfileScreen() {
       </View>
 
       <View style={tw`flex-row px-5 mt-6 mr-4 `}>
-        <Text style={tw`font-bold`}>Bio &nbsp;&nbsp;</Text>
-        <TextInput style={tw` px-2 py-2 border text-gray-400 rounded-lg ml-2`} multiline={true} numberOfLines={4} defaultValue={profile.bio} onChangeText={setEditedBio}></TextInput>
+        <Text style={tw`font-bold`}>Bio: &nbsp;&nbsp;</Text>
+        <TextInput style={tw` px-2 py-3 border text-gray-400 rounded-xl ml-3`} multiline={true} numberOfLines={4} defaultValue={profile.bio} onChangeText={setEditedBio}></TextInput>
       </View>
 
       <View style={tw`flex flex-row justify-center mt-6 `}>
-        <View style={tw`mt-6 border rounded-2xl px-2 bg-black`} >
+        <View style={[tw`mt-6 rounded-2xl px-5 py-1`, { backgroundColor: '#EB5E28' }]} >
           <Button color="white" title="Save" onPress={handleProfileSavePress} />
         </View>
       </View>

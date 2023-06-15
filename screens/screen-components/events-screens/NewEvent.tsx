@@ -72,8 +72,6 @@ const NewEvent = () => {
     setConfirm(true)
   }
 
-
-
   return (
 
 
