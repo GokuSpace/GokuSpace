@@ -1,42 +1,54 @@
 [
   {
-      "id": "cliv7gckf0000uzjh9syxabhe",
-      "name": "Anime Con",
-      "startDate": "2023-06-01T00:00:00.000Z",
-      "picture": "",
-      "latitude": 34.0522,
-      "longitude": 118.2437,
-      "friendsGoing": null,
-      "attendees": 8
+    "id": "cliv7gckf0000uzjh9syxabhe",
+    "name": "Anime Con",
+    "startDate": "2024-01-01T00:00:00.000Z",
+    "picture": "https://pbs.twimg.com/media/Fx9vqdDX0AEZEGn.jpg",
+    "latitude": 34.0522,
+    "longitude": 118.2437,
+    "address" : "1164 Main Street, Los Angeles, CA 90001",
+    "friendsGoing": true,
+    "attendees": 83,
+    "city" : "Los Angeles, CA",
+    "description": "Get ready for the ultimate anime extravaganza! Anime Con is a celebration of Japanese animation and pop culture. Immerse yourself in a world of cosplay, attend exciting panels, meet your favorite voice actors, and explore a bustling marketplace filled with anime merchandise."
   },
   {
-      "id": "cliv7ltdh0004uzjhdg5xnuaw",
-      "name": "Manga Discussion",
-      "startDate": "2023-06-02T00:00:00.000Z",
-      "picture": "",
-      "latitude": 34.0522,
-      "longitude": 118.2437,
-      "friendsGoing": null,
-      "attendees": 11
+    "id": "cliv7ltdh0004uzjhdg5xnuaw",
+    "name": "Manga Discussion",
+    "startDate": "2024-02-02T00:00:00.000Z",
+    "picture": "https://wallpapercave.com/wp/wp5823798.jpg",
+    "latitude": 34.0522,
+    "longitude": 118.2437,
+    "address" : "5543 Elm Avenue, Long Beach, CA 90803",
+    "friendsGoing": null,
+    "attendees": 114,
+    "city" : "Los Angeles, CA",
+    "description": "Dive into the captivating world of manga at our Manga Discussion event. Join fellow manga enthusiasts in lively conversations about your favorite series, characters, and storylines. Share recommendations, discover new titles, and engage in a community that embraces the art of storytelling through manga."
   },
   {
-      "id": "cliv7th6x0006uzjhu656dz49",
-      "name": "Japanese Class!",
-      "startDate": "2023-06-10T00:00:00.000Z",
-      "picture": "",
-      "latitude": 34.0522,
-      "longitude": 118.2437,
-      "friendsGoing": null,
-      "attendees": 1
+    "id": "cliv7th6x0006uzjhu656dz49",
+    "name": "Japanese Class!",
+    "startDate": "2024-03-10T00:00:00.000Z",
+    "picture": "https://img.freepik.com/premium-vector/anime-poster-manga-comics-illustration-boy-wearing-headphones-with-japanese-translation-tokyo_637842-34.jpg",
+    "latitude": 34.0522,
+    "longitude": 118.2437,
+    "address" : "2468 Oak Street, Santa Monica, CA 90405",
+    "friendsGoing": null,
+    "attendees": 106,
+    "city" : "Los Angeles, CA",
+    "description": "Start your journey into the Japanese language and culture at Japanese Class! Whether you're a beginner or looking to brush up your skills, our interactive classes offer a fun and immersive learning experience. Explore the basics of Japanese grammar, practice essential phrases, and gain insights into the rich traditions and customs of Japan."
   },
   {
     "id": "cliv8ef9n0001uzjhljv7v7dp",
-    "name": "Cosplay Workshop 18 miles",
-    "startDate": "2023-06-10T00:00:00.000Z",
-    "picture": "",
+    "name": "Cosplay Workshop",
+    "startDate": "2024-04-10T00:00:00.000Z",
+    "picture": "https://m.media-amazon.com/images/I/71bB9VPrxOL._AC_UF894,1000_QL80_.jpg",
     "latitude": 34.0522,
     "longitude": 118.2611,
-    "friendsGoing": null,
-    "attendees": 5
+    "address" : "163 Wilshire Boulevard, Los Angeles, CA 90017",
+    "friendsGoing": true,
+    "attendees": 58,
+    "city" : "Los Angeles, CA",
+    "description": "Unleash your creativity and learn the art of cosplay at our Cosplay Workshop. Discover the techniques behind crafting costumes, props, and makeup to bring your favorite characters to life. Join a supportive community of cosplayers, share tips and tricks, and take your cosplay skills to the next level."
   }
 ]

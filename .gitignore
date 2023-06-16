@@ -19,5 +19,3 @@ web-build/
 .env
 
 coverage
-
-data
