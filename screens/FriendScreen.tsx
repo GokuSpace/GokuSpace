@@ -7,7 +7,7 @@ import FriendListEntry from './screen-components/friends/FriendListEntry';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import useInfiniteFetch from '../hooks/useInfiniteFetch';
 
-const MOCK_USER_ID = 'clis7g6br001mjaq27z2zmzgr';
+const MOCK_USER_ID = '106';
 
 type Friend = {
   id: string;
@@ -58,7 +58,7 @@ export default function FriendScreen() {
           <Text style={tw`text-lg`}>Pending</Text>
         </Tab.Item>
       </Tab>
-      <SafeAreaView style={tw`flex-1 bg-red-200`}>
+      <SafeAreaView style={tw`flex-1`}>
         {index === 0 ? (
           <>
             <FlatList
