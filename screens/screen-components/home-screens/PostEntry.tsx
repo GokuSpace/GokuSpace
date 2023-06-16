@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Avatar, ListItem } from "@rneui/themed";
 import React, { useState } from "react";
-import { Button, Image, TextInput, TouchableOpacity, View } from 'react-native';
+import { Button, Image, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
+import { Grayscale } from 'react-native-image-filter-kit';
 import tw from 'tailwind-react-native-classnames';
 
 type Post = {
@@ -78,11 +79,20 @@ return (
     <ListItem.Subtitle>
       {post.text}
     </ListItem.Subtitle>
+  <View style={tw`flex-row mt-4`}>
+    <TouchableOpacity >
+    <Grayscale>
+      <Image
+        style={tw`h-7 w-7 grayscale`}
+        source={require("../../../assets/like-fire.png")}
+      />
+    </Grayscale>
+    </TouchableOpacity>
     {post.name === "jearbearcutie" ? (
-      <View style={tw`flex-row mt-4`}>
+      <View>
         <TouchableOpacity onPress={() => handleUpdatePress()}>
           <Image
-            style={tw`h-6 w-6 ml-3`}
+            style={tw`h-6 w-6 ml-3 grayscale`}
             source={require("../../../assets/edit-post.png")}
           />
         </TouchableOpacity>
@@ -92,9 +102,9 @@ return (
             source={require("../../../assets/remove-post.png")}
           />
         </TouchableOpacity>
-      </View>
+        </View>
     ) : null}
-
+      </View>
   </ListItem.Content>
   </ListItem>
 )
@@ -102,3 +112,11 @@ return (
 };
 
 export default PostEntry;
+
+const styles = StyleSheet.create({
+  fire: {
+    height: 7,
+    width: 7,
+    filter: "grayscale",
+  }
+})
