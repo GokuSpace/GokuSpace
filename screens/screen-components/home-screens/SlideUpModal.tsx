@@ -1,11 +1,12 @@
 import { Button } from '@rneui/themed';
 import * as ImagePicker from 'expo-image-picker';
 import React, { useEffect, useState } from 'react';
-import { Animated, Dimensions, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Animated, Dimensions, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-export const SlideUpModal = ({ isVisible, onClose, allPosts, setAllPosts }) => {
+export const SlideUpModal = ({ isVisible, onClose, setAllPosts, currentUser, setFriendsPosts, setForYouPosts }) => {
   const [slideAnim] = useState(new Animated.Value(Dimensions.get('window').height));
   const [newPostBody, setNewPostBody] = useState('');
+  const [postId, setPostId] = useState(0);
 
   const pickImageAsync = async () => {
   const result = await ImagePicker.launchImageLibraryAsync({
@@ -22,19 +23,26 @@ export const SlideUpModal = ({ isVisible, onClose, allPosts, setAllPosts }) => {
 
 const onPost = () => {
   const newPost = {
+    id: postId,
     user_id: 22,
-    name: "Elric, Edward",
+    name: "jearbearcutie",
     text: newPostBody,
     image_url:
-      "https://cdn.myanimelist.net/images/characters/9/72533.jpg?s=d38cf4e2e5cbb46ddaf2b23345a03eae",
+      "https://avatarfiles.alphacoders.com/347/347546.png",
     is_friend: true,
-    series: "Fullmetal Alchemist",
-    character: "Alphonse Elric",
+    series: "Dragon Ball Z",
+    character: "Goku",
   };
-
   setAllPosts((currPosts) => {
     return [...currPosts, newPost]
   });
+  setFriendsPosts((currPosts) => {
+    return [...currPosts, newPost]
+  });
+  setForYouPosts((currPosts) => {
+    return [...currPosts, newPost]
+  });
+  setPostId((currPostId) => currPostId + 1);
   onClose();
 }
 
@@ -51,12 +59,20 @@ const onPost = () => {
   }, [isVisible]);
 
   return (
-    <Animated.View
-      style={[
-        styles.container,
-        { transform: [{ translateY: slideAnim }] }
-      ]}
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={styles.container}
     >
+      <ScrollView
+        keyboardShouldPersistTaps="handled"
+        contentContainerStyle={{ flexGrow: 1 }}
+      >
+        <Animated.View
+          style={[
+            styles.container,
+            { transform: [{ translateY: slideAnim }] }
+          ]}
+        >
       <View style={styles.modal}>
         <TextInput
           placeholder="Write your post here..."
@@ -120,7 +136,9 @@ const onPost = () => {
         />
         </View>
       </View>
-    </Animated.View>
+        </Animated.View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -130,6 +148,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    flex:1
   },
   modal: {
     marginTop: 'auto',
