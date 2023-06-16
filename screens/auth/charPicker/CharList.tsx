@@ -1,8 +1,8 @@
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
-import SeriesEntry from './SeriesEntry';
+import SeriesEntry from './CharEntry';
 
-const SeriesList = ({ series, search, setNext }) => {
+const CharList = ({ series, search, setLoggedIn }) => {
   const notFound = { title: 'NO MATCH' };
   const filtered = series.filter((serie) => {
     if (search === '') {
@@ -15,14 +15,16 @@ const SeriesList = ({ series, search, setNext }) => {
   return (
     <FlatList
       data={filtered.length ? filtered : [notFound]}
-      renderItem={({ item }) => <SeriesEntry serie={item} setNext={setNext} />}
+      renderItem={({ item }) => (
+        <SeriesEntry serie={item} setLoggedIn={setLoggedIn} />
+      )}
       // keyExtractor={(item) => item.id || 'notFound'}
       numColumns={3}
       contentContainerStyle={styles.list}
     />
   );
 };
-export default SeriesList;
+export default CharList;
 
 const styles = StyleSheet.create({
   list: {

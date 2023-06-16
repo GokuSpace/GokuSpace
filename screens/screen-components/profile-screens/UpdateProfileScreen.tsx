@@ -3,11 +3,9 @@ import React, { Text, View, Button, Image, TextInput } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import tw from 'tailwind-react-native-classnames';
 import { useState, useEffect } from "react";
-import GestureRecognizer, {
-} from 'react-native-swipe-gestures';
 import axios from "axios";
 import { SERVER } from '@env';
-import Carousel from 'react-native-snap-carousel';
+
 
 function UpdateProfileScreen() {
 
@@ -72,7 +70,6 @@ function UpdateProfileScreen() {
           <Button color="white" title="Save" onPress={handleProfileSavePress} />
         </View>
       </View>
-
 
     </View>
   );
