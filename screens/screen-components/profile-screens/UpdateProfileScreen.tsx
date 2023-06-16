@@ -17,11 +17,6 @@ function UpdateProfileScreen() {
   const [images, setImages] = useState([])
   const [index, setIndex] = useState(0);
 
-  const onSnapToItem = (itemIndex) => {
-    setIndex(itemIndex);
-  };
-
-
   const route = useRoute();
   const { profile } = route.params;
   const navigation = useNavigation();
@@ -29,21 +24,6 @@ function UpdateProfileScreen() {
   useEffect(() => {
     setImages(profile.pictures)
   }, [])
-
-
-
-  // const onSwipeLeft = () => {
-  //   setIndex((prevIndex) => (prevIndex === 0 ? 4 : prevIndex - 1));
-  // };
-
-  // const onSwipeRight = () => {
-  //   setIndex((prevIndex) => (prevIndex === 4 ? 0 : prevIndex + 1));
-  // };
-
-  // const config = {
-  //   velocityThreshold: 0.3,
-  //   directionalOffsetThreshold: 80,
-  // };
 
   const handleProfileSavePress = () => {
     const updatedProfile = {
@@ -63,44 +43,9 @@ function UpdateProfileScreen() {
             source={require("../../../assets/add-user-photo.jpg")}
           />
         </View>
-        {/* <Carousel
-          data={images}
-          renderItem={({ item }) => (
-            <View style={tw`justify-center items-center `}>
-              <Image
-                style={tw`h-52 w-52 rounded-full`}
-                source={{
-                  uri: item,
-                  width: 100,
-                  height: 100,
-                }}
-              />
-            </View>
-          )}
-          sliderWidth={210} // Adjust the width as needed
-          itemWidth={200} // Adjust the width as needed
-          onSnapToItem={onSnapToItem}
-          initialScrollIndex={0}
-          firstItem={0}
-        /> */}
+
       </View>
 
-      {/* <GestureRecognizer
-        onSwipeLeft={onSwipeLeft}
-        onSwipeRight={onSwipeRight}
-        config={config}
-      >
-        <View style={tw`justify-center items-center mt-6`}>
-          <Image
-            style={[tw`h-52 w-52 rounded-full`]}
-            source={{
-              uri: images[index],
-              width: 100,
-              height: 100,
-            }}
-          />
-        </View>
-      </GestureRecognizer> */}
 
       <View style={tw`flex-row mt-16`}>
         <View style={tw`px-5`}>
@@ -134,31 +79,4 @@ function UpdateProfileScreen() {
 }
 
 export default UpdateProfileScreen;
-
-
-
-
-
-
-
-
-    // <GestureRecognizer
-    //   onSwipeLeft={onSwipeLeft}
-    //   onSwipeRight={onSwipeRight}
-    //   config={config}
-    //   style={{ flex: 1 }}
-    // >
-    //   <View style={{ flex: 1 }}>
-    //     <Image
-    //       source={{
-    //         uri: userProfilePics[index],
-    //         width: 100,
-    //         height: 100,
-    //       }}
-    //     />
-
-    //   </View>
-    // </GestureRecognizer>
-
-
 
