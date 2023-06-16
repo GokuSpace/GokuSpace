@@ -35,7 +35,7 @@ const handleSavePress = (text: string, post: Post) => {
   });
   setAllPosts(updatedPosts);
   setFriendsPosts(updatedPosts.filter(post => post.is_friend));
-  setForYouPosts(updatedPosts.filter(post => post.series === "Fullmetal Alchemist" || post.name === "jearbearcutie"));
+  setForYouPosts(updatedPosts.filter(post => post.series === "Fullmetal Alchemist" || post.name === "dragonballerz1"));
   
 }
 
@@ -85,7 +85,7 @@ return (
         source={require("../../../assets/like-fire.png")}
       />
     </TouchableOpacity>
-    {post.name === "jearbearcutie" ? (
+    {post.name === "dragonballerz1" ? (
       <View>
         <TouchableOpacity onPress={() => handleUpdatePress()}>
           <Image
