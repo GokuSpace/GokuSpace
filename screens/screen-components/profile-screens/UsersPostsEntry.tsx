@@ -50,13 +50,13 @@ function UsersPostsEntry({ post, handleDeletePress, handleSavePress, photo }) {
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => handleUpdatePress()}>
                   <Image
-                    style={tw`h-6 w-6 ml-4`}
+                    style={tw`h-6 w-6 ml-5`}
                     source={require("../../../assets/edit-post.png")}
                   />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => handleDeletePress(post)}>
                   <Image
-                    style={tw`h-7 w-7 ml-4`}
+                    style={tw`h-7 w-7 ml-5`}
                     source={require("../../../assets/remove-post.png")}
                   />
                 </TouchableOpacity>
@@ -69,7 +69,9 @@ function UsersPostsEntry({ post, handleDeletePress, handleSavePress, photo }) {
 
         </ListItem.Content>
         {isEditing && (
-          <Button title="Save" onPress={handleReset} />
+          <View style={[tw`mt-6 rounded-2xl px-1 `, { backgroundColor: '#EB5E28' }]} >
+          <Button color="white" title="Save" onPress={handleReset} />
+        </View>
         )}
       </ListItem>
     </View>

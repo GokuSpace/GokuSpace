@@ -102,7 +102,7 @@ function UpdateProfileScreen() {
         </View>
       </GestureRecognizer> */}
 
-      <View style={tw`flex-row mt-10`}>
+      <View style={tw`flex-row mt-16`}>
         <View style={tw`px-5`}>
           <Text style={tw`mt-1 font-bold`}>username: </Text>
           <Text style={tw`mt-6 font-bold`}>favorite anime: </Text>
