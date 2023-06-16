@@ -1,5 +1,18 @@
 [
   {
+    "id": "cliv7th6x0006uzjhu656dz49",
+    "name": "Japanese Class!",
+    "startDate": "2024-03-10T00:00:00.000Z",
+    "picture": "https://img.freepik.com/premium-vector/anime-poster-manga-comics-illustration-boy-wearing-headphones-with-japanese-translation-tokyo_637842-34.jpg",
+    "latitude": 34.0522,
+    "longitude": 118.2437,
+    "address": "2468 Oak Street, Santa Monica, CA 90405",
+    "friendsGoing": null,
+    "attendees": 106,
+    "city": "Los Angeles, CA",
+    "description": "Start your journey into the Japanese language and culture at Japanese Class! Whether you're a beginner or looking to brush up your skills, our interactive classes offer a fun and immersive learning experience. Explore the basics of Japanese grammar, practice essential phrases, and gain insights into the rich traditions and customs of Japan."
+  },
+  {
     "id": "cliv9gckf0000uzjh9syxijkl",
     "name": "Anime Karaoke Night",
     "description": "Join us for a night of anime-themed karaoke where you can sing your favorite anime songs! Show off your vocal talents and enjoy the energetic atmosphere filled with fellow anime enthusiasts.",
@@ -7,9 +20,9 @@
     "picture": "https://i.scdn.co/image/ab67616d0000b27366c9083cb382b3e4d9eb2e6b",
     "latitude": 34.0522,
     "longitude": 118.2437,
-    "address" : "1234 Pacific Beach Blvd, San Diego, CA 92109",
+    "address": "1234 Pacific Beach Blvd, San Diego, CA 92109",
     "friendsGoing": null,
-    "city" : "San Diego, CA",
+    "city": "San Diego, CA",
     "attendees": 105
   },
   {
@@ -20,9 +33,9 @@
     "picture": "https://cdn11.bigcommerce.com/s-2gncvdgiio/images/stencil/1280x1280/products/78314/160150/Cute_Bear_Panda_Anime_Manga_Sexy_Girl_Japan_Cosplay_Wwn_020218_tik__39423.1587281428.jpg?c=1",
     "latitude": 34.0522,
     "longitude": 118.2437,
-    "address" : "321 Blissful Lane, Boston, MA 02116",
+    "address": "321 Blissful Lane, Boston, MA 02116",
     "friendsGoing": null,
-    "city" : "Boston, MA",
+    "city": "Boston, MA",
     "attendees": 87
   },
   {
@@ -33,9 +46,9 @@
     "picture": "https://png.pngtree.com/template/20220221/ourlarge/pngtree-original-simple-japanese-tea-ceremony-culture-poster-image_793968.jpg",
     "latitude": 34.0522,
     "longitude": 118.2437,
-    "address" : "45 Broadway, New York, NY 10013",
-    "friendsGoing": null,
-    "city" : "Brooklyn, NY",
+    "address": "45 Broadway, New York, NY 10013",
+    "friendsGoing": true,
+    "city": "Brooklyn, NY",
     "attendees": 42
   },
   {
@@ -46,9 +59,9 @@
     "picture": "https://static.displate.com/857x1200/displate/2020-10-04/bcb8fc68900073388750476dff78a84f_ee9028fae8f3df2af6fa699f7b30f7a1.jpg",
     "latitude": 34.0522,
     "longitude": 118.2611,
-    "address" : "789 Shibuya Street, Shibuya-ku, Tokyo 150-0002",
+    "address": "789 Shibuya Street, Shibuya-ku, Tokyo 150-0002",
     "friendsGoing": null,
-    "city" : "Tokyo, Japan",
+    "city": "Tokyo, Japan",
     "attendees": 173
   }
 ]

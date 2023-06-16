@@ -1,9 +1,6 @@
-import { SERVER } from '@env';
-import { useNavigation } from "@react-navigation/native";
-import { Avatar, Button, ListItem, Tab } from "@rneui/themed";
-import axios from 'axios';
+import { Avatar, Button, Icon, ListItem, Tab } from "@rneui/themed";
 import { useEffect, useState } from "react";
-import React, { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { default as React, default as React, ScrollView, ScrollView, StyleSheet, Text, Text, TouchableOpacity, TouchableOpacity, View, View } from "react-native";
 import Slider from "react-native-slider";
 import tw from 'tailwind-react-native-classnames';
 import getEventsByDistance100 from '../jerryMockDataFolder/getEventsByDistance100.json';
@@ -151,7 +148,7 @@ function EventsScreen() {
 
 
   const handleAddEventPress = () => {
-    navigation.navigate("NewEvent")
+    navigation.navigate("New Event", { handleCreateEvent: handleCreateEvent });
   }
 
   const handleRSVPpress = (event) => {
@@ -160,19 +157,51 @@ function EventsScreen() {
     setMyEvents(updatedEvents);
   };
 
+  const handleCreateEvent = (event) => {
+    // console.log(event);
+    const { address, name, startDate, city, description, picture } = event
+    const newEventObject = {
+      address,
+      name,
+      startDate,
+      city,
+      description,
+      friendsGoing: false,
+      attendees: 1,
+      picture
+    }
+
+    const updatedEvents = [...myEvents, newEventObject];
+    // const updatedEvents20 = [...eventsWithin20, newEventObject];
+    // const updatedEvents50 = [...eventsWithin50, newEventObject];
+    // const updatedEvents100 = [...eventsWithin100, newEventObject];
+    const updatedEventsAll = [...userEvents, newEventObject];
+
+    setMyEvents(updatedEvents);
+    // setEventsWithin20(updatedEvents20);
+    // setEventsWithin50(updatedEvents50);
+    // setEventsWithin100(updatedEvents100);
+    setUserEvents(updatedEventsAll);
+
+  }
+
   return (
     <>
       <Tab
         onChange={(e) => setIndex(e)}
         indicatorStyle={{
-          backgroundColor: "orange",
+          backgroundColor: "#FF8200",
           height: 3,
         }}
         variant="primary"
         value={index}
       >
-        <Tab.Item style={[tw`bg-gray-300`, { backgroundColor: 'orange' }]} color="black" title="Near Me" />
-        <Tab.Item style={[tw`bg-gray-300`, { backgroundColor: 'orange' }]} color="black" title="My Events" />
+        <Tab.Item style={[tw`bg-gray-300`, { backgroundColor: 'orange' }]} containerStyle={(active) => ({
+          backgroundColor: active ? "#EB5E28" : undefined,
+        })} title="Near Me" />
+        <Tab.Item style={[tw`bg-gray-300`, { backgroundColor: 'orange' }]} containerStyle={(active) => ({
+          backgroundColor: active ? "#EB5E28" : undefined,
+        })} title="My Events" />
       </Tab>
       {index === 0 && (
         <View style={[tw`flex items-center mb-8`, { backgroundColor: 'white', marginBottom: 0 }]}>
@@ -208,12 +237,28 @@ function EventsScreen() {
           })}
         </>
       </ScrollView>
-      <TouchableOpacity style={tw`absolute bottom-6 right-6 w-16 h-16 bg-red-500 rounded-full items-center justify-center`} onPress={handleAddEventPress}>
+      {/* <TouchableOpacity style={tw`absolute bottom-6 right-6 w-16 h-16 bg-red-500 rounded-full items-center justify-center`} onPress={handleAddEventPress}>
         <Text style={tw`text-white text-2xl font-bold`}>+</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
+
+      <View style={styles.addButton}>
+        <Icon
+          raised
+          name='plus'
+          type='font-awesome-5'
+          color='#f50'
+          onPress={handleAddEventPress} />
+      </View>
     </>
   );
 }
 
+const styles = StyleSheet.create({
+  addButton: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+  }
+})
 
 export default EventsScreen;

@@ -1,48 +1,30 @@
-import { SERVER } from '@env';
+import { SERVER, SERVER } from '@env';
 import { useNavigation, useRoute } from "@react-navigation/native";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { default as axios, default as axios } from "axios";
+import * as ImagePicker from 'expo-image-picker';
+import { useEffect, useEffect, useState, useState } from "react";
 import React, { Button, Image, Text, TextInput, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Carousel from 'react-native-snap-carousel';
 import GestureRecognizer from 'react-native-swipe-gestures';
 import tw from 'tailwind-react-native-classnames';
 
+
 function UpdateProfileScreen() {
 
   const [editedUsername, setEditedUsername] = useState("")
   const [editedZipcode, setEditedZipcode] = useState("")
   const [editedBio, setEditedBio] = useState("")
-  const [images, setImages] = useState([])
+  const [images, setImages] = useState("")
   const [index, setIndex] = useState(0);
-
-  const onSnapToItem = (itemIndex) => {
-    setIndex(itemIndex);
-  };
-
 
   const route = useRoute();
   const { profile } = route.params;
   const navigation = useNavigation();
 
   useEffect(() => {
-    setImages(profile.pictures)
+    setImages(profile.pictures[0])
   }, [])
-
-
-
-  // const onSwipeLeft = () => {
-  //   setIndex((prevIndex) => (prevIndex === 0 ? 4 : prevIndex - 1));
-  // };
-
-  // const onSwipeRight = () => {
-  //   setIndex((prevIndex) => (prevIndex === 4 ? 0 : prevIndex + 1));
-  // };
-
-  // const config = {
-  //   velocityThreshold: 0.3,
-  //   directionalOffsetThreshold: 80,
-  // };
 
   const handleProfileSavePress = () => {
     const updatedProfile = {
@@ -53,47 +35,29 @@ function UpdateProfileScreen() {
     // FIXISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   }
 
+  const handleImageSelect = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    })
+
+    if (!result.canceled) {
+      const newImages = result.assets[0].uri
+      setImages(newImages);
+      //add logic to post new profile picture to the backend
+    }
+  };
+
   return (
     <View style={tw`bg-white flex-1`}>
       <View style={tw`justify-center items-center mt-6 `}>
-        {/* <Carousel
-          data={images}
-          renderItem={({ item }) => (
-            <View style={tw`justify-center items-center `}>
-              <Image
-                style={tw`h-52 w-52 rounded-full`}
-                source={{
-                  uri: item,
-                  width: 100,
-                  height: 100,
-                }}
-              />
-            </View>
-          )}
-          sliderWidth={210} // Adjust the width as needed
-          itemWidth={200} // Adjust the width as needed
-          onSnapToItem={onSnapToItem}
-          initialScrollIndex={0}
-          firstItem={0}
-        /> */}
+          <TouchableOpacity onPress={handleImageSelect}>
+            {images && <Image style={[tw`h-52 w-52 rounded-full`]} source={{ uri: images }} />}
+          </TouchableOpacity>
       </View>
 
-      {/* <GestureRecognizer
-        onSwipeLeft={onSwipeLeft}
-        onSwipeRight={onSwipeRight}
-        config={config}
-      >
-        <View style={tw`justify-center items-center mt-6`}>
-          <Image
-            style={[tw`h-52 w-52 rounded-full`]}
-            source={{
-              uri: images[index],
-              width: 100,
-              height: 100,
-            }}
-          />
-        </View>
-      </GestureRecognizer> */}
 
       <View style={tw`flex-row mt-10`}>
         <View style={tw`px-5`}>
@@ -111,47 +75,19 @@ function UpdateProfileScreen() {
       </View>
 
       <View style={tw`flex-row px-5 mt-6 mr-4 `}>
-        <Text style={tw`font-bold`}>Bio &nbsp;&nbsp;</Text>
-        <TextInput style={tw` px-2 py-2 border text-gray-400 rounded-lg ml-2`} multiline={true} numberOfLines={4} defaultValue={profile.bio} onChangeText={setEditedBio}></TextInput>
+        <Text style={tw`font-bold`}>Bio: &nbsp;&nbsp;</Text>
+        <TextInput style={tw` px-2 py-3 border text-gray-400 rounded-xl ml-3`} multiline={true} numberOfLines={4} defaultValue={profile.bio} onChangeText={setEditedBio}></TextInput>
       </View>
 
       <View style={tw`flex flex-row justify-center mt-6 `}>
-        <View style={tw`mt-6 border rounded-2xl px-2 bg-black`} >
+        <View style={[tw`mt-6 rounded-2xl px-5 py-1`, { backgroundColor: '#EB5E28' }]} >
           <Button color="white" title="Save" onPress={handleProfileSavePress} />
         </View>
       </View>
-
 
     </View>
   );
 }
 
 export default UpdateProfileScreen;
-
-
-
-
-
-
-
-
-    // <GestureRecognizer
-    //   onSwipeLeft={onSwipeLeft}
-    //   onSwipeRight={onSwipeRight}
-    //   config={config}
-    //   style={{ flex: 1 }}
-    // >
-    //   <View style={{ flex: 1 }}>
-    //     <Image
-    //       source={{
-    //         uri: userProfilePics[index],
-    //         width: 100,
-    //         height: 100,
-    //       }}
-    //     />
-
-    //   </View>
-    // </GestureRecognizer>
-
-
 
