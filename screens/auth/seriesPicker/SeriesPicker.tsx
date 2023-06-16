@@ -5,7 +5,7 @@ import SeriesList from './SeriesList';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
 
-const Picker = ({ data, opining, setNext }) => {
+const SeriesPicker = ({ data, opining, setNext }) => {
   const [search, setSearch] = useState('');
 
   return (
@@ -29,12 +29,13 @@ const Picker = ({ data, opining, setNext }) => {
     </>
   );
 };
-export default Picker;
+export default SeriesPicker;
 
 const styles = StyleSheet.create({
   outer: {
     flex: 1,
     backgroundColor: 'white',
+    paddingTop: 50,
   },
   skipButton: {
     borderRadius: 16,
