@@ -3,11 +3,9 @@ import React, { Text, View, Button, Image, TextInput } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import tw from 'tailwind-react-native-classnames';
 import { useState, useEffect } from "react";
-import GestureRecognizer, {
-} from 'react-native-swipe-gestures';
 import axios from "axios";
 import { SERVER } from '@env';
-import Carousel from 'react-native-snap-carousel';
+
 
 function UpdateProfileScreen() {
 
@@ -30,20 +28,6 @@ function UpdateProfileScreen() {
     setImages(profile.pictures)
   }, [])
 
-
-
-  // const onSwipeLeft = () => {
-  //   setIndex((prevIndex) => (prevIndex === 0 ? 4 : prevIndex - 1));
-  // };
-
-  // const onSwipeRight = () => {
-  //   setIndex((prevIndex) => (prevIndex === 4 ? 0 : prevIndex + 1));
-  // };
-
-  // const config = {
-  //   velocityThreshold: 0.3,
-  //   directionalOffsetThreshold: 80,
-  // };
 
   const handleProfileSavePress = () => {
     const updatedProfile = {
@@ -78,23 +62,6 @@ function UpdateProfileScreen() {
           firstItem={0}
         />
       </View> */}
-
-      {/* <GestureRecognizer
-        onSwipeLeft={onSwipeLeft}
-        onSwipeRight={onSwipeRight}
-        config={config}
-      >
-        <View style={tw`justify-center items-center mt-6`}>
-          <Image
-            style={[tw`h-52 w-52 rounded-full`]}
-            source={{
-              uri: images[index],
-              width: 100,
-              height: 100,
-            }}
-          />
-        </View>
-      </GestureRecognizer> */}
 
       <View style={tw`flex-row mt-10`}>
         <View style={tw`px-5`}>
