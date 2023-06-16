@@ -37,7 +37,7 @@ export default function SignupScreen({ setLoggedIn }) {
     lastName: 'McTesterson',
     favoriteAnimeId: '',
     favoriteCharacter: '',
-    username: 'iluvdbz',
+    username: 'dragonballerz1',
     email: 'gokuislife@hotmail.com',
     zipcode: '90210',
     latitude: null,
