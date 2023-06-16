@@ -87,7 +87,20 @@ const NewEvent = () => {
   }
 
   const handleSubmit = () => {
-    handleCreateEvent(form);
+    if (form.name && form.startDate && form.address && form.city && form.description) {
+      handleCreateEvent(form);
+    } else {
+      // Create an object with hardcoded values
+      const defaultForm = {
+        name: 'Pop up shop!',
+        startDate: '2024-11-18T00:00:00.000Z',
+        address: '52 Takeshita Street',
+        city: 'Tokyo, Japan',
+        description: 'Merchandise for cheap!',
+        picture: 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg'
+      };
+      handleCreateEvent(defaultForm);
+    }
     setImage("");
     setEventStart("");
     setDate(new Date())
@@ -103,26 +116,32 @@ const NewEvent = () => {
     navigation.goBack();
   }
 
-
-
   return (
     <View style={tw`bg-white h-full`}>
       <View style={tw`mt-6 items-center justify-center `}>
         {image ? (
-          <View style={tw`w-48 h-48 rounded-lg bg-gray-300 mt-1 mb-4 items-center justify-center overflow-hidden`}>
+          <View style={tw`w-48 h-48 rounded-full bg-gray-300 mt-1 mb-4 items-center justify-center overflow-hidden`}>
             <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
           </View>
         ) : (
           <TouchableOpacity onPress={handleImageSelect}>
-            <View style={tw`w-52 h-52 rounded-lg`}>
-              <Image
-                source={require('../../../assets/image-square-orange.png')}
-                style={tw`w-full h-full rounded-lg`}
-                resizeMode="cover"
-              />
+            <View style={tw`w-48 h-48 rounded-full bg-gray-300 mb-4 items-center justify-center overflow-hidden`}>
+              <Text style={tw`text-4xl font-bold`}>+</Text>
             </View>
           </TouchableOpacity>
+
+
         )}
+
+        {/* <View style={tw`flex justify-center items-center mt-6`}>
+        {profile.pictures && <Image style={[tw`h-52 w-52 rounded-full`]} source={{ uri: profile.pictures[0] }} />}
+
+        <Text style={tw`mt-6 font-bold text-base text-lg`}>@{profile.username}</Text>
+
+        <View style={[tw`mt-6 rounded-2xl px-2 py-1`, { backgroundColor: '#EB5E28' }]} >
+          <Button color="white" title="Update Profile" onPress={handleUpdatePress} />
+        </View>
+      </View> */}
       </View>
 
       <View style={tw`flex-row mt-2 items-start items-center justify-center`}>
@@ -163,50 +182,50 @@ const NewEvent = () => {
 
       <View style={tw`items-center justify-center mt-6`}>
 
-      {!showPicker && (
-        <Pressable onPress={toggleDatePicker}>
-          <TextInput
-            style={[tw`mt-2 border-2 px-2 py-2 text-gray-400 `, { borderColor: '#EB5E28', textAlign: "center", width: 330, borderRadius: 8, }]}
-            placeholder="Select start date"
-            value={eventStart}
-            onChangeText={setEventStart}
-            editable={false}
-            onPressIn={toggleDatePicker}
-          ></TextInput>
-        </Pressable>
-      )}
+        {!showPicker && (
+          <Pressable onPress={toggleDatePicker}>
+            <TextInput
+              style={[tw`mt-2 border-2 px-2 py-2 text-gray-400 `, { borderColor: '#EB5E28', textAlign: "center", width: 330, borderRadius: 8, }]}
+              placeholder="Select start date"
+              value={eventStart}
+              onChangeText={setEventStart}
+              editable={false}
+              onPressIn={toggleDatePicker}
+            ></TextInput>
+          </Pressable>
+        )}
 
-      {showPicker && (
-        <>
-          <DateTimePicker
-            style={tw`h-28`}
-            mode="date"
-            display="spinner"
-            value={date}
-            onChange={onChange}
+        {showPicker && (
+          <>
+            <DateTimePicker
+              style={tw`h-28`}
+              mode="date"
+              display="spinner"
+              value={date}
+              onChange={onChange}
 
-          />
-        </>
-      )}
-      {showPicker ? (
-        <View style={tw`flex flex-row justify-center`}>
-          <View style={[tw` mt-2 rounded-3xl px-16 py-2`, { backgroundColor: '#EB5E28' }]}>
-            <Button
-              color="white"
-              title="Save"
-              onPress={confirmIOSDateStart}
             />
+          </>
+        )}
+        {showPicker ? (
+          <View style={tw`flex flex-row justify-center`}>
+            <View style={[tw` mt-2 rounded-3xl px-16 py-2`, { backgroundColor: '#EB5E28' }]}>
+              <Button
+                color="white"
+                title="Save"
+                onPress={confirmIOSDateStart}
+              />
+            </View>
           </View>
-        </View>
-      ) : null}
+        ) : null}
 
-      {!showPicker ? (
-        <View style={tw`flex flex-row justify-center mt-6 `}>
-          <View style={[tw`mt-8 rounded-3xl px-16 py-2`, { backgroundColor: '#EB5E28' }]}>
-            <Button color="white" title="Post Event" onPress={handleSubmit} />
+        {!showPicker ? (
+          <View style={tw`flex flex-row justify-center mt-6 `}>
+            <View style={[tw`mt-8 rounded-3xl px-16 py-2`, { backgroundColor: '#EB5E28' }]}>
+              <Button color="white" title="Post Event" onPress={handleSubmit} />
+            </View>
           </View>
-        </View>
-      ) : null}
+        ) : null}
       </View>
 
     </View>

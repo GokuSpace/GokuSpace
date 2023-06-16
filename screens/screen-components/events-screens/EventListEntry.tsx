@@ -17,13 +17,13 @@ const EventListEntry = ({ event, handleRSVPpress }) => {
     <View style={tw`bg-white`}>
       <TouchableOpacity onPress={handleEventPress}>
         <ListItem bottomDivider>
-          <Avatar style={tw`h-16 w-16 flex justify-start`}
+          {event.picture && <Avatar style={tw`h-16 w-16 flex justify-start`}
             key={event.picture}
             rounded
             source={{
               uri: event.picture,
             }}
-          />
+          />}
           <ListItem.Content style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
             <View>
               <ListItem.Title style={{ fontSize: 18 }}>{event.name}</ListItem.Title>
