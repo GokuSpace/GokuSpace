@@ -3,6 +3,7 @@ import React, { Text, View, Button, Image, TextInput } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import tw from 'tailwind-react-native-classnames';
 import { useState, useEffect } from "react";
+import * as ImagePicker from 'expo-image-picker';
 import axios from "axios";
 import { SERVER } from '@env';
 
@@ -12,7 +13,7 @@ function UpdateProfileScreen() {
   const [editedUsername, setEditedUsername] = useState("")
   const [editedZipcode, setEditedZipcode] = useState("")
   const [editedBio, setEditedBio] = useState("")
-  const [images, setImages] = useState([])
+  const [images, setImages] = useState("")
   const [index, setIndex] = useState(0);
 
   const route = useRoute();
@@ -20,7 +21,7 @@ function UpdateProfileScreen() {
   const navigation = useNavigation();
 
   useEffect(() => {
-    setImages(profile.pictures)
+    setImages(profile.pictures[0])
   }, [])
 
   const handleProfileSavePress = () => {
@@ -32,20 +33,31 @@ function UpdateProfileScreen() {
     // FIXISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   }
 
+  const handleImageSelect = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    })
+
+    if (!result.canceled) {
+      const newImages = result.assets[0].uri
+      setImages(newImages);
+      //add logic to post new profile picture to the backend
+    }
+  };
+
   return (
     <View style={tw`bg-white flex-1`}>
       <View style={tw`justify-center items-center mt-6 `}>
-        <View style={tw`justify-center items-center rounded-full `}>
-          <Image
-            style={tw`h-52 w-52`}
-            source={require("../../../assets/add-user-photo.jpg")}
-          />
-        </View>
-
+          <TouchableOpacity onPress={handleImageSelect}>
+            {images && <Image style={[tw`h-52 w-52 rounded-full`]} source={{ uri: images }} />}
+          </TouchableOpacity>
       </View>
 
 
-      <View style={tw`flex-row mt-16`}>
+      <View style={tw`flex-row mt-10`}>
         <View style={tw`px-5`}>
           <Text style={tw`mt-1 font-bold`}>username: </Text>
           <Text style={tw`mt-6 font-bold`}>favorite anime: </Text>
