@@ -2,7 +2,6 @@
 import { Avatar, ListItem } from "@rneui/themed";
 import React, { useState } from "react";
 import { Button, Image, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
-import { Grayscale } from 'react-native-image-filter-kit';
 import tw from 'tailwind-react-native-classnames';
 
 type Post = {
@@ -81,18 +80,16 @@ return (
     </ListItem.Subtitle>
   <View style={tw`flex-row mt-4`}>
     <TouchableOpacity >
-    <Grayscale>
       <Image
         style={tw`h-7 w-7 grayscale`}
         source={require("../../../assets/like-fire.png")}
       />
-    </Grayscale>
     </TouchableOpacity>
     {post.name === "jearbearcutie" ? (
       <View>
         <TouchableOpacity onPress={() => handleUpdatePress()}>
           <Image
-            style={tw`h-6 w-6 ml-3 grayscale`}
+            style={tw`h-6 w-6 ml-3`}
             source={require("../../../assets/edit-post.png")}
           />
         </TouchableOpacity>
