@@ -1,6 +1,6 @@
 import { Avatar, Button, Icon, ListItem, Tab } from "@rneui/themed";
 import { useEffect, useState } from "react";
-import { default as React, default as React, ScrollView, ScrollView, StyleSheet, Text, Text, TouchableOpacity, TouchableOpacity, View, View } from "react-native";
+import { React, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Slider from "react-native-slider";
 import tw from 'tailwind-react-native-classnames';
 import getEventsByDistance100 from '../jerryMockDataFolder/getEventsByDistance100.json';

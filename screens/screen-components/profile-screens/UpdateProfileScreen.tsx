@@ -1,8 +1,8 @@
-import { SERVER, SERVER } from '@env';
+import { SERVER } from '@env';
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { default as axios, default as axios } from "axios";
+import axios from "axios";
 import * as ImagePicker from 'expo-image-picker';
-import { useEffect, useEffect, useState, useState } from "react";
+import { useEffect, useState } from "react";
 import React, { Button, Image, Text, TextInput, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Carousel from 'react-native-snap-carousel';
