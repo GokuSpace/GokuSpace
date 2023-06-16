@@ -23,7 +23,6 @@ function UpdateProfileScreen() {
     setImages(profile.pictures)
   }, [])
 
-
   const handleProfileSavePress = () => {
     const updatedProfile = {
       username: editedUsername,
@@ -35,7 +34,18 @@ function UpdateProfileScreen() {
 
   return (
     <View style={tw`bg-white flex-1`}>
-      <View style={tw`flex-row mt-10`}>
+      <View style={tw`justify-center items-center mt-6 `}>
+        <View style={tw`justify-center items-center rounded-full `}>
+          <Image
+            style={tw`h-52 w-52`}
+            source={require("../../../assets/add-user-photo.jpg")}
+          />
+        </View>
+
+      </View>
+
+
+      <View style={tw`flex-row mt-16`}>
         <View style={tw`px-5`}>
           <Text style={tw`mt-1 font-bold`}>username: </Text>
           <Text style={tw`mt-6 font-bold`}>favorite anime: </Text>
@@ -51,12 +61,12 @@ function UpdateProfileScreen() {
       </View>
 
       <View style={tw`flex-row px-5 mt-6 mr-4 `}>
-        <Text style={tw`font-bold`}>Bio &nbsp;&nbsp;</Text>
-        <TextInput style={tw` px-2 py-2 border text-gray-400 rounded-lg ml-2`} multiline={true} numberOfLines={4} defaultValue={profile.bio} onChangeText={setEditedBio}></TextInput>
+        <Text style={tw`font-bold`}>Bio: &nbsp;&nbsp;</Text>
+        <TextInput style={tw` px-2 py-3 border text-gray-400 rounded-xl ml-3`} multiline={true} numberOfLines={4} defaultValue={profile.bio} onChangeText={setEditedBio}></TextInput>
       </View>
 
       <View style={tw`flex flex-row justify-center mt-6 `}>
-        <View style={[tw`mt-6 rounded-2xl px-2 bg-black`, { backgroundColor: 'orange' }]} >
+        <View style={[tw`mt-6 rounded-2xl px-5 py-1`, { backgroundColor: '#EB5E28' }]} >
           <Button color="white" title="Save" onPress={handleProfileSavePress} />
         </View>
       </View>

@@ -103,8 +103,6 @@ const NewEvent = () => {
     navigation.goBack();
   }
 
-
-
   return (
     <View style={tw`bg-white h-full`}>
       <View style={tw`mt-6 items-center justify-center `}>
