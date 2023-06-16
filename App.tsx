@@ -137,7 +137,7 @@ export default function AppTabs() {
                 {() => (
                   <Stack.Navigator>
                     <Stack.Screen
-                      name="Profile"
+                      name="Profile Page"
                       component={ProfileScreen}
                     />
                     <Stack.Screen
