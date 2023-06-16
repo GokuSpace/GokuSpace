@@ -25,7 +25,7 @@ const onPost = () => {
   const newPost = {
     id: postId,
     user_id: 22,
-    name: "jearbearcutie",
+    name: "dragonballerz1",
     text: newPostBody,
     image_url:
       "https://avatarfiles.alphacoders.com/347/347546.png",
