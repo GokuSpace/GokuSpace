@@ -1,34 +1,35 @@
 /* eslint-disable react/prop-types */
 import React from "react";
+import { StyleSheet } from 'react-native';
 import { Avatar, ListItem } from "react-native-elements";
 
-const DaysOfWeek = ({ dayMostTrending  }) => {
+const DaysOfWeek = ({ dayMostTrending }) => {
 
   return (
     <>
-      <ListItem bottomDivider>
-        <Avatar rounded source={{ uri: dayMostTrending[0].url }} size={200} />
+      <ListItem bottomDivider >
+        <Avatar rounded source={{ uri: dayMostTrending.first.url}} size={200} />
         <ListItem.Content >
-          <ListItem.Title >{dayMostTrending[0].title}</ListItem.Title>
-          <ListItem.Subtitle>{dayMostTrending[0].total_votes}</ListItem.Subtitle>
-          <ListItem.Subtitle>{dayMostTrending[0].body}</ListItem.Subtitle>
+          <ListItem.Title style={styles.title}>{dayMostTrending.first.title}</ListItem.Title>
+          <ListItem.Subtitle style={styles.votes}>{dayMostTrending.first.total_votes}</ListItem.Subtitle>
+          <ListItem.Subtitle style={styles.body}>{dayMostTrending.first.body}</ListItem.Subtitle>
         </ListItem.Content>
       </ListItem>
 
       <ListItem bottomDivider>
-        <Avatar rounded source={{ uri: dayMostTrending[1].url }} size={100} />
+        <Avatar rounded source={{ uri: dayMostTrending.second.url}} size={100} />
         <ListItem.Content >
-          <ListItem.Title >{dayMostTrending[1].title}</ListItem.Title>
-          <ListItem.Subtitle>{dayMostTrending[1].total_votes}</ListItem.Subtitle>
+          <ListItem.Title style={styles.secondary_title}>{dayMostTrending.second.title}</ListItem.Title>
+          <ListItem.Subtitle style={styles.secondary_votes}>{dayMostTrending.second.total_votes}</ListItem.Subtitle>
         </ListItem.Content>
       </ListItem>
 
 
       <ListItem bottomDivider>
-        <Avatar rounded source={{ uri: dayMostTrending[2].url }} size={100} />
+        <Avatar rounded source={{ uri: dayMostTrending.third.url}} size={100} />
         <ListItem.Content >
-          <ListItem.Title >{dayMostTrending[2].title}</ListItem.Title>
-          <ListItem.Subtitle>{dayMostTrending[2].total_votes}</ListItem.Subtitle>
+          <ListItem.Title style={styles.secondary_title}>{dayMostTrending.third.title}</ListItem.Title>
+          <ListItem.Subtitle style={styles.secondary_votes}>{dayMostTrending.third.total_votes}</ListItem.Subtitle>
         </ListItem.Content>
       </ListItem>
     </>
@@ -36,3 +37,29 @@ const DaysOfWeek = ({ dayMostTrending  }) => {
 }
 
 export default DaysOfWeek;
+const styles = StyleSheet.create({
+  votes: {
+    fontSize: 50,
+    fontWeight: '500',
+    textAlign: 'center',
+    color: 'gray'
+  },
+  title: {
+    fontWeight: "700",
+    textAlign: 'center'
+  },
+  body: {
+    fontSize: 10,
+    fontWeight: '300',
+    color: "gray",
+    textAlign: 'left'
+  },
+  secondary_title: {
+    fontWeight: '500',
+  },
+  secondary_votes: {
+    fontWeight: '500',
+    fontSize: 30,
+    color: 'gray'
+  }
+})

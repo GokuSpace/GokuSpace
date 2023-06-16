@@ -1,24 +1,58 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Pressable, Text } from 'react-native';
+import { Pressable, Text, StyleSheet } from 'react-native';
 import { Avatar } from 'react-native-elements';
 
 
-const WeekEntry = ({day, first, second, third, setSingleDay, setDayMostTrending}) => {
+const WeekEntry = ({day, first, second, third, setSingleDay, setDayMostTrending, dayMostTrending}) => {
   const pressHandler = () => {
       setSingleDay(day);
-      setDayMostTrending([first, second,third])
+      setDayMostTrending({
+        first:{
+          title:first.title,
+          total_votes: first.total_votes,
+          url:first.url
+        },
+        second:{
+          title:second.title,
+          total_votes: second.total_votes,
+          url:second.url
+        },
+        third:{
+          title:third.title,
+          total_votes: third.total_votes,
+          url:third.url
+        },
+
+      })
   }
   return (
 
-    <Pressable onPress={pressHandler}>
-      <Text>{day}</Text>
-      <Avatar rounded source={{ uri: first.url }} size={100} />
-      <Avatar rounded source={{ uri: second.url }} size={100} />
-      <Avatar rounded source={{ uri: third.url }} size={100} />
+    <Pressable onPress={pressHandler} style={styles.container}>
+      <Text style={styles.day}>{day[0]}</Text>
+      <Avatar rounded source={{ uri: first.url }} size={70} />
+      <Avatar rounded source={{ uri: second.url }} size={70} />
+      <Avatar rounded source={{ uri: third.url }} size={70} />
     </Pressable>
 
   );
 }
 
 export default WeekEntry;
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent:'space-evenly',
+    borderBottomColor:'#CCC5B9',
+    borderBottomWidth:1,
+    paddingVertical:15,
+
+  },
+  day:{
+    fontSize:30,
+    fontWeight:'600',
+    color:'gray'
+  }
+});
