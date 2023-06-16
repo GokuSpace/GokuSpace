@@ -148,7 +148,7 @@ export default function AppTabs() {
                 {() => (
                   <Stack.Navigator>
                     <Stack.Screen
-                      name="ProfileScreen"
+                      name="Profile Page"
                       component={ProfileScreen}
                     />
                     <Stack.Screen
@@ -156,11 +156,11 @@ export default function AppTabs() {
                       component={EditProfilePictureScreen}
                     />
                     <Stack.Screen
-                      name="UpdateProfileScreen"
+                      name="Update Profile"
                       component={UpdateProfileScreen}
                     />
                     <Stack.Screen
-                      name="ViewUsersPostsScreen"
+                      name="View Posts"
                       component={ViewUsersPostsScreen}
                     />
                     <Stack.Screen
