@@ -4,24 +4,27 @@ import { Pressable, Text, StyleSheet } from 'react-native';
 import { Avatar } from 'react-native-elements';
 
 
-const WeekEntry = ({day, first, second, third, setSingleDay, setDayMostTrending, dayMostTrending}) => {
+const WeekEntry = ({day, first, second, third, setSingleDay, setDayMostTrending}) => {
   const pressHandler = () => {
       setSingleDay(day);
       setDayMostTrending({
         first:{
           title:first.title,
           total_votes: first.total_votes,
-          url:first.url
+          url:first.url,
+          body: first.body
         },
         second:{
           title:second.title,
           total_votes: second.total_votes,
-          url:second.url
+          url:second.url,
+          body: second.body
         },
         third:{
           title:third.title,
           total_votes: third.total_votes,
-          url:third.url
+          url:third.url,
+          body: third.body
         },
 
       })

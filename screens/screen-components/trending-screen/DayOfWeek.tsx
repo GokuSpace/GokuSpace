@@ -8,28 +8,30 @@ const DaysOfWeek = ({ dayMostTrending }) => {
   return (
     <>
       <ListItem bottomDivider >
-        <Avatar rounded source={{ uri: dayMostTrending.first.url}} size={200} />
+        <Avatar rounded source={{ uri: dayMostTrending.first.url }} size={200} />
         <ListItem.Content >
           <ListItem.Title style={styles.title}>{dayMostTrending.first.title}</ListItem.Title>
           <ListItem.Subtitle style={styles.votes}>{dayMostTrending.first.total_votes}</ListItem.Subtitle>
-          <ListItem.Subtitle style={styles.body}>{dayMostTrending.first.body}</ListItem.Subtitle>
+          <ListItem.Subtitle style={styles.body}>{dayMostTrending.first.body.slice(0, 300) + '...'}</ListItem.Subtitle>
         </ListItem.Content>
       </ListItem>
 
       <ListItem bottomDivider>
-        <Avatar rounded source={{ uri: dayMostTrending.second.url}} size={100} />
+        <Avatar rounded source={{ uri: dayMostTrending.second.url }} size={100} />
         <ListItem.Content >
           <ListItem.Title style={styles.secondary_title}>{dayMostTrending.second.title}</ListItem.Title>
           <ListItem.Subtitle style={styles.secondary_votes}>{dayMostTrending.second.total_votes}</ListItem.Subtitle>
+          <ListItem.Subtitle style={styles.body}>{dayMostTrending.second.body.slice(0, 150) + '...'}</ListItem.Subtitle>
         </ListItem.Content>
       </ListItem>
 
 
       <ListItem bottomDivider>
-        <Avatar rounded source={{ uri: dayMostTrending.third.url}} size={100} />
+        <Avatar rounded source={{ uri: dayMostTrending.third.url }} size={100} />
         <ListItem.Content >
           <ListItem.Title style={styles.secondary_title}>{dayMostTrending.third.title}</ListItem.Title>
           <ListItem.Subtitle style={styles.secondary_votes}>{dayMostTrending.third.total_votes}</ListItem.Subtitle>
+          <ListItem.Subtitle style={styles.body}>{dayMostTrending.third.body.slice(0, 100) + '...'}</ListItem.Subtitle>
         </ListItem.Content>
       </ListItem>
     </>
