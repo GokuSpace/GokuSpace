@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
   outer: {
     flex: 1,
     backgroundColor: 'white',
+    paddingTop: 50,
   },
   skipButton: {
     borderRadius: 16,

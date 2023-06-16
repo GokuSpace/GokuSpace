@@ -20,11 +20,11 @@ import { SERVER } from '@env';
 import zipcodes from 'zipcodes';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker';
 
 // Set the random fallback using expo-random
 export default function SignupScreen({ setLoggedIn }) {
   const navigation = useNavigation();
-  const [userPhoto, setUserPhoto] = useState(null);
   const [favoriteAnime, setFavoriteAnime] = useState(null);
   const [favoriteAnimeChar, setFavoriteAnimeChar] = useState(null);
   const { currentUser, setCurrentUser } = useContext(userContext);
@@ -33,17 +33,29 @@ export default function SignupScreen({ setLoggedIn }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [signupPage, setSignupPage] = useState(true);
   const [form, setForm] = useState({
-    firstName: '',
-    lastName: '',
+    firstName: 'Testy',
+    lastName: 'McTesterson',
     favoriteAnimeId: '',
     favoriteCharacter: '',
-    username: '',
-    email: '',
-    zipcode: '',
+    username: 'iluvdbz',
+    email: 'gokuislife@hotmail.com',
+    zipcode: '90210',
     latitude: null,
     longitude: null,
-    password: '',
+    password: 'password',
   });
+  const [image, setImage] = useState<string>('');
+  const handleImageSelect = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
 
   const submitForm = () => {
     bcrypt.setRandomFallback(async (len) => {
@@ -100,13 +112,16 @@ export default function SignupScreen({ setLoggedIn }) {
     <KeyboardAvoidingView style={styles.outer} behavior="height">
       <SafeAreaView style={styles.inner}>
         <View style={styles.photoContainer}>
-          {userPhoto ? (
-            <Image />
+          {image ? (
+            <Image
+              source={{ uri: image }}
+              style={{ width: 150, height: 150, borderRadius: 100 }}
+            />
           ) : (
-            <MaterialIcons name="person" size={100} color="black" />
+            <MaterialIcons name="person" size={150} color="black" />
           )}
           <TouchableOpacity
-            // onPress={() => setLoggedIn(true)}
+            onPress={handleImageSelect}
             style={styles.addPhotoButton}
           >
             <Text style={styles.addPhotoButtonText}>Add Photo</Text>
@@ -126,22 +141,6 @@ export default function SignupScreen({ setLoggedIn }) {
             placeholder="Last Name"
             style={styles.nameInput}
           />
-        </View>
-
-        <View style={styles.favsContainer}>
-          <Text
-            style={!favoriteAnime ? styles.preFavInput : styles.postFavInput}
-          >
-            {favoriteAnime ? favoriteAnime : 'Favorite Anime'}
-          </Text>
-
-          <Text
-            style={
-              !favoriteAnimeChar ? styles.preFavInput : styles.postFavInput
-            }
-          >
-            {favoriteAnimeChar ? favoriteAnimeChar : 'Favorite Character'}
-          </Text>
         </View>
 
         <TextInput
@@ -298,6 +297,7 @@ const styles = StyleSheet.create({
     width: '25%',
     justifyContent: 'center',
     alignSelf: 'center',
+    marginTop: 10,
   },
   addPhotoButtonText: {
     textAlign: 'center',

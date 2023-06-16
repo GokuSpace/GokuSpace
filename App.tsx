@@ -19,6 +19,7 @@ import EditProfilePictureScreen from './screens/screen-components/profile-screen
 import UpdateProfileScreen from './screens/screen-components/profile-screens/UpdateProfileScreen';
 import ViewUsersPostsScreen from './screens/screen-components/profile-screens/UsersPosts';
 import animeSeries from './animeSeries';
+import animeChars from './dbzChars';
 import SeriesPicker from './screens/auth/seriesPicker/SeriesPicker';
 import CharPicker from './screens/auth/charPicker/CharPicker';
 
@@ -194,8 +195,8 @@ export default function AppTabs() {
                 {(props) => (
                   <CharPicker
                     {...props}
-                    data={animeSeries}
-                    opining={"What's your favorite character?"}
+                    data={animeChars}
+                    opining={"Who's your favorite character?"}
                     setLoggedIn={setLoggedIn}
                   />
                 )}
