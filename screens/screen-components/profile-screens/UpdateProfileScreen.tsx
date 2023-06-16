@@ -7,7 +7,7 @@ import GestureRecognizer, {
 } from 'react-native-swipe-gestures';
 import axios from "axios";
 import { SERVER } from '@env';
-// import Carousel from 'react-native-snap-carousel';
+import Carousel from 'react-native-snap-carousel';
 
 function UpdateProfileScreen() {
 

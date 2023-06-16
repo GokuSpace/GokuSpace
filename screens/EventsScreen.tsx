@@ -1,7 +1,7 @@
-import React, { Text, View, ScrollView, TouchableOpacity } from "react-native";
-import { Avatar, Button, ListItem, Tab } from "@rneui/themed";
+import React, { Text, View, ScrollView, TouchableOpacity, StyleSheet } from "react-native";
+import { Avatar, Button, ListItem, Tab, Icon } from "@rneui/themed";
 import { useEffect, useState } from "react";
-// import Slider from "react-native-slider";
+import Slider from "react-native-slider";
 import EventListEntry from "./screen-components/events-screens/EventListEntry";
 import tw from 'tailwind-react-native-classnames';
 import axios from 'axios';
@@ -151,7 +151,7 @@ function EventsScreen() {
 
 
   const handleAddEventPress = () => {
-    navigation.navigate("New Event")
+    navigation.navigate("New Event", { handleCreateEvent: handleCreateEvent });
   }
 
   const handleRSVPpress = (event) => {
@@ -160,24 +160,56 @@ function EventsScreen() {
     setMyEvents(updatedEvents);
   };
 
+  const handleCreateEvent = (event) => {
+    // console.log(event);
+    const { address, name, startDate, city, description, picture } = event
+    const newEventObject = {
+      address,
+      name,
+      startDate,
+      city,
+      description,
+      friendsGoing: false,
+      attendees: 1,
+      picture
+    }
+
+    const updatedEvents = [...myEvents, newEventObject];
+    // const updatedEvents20 = [...eventsWithin20, newEventObject];
+    // const updatedEvents50 = [...eventsWithin50, newEventObject];
+    // const updatedEvents100 = [...eventsWithin100, newEventObject];
+    const updatedEventsAll = [...userEvents, newEventObject];
+
+    setMyEvents(updatedEvents);
+    // setEventsWithin20(updatedEvents20);
+    // setEventsWithin50(updatedEvents50);
+    // setEventsWithin100(updatedEvents100);
+    setUserEvents(updatedEventsAll);
+
+  }
+
   return (
     <>
       <Tab
         onChange={(e) => setIndex(e)}
         indicatorStyle={{
-          backgroundColor: "orange",
+          backgroundColor: "#FF8200",
           height: 3,
         }}
         variant="primary"
         value={index}
       >
-        <Tab.Item style={[tw`bg-gray-300`, { backgroundColor: 'orange' }]} color="black" title="Near Me" />
-        <Tab.Item style={[tw`bg-gray-300`, { backgroundColor: 'orange' }]} color="black" title="My Events" />
+        <Tab.Item style={[tw`bg-gray-300`, { backgroundColor: 'orange' }]} containerStyle={(active) => ({
+          backgroundColor: active ? "#EB5E28" : undefined,
+        })} title="Near Me" />
+        <Tab.Item style={[tw`bg-gray-300`, { backgroundColor: 'orange' }]} containerStyle={(active) => ({
+          backgroundColor: active ? "#EB5E28" : undefined,
+        })} title="My Events" />
       </Tab>
       {index === 0 && (
         <View style={[tw`flex items-center mb-8`, { backgroundColor: 'white', marginBottom: 0 }]}>
 
-          {/* <Slider
+          <Slider
             style={tw`w-4/5 h-8`}
             value={distance}
             minimumValue={1}
@@ -188,7 +220,7 @@ function EventsScreen() {
             maximumTrackTintColor="gray"
             thumbImage={require('../assets/like-fire2.png')} // Custom image for the thumb
             thumbStyle={[tw`w-6 h-8 rounded-full`, { backgroundColor: 'transparent' }]}
-          /> */}
+          />
 
           <View style={[tw`flex-row justify-between w-4/5 mt-2`, { backgroundColor: 'white' }]}>
             <Text style={[tw`text-xs`, distance === 1 && { color: 'orange' }]}>20 miles</Text>
@@ -208,12 +240,28 @@ function EventsScreen() {
           })}
         </>
       </ScrollView>
-      <TouchableOpacity style={tw`absolute bottom-6 right-6 w-16 h-16 bg-red-500 rounded-full items-center justify-center`} onPress={handleAddEventPress}>
+      {/* <TouchableOpacity style={tw`absolute bottom-6 right-6 w-16 h-16 bg-red-500 rounded-full items-center justify-center`} onPress={handleAddEventPress}>
         <Text style={tw`text-white text-2xl font-bold`}>+</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
+
+      <View style={styles.addButton}>
+        <Icon
+          raised
+          name='plus'
+          type='font-awesome-5'
+          color='#f50'
+          onPress={handleAddEventPress} />
+      </View>
     </>
   );
 }
 
+const styles = StyleSheet.create({
+  addButton: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+  }
+})
 
 export default EventsScreen;
