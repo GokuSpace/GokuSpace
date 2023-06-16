@@ -14,12 +14,11 @@ export default function PendingListEntry({ item }: { item: Friend }) {
   return (
     <View style={tw`flex flex-row p-4 border-b border-gray-400`}>
       <View style={tw`relative mr-4`}>
-        <View style={tw`bg-gray-200 w-16 h-16 rounded-full`}>
-          {false && (
-            <View style={tw`absolute bottom-1 right-1`}>
-              <Icon name="location-pin" color="red" size={35} />
-            </View>
-          )}
+        <View style={tw`relative mr-4`}>
+          <Image
+            source={{ uri: item.pictures[0] }}
+            style={tw`bg-gray-200 w-16 h-16 rounded-full`}
+          />
         </View>
       </View>
       <View style={tw`flex justify-around`}>
