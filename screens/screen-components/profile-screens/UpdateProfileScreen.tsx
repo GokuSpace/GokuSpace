@@ -3,7 +3,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import axios from "axios";
 import * as ImagePicker from 'expo-image-picker';
 import { useEffect, useState } from "react";
-import React, { Button, Image, Text, TextInput, View } from "react-native";
+import { Button, Image, React, Text, TextInput, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Carousel from 'react-native-snap-carousel';
 import GestureRecognizer from 'react-native-swipe-gestures';
