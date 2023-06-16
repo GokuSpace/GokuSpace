@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 import SeriesEntry from './SeriesEntry';

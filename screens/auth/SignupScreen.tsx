@@ -6,25 +6,25 @@ import {
   StyleSheet,
   TextInput,
   Image,
-  Pressable,
+  TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import bcrypt from 'bcryptjs-react';
-import AnimePicker from './AnimePicker';
+import AnimePicker from './AnimePicker-unused';
 import { userContext } from '../../App';
 import * as Crypto from 'expo-crypto';
 import { SERVER } from '@env';
 import zipcodes from 'zipcodes';
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker';
 
 // Set the random fallback using expo-random
 export default function SignupScreen({ setLoggedIn }) {
   const navigation = useNavigation();
-  const [userPhoto, setUserPhoto] = useState(null);
   const [favoriteAnime, setFavoriteAnime] = useState(null);
   const [favoriteAnimeChar, setFavoriteAnimeChar] = useState(null);
   const { currentUser, setCurrentUser } = useContext(userContext);
@@ -33,17 +33,29 @@ export default function SignupScreen({ setLoggedIn }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [signupPage, setSignupPage] = useState(true);
   const [form, setForm] = useState({
-    firstName: '',
-    lastName: '',
+    firstName: 'Testy',
+    lastName: 'McTesterson',
     favoriteAnimeId: '',
     favoriteCharacter: '',
-    username: '',
-    email: '',
-    zipcode: '',
+    username: 'iluvdbz',
+    email: 'gokuislife@hotmail.com',
+    zipcode: '90210',
     latitude: null,
     longitude: null,
-    password: '',
+    password: 'password',
   });
+  const [image, setImage] = useState<string>('');
+  const handleImageSelect = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
 
   const submitForm = () => {
     bcrypt.setRandomFallback(async (len) => {
@@ -100,17 +112,20 @@ export default function SignupScreen({ setLoggedIn }) {
     <KeyboardAvoidingView style={styles.outer} behavior="height">
       <SafeAreaView style={styles.inner}>
         <View style={styles.photoContainer}>
-          {userPhoto ? (
-            <Image />
+          {image ? (
+            <Image
+              source={{ uri: image }}
+              style={{ width: 150, height: 150, borderRadius: 100 }}
+            />
           ) : (
-            <MaterialIcons name="person" size={100} color="black" />
+            <MaterialIcons name="person" size={150} color="black" />
           )}
-          <Pressable
-            // onPress={() => setLoggedIn(true)}
+          <TouchableOpacity
+            onPress={handleImageSelect}
             style={styles.addPhotoButton}
           >
             <Text style={styles.addPhotoButtonText}>Add Photo</Text>
-          </Pressable>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.nameContainer}>
@@ -126,22 +141,6 @@ export default function SignupScreen({ setLoggedIn }) {
             placeholder="Last Name"
             style={styles.nameInput}
           />
-        </View>
-
-        <View style={styles.favsContainer}>
-          <Text
-            style={!favoriteAnime ? styles.preFavInput : styles.postFavInput}
-          >
-            {favoriteAnime ? favoriteAnime : 'Favorite Anime'}
-          </Text>
-
-          <Text
-            style={
-              !favoriteAnimeChar ? styles.preFavInput : styles.postFavInput
-            }
-          >
-            {favoriteAnimeChar ? favoriteAnimeChar : 'Favorite Character'}
-          </Text>
         </View>
 
         <TextInput
@@ -179,19 +178,19 @@ export default function SignupScreen({ setLoggedIn }) {
           style={styles.input}
         />
 
-        <Pressable
-          onPress={() => setLoggedIn(true)}
+        <TouchableOpacity
+          onPress={() => navigation.navigate('seriesPicker')}
           style={styles.signUpButton}
         >
           <Text style={styles.buttonText}>Sign Up</Text>
-        </Pressable>
+        </TouchableOpacity>
 
-        <Pressable
+        <TouchableOpacity
           onPress={() => navigation.navigate('Login')}
           style={styles.backButton}
         >
           <Text style={styles.backButtonText}>Go Back to Login</Text>
-        </Pressable>
+        </TouchableOpacity>
       </SafeAreaView>
     </KeyboardAvoidingView>
   );
@@ -298,6 +297,7 @@ const styles = StyleSheet.create({
     width: '25%',
     justifyContent: 'center',
     alignSelf: 'center',
+    marginTop: 10,
   },
   addPhotoButtonText: {
     textAlign: 'center',
