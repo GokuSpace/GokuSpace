@@ -28,7 +28,7 @@ const Stack = createStackNavigator();
 
 const theme = createTheme({
   lightColors: {
-    secondary: '#EB5E28',
+    primary: '#EB5E28',
   },
   mode: 'light',
 });
@@ -44,7 +44,18 @@ export default function AppTabs() {
       <userContext.Provider value={{ currentUser, setCurrentUser }}>
         <ThemeProvider theme={theme}>
           <NavigationContainer>
-            <Tab.Navigator>
+            <Tab.Navigator
+            screenOptions={{
+              headerShown: true,
+              tabBarActiveTintColor: '#EB5E28',
+              tabBarInactiveTintColor: '#252422',
+              tabBarStyle: {
+                backgroundColor: 'white',
+                paddingBottom: 5,
+                borderTopColor: 'transparent',
+                shadowOpacity: 0
+              }}}
+            >
               <Tab.Screen
                 name="Home"
                 component={HomeScreen}
@@ -137,7 +148,7 @@ export default function AppTabs() {
                 {() => (
                   <Stack.Navigator>
                     <Stack.Screen
-                      name="ProfileScreen"
+                      name="Profile Page"
                       component={ProfileScreen}
                     />
                     <Stack.Screen
@@ -145,11 +156,11 @@ export default function AppTabs() {
                       component={EditProfilePictureScreen}
                     />
                     <Stack.Screen
-                      name="UpdateProfileScreen"
+                      name="Update Profile"
                       component={UpdateProfileScreen}
                     />
                     <Stack.Screen
-                      name="ViewUsersPostsScreen"
+                      name="View Posts"
                       component={ViewUsersPostsScreen}
                     />
                     <Stack.Screen
