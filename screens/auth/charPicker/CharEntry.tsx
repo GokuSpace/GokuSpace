@@ -1,9 +1,8 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 
-const SeriesEntry = ({ serie, setNext }) => (
-  <TouchableOpacity onPress={() => setNext(true)} style={styles.listItem}>
+const CharEntry = ({ serie, setLoggedIn }) => (
+  <TouchableOpacity onPress={() => setLoggedIn(true)} style={styles.listItem}>
     <View style={styles.listItemContent}>
       <Image
         style={styles.avatar}
@@ -42,4 +41,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SeriesEntry;
+export default CharEntry;

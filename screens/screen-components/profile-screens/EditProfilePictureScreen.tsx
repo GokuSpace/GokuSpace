@@ -65,7 +65,7 @@ const EditProfilePictureScreen: React.FC = () => { //pass in userID, preferably 
   return (
     <View style={tw`flex-1 items-center justify-center bg-white`}>
 
-      <Text style={tw`text-2xl font-bold mb-8`}>THIS IS THE PROFILE PICTURE SCREEN</Text>
+      <Text style={tw`text-2xl font-bold mb-8`}></Text>
       {renderBox(0)}
       <View style={tw`flex-row flex-wrap justify-between px-6`}>
         {[1, 2, 3, 4].map((index) => renderBox(index))}

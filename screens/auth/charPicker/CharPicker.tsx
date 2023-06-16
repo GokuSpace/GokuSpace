@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import SearchSeries from './SearchSeries';
-import SeriesList from './SeriesList';
+import SeriesList from './CharList';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
 
-const Picker = ({ data, opining, setNext }) => {
+const CharPicker = ({ data, opining, setLoggedIn }) => {
   const [search, setSearch] = useState('');
 
   return (
@@ -24,17 +24,18 @@ const Picker = ({ data, opining, setNext }) => {
           <Text style={styles.skipButtonText}>Skip</Text>
         </TouchableOpacity>
 
-        <SeriesList search={search} series={data} setNext={setNext} />
+        <SeriesList search={search} series={data} setLoggedIn={setLoggedIn} />
       </View>
     </>
   );
 };
-export default Picker;
+export default CharPicker;
 
 const styles = StyleSheet.create({
   outer: {
     flex: 1,
     backgroundColor: 'white',
+    paddingTop: 50,
   },
   skipButton: {
     borderRadius: 16,
