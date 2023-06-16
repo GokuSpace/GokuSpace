@@ -1,5 +1,5 @@
 import React, { Text, View, Button, ScrollView, Pressable, TextInput } from "react-native";
-import { Avatar, ListItem, Tab } from "@rneui/themed";
+import { Avatar, ListItem, Tab, Icon } from "@rneui/themed";
 import { useState } from "react";
 import tw from 'tailwind-react-native-classnames';
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -10,7 +10,7 @@ const EventListEntry = ({ event, handleRSVPpress }) => {
   const navigation = useNavigation();
 
   const handleEventPress = () => {
-    navigation.navigate("EventDetails", { event: event, handleRSVPpress: handleRSVPpress });
+    navigation.navigate("Event Details", { event: event, handleRSVPpress: handleRSVPpress });
   }
 
   return (
@@ -24,15 +24,20 @@ const EventListEntry = ({ event, handleRSVPpress }) => {
               uri: event.picture,
             }}
           />
-          <ListItem.Content>
-            <ListItem.Title>{event.name}</ListItem.Title>
-            <ListItem.Subtitle>{new Date(event.startDate).toString().slice(0, 15)}</ListItem.Subtitle>
-            <ListItem.Subtitle>{event.city}</ListItem.Subtitle>
+          <ListItem.Content style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+            <View>
+              <ListItem.Title style={{ fontSize: 18 }}>{event.name}</ListItem.Title>
+              <ListItem.Subtitle>{new Date(event.startDate).toString().slice(0, 15)}</ListItem.Subtitle>
+              <ListItem.Subtitle>{event.city}</ListItem.Subtitle>
+            </View>
+            {event.friendsGoing ? <Icon name="user-friends" type="font-awesome-5" color="orange" /> : null}
           </ListItem.Content>
         </ListItem>
       </TouchableOpacity>
 
     </View>
+
+
 
   );
 }

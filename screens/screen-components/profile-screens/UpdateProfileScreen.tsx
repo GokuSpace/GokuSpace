@@ -3,11 +3,9 @@ import React, { Text, View, Button, Image, TextInput } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import tw from 'tailwind-react-native-classnames';
 import { useState, useEffect } from "react";
-import GestureRecognizer, {
-} from 'react-native-swipe-gestures';
 import axios from "axios";
 import { SERVER } from '@env';
-import Carousel from 'react-native-snap-carousel';
+
 
 function UpdateProfileScreen() {
 
@@ -31,20 +29,6 @@ function UpdateProfileScreen() {
   }, [])
 
 
-
-  // const onSwipeLeft = () => {
-  //   setIndex((prevIndex) => (prevIndex === 0 ? 4 : prevIndex - 1));
-  // };
-
-  // const onSwipeRight = () => {
-  //   setIndex((prevIndex) => (prevIndex === 4 ? 0 : prevIndex + 1));
-  // };
-
-  // const config = {
-  //   velocityThreshold: 0.3,
-  //   directionalOffsetThreshold: 80,
-  // };
-
   const handleProfileSavePress = () => {
     const updatedProfile = {
       username: editedUsername,
@@ -56,7 +40,7 @@ function UpdateProfileScreen() {
 
   return (
     <View style={tw`bg-white flex-1`}>
-      <View style={tw`justify-center items-center mt-6 `}>
+      {/* <View style={tw`justify-center items-center mt-6 `}>
         <Carousel
           data={images}
           renderItem={({ item }) => (
@@ -77,24 +61,7 @@ function UpdateProfileScreen() {
           initialScrollIndex={0}
           firstItem={0}
         />
-      </View>
-
-      {/* <GestureRecognizer
-        onSwipeLeft={onSwipeLeft}
-        onSwipeRight={onSwipeRight}
-        config={config}
-      >
-        <View style={tw`justify-center items-center mt-6`}>
-          <Image
-            style={[tw`h-52 w-52 rounded-full`]}
-            source={{
-              uri: images[index],
-              width: 100,
-              height: 100,
-            }}
-          />
-        </View>
-      </GestureRecognizer> */}
+      </View> */}
 
       <View style={tw`flex-row mt-10`}>
         <View style={tw`px-5`}>
@@ -117,11 +84,10 @@ function UpdateProfileScreen() {
       </View>
 
       <View style={tw`flex flex-row justify-center mt-6 `}>
-        <View style={tw`mt-6 border rounded-2xl px-2 bg-black`} >
+        <View style={[tw`mt-6 rounded-2xl px-2 bg-black`, { backgroundColor: 'orange' }]} >
           <Button color="white" title="Save" onPress={handleProfileSavePress} />
         </View>
       </View>
-
 
     </View>
   );

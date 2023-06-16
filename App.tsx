@@ -105,14 +105,16 @@ export default function AppTabs() {
                 {() => (
                   <Stack.Navigator>
                     <Stack.Screen
-                      name="EventsScreen"
+                      name="Events"
                       component={EventsScreen}
+                       // Hide the header for this screen
                     />
                     <Stack.Screen
-                      name="EventDetails"
+                      name="Event Details"
                       component={EventDetails}
+                       // Hide the header for this screen
                     />
-                    <Stack.Screen name="NewEvent" component={NewEvent} />
+                    <Stack.Screen name="New Event" component={NewEvent} />
                   </Stack.Navigator>
                 )}
               </Tab.Screen>
