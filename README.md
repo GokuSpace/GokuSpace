@@ -9,7 +9,6 @@ A mobile social media application that allows anime-lovers to connect, vote, and
 3. [Installation](#installation)
 4. [Authors and Contributors](#authors-and-contributors)
 5. [Wins and Improvements](#wins-and-improvements)
-6. [Tips for Making a Better Readme](#tips-for-making-a-better-readme)
 
 ## Description
 
