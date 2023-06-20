@@ -1,33 +1,31 @@
 # GokuSpace
 
-GokuSpace is a modile social media application that allows users to connect with like minded individuals.
+A mobile social media application that allows anime-lovers to connect, vote, and discover trends.
 
 ## Table of Contents
 
 1. [Description](#description)
-2. [Technologies Used](#technologies-used)
-3. [Installation and Running](#installation-and-running)
-4. [Code Highlights](#code-highlights)
-5. [Authors and Contributors](#authors-and-contributors)
-6. [Wins and Improvements](#wins-and-improvements)
-7. [Tips for Making a Better Readme](#tips-for-making-a-better-readme)
+2. [Technologies](#technologies)
+3. [Installation](#installation)
+4. [Authors and Contributors](#authors-and-contributors)
+5. [Wins and Improvements](#wins-and-improvements)
+6. [Tips for Making a Better Readme](#tips-for-making-a-better-readme)
 
 ## Description
-The Goku Space application offers users an online platform to network with like-minded individuals. It is geared towards
-anime fans.
 
-After creating a unique profile, users will be able to engage in daily polls, see posts from other users, 
-and view events happening near them. 
+GokuSpace offers users an online platform to network with like-minded individuals. Users have the ability to discover trends and watch as votes for their favorite anime climb to the top. After creating a unique profile, users will be able to engage in daily polls, add & messages friends, post to the home page, and RSVP to events filtered by distance.
 
-A friends list page will provide additional opportunity to interact more directly with specific users via a chatroom.
+## Technologies
 
-## Technologies Used
+![TypeScript](https://img.shields.io/badge/-TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)
+![React Native](https://img.shields.io/badge/-React_Native-61DAFB?style=flat-square&logo=react&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white)
+![Node.js](https://img.shields.io/badge/-Node.js-339933?style=flat-square&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/-Express-000000?style=flat-square&logo=express&logoColor=white)
+![bcrypt](https://img.shields.io/badge/-bcrypt-339933?style=flat-square&logo=node.js&logoColor=white)
+![Prisma ORM](https://img.shields.io/badge/-Prisma_ORM-1B222D?style=flat-square&logo=prisma&logoColor=white)
 
-GokuSpace was created using the following technologies:
-
-React-Native - Express - Bcrypt - Typescript - Prisma ORM - PostgreSQL
-
-## Installation and Running
+## Installation
 
 To install and run GokuSpace, first clone the repository:
 
@@ -49,21 +47,15 @@ Finally, start the application:
 npm start
 ```
 
-## Code Highlights
-
 ## Authors and Contributors
 
-Full-Stack Developers: 
-Aliyah Indra
-Kodi Walker
-Milad Moulayi
-Jerry Renn
-
-UI Owner: Tammam Tatou
-
-Architecture Owner: Thomas Spradling
-
-Product Manager: Dillon Armstrong - https://github.com/Dillon-Armstrong
+- [@jerryrenn](https://github.com/jerryrenn)
+- [@ThomasSpralding](https://github.com/ThomasSpradling)
+- [@kodiwalker](https://github.com/kodiwalker)
+- [@aliyahindra](https://github.com/aliyahindra)
+- [@MiladMoulayi](https://github.com/MiladMoulayi)
+- [@TammamTautou](https://github.com/TammamTautou)
+- [@Dillon-Armstrong](https://github.com/Dillon-Armstrong)
 
 ## Wins and Improvements
 
