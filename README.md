@@ -6,9 +6,10 @@ A mobile social media application that allows anime-lovers to connect, vote, and
 
 1. [Description](#description)
 2. [Technologies](#technologies)
-3. [Installation](#installation)
-4. [Authors and Contributors](#authors-and-contributors)
-5. [Wins and Improvements](#wins-and-improvements)
+3. [Visuals](#visuals)
+4. [Installation](#installation)
+5. [Authors and Contributors](#authors-and-contributors)
+6. [Wins and Improvements](#wins-and-improvements)
 
 ## Description
 
@@ -23,6 +24,9 @@ GokuSpace offers users an online platform to network with like-minded individual
 ![Express](https://img.shields.io/badge/-Express-000000?style=flat-square&logo=express&logoColor=white)
 ![bcrypt](https://img.shields.io/badge/-bcrypt-339933?style=flat-square&logo=node.js&logoColor=white)
 ![Prisma ORM](https://img.shields.io/badge/-Prisma_ORM-1B222D?style=flat-square&logo=prisma&logoColor=white)
+
+## Visuals
+![GokuSpace Gif](./GokuSpaceGif)
 
 ## Installation
 
