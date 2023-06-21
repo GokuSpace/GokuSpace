@@ -1,11 +1,13 @@
-import { useNavigation, useRoute } from "@react-navigation/native";
-import React, { Text, View, Button, Image, TextInput } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import tw from 'tailwind-react-native-classnames';
-import { useState, useEffect } from "react";
-import * as ImagePicker from 'expo-image-picker';
-import axios from "axios";
 import { SERVER } from '@env';
+import { useNavigation, useRoute } from "@react-navigation/native";
+import axios from "axios";
+import * as ImagePicker from 'expo-image-picker';
+import { useEffect, useState } from "react";
+import { Button, Image, React, Text, TextInput, View } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import Carousel from 'react-native-snap-carousel';
+import GestureRecognizer from 'react-native-swipe-gestures';
+import tw from 'tailwind-react-native-classnames';
 
 
 function UpdateProfileScreen() {

@@ -1,6 +1,6 @@
-import React, { Text, View, Button, ScrollView, Pressable, TextInput, TouchableOpacity, Image } from "react-native";
 import { Avatar, ListItem, Tab } from "@rneui/themed";
 import { useState } from "react";
+import React, { Button, Image, Pressable, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
 import tw from 'tailwind-react-native-classnames';
 
 function UsersPostsEntry({ post, handleDeletePress, handleSavePress, photo }) {
@@ -79,4 +79,4 @@ function UsersPostsEntry({ post, handleDeletePress, handleSavePress, photo }) {
 
 }
 
-export default UsersPostsEntry
+export default UsersPostsEntry;

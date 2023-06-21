@@ -13,11 +13,11 @@ function ProfileScreen() { //take in a userId and then make axios call with that
   const navigation = useNavigation();
 
   const handlePostPress = () => {
-    navigation.navigate("ViewUsersPostsScreen", { profile: profile });
+    navigation.navigate("View Posts", { profile: profile });
   }
 
   const handleUpdatePress = () => {
-    navigation.navigate("UpdateProfileScreen", { profile: profile })
+    navigation.navigate("Update Profile", { profile: profile })
   }
 
   const handleVotePress = () => {
