@@ -26,7 +26,7 @@ GokuSpace offers users an online platform to network with like-minded individual
 ![Prisma ORM](https://img.shields.io/badge/-Prisma_ORM-1B222D?style=flat-square&logo=prisma&logoColor=white)
 
 ## Visuals
-![GokuSpace Gif](./GokuSpaceGif)
+![GokuSpace Gif](./GokuSpaceGif.gif)
 
 ## Installation
 
