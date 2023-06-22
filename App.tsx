@@ -45,14 +45,15 @@ export default function AppTabs() {
       <userContext.Provider value={{ currentUser, setCurrentUser }}>
         <ThemeProvider theme={theme}>
           <NavigationContainer>
-            <Tab.Navigator
+          <Tab.Navigator
             screenOptions={{
               headerShown: true,
               tabBarActiveTintColor: '#EB5E28',
               tabBarInactiveTintColor: '#252422',
               tabBarStyle: {
                 backgroundColor: 'white',
-          
+                paddingBottom: 5,
+                borderTopColor: 'transparent',
                 shadowOpacity: 0
               }}}
             >
@@ -70,7 +71,7 @@ export default function AppTabs() {
                   ),
                 }}
               />
-              {/* <Tab.Screen
+              <Tab.Screen
                 name="Friends"
                 component={FriendScreen}
                 options={{
@@ -83,7 +84,7 @@ export default function AppTabs() {
                     />
                   ),
                 }}
-              /> */}
+              />
 
               <Tab.Screen
                 name="Friends"
