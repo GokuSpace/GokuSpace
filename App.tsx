@@ -51,8 +51,7 @@ export default function AppTabs() {
               tabBarInactiveTintColor: '#252422',
               tabBarStyle: {
                 backgroundColor: 'white',
-                paddingBottom: 5,
-                borderTopColor: 'transparent',
+          
                 shadowOpacity: 0
               }}}
             >

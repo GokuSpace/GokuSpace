@@ -24,7 +24,7 @@ const TrendingView = () => {
           onChange={(e) => setIndex(e)}
           indicatorStyle={{
             backgroundColor: "orange",
-            height: 7,
+            height: 3,
           }}
           containerStyle={{
             backgroundColor: "#EB5E28",
