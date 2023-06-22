@@ -40,6 +40,16 @@ const animeSeries = [
     tie_stamp: '2023-06-15T00:16:53.685Z'
   },
   {
+    mal_id: 813,
+    url: 'https://cdn.myanimelist.net/images/anime/1607/117271l.jpg',
+    title: 'DragonBall Z',
+    score: 9.9,
+    body: "Five years after winning the World Martial Arts tournament, Gokuu is now living a peaceful life with his wife and son. This changes, however, with the arrival of a mysterious enemy named Raditz who presents himself as Gokuu's long-lost brother. He reveals that Gokuu is a warrior from the once powerful but now virtually extinct Saiyan race, whose homeworld was completely annihilated. When he was sent to Earth as a baby, Gokuu's sole purpose was to conquer and destroy the planet; but after suffering amnesia from a head injury, his violent and savage nature changed, and instead was raised as a kind and well-mannered boy, now fighting to protect others.\n\nWith his failed attempt at forcibly recruiting Gokuu as an ally, Raditz warns Gokuu's friends of a new threat that's rapidly approaching Earth—one that could plunge Earth into an intergalactic conflict and cause the heavens themselves to shake. A war will be fought over the seven mystical dragon balls, and only the strongest will survive in Dragon Ball Z.\n",
+    createdAt: '2023-06-12T08:17:20.574Z',
+    total_votes: 999,
+    tie_stamp: '2023-06-15T00:16:53.685Z'
+  },
+  {
     mal_id: 21939,
     url: 'https://cdn.myanimelist.net/images/anime/13/58533l.jpg',
     title: 'Mushishi Zoku Shou',

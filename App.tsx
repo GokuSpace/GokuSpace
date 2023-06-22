@@ -22,6 +22,7 @@ import animeSeries from './animeSeries';
 import animeChars from './dbzChars';
 import SeriesPicker from './screens/auth/seriesPicker/SeriesPicker';
 import CharPicker from './screens/auth/charPicker/CharPicker';
+import ChatScreen from './screens/screen-components/friends/ChatScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -69,7 +70,7 @@ export default function AppTabs() {
                   ),
                 }}
               />
-              <Tab.Screen
+              {/* <Tab.Screen
                 name="Friends"
                 component={FriendScreen}
                 options={{
@@ -82,7 +83,39 @@ export default function AppTabs() {
                     />
                   ),
                 }}
-              />
+              /> */}
+
+              <Tab.Screen
+                name="Friends"
+                options={{
+                  headerShown: false,
+                  tabBarIcon: ({ color, size }) => (
+                    <Icon
+                      name="user-friends"
+                      type="font-awesome-5"
+                      color={color}
+                      size={size}
+                    />
+                  ),
+                }}
+              >
+                {() => (
+                  <Stack.Navigator>
+                    <Stack.Screen
+                      name="Friends"
+                      component={FriendScreen}
+                      // Hide the header for this screen
+                    />
+                    <Stack.Screen
+                      name="ChatScreen"
+                      component={ChatScreen}
+                      // Hide the header for this screen
+                    />
+                    <Stack.Screen name="New Event" component={NewEvent} />
+                  </Stack.Navigator>
+                )}
+              </Tab.Screen>
+
               <Tab.Screen
                 name="Trending"
                 component={TrendingScreen}
@@ -117,12 +150,12 @@ export default function AppTabs() {
                     <Stack.Screen
                       name="Events"
                       component={EventsScreen}
-                       // Hide the header for this screen
+                      // Hide the header for this screen
                     />
                     <Stack.Screen
                       name="Event Details"
                       component={EventDetails}
-                       // Hide the header for this screen
+                      // Hide the header for this screen
                     />
                     <Stack.Screen name="New Event" component={NewEvent} />
                   </Stack.Navigator>

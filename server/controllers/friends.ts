@@ -46,6 +46,7 @@ export default {
           pictures: true,
           latitude: true,
           longitude: true,
+          firstName: true,
         },
         skip: page * count,
         take: count,
