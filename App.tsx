@@ -25,8 +25,8 @@ import SeriesPicker from './screens/auth/seriesPicker/SeriesPicker';
 import CharPicker from './screens/auth/charPicker/CharPicker';
 import ChatScreen from './screens/screen-components/friends/ChatScreen';
 
-LogBox.ignoreLogs(['Warning: ...']);
 LogBox.ignoreAllLogs();
+LogBox.ignoreLogs(['Warning: ...']);
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -56,7 +56,7 @@ export default function AppTabs() {
                 tabBarInactiveTintColor: '#252422',
                 tabBarStyle: {
                   backgroundColor: 'white',
-                  paddingBottom: 5,
+                  paddingBottom: 20,
                   borderTopColor: 'transparent',
                   shadowOpacity: 0
                 }
