@@ -36,7 +36,7 @@ const handleSavePress = (text: string, post: Post) => {
   setAllPosts(updatedPosts);
   setFriendsPosts(updatedPosts.filter(post => post.is_friend));
   setForYouPosts(updatedPosts.filter(post => post.series === "Fullmetal Alchemist" || post.name === "dragonballerz1"));
-  
+
 }
 
 const handleUpdatePress = () => {
@@ -72,7 +72,7 @@ return (
     }}
   />
   <ListItem.Content >
-    <ListItem.Title >
+    <ListItem.Title onPress={() => console.log()}>
       {post.name}
     </ListItem.Title>
     <ListItem.Subtitle>

@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Avatar, Icon, ThemeProvider, createTheme } from '@rneui/themed';
 import React, { createContext, useState } from 'react';
+import { LogBox } from 'react-native';
 import 'react-native-gesture-handler';
 import EventsScreen from './screens/EventsScreen';
 import FriendScreen from './screens/FriendScreen';
@@ -23,6 +24,9 @@ import animeChars from './dbzChars';
 import SeriesPicker from './screens/auth/seriesPicker/SeriesPicker';
 import CharPicker from './screens/auth/charPicker/CharPicker';
 import ChatScreen from './screens/screen-components/friends/ChatScreen';
+
+LogBox.ignoreLogs(['Warning: ...']);
+LogBox.ignoreAllLogs();
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -45,17 +49,18 @@ export default function AppTabs() {
       <userContext.Provider value={{ currentUser, setCurrentUser }}>
         <ThemeProvider theme={theme}>
           <NavigationContainer>
-          <Tab.Navigator
-            screenOptions={{
-              headerShown: true,
-              tabBarActiveTintColor: '#EB5E28',
-              tabBarInactiveTintColor: '#252422',
-              tabBarStyle: {
-                backgroundColor: 'white',
-                paddingBottom: 5,
-                borderTopColor: 'transparent',
-                shadowOpacity: 0
-              }}}
+            <Tab.Navigator
+              screenOptions={{
+                headerShown: true,
+                tabBarActiveTintColor: '#EB5E28',
+                tabBarInactiveTintColor: '#252422',
+                tabBarStyle: {
+                  backgroundColor: 'white',
+                  paddingBottom: 5,
+                  borderTopColor: 'transparent',
+                  shadowOpacity: 0
+                }
+              }}
             >
               <Tab.Screen
                 name="Home"
@@ -73,21 +78,6 @@ export default function AppTabs() {
               />
               <Tab.Screen
                 name="Friends"
-                component={FriendScreen}
-                options={{
-                  tabBarIcon: ({ color, size }) => (
-                    <Icon
-                      name="user-friends"
-                      type="font-awesome-5"
-                      color={color}
-                      size={size}
-                    />
-                  ),
-                }}
-              />
-
-              <Tab.Screen
-                name="Friends"
                 options={{
                   headerShown: false,
                   tabBarIcon: ({ color, size }) => (
@@ -103,19 +93,18 @@ export default function AppTabs() {
                 {() => (
                   <Stack.Navigator>
                     <Stack.Screen
-                      name="Friends"
+                      name="FriendsScreen"
                       component={FriendScreen}
-                      // Hide the header for this screen
                     />
                     <Stack.Screen
                       name="ChatScreen"
                       component={ChatScreen}
-                      // Hide the header for this screen
                     />
                     <Stack.Screen name="New Event" component={NewEvent} />
                   </Stack.Navigator>
                 )}
               </Tab.Screen>
+
 
               <Tab.Screen
                 name="Trending"
@@ -151,12 +140,12 @@ export default function AppTabs() {
                     <Stack.Screen
                       name="Events"
                       component={EventsScreen}
-                      // Hide the header for this screen
+                    // Hide the header for this screen
                     />
                     <Stack.Screen
                       name="Event Details"
                       component={EventDetails}
-                      // Hide the header for this screen
+                    // Hide the header for this screen
                     />
                     <Stack.Screen name="New Event" component={NewEvent} />
                   </Stack.Navigator>
