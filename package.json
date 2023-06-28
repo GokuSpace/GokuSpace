@@ -69,6 +69,7 @@
     "rn-sliding-up-panel": "^2.4.6",
     "tailwind-react-native-classnames": "^1.5.1",
     "ts-node": "^10.9.1",
+    "uuid": "^9.0.0",
     "zipcodes": "^8.0.0"
   },
   "devDependencies": {

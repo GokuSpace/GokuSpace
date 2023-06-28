@@ -25,4 +25,3 @@ const Week = ({ animeSeries, setSingleDay, setDayMostTrending }) => {
 
 export default Week;
 
-
