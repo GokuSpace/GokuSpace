@@ -8,7 +8,7 @@ function TrendingScreen() {
   const [skip, setSkip] = useState(false);
 
   return (
-    <View style={styles.view}>
+    <>
       {!skip && (
         <Picker
           data={animeSeries}
@@ -17,16 +17,8 @@ function TrendingScreen() {
         />
       )}
       {skip && <TrendingView />}
-    </View>
+    </>
   );
 }
 
 export default TrendingScreen;
-
-const styles = StyleSheet.create({
-  view: {
-backgroundColor:'white',
-flex:1
-  },
-
-});

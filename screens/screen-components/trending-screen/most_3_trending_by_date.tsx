@@ -6,9 +6,10 @@ const most_3_trending_by_date = (animeSeries, date) => {
     return currentDate === new Date(serie.createdAt).getDate();
   });
 
-  const sortArray = (arr) =>{
-    return arr.sort((a, b) => b.title !== a.title && b.total_votes - a.total_votes);
+  const sortArray = (arr) => {
+    return arr.sort((a, b) => b.total_votes - a.total_votes);
   }
+
 
   const [first, setFirst] = useState({
     title: 'Loading...',

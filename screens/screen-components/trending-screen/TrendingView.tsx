@@ -6,6 +6,7 @@ import Week from "./Week";
 import animeSeries from '../../../animeSeries';
 import DaysOfWeek from "./DayOfWeek";
 import { Pressable } from "react-native";
+import { color } from "react-native-reanimated";
 
 const TrendingView = () => {
   const [index, setIndex] = useState(1);
@@ -24,7 +25,7 @@ const TrendingView = () => {
           onChange={(e) => setIndex(e)}
           indicatorStyle={{
             backgroundColor: "orange",
-            height: 3,
+            height: 7,
           }}
           containerStyle={{
             backgroundColor: "#EB5E28",
@@ -53,6 +54,9 @@ const TrendingView = () => {
             backgroundColor: "#EB5E28",
             height: 3,
 
+          }}
+          titleStyle={{
+            color:'#EB5E28',
           }}
           variant='default'
         >
